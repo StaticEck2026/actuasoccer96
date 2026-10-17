@@ -2347,10 +2347,7 @@ static func pass_decide(player: match_player, cross: int = FALSE) -> int:
 
 		# Sort passee table in order of preference...
 		# qsort(passee_tab,passees,sizeof(int)*3,sort_less_than);
-		var sorted_tab: Array = passee_tab.slice(0, passees)
-		sorted_tab.sort_custom(func(op1, op2): return sort_less_than(op1, op2) < 0)
-		for k in range(0, passees):
-			passee_tab[k] = sorted_tab[k]
+		watcom_qsort(passee_tab, passees, Callable(Intell, "sort_less_than"))
 
 		if user_controlled:
 			# Take first team-mate on table...

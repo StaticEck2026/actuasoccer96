@@ -106,3 +106,35 @@ static func _snarr(d: Array, cls) -> Array:
 # #define ABS(a) (( (a) >= 0 ) ? (a):-(a))   -- type preserving (float stays float)
 static func ABS(a):
 	return a if a >= 0 else -a
+
+# ---- Watcom C library qsort() (clib3r.lib qsort.obj, disassembled) ----
+# For nmemb < 16 Watcom's qsort is a two-pass gapped insertion sort with gaps
+# of 3 and 1 elements; note the outer pointer advances by the GAP:
+#   for gap in (3, 1): for p = gap, 2*gap, ... < n: q = p;
+#       while q > 0 and cmp(a[q-gap], a[q]) > 0: swap(a[q-gap], a[q]); q -= gap
+# The game only ever sorts <= 11 elements (INTELL.CPP pass_decide); larger
+# arrays use the library's median-of-3 quicksort path, approximated here by
+# Godot's sort_custom.
+static func watcom_qsort(a: Array, n: int, cmp: Callable) -> void:
+	if n <= 1:
+		return
+	if n >= 16:
+		var part: Array = a.slice(0, n)
+		part.sort_custom(func(x, y): return cmp.call(x, y) < 0)
+		for i in range(n):
+			a[i] = part[i]
+		return
+	var gap: int = 3
+	while gap > 0:
+		for p in range(gap, n, gap):
+			var q: int = p
+			while q > 0:
+				var r: int = q - gap
+				if cmp.call(a[r], a[q]) > 0:
+					var t = a[q]
+					a[q] = a[r]
+					a[r] = t
+					q -= gap
+				else:
+					break
+		gap -= 2

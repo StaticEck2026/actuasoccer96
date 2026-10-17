@@ -48,6 +48,7 @@ var sh_world: Shader
 var sh_free: Shader
 var sh_world_vidi: Shader
 var mat_cache := {}
+var linear_out := false
 
 var stad: Dictionary
 var st_w := 190.0
@@ -68,6 +69,7 @@ var flag_pos: Array = []
 
 # scene nodes
 var ground_mi: MeshInstance3D
+var ground_vidi_mi: MeshInstance3D
 var stand_main: Array = []
 var stand_vidi: Array = []
 var line_objs: Array = []      # [MeshInstance3D, lod meshes(Array), engine pos, zscales, needs_lines_detail]
@@ -107,6 +109,9 @@ var flag_tex := X_TM + 46     # current cloth texture (faces 5,6)
 # build
 # ===========================================================================
 func build_match() -> void:
+	# The GL compatibility renderer writes ALBEDO of unshaded materials straight
+	# to the sRGB framebuffer; Forward+/Mobile expect linear colours.
+	linear_out = RenderingServer.get_rendering_device() != null
 	R3DAssets.install_mocap_tables()
 	R3DAssets.load_texture_table()
 	var setup = Glob.setup
@@ -150,6 +155,7 @@ func _mat(shader: Shader, pri: int) -> ShaderMaterial:
 	m.render_priority = pri
 	m.set_shader_parameter("atlas", atlas_tex)
 	m.set_shader_parameter("pal", pal_tex)
+	m.set_shader_parameter("linear_out", linear_out)
 	mat_cache[key] = m
 	return m
 
@@ -183,6 +189,10 @@ func _new_mi(layer: int) -> MeshInstance3D:
 	return mi
 
 func _build_ground() -> void:
+	ground_mi = _ground_quad(LAYER_MAIN)
+	ground_vidi_mi = _ground_quad(LAYER_VIDI)
+
+func _ground_quad(layer: int) -> MeshInstance3D:
 	var sh := Shader.new()
 	sh.code = R3DShaders.GROUND_CODE
 	var m := ShaderMaterial.new()
@@ -191,16 +201,78 @@ func _build_ground() -> void:
 	m.set_shader_parameter("atlas", atlas_tex)
 	m.set_shader_parameter("pal", pal_tex)
 	m.set_shader_parameter("sky_tex", sky_tex)
+	m.set_shader_parameter("linear_out", linear_out)
 	m.set_shader_parameter("pitch_detail", Glob.setup.detail.pitch)
 	m.set_shader_parameter("sky_on", Glob.setup.M8 != 0 and Glob.setup.detail.sky != 0)
-	m.set_shader_parameter("stad", Vector3(st_w, st_l, st_h))
 	var qm := QuadMesh.new()
 	qm.size = Vector2(2, 2)
-	ground_mi = _new_mi(LAYER_COMMON)
-	ground_mi.mesh = qm
-	ground_mi.material_override = m
-	ground_mi.extra_cull_margin = 16384.0
-	ground_mi.custom_aabb = AABB(Vector3(-1e5, -1e5, -1e5), Vector3(2e5, 2e5, 2e5))
+	var mi := _new_mi(layer)
+	mi.mesh = qm
+	mi.material_override = m
+	mi.extra_cull_margin = 16384.0
+	mi.custom_aabb = AABB(Vector3(-1e5, -1e5, -1e5), Vector3(2e5, 2e5, 2e5))
+	return mi
+
+# 3DENG.C ground(): horizon / sky placement for this camera -> shader uniforms
+func _update_ground(c: R3DCam, mi: MeshInstance3D) -> void:
+	var m: ShaderMaterial = mi.material_override
+	var xmid := c.W >> 1
+	var ymid := c.H >> 1
+	var ry: Array = []
+	var rz: Array = []
+	# Find highest pt of pitch
+	for p in [Vector3(-st_l, 0, st_w), Vector3(1280 + st_l, 0, st_w), Vector3(1280 + st_l, 0, -(800 + st_w)), Vector3(-st_l, 0, -(800 + st_w))]:
+		var v := c.to_view(p)
+		ry.append(v.y)
+		rz.append(v.z)
+	var ye: int
+	var ze: float
+	if rz[0] > 0:
+		ye = int(c.q * ry[0] / rz[0]); ze = rz[0]
+	else:
+		ye = -ymid; ze = 0
+	for k in range(1, 4):
+		if rz[k] > ze:
+			ye = int(c.q * ry[k] / rz[k]); ze = rz[k]
+	if ye > ymid:
+		ye = ymid
+	var ye_g := ye
+	# Find lowest pt of sky  (ST_DP 200)
+	ry.clear(); rz.clear()
+	for p in [Vector3(-(st_l + 200), st_h, st_w + 200), Vector3(1280 + st_l + 200, st_h, st_w + 200),
+			Vector3(1280 + st_l + 200, st_h, -(800 + st_w + 200)), Vector3(-(st_l + 200), st_h, -(800 + st_w + 200))]:
+		var v := c.to_view(p)
+		ry.append(v.y)
+		rz.append(v.z)
+	if rz[0] > 0:
+		ye = int(c.q * ry[0] / rz[0]); ze = rz[0]
+	else:
+		ye = ymid; ze = 0
+	for k in range(1, 4):
+		if rz[k] > ze:
+			ye = int(c.q * ry[k] / rz[k]); ze = rz[k]
+	if ye < -ymid:
+		ye = -ymid
+	# sky source offsets (M8 && detail.sky)
+	var yd: int = ye + int(c.q * c.sph / c.cph)
+	if yd < 0:
+		yd = 0
+	if 479 - yd < 240 - ye:
+		yd = 240 + ye
+	var sa: float = 2 * 3.1415 / 3.0
+	var off: int = int(640 * acos(clampf(c.cth, -1, 1)) / sa) % 640
+	var base: int
+	if c.sth < 0:
+		base = 640 * (480 - yd) - off
+	else:
+		base = 640 * (479 - yd) + off
+	m.set_shader_parameter("buf", Vector2(c.W, c.H))
+	m.set_shader_parameter("ang", Vector4(c.cth, c.sth, c.cph, c.sph))
+	m.set_shader_parameter("eye", c.view)
+	m.set_shader_parameter("q", float(c.q))
+	m.set_shader_parameter("ye_g", ye_g)
+	m.set_shader_parameter("ye_s", ye)
+	m.set_shader_parameter("sky_base", base)
 
 # ---------------------------------------------------------------------------
 # static meshes
@@ -423,8 +495,10 @@ func update_view() -> void:
 		if vidi_on:
 			vm.set_shader_parameter("vidi_tex", vidi_vp.get_texture())
 
+	_update_ground(ecam, ground_mi)
 	_update_stands(ecam, stand_main)
 	if vidi_on:
+		_update_ground(vcam, ground_vidi_mi)
 		_update_stands(vcam, stand_vidi)
 	_update_lines()
 	_update_shadows()

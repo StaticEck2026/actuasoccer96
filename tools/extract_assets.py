@@ -859,7 +859,7 @@ class Extractor:
                    "semi2": ("s_circle_d2", (1157, 0, -400))}
         for n, (dn, pos) in place_l.items():
             lines[n] = dict(position_engine=list(pos), lod_model=dn)
-            if not os.path.exists(os.path.join(models_dir, "lines_%s.json" % dn)):
+            if "lines_" + dn not in index:
                 write("lines_" + dn, lod_model(dn, dict(desc="pitch marking (y=0 plane, drawn first, unsorted)")))
         spot = dict(points=pts("spot_p"), faces=fcs("spot_f"))
         write("lines_spot", spot)

@@ -2,6 +2,7 @@
  "lod": [
   {
    "zscale": 6.0,
+   "reachable": true,
    "points_name": "l6_p1",
    "faces_name": "l_f3c",
    "points": [
@@ -59,6 +60,7 @@
   },
   {
    "zscale": 5.0,
+   "reachable": true,
    "points_name": "l6_p1",
    "faces_name": "l_f3b",
    "points": [
@@ -116,6 +118,7 @@
   },
   {
    "zscale": 4.0,
+   "reachable": true,
    "points_name": "l6_p1",
    "faces_name": "l_f3a",
    "points": [
@@ -173,6 +176,7 @@
   },
   {
    "zscale": 0.0,
+   "reachable": true,
    "points_name": "l6_p2",
    "faces_name": "l_f4",
    "points": [
