@@ -74,6 +74,25 @@ static func fill_game_data() -> void:
 			d.position = ["GK", "DF", "MD", "FD"].find(src.posn)
 			d.flags = 0
 
+# The Euro 96 build's stad_info table (compiled 3DENG.OBJ; FILES.C in the source
+# release is the older Actua Soccer table): 8 venues, used by the logic for the
+# ball/camera bounds (st_w/st_l/st_h), the tunnel and the vidi screens.
+static func install_euro_stadiums() -> void:
+	var f := FileAccess.open("res://assets/stadiums.json", FileAccess.READ)
+	if f == null:
+		return
+	var st: Array = JSON.parse_string(f.get_as_text()).stadiums
+	for i in range(st.size()):
+		var d: stad_info = stadlist[i]
+		var s = st[i]
+		d.st_w = int(s.st_w)
+		d.st_l = int(s.st_l)
+		d.st_h = int(s.st_h)
+		d.vid1x = int(s.vid1[0]); d.vid1y = int(s.vid1[1]); d.vid1z = int(s.vid1[2])
+		d.vid2x = int(s.vid2[0]); d.vid2y = int(s.vid2[1]); d.vid2z = int(s.vid2[2])
+		d.tunlx = int(s.tunl[0]); d.tunly = int(s.tunl[1]); d.tunlz = int(s.tunl[2])
+		d.vmap = int(s.vmap)
+
 # cfg keys: team_a, team_b (0..15), time (0..4 -> 5,10,20,40,90 min), game_type
 # (0 arcade / 1 simulation), competition (FRIENDLY / CUP / PRACTICE / PENALTIES),
 # camera (index into cam_array), users: [{team:0|1, control:0..5 (keys1,keys2,joy1,joy2,mouse,logpad)}],
@@ -82,6 +101,10 @@ static func fill_game_data() -> void:
 static func prepare(cfg: Dictionary) -> void:
 	fill_game_data()
 	glob_var_dynamic_init()
+	install_euro_stadiums()
+	# 3DENG init3d(): motion-capture tables (mcaps/player_p) are also read by
+	# the game logic (BALLINT get_mcball_coords), so load them before the match.
+	R3DAssets.install_mocap_tables()
 
 	# ---- FOOT.CPP main() defaults ----
 	w95 = 0

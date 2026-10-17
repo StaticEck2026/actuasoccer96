@@ -40,6 +40,10 @@ var cam: Camera3D
 var vidi_vp: SubViewport
 var vidi_cam: Camera3D
 var vidi_enabled := true
+var render_scale := 1          # 1 = the original pixel grid; 2.. = supersampled
+var main_vp: SubViewport
+var screen_layer: CanvasLayer
+var screen_rect: TextureRect
 var debug_hide_stands := false
 
 var atlas_tex: ImageTexture
@@ -71,6 +75,7 @@ var flag_pos: Array = []
 # scene nodes
 var ground_mi: MeshInstance3D
 var ground_vidi_mi: MeshInstance3D
+var pitch_simple_mi: MeshInstance3D
 var stand_main: Array = []
 var stand_vidi: Array = []
 var line_objs: Array = []      # [MeshInstance3D, lod meshes(Array), engine pos, zscales, needs_lines_detail]
@@ -161,12 +166,36 @@ func _mat(shader: Shader, pri: int) -> ShaderMaterial:
 	return m
 
 func _build_cameras() -> void:
+	# main view: rendered at the size of the engine's clip buffer (main_buff:
+	# 640x400 in VESA 0x100, 320x200 in mode 0x13, smaller with -/= screen
+	# sizes) x render_scale, shown where the original screen had it inside the
+	# largest 4:3 rectangle of the window (the CRT aspect), like the HUD.
+	main_vp = SubViewport.new()
+	main_vp.size = Vector2i(640, 400)
+	main_vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	main_vp.transparent_bg = false
+	add_child(main_vp)
 	cam = Camera3D.new()
 	cam.near = 10.0
 	cam.far = 20000.0
 	cam.cull_mask = LAYER_COMMON | LAYER_MAIN
-	add_child(cam)
+	main_vp.add_child(cam)
 	cam.current = true
+	screen_layer = CanvasLayer.new()
+	screen_layer.layer = -1
+	add_child(screen_layer)
+	var bg := ColorRect.new()
+	bg.color = Color(0, 0, 0)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	screen_layer.add_child(bg)
+	screen_rect = TextureRect.new()
+	screen_rect.texture = main_vp.get_texture()
+	screen_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	screen_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	screen_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	screen_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	screen_layer.add_child(screen_rect)
 	# vidi wall: 3DENG.C vidi_buff (clip 128x80, scale 0.175/0.183) rendered into
 	# the stand page 8 at (10,7)
 	vidi_vp = SubViewport.new()
@@ -192,6 +221,20 @@ func _new_mi(layer: int) -> MeshInstance3D:
 func _build_ground() -> void:
 	ground_mi = _ground_quad(LAYER_MAIN)
 	ground_vidi_mi = _ground_quad(LAYER_VIDI)
+	# detail.pitch==0: the flat pitch object (addobjfc(&pitch)) drawn before the
+	# stands; init3d moves its edge points to the stadium bounds.
+	var pm = R3DAssets.json("models/pitch_simple.json")
+	var pts: Array = pm.points.duplicate(true)
+	for i in range(19):
+		pts[i][2] = st_w
+		pts[i + 19][2] = -800 - st_w
+	pts[0][0] = -st_l
+	pts[19][0] = -st_l
+	pts[18][0] = 1280 + st_l
+	pts[37][0] = 1280 + st_l
+	pitch_simple_mi = _new_mi(LAYER_COMMON)
+	pitch_simple_mi.mesh = _model_mesh(pts, pm.faces, _mat(sh_world, PRI_GROUND + 1), true)
+	pitch_simple_mi.visible = false
 
 func _ground_quad(layer: int) -> MeshInstance3D:
 	var sh := Shader.new()
@@ -269,6 +312,8 @@ func _update_ground(c: R3DCam, mi: MeshInstance3D) -> void:
 		base = 640 * (480 - yd) - off
 	else:
 		base = 640 * (479 - yd) + off
+	m.set_shader_parameter("pitch_detail", Glob.setup.detail.pitch)
+	m.set_shader_parameter("sky_on", Glob.setup.M8 != 0 and Glob.setup.detail.sky != 0)
 	m.set_shader_parameter("buf", Vector2(c.W, c.H))
 	m.set_shader_parameter("ang", Vector4(c.cth, c.sth, c.cph, c.sph))
 	m.set_shader_parameter("eye", c.view)
@@ -543,6 +588,9 @@ func _facelist_mesh(faces: Array) -> ArrayMesh:
 			c1.append_array([vv[3], pa, pb, pl])
 		idx.append_array([base, base + 1, base + 2, base, base + 2, base + 3])
 		fi += 1
+	var am := ArrayMesh.new()
+	if verts.is_empty():
+		return am		# empty face list (nothing to draw for this player type)
 	var arrs := []
 	arrs.resize(Mesh.ARRAY_MAX)
 	arrs[Mesh.ARRAY_VERTEX] = verts
@@ -550,7 +598,6 @@ func _facelist_mesh(faces: Array) -> ArrayMesh:
 	arrs[Mesh.ARRAY_CUSTOM0] = c0
 	arrs[Mesh.ARRAY_CUSTOM1] = c1
 	arrs[Mesh.ARRAY_INDEX] = idx
-	var am := ArrayMesh.new()
 	var fmt := (Mesh.ARRAY_CUSTOM_RGBA_FLOAT << Mesh.ARRAY_FORMAT_CUSTOM0_SHIFT) | (Mesh.ARRAY_CUSTOM_RGBA_FLOAT << Mesh.ARRAY_FORMAT_CUSTOM1_SHIFT)
 	am.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrs, [], {}, fmt)
 	am.custom_aabb = AABB(Vector3(-50, -50, -50), Vector3(100, 100, 100))
@@ -616,11 +663,41 @@ var pose_tex: ImageTexture
 # ===========================================================================
 # per frame
 # ===========================================================================
+# Screen mode / size (Eng3D.main_buff) -> viewport size and on-screen rect.
+func _layout_screen() -> Array:
+	var mb = Eng3D.main_buff
+	var cw: int = mb.clip_wid
+	var ch: int = mb.clip_hgt
+	var sx: float = mb.scale_x
+	var sy: float = mb.scale_y
+	var bw: int = mb.buff_wid
+	var bh: int = mb.buff_hgt
+	if cw <= 0 or ch <= 0:
+		cw = 640; ch = 400; sx = 1.0; sy = 1.0; bw = 640; bh = 400
+	var want := Vector2i(cw, ch) * render_scale
+	if main_vp.size != want:
+		main_vp.size = want
+	# largest 4:3 rectangle of the window (as scripts/render/hud.gd)
+	var vp: Vector2 = get_viewport().get_visible_rect().size
+	var w: float = vp.x
+	var h: float = w * 3.0 / 4.0
+	if h > vp.y:
+		h = vp.y
+		w = h * 4.0 / 3.0
+	var r := Rect2(((vp - Vector2(w, h)) / 2.0).floor(), Vector2(w, h).floor())
+	# clip window centred in the screen buffer (init3d buff_start)
+	var x0: float = float((bw - cw) >> 1)
+	var y0: float = float((bh - ch) >> 1)
+	screen_rect.position = r.position + Vector2(x0 / bw * r.size.x, y0 / bh * r.size.y)
+	screen_rect.size = Vector2(float(cw) / bw * r.size.x, float(ch) / bh * r.size.y)
+	return [cw, ch, sx, sy]
+
 func update_view() -> void:
 	var v = Upd3D.view
-	# 640x400 VESA mode, full screen: scale_x = scale_y = 1
-	ecam.setup(v.viewx, v.viewy, v.viewz, v.targx, v.targy, v.targz, v.vdist, 1.0, 1.0, 640, 400)
+	var lay := _layout_screen()
+	ecam.setup(v.viewx, v.viewy, v.viewz, v.targx, v.targy, v.targz, v.vdist, lay[2], lay[3], lay[0], lay[1])
 	ecam.apply_to(cam)
+	pitch_simple_mi.visible = Glob.setup.detail.pitch == 0
 	var vidi_on: bool = vidi_enabled and v.vidi
 	if vidi_on:
 		vcam.setup(v.vidi_viewx, v.vidi_viewy, v.vidi_viewz, v.vidi_targx, v.vidi_targy, v.vidi_targz,
@@ -1026,6 +1103,8 @@ func _set_world_mesh(mi: MeshInstance3D, c: R3DCam, wp: PackedVector3Array, cf: 
 			idx.append(base + k)
 			idx.append(base + k + 1)
 	am.clear_surfaces()
+	if verts.is_empty():
+		return		# nothing visible this frame (all polygons culled)
 	var arrs := []
 	arrs.resize(Mesh.ARRAY_MAX)
 	arrs[Mesh.ARRAY_VERTEX] = verts
