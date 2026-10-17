@@ -30,8 +30,11 @@ func _initialize() -> void:
 var started := false
 
 func _start() -> void:
-	main.start_match({"team_a": 4, "team_b": 6, "time": 0, "users": []})
+	var users := [] if OS.get_environment("SHOT_USER") == "" else [{"team": 0, "control": 0}]
+	main.start_match({"team_a": 4, "team_b": 6, "time": 0, "users": users})
 	main.running = false      # we drive the frames ourselves
+	if OS.get_environment("HIDE_STANDS") != "":
+		main.view.debug_hide_stands = true
 	Glob.demo_match = 0
 	started = true
 

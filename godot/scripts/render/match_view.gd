@@ -40,6 +40,7 @@ var cam: Camera3D
 var vidi_vp: SubViewport
 var vidi_cam: Camera3D
 var vidi_enabled := true
+var debug_hide_stands := false
 
 var atlas_tex: ImageTexture
 var pal_tex: ImageTexture
@@ -205,7 +206,7 @@ func _ground_quad(layer: int) -> MeshInstance3D:
 	m.set_shader_parameter("pitch_detail", Glob.setup.detail.pitch)
 	m.set_shader_parameter("sky_on", Glob.setup.M8 != 0 and Glob.setup.detail.sky != 0)
 	var qm := QuadMesh.new()
-	qm.size = Vector2(2, 2)
+	qm.size = Vector2(2.2, 2.2)
 	var mi := _new_mi(layer)
 	mi.mesh = qm
 	mi.material_override = m
@@ -237,6 +238,8 @@ func _update_ground(c: R3DCam, mi: MeshInstance3D) -> void:
 	if ye > ymid:
 		ye = ymid
 	var ye_g := ye
+	if OS.get_environment("DBG_GROUND") != "":
+		print("ground ry ", ry, " rz ", rz, " ye_g ", ye_g, " q ", c.q, " view ", c.view, " sph ", c.sph)
 	# Find lowest pt of sky  (ST_DP 200)
 	ry.clear(); rz.clear()
 	for p in [Vector3(-(st_l + 200), st_h, st_w + 200), Vector3(1280 + st_l + 200, st_h, st_w + 200),
@@ -417,43 +420,163 @@ func _build_shadows_highlights() -> void:
 	ball_shadow_mi = _new_mi(LAYER_COMMON)
 	ball_shadow_mi.mesh = _model_mesh(bj.points, bj.faces, mat_bs, true)
 
+# Precompiled face list (world objects): flat arrays, no per-frame dictionaries.
+class CFaces:
+	var idx: Array = []                 # PackedInt32Array per face (polygon vertex indices)
+	var mode := PackedInt32Array()
+	var page := PackedInt32Array()
+	var colr := PackedFloat32Array()
+	var uv: Array = []                  # PackedVector2Array per face
+	var tex := PackedInt32Array()
+	var lines: Array = []               # [i0, i1, colour] of 2-point faces
+
+func _compile_faces(faces: Array) -> CFaces:
+	var cf := CFaces.new()
+	for f in faces:
+		var v: Array = f.v
+		if v.size() < 3:
+			if f.kind == "line":
+				cf.lines.append([int(v[0]), int(v[1]), float(f.color_index) / 255.0])
+			continue
+		var mode := 0
+		var page := 0
+		var colr := 0.0
+		var t := 0
+		var uvs := PackedVector2Array()
+		uvs.resize(v.size())
+		if f.kind == "flat":
+			colr = float(f.color_index) / 255.0
+		elif f.kind == "filter":
+			mode = 3 + int(f.filter)
+		else:
+			mode = 1 if f.kind == "tex" else 2
+			t = int(f.tex)
+			page = int(f.get("page", R3DAssets.tex_page[t]))
+			var uv: Array = f.get("uv", [])
+			for j in range(mini(uv.size(), v.size())):
+				uvs[j] = Vector2(uv[j][0], uv[j][1])
+		cf.idx.append(PackedInt32Array(v))
+		cf.mode.append(mode)
+		cf.page.append(page)
+		cf.colr.append(colr)
+		cf.uv.append(uvs)
+		cf.tex.append(t)
+	return cf
+
+func _new_dyn_mi(layer: int, shader: Shader, pri: int) -> MeshInstance3D:
+	var mi := _new_mi(layer)
+	mi.mesh = ArrayMesh.new()
+	mi.material_override = _mat(shader, pri)
+	return mi
+
 func _load_objects() -> void:
 	var b = R3DAssets.json("models/ball.json")
-	ball_lod = b.lod
-	ball_mi = _new_mi(LAYER_COMMON)
-	ball_mi.mesh = ImmediateMesh.new()
+	for lv in b.lod:
+		ball_lod.append([float(lv.zscale), lv.points, _compile_faces(lv.faces),
+			_model_mesh(lv.points, lv.faces, _mat(sh_world, PRI_OBJECTS))])
+	ball_mi = _new_dyn_mi(LAYER_COMMON, sh_world, PRI_OBJECTS)
+	ball_dot_mesh = ball_mi.mesh
 	var g = R3DAssets.json("models/goals.json")
 	# init3d order: goal1_1 goal2_1 goal3_1 goal4_1 goal1_2 ...
 	for n in ["goal1_1", "goal2_1", "goal3_1", "goal4_1", "goal1_2", "goal2_2", "goal3_2", "goal4_2"]:
 		var o = g.objects[n]
 		var lname: String = o.lod_model
 		if not goal_lods.has(lname):
-			goal_lods[lname] = R3DAssets.json("models/goal_" + lname + ".json").lod
+			var lods: Array = []
+			for lv in R3DAssets.json("models/goal_" + lname + ".json").lod:
+				var pts := PackedVector3Array()
+				for q in lv.points:
+					pts.append(Vector3(q[0], q[1], q[2]))
+				lods.append([float(lv.zscale), pts, _compile_faces(lv.faces)])
+			goal_lods[lname] = lods
 		var p: Array = o.position_engine
 		goal_objs.append([n, Vector3(p[0], p[1], p[2]), lname])
-		var mi := _new_mi(LAYER_COMMON)
-		mi.mesh = ImmediateMesh.new()
-		goal_mis.append(mi)
+		goal_mis.append(_new_dyn_mi(LAYER_COMMON, sh_world, PRI_OBJECTS))
 	flag_model = R3DAssets.json("models/flag.json")
+	flag_faces = _compile_faces(flag_model.faces)
+	for q in flag_model.points:
+		flag_pts.append(Vector3(q[0], q[1], q[2]))
 	for p in flag_model.positions_engine:
 		flag_pos.append(Vector3(p[0], p[1], p[2]))
-		var mi := _new_mi(LAYER_COMMON)
-		mi.mesh = ImmediateMesh.new()
-		flag_mis.append(mi)
+		flag_mis.append(_new_dyn_mi(LAYER_COMMON, sh_world, PRI_OBJECTS))
+
+var flag_faces: CFaces
+var ball_dot_mesh: ArrayMesh
+var flag_pts := PackedVector3Array()
+
+# Player face lists -> static meshes whose vertices describe faces (the
+# impostors are built in the vertex shader, R3DShaders.PLAYER_CODE).
+func _facelist_mesh(faces: Array) -> ArrayMesh:
+	var verts := PackedVector3Array()
+	var uv2 := PackedVector2Array()
+	var c0 := PackedFloat32Array()
+	var c1 := PackedFloat32Array()
+	var idx := PackedInt32Array()
+	var fi := 0
+	for f in faces:
+		var v: Array = f.v
+		var kind := 2
+		if f.kind == "cyl_billboard":
+			kind = 0
+		elif f.kind == "ellipse_billboard":
+			kind = 1
+		elif f.kind == "line" or v.size() < 3:
+			fi += 1
+			continue
+		if fi == 12:
+			kind = 3        # shirt number patch (faces[82] overwritten per player)
+		var vv := [0, 0, 0, 0]
+		for j in range(mini(4, v.size())):
+			vv[j] = int(v[j])
+		var pa := 0.0
+		var pb := 0.0
+		var pl := 1.0
+		if kind == 0:
+			pa = float(f.width); pl = float(f.length)
+		elif kind == 1:
+			pa = float(f.a); pb = float(f.b); pl = float(f.length)
+		var base := verts.size()
+		for corner in range(4):
+			verts.append(Vector3.ZERO)
+			uv2.append(Vector2(corner, int(f.col_raw)))
+			c0.append_array([kind, vv[0], vv[1], vv[2]])
+			c1.append_array([vv[3], pa, pb, pl])
+		idx.append_array([base, base + 1, base + 2, base, base + 2, base + 3])
+		fi += 1
+	var arrs := []
+	arrs.resize(Mesh.ARRAY_MAX)
+	arrs[Mesh.ARRAY_VERTEX] = verts
+	arrs[Mesh.ARRAY_TEX_UV2] = uv2
+	arrs[Mesh.ARRAY_CUSTOM0] = c0
+	arrs[Mesh.ARRAY_CUSTOM1] = c1
+	arrs[Mesh.ARRAY_INDEX] = idx
+	var am := ArrayMesh.new()
+	var fmt := (Mesh.ARRAY_CUSTOM_RGBA_FLOAT << Mesh.ARRAY_FORMAT_CUSTOM0_SHIFT) | (Mesh.ARRAY_CUSTOM_RGBA_FLOAT << Mesh.ARRAY_FORMAT_CUSTOM1_SHIFT)
+	am.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrs, [], {}, fmt)
+	am.custom_aabb = AABB(Vector3(-50, -50, -50), Vector3(100, 100, 100))
+	return am
 
 func _build_players() -> void:
 	var pj = R3DAssets.json("models/player.json")
 	for k in pj.facelists.keys():
-		var lst: Array = []
-		for f in pj.facelists[k]:
-			var e := {"kind": String(f.kind), "v": PackedInt32Array(f.v), "col": int(f.col_raw)}
-			if f.has("a"):
-				e.a = float(f.a); e.b = float(f.b); e.L = float(f.length)
-			if f.has("width"):
-				e.w = float(f.width); e.L = float(f.length)
-			lst.append(e)
-		player_lists[k] = lst
+		player_lists[k] = _facelist_mesh(pj.facelists[k])
 	playertypes = pj.playertypes
+	# texture table as a float texture: (u0,v0,u1,v1) (u2,v2,u3,v3) (page)
+	var n := R3DAssets.tex_page.size()
+	var tdata := PackedFloat32Array()
+	tdata.resize(n * 3 * 4)
+	tdata.fill(0.0)
+	for t in range(n):
+		for j in range(8):
+			tdata[t * 12 + j] = R3DAssets.tex_uv4[t * 8 + j]
+		tdata[t * 12 + 8] = R3DAssets.tex_page[t]
+	textab_tex = ImageTexture.create_from_image(Image.create_from_data(3, n, false, Image.FORMAT_RGBAF, tdata.to_byte_array()))
+	pose_data.resize(32 * 25 * 4)
+	pose_data.fill(0.0)
+	pose_img = Image.create_from_data(32, 25, false, Image.FORMAT_RGBAF, pose_data.to_byte_array())
+	pose_tex = ImageTexture.create_from_image(pose_img)
+	sh_player = Shader.new()
+	sh_player.code = R3DShaders.player_code()
 	for i in range(25):
 		var t := Tw.new()
 		t.twnpts1.resize(85)
@@ -465,12 +588,29 @@ func _build_players() -> void:
 		frame_pts.append(PackedFloat32Array())
 		frame_xf.append(false)
 		frame_faces.append(null)
-		var a := _new_mi(LAYER_MAIN)
-		a.mesh = ImmediateMesh.new()
-		player_mis_main.append(a)
-		var b := _new_mi(LAYER_VIDI)
-		b.mesh = ImmediateMesh.new()
-		player_mis_vidi.append(b)
+		for layer in [LAYER_MAIN, LAYER_VIDI]:
+			var mi := _new_mi(layer)
+			var m := ShaderMaterial.new()
+			m.shader = sh_player
+			m.render_priority = PRI_OBJECTS
+			m.set_shader_parameter("atlas", atlas_tex)
+			m.set_shader_parameter("pal", pal_tex)
+			m.set_shader_parameter("linear_out", linear_out)
+			m.set_shader_parameter("pose", pose_tex)
+			m.set_shader_parameter("textab", textab_tex)
+			m.set_shader_parameter("row", i)
+			mi.material_override = m
+			mi.custom_aabb = AABB(Vector3(-50, -50, -50), Vector3(100, 100, 100))
+			if layer == LAYER_MAIN:
+				player_mis_main.append(mi)
+			else:
+				player_mis_vidi.append(mi)
+
+var sh_player: Shader
+var textab_tex: ImageTexture
+var pose_data := PackedFloat32Array()
+var pose_img: Image
+var pose_tex: ImageTexture
 
 
 # ===========================================================================
@@ -495,6 +635,7 @@ func update_view() -> void:
 		if vidi_on:
 			vm.set_shader_parameter("vidi_tex", vidi_vp.get_texture())
 
+	_t0 = Time.get_ticks_usec()
 	_update_ground(ecam, ground_mi)
 	_update_stands(ecam, stand_main)
 	if vidi_on:
@@ -502,16 +643,37 @@ func update_view() -> void:
 		_update_stands(vcam, stand_vidi)
 	_update_lines()
 	_update_shadows()
+	_tick("static")
 	_compute_players()
+	_upload_pose()
+	_tick("players_pose")
 	_draw_players(ecam, player_mis_main)
+	_tick("players_main")
 	if vidi_on:
 		_draw_players(vcam, player_mis_vidi)
 	else:
 		for mi in player_mis_vidi:
 			mi.visible = false
+	_tick("players_vidi")
 	_update_ball()
 	_update_goals()
 	_update_flags()
+	_tick("objects")
+	_prof_frames += 1
+	if _prof_on and _prof_frames % 100 == 0:
+		var s := ""
+		for k in _prof:
+			s += "%s %.2fms  " % [k, _prof[k] / 1000.0 / _prof_frames]
+		print("update_view profile: ", s)
+
+var _t0 := 0
+var _prof := {}
+var _prof_frames := 0
+var _prof_on := OS.get_environment("DBG_TIME") != ""
+func _tick(name: String) -> void:
+	var t := Time.get_ticks_usec()
+	_prof[name] = _prof.get(name, 0) + (t - _t0)
+	_t0 = t
 
 # //// FAR STANDS
 func _update_stands(c: R3DCam, mis: Array) -> void:
@@ -529,7 +691,7 @@ func _update_stands(c: R3DCam, mis: Array) -> void:
 	var k := 0
 	for o in order:
 		var mi: MeshInstance3D = mis[o[0]]
-		mi.visible = o[1]
+		mi.visible = o[1] and not debug_hide_stands
 		if o[1]:
 			# draw order via the render priority of a per-slot material
 			mi.material_override = _mat(sh_world_vidi if mis == stand_main else sh_world, PRI_STANDS + k)
@@ -726,331 +888,221 @@ func _team_data(ptype: int):
 	return gd[t]
 
 # add3dcmap: limb impostor. returns [tex, corners(4 x Vector2)]
-func _cmap(tp1: Vector3, tp2: Vector3, w: float, L: float, tex: int, c: R3DCam) -> Array:
-	var dx1 := tp1.y - tp2.y
-	var dy1 := tp1.z - tp2.z
-	var dx2 := dx1 * dx1 + dy1 * dy1
-	if dx2 == 0:
-		dx1 = 1; dx2 = 1
-	var tz2 := w * c.qa / (sqrt(dx2) * (tp1.x + tp2.x))
-	var tz1 := 100 * (tp2.x - tp1.x) / L
-	var dy2: float
-	if tz1 >= 0:
-		if tz1 > 0.78062475:
-			tex += 3 if tz1 > 0.92702481 else 2
-		elif tz1 > 0.48412292:
-			tex += 1
-		tz1 *= tz2; dy2 = tz2 * dy1; dx2 = tz2 * dx1; dy1 *= tz1; dx1 *= tz1
-		return [tex, [Vector2(tp1.y + dx1 - dy2, tp1.z + dy1 + dx2), Vector2(tp1.y + dx1 + dy2, tp1.z + dy1 - dx2),
-			Vector2(tp2.y - dx1 + dy2, tp2.z - dy1 - dx2), Vector2(tp2.y - dx1 - dy2, tp2.z - dy1 + dx2)]]
-	else:
-		if tz1 < -0.78062475:
-			tex -= 3 if tz1 < -0.92702481 else 2
-		elif tz1 < -0.48412292:
-			tex -= 1
-		tz1 *= tz2; dy2 = tz2 * dy1; dx2 = tz2 * dx1; dy1 *= tz1; dx1 *= tz1
-		return [tex, [Vector2(tp1.y - dx1 - dy2, tp1.z - dy1 + dx2), Vector2(tp1.y - dx1 + dy2, tp1.z - dy1 - dx2),
-			Vector2(tp2.y + dx1 + dy2, tp2.z + dy1 - dx2), Vector2(tp2.y + dx1 - dy2, tp2.z + dy1 + dx2)]]
-
-# add3demap: head/torso/foot impostor (p = Vector3(rz, sx, sy))
-func _emap(tp1: Vector3, tp2: Vector3, tp3: Vector3, a: float, b: float, L: float, tex: int, c: R3DCam) -> Array:
-	var q := float(c.q)
-	var dx1 := tp1.y - tp2.y
-	var dy1 := tp1.z - tp2.z
-	var rx := (tp3.y - tp2.y) * tp3.x / q
-	var ry := (tp3.z - tp2.z) * tp3.x / q
-	var dx2 := dx1 * dx1 + dy1 * dy1
-	if dx2 == 0:
-		dx1 = 1; dx2 = 1
-	var dy2 := sqrt(dx2)
-	var tz2 := c.qa / (dy2 * (tp1.x + tp2.x))
-	var tz1 := (rx * dy1 - ry * dx1) / dy2
-	tz1 = clampf(tz1, -1.0, 1.0)
-	if tp3.x > tp2.x:
-		if tz1 > -.2588:
-			if tz1 <= .7071:
-				tex += 9 if tz1 <= .2588 else 10
-			elif tz1 <= .9659:
-				tex += 11
-		else:
-			if tz1 > -.7071:
-				tex += 8
-			elif tz1 > -.9659:
-				tex += 7
-			else:
-				tex += 6
-	else:
-		if tz1 <= .2588:
-			if tz1 > -.7071:
-				tex += 3 if tz1 > -.2588 else 4
-			else:
-				tex += 5 if tz1 > -.9659 else 6
-		else:
-			if tz1 <= .7071:
-				tex += 2
-			elif tz1 <= .9659:
-				tex += 1
-	tz1 *= tz1
-	tz1 *= (a - b) * (a + b)
-	dx2 = tz2 * sqrt(maxf(tz1 + b * b, 0.0))
-	dy2 = 100 * (tp1.x - tp2.x) / L
-	var e1: float
-	var e2: float
-	if dy2 >= 0:
-		if dy2 > 0.555570233:
-			tex += 36 if dy2 > 0.836286155 else 24
-		elif dy2 > 0.195090322:
-			tex += 12
-		dy2 *= tz2 * sqrt(maxf(a * a - tz1, 0.0))
-		e1 = dy2 * dx1; e2 = dy2 * dy1
-		dx1 *= dx2; dy1 *= dx2
-		return [tex, [Vector2(tp2.y + dy1 - e1, tp2.z - dx1 - e2), Vector2(tp2.y - dy1 - e1, tp2.z + dx1 - e2),
-			Vector2(tp1.y - dy1 + e1, tp1.z + dx1 + e2), Vector2(tp1.y + dy1 + e1, tp1.z - dx1 + e2)]]
-	else:
-		if dy2 < -0.258819045:
-			tex -= 12
-		dy2 *= tz2 * sqrt(maxf(a * a - tz1, 0.0))
-		e1 = dy2 * dx1; e2 = dy2 * dy1
-		dx1 *= dx2; dy1 *= dx2
-		return [tex, [Vector2(tp2.y + dy1 + e1, tp2.z - dx1 + e2), Vector2(tp2.y - dy1 + e1, tp2.z + dx1 + e2),
-			Vector2(tp1.y - dy1 - e1, tp1.z + dx1 - e2), Vector2(tp1.y + dy1 - e1, tp1.z - dx1 - e2)]]
-
-func _draw_players(c: R3DCam, mis: Array) -> void:
-	var matf := _mat(sh_free, PRI_OBJECTS)
+# Upload the posed points of all players (engine world coordinates).
+func _upload_pose() -> void:
+	var show_numbers: bool = Glob.setup.detail.players != 0
+	var d := pose_data
 	for i in range(25):
-		var mi: MeshInstance3D = mis[i]
-		var im: ImmediateMesh = mi.mesh
-		im.clear_surfaces()
-		var p = Glob.pos[i]
 		if frame_faces[i] == null:
-			mi.visible = false
 			continue
+		var p = Glob.pos[i]
 		var ox: float = p.x
 		var oy: float = p.y
 		var oz: float = -p.z
-		var od := c.depth(ox, oy, oz)
-		# Draw object  (objdep>15)
-		if od <= 15:
-			mi.visible = false
-			continue
-		mi.visible = true
-		var gorigin := Vector3(ox, oy, -oz)
-		mi.position = gorigin
 		var crot: float = -p.crot
 		var srot: float = p.srot
 		var pts: PackedFloat32Array = frame_pts[i]
-		var xf: bool = frame_xf[i]
-		# rotate + project the 28 points (addobjy / addobjyf)
-		var sp: Array = []
-		sp.resize(PLYRPTS)
+		var zsign := -1.0 if frame_xf[i] else 1.0
+		var b := i * 32 * 4
 		for k in range(PLYRPTS):
 			var px: float = pts[1 + k * 3]
 			var py: float = pts[1 + k * 3 + 1]
-			var pz: float = pts[1 + k * 3 + 2]
-			if xf:
-				pz = -pz
-			sp[k] = c.project(Vector3(ox + crot * px + srot * pz, oy + py, oz - srot * px + crot * pz))
-		var faces: Array = player_lists[frame_faces[i]]
-		var nfaces := faces.size()
-		# shirt number (faces[0]=13/12, faces[82]=number texture)
-		var show_number: bool = i < 22 and Glob.setup.detail.players != 0
-		if i < 22 and not show_number:
-			nfaces = mini(nfaces, 12)
-		var polys: Array = []
-		for fi in range(nfaces):
-			var f: Dictionary = faces[fi]
-			var col: int = f.col
-			if fi == 12 and i < 22:
-				if p.type == 1:
-					col = -X_TM - 2016 - (p.number - 1)
-				else:
-					col = -X_TM - 2016 - 15 - (p.number - 1)
-			var trans := col < -2000
-			var tex: int = (-col - 2000) if trans else -col
-			var v: PackedInt32Array = f.v
-			var kind: String = f.kind
-			if kind == "cyl_billboard":
-				var p1: Vector3 = sp[v[0]]
-				var p2: Vector3 = sp[v[1]]
-				if minf(p1.x, p2.x) < R3DCam.CUTOFFDIST:
-					continue
-				var r := _cmap(p1, p2, f.w, f.L, tex, c)
-				polys.append([(p1.x + p2.x) / 2, r[1], r[0], trans])
-			elif kind == "ellipse_billboard":
-				var p1: Vector3 = sp[v[0]]
-				var p2: Vector3 = sp[v[1]]
-				if minf(p1.x, p2.x) < R3DCam.CUTOFFDIST:
-					continue
-				var r := _emap(p1, p2, sp[v[2]], f.a, f.b, f.L, tex, c)
-				polys.append([(p1.x + p2.x) / 2, r[1], r[0], trans])
-			else:
-				# ordinary polygon (addpoly): visibility + facing check
-				var q4: Array = []
-				var zmin := 1e9
-				var zsum := 0.0
-				for j in v:
-					var s: Vector3 = sp[j]
-					q4.append(Vector2(s.y, s.z))
-					zmin = minf(zmin, s.x)
-					zsum += s.x
-				if zmin < R3DCam.CUTOFFDIST or q4.size() < 3:
-					continue
-				var d1: Vector2 = q4[0] - q4[1]
-				var d2: Vector2 = q4[0] - q4[2]
-				if not (d1.x * d2.y < d2.x * d1.y):
-					continue
-				polys.append([zsum / v.size(), q4, tex, trans])
-		polys.sort_custom(func(A, B): return A[0] > B[0])
-		if polys.is_empty():
-			continue
-		var d := maxf(od, 16.0)
-		im.surface_begin(Mesh.PRIMITIVE_TRIANGLES, matf)
-		for pl in polys:
-			_emit_screen_poly(im, c, pl[1], int(pl[2]), pl[3], d, gorigin)
-		im.surface_end()
+			var pz: float = pts[1 + k * 3 + 2] * zsign
+			d[b + k * 4] = ox + crot * px + srot * pz
+			d[b + k * 4 + 1] = oy + py
+			d[b + k * 4 + 2] = oz - srot * px + crot * pz
+		# shirt number texture: team A X_TM+16+(n-1), team B X_TM+31+(n-1)
+		var numtex := -1
+		if i < 22 and show_numbers:
+			numtex = X_TM + 16 + (p.number - 1) if p.type == 1 else X_TM + 31 + (p.number - 1)
+		d[b + 28 * 4] = numtex
+		d[b + 29 * 4] = ox
+		d[b + 29 * 4 + 1] = oy
+		d[b + 29 * 4 + 2] = oz
+	pose_img.set_data(32, 25, false, Image.FORMAT_RGBAF, d.to_byte_array())
+	pose_tex.update(pose_img)
 
-func _emit_screen_poly(im: ImmediateMesh, c: R3DCam, scr: Array, tex: int, trans: bool, d: float, origin: Vector3) -> void:
-	var n := scr.size()
-	if tex < 0 or tex >= R3DAssets.tex_page.size():
-		return
-	var page: int = R3DAssets.tex_page[tex]
-	var mode := 2 if trans else 1
-	var g: Array = []
-	for k in range(n):
-		var s: Vector2 = scr[k]
-		g.append(c.unproject_godot(s.x, s.y, d) - origin)
-	for k in range(1, n - 1):
-		for j in [0, k, k + 1]:
-			im.surface_set_uv(Vector2(R3DAssets.tex_uv4[tex * 8 + j * 2], R3DAssets.tex_uv4[tex * 8 + j * 2 + 1]))
-			im.surface_set_uv2(Vector2(mode, page))
-			im.surface_set_color(Color(0, 0, 0))
-			im.surface_add_vertex(g[j])
+func _draw_players(c: R3DCam, mis: Array) -> void:
+	var R0 := Vector4(c.r00, c.r01, c.r02, c.r03)
+	var R1 := Vector4(c.r10, c.r11, c.r12, c.r13)
+	var R2 := Vector4(c.r20, c.r21, c.r22, c.r23)
+	var bufv := Vector2(c.W, c.H)
+	var qf := float(c.q)
+	for i in range(25):
+		var mi: MeshInstance3D = mis[i]
+		if frame_faces[i] == null:
+			mi.visible = false
+			continue
+		var p = Glob.pos[i]
+		var ox: float = p.x
+		var oy: float = p.y
+		var oz: float = -p.z
+		# Draw object  (objdep>15)
+		if ox * c.r20 + oy * c.r21 + oz * c.r22 + c.r23 <= 15:
+			mi.visible = false
+			continue
+		mi.visible = true
+		mi.position = Vector3(ox, oy, -oz)
+		mi.mesh = player_lists[frame_faces[i]]
+		var m: ShaderMaterial = mi.material_override
+		m.set_shader_parameter("R0", R0)
+		m.set_shader_parameter("R1", R1)
+		m.set_shader_parameter("R2", R2)
+		m.set_shader_parameter("buf", bufv)
+		m.set_shader_parameter("qf", qf)
 
 # ---------------------------------------------------------------------------
 # ball, goals, flags (sorted objects)
 # ---------------------------------------------------------------------------
-# Emit model faces with engine-world points `wp` (Array of Vector3, engine
-# coords).  sort: qsort polygons by average depth (sortobj) or keep list order.
-func _emit_world_faces(im: ImmediateMesh, c: R3DCam, wp: Array, faces: Array, origin_g: Vector3, sort: bool, tex_override := {}) -> void:
-	var polys: Array = []
-	var fi := 0
-	for f in faces:
-		var v: Array = f.v
-		if v.size() < 3:
-			fi += 1
-			continue
+# Build the mesh of a world object: `wp` = engine-world points, polygons are
+# sorted by average depth (sortobj / polcmp) when `sort`, else kept in list order.
+func _set_world_mesh(mi: MeshInstance3D, c: R3DCam, wp: PackedVector3Array, cf: CFaces, origin_g: Vector3,
+		sort: bool, tex_override := {}) -> void:
+	var am: ArrayMesh = mi.mesh
+	var nf := cf.idx.size()
+	if nf == 0:
+		am.clear_surfaces()
+		mi.remove_meta("sig")
+		return
+	var np := wp.size()
+	var dep := PackedFloat32Array()
+	dep.resize(np)
+	var g := PackedVector3Array()
+	g.resize(np)
+	for k in range(np):
+		var e := wp[k]
+		dep[k] = e.x * c.r20 + e.y * c.r21 + e.z * c.r22 + c.r23
+		g[k] = Vector3(e.x, e.y, -e.z) - origin_g
+	var order: Array = []
+	order.resize(nf)
+	for fi in range(nf):
+		var v: PackedInt32Array = cf.idx[fi]
 		var z := 0.0
 		for j in v:
-			z += c.depth(wp[int(j)].x, wp[int(j)].y, wp[int(j)].z)
-		polys.append([z / v.size(), f, fi])
-		fi += 1
+			z += dep[j]
+		order[fi] = [z / v.size(), fi]
 	if sort:
-		polys.sort_custom(func(A, B): return A[0] > B[0])
-	if polys.is_empty():
+		order.sort_custom(func(A, B): return A[0] > B[0])
+	# skip the rebuild when nothing changed (same faces, order, textures, points)
+	var sig := PackedInt32Array()
+	sig.resize(nf)
+	for k in range(nf):
+		sig[k] = order[k][1]
+	var key := [cf.get_instance_id(), sig, tex_override.duplicate(), wp]
+	if mi.has_meta("sig") and mi.get_meta("sig") == key:
 		return
-	im.surface_begin(Mesh.PRIMITIVE_TRIANGLES, _mat(sh_world, PRI_OBJECTS))
-	for pl in polys:
-		var f: Dictionary = pl[1]
-		var v: Array = f.v
-		var kind: String = f.kind
-		var mode := 0
-		var page := 0
-		var colr := 0.0
-		var uv: Array = []
-		if kind == "flat":
-			colr = float(f.color_index) / 255.0
-		elif kind == "filter":
-			mode = 3 + int(f.filter)
-		else:
-			mode = 1 if kind == "tex" else 2
-			var t: int = int(tex_override.get(pl[2], int(f.tex)))
+	mi.set_meta("sig", key)
+	var verts := PackedVector3Array()
+	var cols := PackedColorArray()
+	var uvs := PackedVector2Array()
+	var uv2s := PackedVector2Array()
+	var idx := PackedInt32Array()
+	for o in order:
+		var fi: int = o[1]
+		var v: PackedInt32Array = cf.idx[fi]
+		var nv := v.size()
+		var base := verts.size()
+		var mode: int = cf.mode[fi]
+		var uv: PackedVector2Array = cf.uv[fi]
+		var page: int = cf.page[fi]
+		if tex_override.has(fi):
+			var t: int = tex_override[fi]
 			page = R3DAssets.tex_page[t]
-			if tex_override.has(pl[2]):
-				for j in range(v.size()):
-					if v.size() == 3:
-						uv.append([R3DAssets.tex_uv3[t * 6 + j * 2], R3DAssets.tex_uv3[t * 6 + j * 2 + 1]])
-					else:
-						uv.append([R3DAssets.tex_uv4[t * 8 + j * 2], R3DAssets.tex_uv4[t * 8 + j * 2 + 1]])
-			else:
-				uv = f.get("uv", [])
-		for k in range(1, v.size() - 1):
-			for j in [0, k, k + 1]:
-				var e: Vector3 = wp[int(v[j])]
-				im.surface_set_color(Color(colr, 0, 0))
-				im.surface_set_uv(Vector2(uv[j][0], uv[j][1]) if j < uv.size() else Vector2.ZERO)
-				im.surface_set_uv2(Vector2(mode, page))
-				im.surface_add_vertex(Vector3(e.x, e.y, -e.z) - origin_g)
-	im.surface_end()
+			uv = PackedVector2Array()
+			for j in range(nv):
+				if nv == 3:
+					uv.append(Vector2(R3DAssets.tex_uv3[t * 6 + j * 2], R3DAssets.tex_uv3[t * 6 + j * 2 + 1]))
+				else:
+					uv.append(Vector2(R3DAssets.tex_uv4[t * 8 + j * 2], R3DAssets.tex_uv4[t * 8 + j * 2 + 1]))
+		var info := Vector2(mode, page)
+		var col := Color(cf.colr[fi], 0, 0)
+		for j in range(nv):
+			verts.append(g[v[j]])
+			uvs.append(uv[j])
+			uv2s.append(info)
+			cols.append(col)
+		for k in range(1, nv - 1):
+			idx.append(base)
+			idx.append(base + k)
+			idx.append(base + k + 1)
+	am.clear_surfaces()
+	var arrs := []
+	arrs.resize(Mesh.ARRAY_MAX)
+	arrs[Mesh.ARRAY_VERTEX] = verts
+	arrs[Mesh.ARRAY_COLOR] = cols
+	arrs[Mesh.ARRAY_TEX_UV] = uvs
+	arrs[Mesh.ARRAY_TEX_UV2] = uv2s
+	arrs[Mesh.ARRAY_INDEX] = idx
+	am.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrs)
+
+func _lod_pick(c: R3DCam, pos: Vector3, lods: Array) -> Array:
+	var oz := c.depth(pos.x, pos.y, pos.z)
+	var zq := 0.0 if oz < 0 else oz / float(c.q)
+	var i := 0
+	while i < lods.size() - 1 and float(lods[i][0]) > zq:
+		i += 1
+	return lods[i]
 
 func _update_ball() -> void:
 	var bp = Glob.pos[25]
 	var bpos := Vector3(bp.x, bp.y, -bp.z)
 	if balld:
 		bpos = ball_pos_override
-	var im: ImmediateMesh = ball_mi.mesh
-	im.clear_surfaces()
 	var origin_g := Vector3(bpos.x, bpos.y, -bpos.z)
 	ball_mi.position = origin_g
-	var zs: Array = []
-	for lv in ball_lod:
-		zs.append(float(lv.zscale))
-	var li := _lod_index(ecam, bpos, zs)
-	var lv = ball_lod[li]
+	var lv: Array = _lod_pick(ecam, bpos, ball_lod)
+	var cf: CFaces = lv[2]
 	if ecam.depth(bpos.x, bpos.y, bpos.z) <= R3DCam.CUTOFFDIST:
+		ball_mi.visible = false
 		return
+	ball_mi.visible = true
 	var crot: float = bp.crot
 	var srot: float = bp.srot
 	var cx: float = bp.frame
 	var sx: float = bp.fstep
-	var wp: Array = []
-	for p in lv.points:
-		var px: float = p[0]
-		var py: float = p[1]
-		var pz: float = p[2]
-		wp.append(bpos + Vector3(crot * px - srot * sx * py + srot * cx * pz,
-			cx * py + sx * pz,
-			-srot * px - crot * sx * py + crot * cx * pz))
-	var has_poly := false
-	for f in lv.faces:
-		if f.v.size() >= 3:
-			has_poly = true
-	if has_poly:
-		_emit_world_faces(im, ecam, wp, lv.faces, origin_g, false)
+	var pts: Array = lv[1]
+	if cf.idx.size() > 0:
+		# addobjxy: rotate in y then x (engine matrix M, in Godot space F*M*F);
+		# the ball's polygons are not sorted (list order + facing test)
+		ball_mi.mesh = lv[3]
+		ball_mi.basis = Basis(Vector3(crot, 0, srot), Vector3(-srot * sx, cx, crot * sx), Vector3(-srot * cx, -sx, crot * cx))
 	else:
-		# far level: a 2-point line of colour 31 (one pixel) -> 1x1 engine pixel quad
-		var s := ecam.project(wp[0])
+		ball_mi.mesh = ball_dot_mesh
+		ball_mi.basis = Basis.IDENTITY
+		# far level: a line between two identical points = one pixel of colour 31
+		var s := ecam.project(bpos)
 		var d := maxf(s.x, 16.0)
-		var colr := float(lv.faces[0].color_index) / 255.0
-		im.surface_begin(Mesh.PRIMITIVE_TRIANGLES, _mat(sh_world, PRI_OBJECTS))
-		var q := [Vector2(s.y - .5, s.z - .5), Vector2(s.y + .5, s.z - .5), Vector2(s.y + .5, s.z + .5), Vector2(s.y - .5, s.z + .5)]
-		for j in [0, 1, 2, 0, 2, 3]:
-			im.surface_set_color(Color(colr, 0, 0))
-			im.surface_set_uv(Vector2.ZERO)
-			im.surface_set_uv2(Vector2(0, 0))
-			im.surface_add_vertex(ecam.unproject_godot(q[j].x, q[j].y, d) - origin_g)
-		im.surface_end()
+		var colr: float = cf.lines[0][2] if cf.lines.size() > 0 else 31.0 / 255.0
+		var wp := PackedVector3Array()
+		for o in [Vector2(-.5, -.5), Vector2(.5, -.5), Vector2(.5, .5), Vector2(-.5, .5)]:
+			var gp := ecam.unproject_godot(s.y + o.x, s.z + o.y, d)
+			wp.append(Vector3(gp.x, gp.y, -gp.z))
+		var dot := CFaces.new()
+		dot.idx = [PackedInt32Array([0, 1, 2, 3])]
+		dot.mode = PackedInt32Array([0])
+		dot.page = PackedInt32Array([0])
+		dot.colr = PackedFloat32Array([colr])
+		dot.uv = [PackedVector2Array([Vector2.ZERO, Vector2.ZERO, Vector2.ZERO, Vector2.ZERO])]
+		dot.tex = PackedInt32Array([0])
+		_set_world_mesh(ball_mi, ecam, wp, dot, origin_g, false)
 
 func _update_goals() -> void:
 	for gi in range(goal_objs.size()):
 		var o: Array = goal_objs[gi]
 		var pos: Vector3 = o[1]
-		var lods: Array = goal_lods[o[2]]
-		var zs: Array = []
-		for lv in lods:
-			zs.append(float(lv.zscale))
-		var lv = lods[_lod_index(ecam, pos, zs)]
-		var wp: Array = []
-		for p in lv.points:
-			wp.append(pos + Vector3(p[0], p[1], p[2]))
+		var lv: Array = _lod_pick(ecam, pos, goal_lods[o[2]])
+		var lp: PackedVector3Array = lv[1]
+		var wp := PackedVector3Array()
+		wp.resize(lp.size())
+		for k in range(lp.size()):
+			wp[k] = pos + lp[k]
 		var mi: MeshInstance3D = goal_mis[gi]
 		var origin_g := Vector3(pos.x, pos.y, -pos.z)
 		mi.position = origin_g
-		var im: ImmediateMesh = mi.mesh
-		im.clear_surfaces()
-		_emit_world_faces(im, ecam, wp, lv.faces, origin_g, true)
+		_set_world_mesh(mi, ecam, wp, lv[2], origin_g, true)
 
 func _update_flags() -> void:
-	var pts: Array = flag_model.points.duplicate(true)
+	var tip: Vector3
 	# wind (render3d end): flag tip point 8 and cloth texture cycling
 	if Glob.wind_on:
 		fcoo += Glob.log_factor
@@ -1063,21 +1115,20 @@ func _update_flags() -> void:
 		var fs: float = (3.1415 / 2) * (Glob.wind_speed + 16) / 144
 		var fx: float = 8.5 * sin(fs) + 1
 		var fy: float = 8.5 * cos(fs)
-		pts[8] = [fx * Glob.wind_x, 15 - fy, fx * Glob.wind_y]
+		tip = Vector3(fx * Glob.wind_x, 15 - fy, fx * Glob.wind_y)
 	else:
-		pts[8] = [1.751, 6.629, 1.751]
+		tip = Vector3(1.751, 6.629, 1.751)
 	var ovr := {5: flag_tex, 6: flag_tex}
 	for k in range(4):
 		var mi: MeshInstance3D = flag_mis[k]
 		mi.visible = Glob.setup.detail.lines != 0
-		var im: ImmediateMesh = mi.mesh
-		im.clear_surfaces()
 		if not mi.visible:
 			continue
 		var pos: Vector3 = flag_pos[k]
-		var wp: Array = []
-		for p in pts:
-			wp.append(pos + Vector3(p[0], p[1], p[2]))
+		var wp := PackedVector3Array()
+		wp.resize(flag_pts.size())
+		for j in range(flag_pts.size()):
+			wp[j] = pos + (tip if j == 8 else flag_pts[j])
 		var origin_g := Vector3(pos.x, pos.y, -pos.z)
 		mi.position = origin_g
-		_emit_world_faces(im, ecam, wp, flag_model.faces, origin_g, true, ovr)
+		_set_world_mesh(mi, ecam, wp, flag_faces, origin_g, true, ovr)
