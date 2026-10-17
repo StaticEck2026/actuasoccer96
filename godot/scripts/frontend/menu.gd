@@ -26,63 +26,101 @@ var wind_opt: OptionButton
 var user_side: Array = []
 var toggles: Dictionary = {}
 
+var go: Button
+
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	# The parent (main.gd) is a plain Node, so anchors alone don't size this
+	# Control: size it to the viewport explicitly (and keep it in sync).
+	size = get_viewport_rect().size
+	get_viewport().size_changed.connect(func(): size = get_viewport_rect().size)
 	var bg := ColorRect.new()
 	bg.color = Color(0.02, 0.08, 0.25)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
 	var root := VBoxContainer.new()
-	root.position = Vector2(140, 40)
-	root.size = Vector2(1000, 720)
-	root.add_theme_constant_override("separation", 10)
+	root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root.offset_left = 48
+	root.offset_top = 24
+	root.offset_right = -48
+	root.offset_bottom = -16
+	root.add_theme_constant_override("separation", 14)
 	add_child(root)
 
+	# Title + KICK OFF on the first row, so the start button is always visible.
+	var top := HBoxContainer.new()
+	top.add_theme_constant_override("separation", 40)
+	root.add_child(top)
 	var title := Label.new()
 	title.text = "ACTUA SOCCER  -  EURO 96"
 	title.add_theme_font_size_override("font_size", 40)
 	title.add_theme_color_override("font_color", Color(1, 0.85, 0.2))
-	root.add_child(title)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	top.add_child(title)
+	go = Button.new()
+	go.text = "KICK OFF  (Enter)"
+	go.add_theme_font_size_override("font_size", 24)
+	go.custom_minimum_size = Vector2(280, 56)
+	go.pressed.connect(_start)
+	top.add_child(go)
 
-	var grid := GridContainer.new()
-	grid.columns = 2
-	grid.add_theme_constant_override("h_separation", 24)
-	grid.add_theme_constant_override("v_separation", 8)
-	root.add_child(grid)
+	# Two columns: match settings | rules + controllers
+	var cols := HBoxContainer.new()
+	cols.add_theme_constant_override("separation", 48)
+	root.add_child(cols)
+	var left := _grid(cols)
+	var right := _grid(cols)
 
 	var names := MatchSetup.team_names()
-	team_a = _opt(grid, "Home team", names, 4)
-	team_b = _opt(grid, "Away team", names, 6)
-	comp_opt = _opt(grid, "Match type", COMPETITIONS.map(func(c): return c[0]), 1)
-	time_opt = _opt(grid, "Match length", TIMES, 0)
-	game_type = _opt(grid, "Game type", ["Arcade", "Simulation"], 1)
-	venue_opt = _opt(grid, "Venue", VENUES, 0)
-	cam_opt = _opt(grid, "Camera", CAMERAS, 0)
-	wind_opt = _opt(grid, "Wind", ["Off", "Light", "Medium", "Strong"], 0)
+	team_a = _opt(left, "Home team", names, 4)
+	team_b = _opt(left, "Away team", names, 6)
+	comp_opt = _opt(left, "Match type", COMPETITIONS.map(func(c): return c[0]), 1)
+	time_opt = _opt(left, "Match length", TIMES, 0)
+	game_type = _opt(left, "Game type", ["Arcade", "Simulation"], 1)
+	venue_opt = _opt(left, "Venue", VENUES, 0)
+	cam_opt = _opt(left, "Camera", CAMERAS, 0)
+	wind_opt = _opt(left, "Wind", ["Off", "Light", "Medium", "Strong"], 0)
+	for i in range(CONTROLS.size()):
+		user_side.append(_opt(right, CONTROLS[i], SIDES, 1 if i == 0 else 0))
+	var rules := Label.new()
+	rules.text = "Rules"
+	right.add_child(rules)
+	var rbox := HFlowContainer.new()
+	rbox.custom_minimum_size = Vector2(300, 0)
+	right.add_child(rbox)
 	for t in ["Offside", "Bookings", "Free kicks", "Substitutes"]:
 		var c := CheckBox.new()
 		c.text = t
 		c.button_pressed = true
 		toggles[t] = c
-		var l := Label.new()
-		l.text = "Rule"
-		grid.add_child(l)
-		grid.add_child(c)
-	for i in range(CONTROLS.size()):
-		user_side.append(_opt(grid, CONTROLS[i], SIDES, 1 if i == 0 else 0))
+		rbox.add_child(c)
 
 	var help := Label.new()
-	help.text = "In match: F1-F4 options menu for user 1-4, keys 1-8 cameras, keypad 4/6/8/2/5 camera distance/height,\nF9 manual/auto player switching, Pause = pause, Esc = quit match."
+	help.text = "Keyboard 1: arrows move, Num0 = fire 1, Num. = fire 2.   Keyboard 2: A Z , . move, Q = fire 1, / = fire 2.\n" + \
+		"In match: F1-F4 options menu (replay, subs, formation) for user 1-4, keys 1-8 cameras,\n" + \
+		"keypad 4/6/8/2/5 camera distance/height, F9 manual/auto player switching, Pause = pause, Esc = quit match (Y/N)."
 	help.add_theme_color_override("font_color", Color(0.8, 0.8, 0.9))
 	root.add_child(help)
-
-	var go := Button.new()
-	go.text = "KICK OFF"
-	go.custom_minimum_size = Vector2(240, 48)
-	go.pressed.connect(_start)
-	root.add_child(go)
 	go.grab_focus()
+
+func _grid(parent: Control) -> GridContainer:
+	var g := GridContainer.new()
+	g.columns = 2
+	g.add_theme_constant_override("h_separation", 16)
+	g.add_theme_constant_override("v_separation", 8)
+	parent.add_child(g)
+	return g
+
+# Enter / keypad Enter / Space / joypad Start also kick off.
+func _unhandled_input(event: InputEvent) -> void:
+	var start := false
+	if event is InputEventKey and event.pressed and not event.echo:
+		start = event.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE]
+	elif event is InputEventJoypadButton and event.pressed:
+		start = event.button_index == JOY_BUTTON_START
+	if start:
+		get_viewport().set_input_as_handled()
+		_start()
 
 func _opt(parent: Control, label: String, items: Array, sel: int) -> OptionButton:
 	var l := Label.new()
@@ -93,11 +131,16 @@ func _opt(parent: Control, label: String, items: Array, sel: int) -> OptionButto
 	for it in items:
 		o.add_item(str(it))
 	o.select(sel)
-	o.custom_minimum_size = Vector2(380, 0)
+	o.custom_minimum_size = Vector2(250, 0)
 	parent.add_child(o)
 	return o
 
+var started := false
+
 func _start() -> void:
+	if started:
+		return
+	started = true
 	var users: Array = []
 	var ctrl_map := [0, 1, 2, 3, 4]		# front-end control ids (convert_control: 0 key1,1 key2,2 joy1,3 joy2,4 mouse)
 	for i in range(user_side.size()):
