@@ -1,0 +1,323 @@
+{
+ "note": "Recipe to assemble the 16 indexed 256x256 map pages of a match. Apply the ops in order (blit src [src_rect x,y,w,h] to page at dst x,y, clipping at 256). {A}/{B} = team dirs (teams.json components.dir), {PITCH} = stadium pitch bitmap name. Pages 0-5 and 10-15 are later incremented by 1 by remapgfx (see ASSETS.md decode rules).",
+ "remapped_pages": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15
+ ],
+ "ops": [
+  {
+   "page": 0,
+   "src": "teams/{A}/indexed/head_A.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 0,
+   "src": "teams/{B}/indexed/head_B.png",
+   "dst": [
+    0,
+    128
+   ]
+  },
+  {
+   "page": 1,
+   "src": "teams/{A}/indexed/torso_A.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 2,
+   "src": "teams/{B}/indexed/torso_B.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 3,
+   "src": "teams/{A}/indexed/limbs_A.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 3,
+   "src": "teams/{B}/indexed/limbs_B.png",
+   "dst": [
+    0,
+    80
+   ]
+  },
+  {
+   "page": 3,
+   "src": "indexed/BM_FEET.png",
+   "dst": [
+    0,
+    158
+   ]
+  },
+  {
+   "page": 4,
+   "src": "pages/indexed/page04.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 5,
+   "src": "pages/indexed/page05.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 6,
+   "src": "pages/indexed/page06_template.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 6,
+   "src": "teams/{A}/indexed/numbers_A_top.png",
+   "dst": [
+    0,
+    62
+   ]
+  },
+  {
+   "page": 6,
+   "src": "teams/{B}/indexed/numbers_B_top.png",
+   "dst": [
+    0,
+    89
+   ]
+  },
+  {
+   "page": 6,
+   "src": "indexed/{PITCH}.png",
+   "src_rect": [
+    0,
+    0,
+    69,
+    64
+   ],
+   "dst": [
+    0,
+    116
+   ]
+  },
+  {
+   "page": 6,
+   "src": "indexed/{PITCH}.png",
+   "src_rect": [
+    69,
+    27,
+    187,
+    37
+   ],
+   "dst": [
+    69,
+    143
+   ]
+  },
+  {
+   "page": 6,
+   "src": "teams/{B}/indexed/numbers_B_bottom.png",
+   "dst": [
+    69,
+    116
+   ]
+  },
+  {
+   "page": 6,
+   "src": "teams/{A}/indexed/numbers_A_bottom.png",
+   "dst": [
+    161,
+    116
+   ]
+  },
+  {
+   "page": 6,
+   "src": "indexed/{PITCH}.png",
+   "src_rect": [
+    253,
+    0,
+    3,
+    27
+   ],
+   "dst": [
+    253,
+    116
+   ]
+  },
+  {
+   "page": 7,
+   "src": "pages/indexed/page07_template.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 7,
+   "src": "teams/{A}/indexed/kitgrid_big.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 7,
+   "src": "teams/{B}/indexed/kitgrid_big.png",
+   "dst": [
+    69,
+    0
+   ]
+  },
+  {
+   "page": 7,
+   "src": "teams/{A}/indexed/kitgrid_small.png",
+   "dst": [
+    220,
+    111
+   ]
+  },
+  {
+   "page": 7,
+   "src": "teams/{B}/indexed/kitgrid_small.png",
+   "dst": [
+    220,
+    151
+   ]
+  },
+  {
+   "page": 8,
+   "src": "pages/indexed/page08.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 9,
+   "src": "pages/indexed/page09.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 10,
+   "src": "teams/{A}/indexed/torso_dark_A.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 11,
+   "src": "teams/{B}/indexed/torso_dark_B.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 12,
+   "src": "pages/indexed/page12_template.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 12,
+   "src": "teams/{A}/indexed/limbs_dark_A.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 12,
+   "src": "teams/{B}/indexed/limbs_dark_B.png",
+   "dst": [
+    0,
+    80
+   ]
+  },
+  {
+   "page": 13,
+   "src": "pages/indexed/page13.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 14,
+   "src": "pages/indexed/page14.png",
+   "dst": [
+    0,
+    0
+   ]
+  },
+  {
+   "page": 15,
+   "src": "pages/indexed/page15.png",
+   "dst": [
+    0,
+    0
+   ]
+  }
+ ],
+ "fixed": {
+  "4": "pages/indexed/page04.png",
+  "5": "pages/indexed/page05.png",
+  "8": "pages/indexed/page08.png",
+  "9": "pages/indexed/page09.png",
+  "13": "pages/indexed/page13.png",
+  "14": "pages/indexed/page14.png",
+  "15": "pages/indexed/page15.png",
+  "6_template": "pages/indexed/page06_template.png",
+  "7_template": "pages/indexed/page07_template.png",
+  "12_template": "pages/indexed/page12_template.png"
+ },
+ "page_roles": {
+  "0": "heads A (rows 0-127) / B (128-255)",
+  "1": "torso A",
+  "2": "torso B",
+  "3": "limbs A (0-77), limbs B (80-157), feet (158-224)",
+  "4": "referee/keeper torso (skin slot A)",
+  "5": "referee/keeper limbs (skin slot A)",
+  "6": "extra 1: highlights, shirt numbers, pitch tile, flag, extra 2",
+  "7": "extra 3: kit grids, misc",
+  "8": "stand page 1",
+  "9": "stand page 2",
+  "10": "torso A dark skin",
+  "11": "torso B dark skin",
+  "12": "limbs A/B dark skin + dark heads (XLIMBS)",
+  "13": "keeper/linesman limbs (skin slot B)",
+  "14": "keeper torso (skin slot B)",
+  "15": "nets, ball panels"
+ }
+}

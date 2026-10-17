@@ -1,0 +1,39 @@
+{
+ "MAX_VOL_DIST": {
+  "value": 4,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "MY_AUDIO:33 prat*4 (fld prat; fmul 4.0f)",
+  "expr": "prat*4"
+ },
+ "TIMER_SPEED": {
+  "value": 200,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "DEFINES.H: (TIMER_FRAC*REAL_SPEED) = 10*20"
+ },
+ "TIMER_FRAC": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "DEFINES.H"
+ },
+ "SPECIALK": {
+  "value": 128,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "NETWORK:853 ki=SPECIALK-ki: mov eax,0x80"
+ },
+ "TUNIT": {
+  "value": 32767,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "NETWORK:554 *x=TUNIT: mov [eax],0x7fff"
+ },
+ "TDIAG": {
+  "value": 23170,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "NETWORK:545 *x=TDIAG: mov [eax],0x5a82"
+ }
+}

@@ -1,0 +1,4949 @@
+{
+ "note": "16 Euro 96 teams in engine order (EURODEFS.H). In a match team A = setup.team_a, team B = setup.team_b (head, skin, away palette) and setup.team_b_kit (torso, limbs, numbers, kit palette). The Euro 96 front end never writes setup.team_b_kit (see ASSETS.md open issues); use team_b_kit = team_b.",
+ "teams": [
+  {
+   "id": 0,
+   "name": "Bulgaria",
+   "head_entry": 4,
+   "torso_entry": 8,
+   "limbs_entry": 29,
+   "numbers_entry": 109,
+   "kit_palette_entry": 43,
+   "skin_palette_entry": 60,
+   "home_palette_entry": 73,
+   "away_palette_entry": 79,
+   "file_ids": [
+    32,
+    64,
+    232,
+    872,
+    344,
+    480,
+    584,
+    632
+   ],
+   "head_type": "BM_HEAD_4",
+   "components": {
+    "dir": "teams/00_Bulgaria/",
+    "indexed": {
+     "head_A": "teams/00_Bulgaria/indexed/head_A.png",
+     "head_B": "teams/00_Bulgaria/indexed/head_B.png",
+     "torso_A": "teams/00_Bulgaria/indexed/torso_A.png",
+     "torso_B": "teams/00_Bulgaria/indexed/torso_B.png",
+     "torso_dark_A": "teams/00_Bulgaria/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/00_Bulgaria/indexed/torso_dark_B.png",
+     "limbs_A": "teams/00_Bulgaria/indexed/limbs_A.png",
+     "limbs_B": "teams/00_Bulgaria/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/00_Bulgaria/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/00_Bulgaria/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/00_Bulgaria/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/00_Bulgaria/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/00_Bulgaria/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/00_Bulgaria/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/00_Bulgaria/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/00_Bulgaria/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/00_Bulgaria/head.png",
+     "torso": "teams/00_Bulgaria/torso.png",
+     "torso_dark": "teams/00_Bulgaria/torso_dark.png",
+     "limbs": "teams/00_Bulgaria/limbs.png",
+     "limbs_dark": "teams/00_Bulgaria/limbs_dark.png",
+     "numbers": "teams/00_Bulgaria/numbers.png",
+     "kitgrid_big": "teams/00_Bulgaria/kitgrid_big.png",
+     "kitgrid_small": "teams/00_Bulgaria/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     0,
+     53,
+     109
+    ],
+    [
+     0,
+     49,
+     101
+    ],
+    [
+     0,
+     45,
+     97
+    ],
+    [
+     0,
+     40,
+     93
+    ],
+    [
+     0,
+     36,
+     89
+    ],
+    [
+     0,
+     32,
+     85
+    ],
+    [
+     0,
+     28,
+     81
+    ],
+    [
+     0,
+     28,
+     77
+    ],
+    [
+     0,
+     24,
+     69
+    ],
+    [
+     0,
+     20,
+     65
+    ],
+    [
+     0,
+     16,
+     61
+    ],
+    [
+     0,
+     16,
+     57
+    ],
+    [
+     0,
+     12,
+     53
+    ],
+    [
+     0,
+     12,
+     49
+    ],
+    [
+     130,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     109,
+     12,
+     113
+    ],
+    [
+     97,
+     12,
+     109
+    ],
+    [
+     89,
+     8,
+     101
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     134,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     113,
+     215
+    ],
+    [
+     0,
+     73,
+     174
+    ],
+    [
+     0,
+     40,
+     134
+    ],
+    [
+     0,
+     16,
+     93
+    ],
+    [
+     0,
+     4,
+     53
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     105,
+     206
+    ],
+    [
+     0,
+     61,
+     158
+    ],
+    [
+     0,
+     24,
+     109
+    ],
+    [
+     0,
+     4,
+     61
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 0,
+    "small": "BM_KGRIDS1",
+    "small_cell": 0
+   }
+  },
+  {
+   "id": 1,
+   "name": "Croatia",
+   "head_entry": 4,
+   "torso_entry": 17,
+   "limbs_entry": 30,
+   "numbers_entry": 112,
+   "kit_palette_entry": 52,
+   "skin_palette_entry": 60,
+   "home_palette_entry": 77,
+   "away_palette_entry": 83,
+   "file_ids": [
+    32,
+    136,
+    240,
+    896,
+    416,
+    480,
+    616,
+    664
+   ],
+   "head_type": "BM_HEAD_4",
+   "components": {
+    "dir": "teams/01_Croatia/",
+    "indexed": {
+     "head_A": "teams/01_Croatia/indexed/head_A.png",
+     "head_B": "teams/01_Croatia/indexed/head_B.png",
+     "torso_A": "teams/01_Croatia/indexed/torso_A.png",
+     "torso_B": "teams/01_Croatia/indexed/torso_B.png",
+     "torso_dark_A": "teams/01_Croatia/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/01_Croatia/indexed/torso_dark_B.png",
+     "limbs_A": "teams/01_Croatia/indexed/limbs_A.png",
+     "limbs_B": "teams/01_Croatia/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/01_Croatia/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/01_Croatia/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/01_Croatia/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/01_Croatia/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/01_Croatia/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/01_Croatia/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/01_Croatia/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/01_Croatia/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/01_Croatia/head.png",
+     "torso": "teams/01_Croatia/torso.png",
+     "torso_dark": "teams/01_Croatia/torso_dark.png",
+     "limbs": "teams/01_Croatia/limbs.png",
+     "limbs_dark": "teams/01_Croatia/limbs_dark.png",
+     "numbers": "teams/01_Croatia/numbers.png",
+     "kitgrid_big": "teams/01_Croatia/kitgrid_big.png",
+     "kitgrid_small": "teams/01_Croatia/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_112",
+   "kit_palette_rgb": [
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     194,
+     194,
+     194
+    ],
+    [
+     186,
+     186,
+     186
+    ],
+    [
+     178,
+     178,
+     178
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     162,
+     162,
+     162
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     146,
+     146,
+     146
+    ],
+    [
+     138,
+     138,
+     138
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     121,
+     121,
+     121
+    ],
+    [
+     113,
+     113,
+     113
+    ],
+    [
+     105,
+     105,
+     105
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     24,
+     24,
+     97
+    ],
+    [
+     24,
+     28,
+     101
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     32,
+     45,
+     117
+    ],
+    [
+     36,
+     49,
+     121
+    ],
+    [
+     73,
+     77,
+     117
+    ],
+    [
+     77,
+     85,
+     117
+    ],
+    [
+     77,
+     85,
+     117
+    ],
+    [
+     32,
+     45,
+     117
+    ],
+    [
+     154,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     210,
+     210,
+     210
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     85,
+     85,
+     85
+    ],
+    [
+     45,
+     45,
+     45
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     101,
+     101,
+     101
+    ],
+    [
+     53,
+     53,
+     53
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 1,
+    "small": "BM_KGRIDS1",
+    "small_cell": 1
+   }
+  },
+  {
+   "id": 2,
+   "name": "Czech Republic",
+   "head_entry": 6,
+   "torso_entry": 20,
+   "limbs_entry": 29,
+   "numbers_entry": 109,
+   "kit_palette_entry": 55,
+   "skin_palette_entry": 62,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    48,
+    160,
+    232,
+    872,
+    440,
+    496,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_6",
+   "components": {
+    "dir": "teams/02_CzechRepublic/",
+    "indexed": {
+     "head_A": "teams/02_CzechRepublic/indexed/head_A.png",
+     "head_B": "teams/02_CzechRepublic/indexed/head_B.png",
+     "torso_A": "teams/02_CzechRepublic/indexed/torso_A.png",
+     "torso_B": "teams/02_CzechRepublic/indexed/torso_B.png",
+     "torso_dark_A": "teams/02_CzechRepublic/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/02_CzechRepublic/indexed/torso_dark_B.png",
+     "limbs_A": "teams/02_CzechRepublic/indexed/limbs_A.png",
+     "limbs_B": "teams/02_CzechRepublic/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/02_CzechRepublic/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/02_CzechRepublic/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/02_CzechRepublic/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/02_CzechRepublic/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/02_CzechRepublic/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/02_CzechRepublic/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/02_CzechRepublic/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/02_CzechRepublic/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/02_CzechRepublic/head.png",
+     "torso": "teams/02_CzechRepublic/torso.png",
+     "torso_dark": "teams/02_CzechRepublic/torso_dark.png",
+     "limbs": "teams/02_CzechRepublic/limbs.png",
+     "limbs_dark": "teams/02_CzechRepublic/limbs_dark.png",
+     "numbers": "teams/02_CzechRepublic/numbers.png",
+     "kitgrid_big": "teams/02_CzechRepublic/kitgrid_big.png",
+     "kitgrid_small": "teams/02_CzechRepublic/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     158,
+     109,
+     0
+    ],
+    [
+     210,
+     0,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     4,
+     4,
+     40
+    ],
+    [
+     8,
+     8,
+     53
+    ],
+    [
+     16,
+     16,
+     65
+    ],
+    [
+     24,
+     24,
+     77
+    ],
+    [
+     32,
+     32,
+     89
+    ],
+    [
+     150,
+     61,
+     0
+    ],
+    [
+     113,
+     12,
+     109
+    ],
+    [
+     101,
+     12,
+     109
+    ],
+    [
+     162,
+     170,
+     0
+    ],
+    [
+     0,
+     12,
+     49
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     130,
+     93,
+     53
+    ],
+    [
+     113,
+     77,
+     45
+    ],
+    [
+     101,
+     65,
+     40
+    ],
+    [
+     89,
+     49,
+     32
+    ],
+    [
+     77,
+     40,
+     28
+    ],
+    [
+     65,
+     28,
+     24
+    ],
+    [
+     53,
+     20,
+     20
+    ],
+    [
+     40,
+     16,
+     16
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 2,
+    "small": "BM_KGRIDS1",
+    "small_cell": 2
+   }
+  },
+  {
+   "id": 3,
+   "name": "Denmark",
+   "head_entry": 4,
+   "torso_entry": 10,
+   "limbs_entry": 31,
+   "numbers_entry": 110,
+   "kit_palette_entry": 45,
+   "skin_palette_entry": 60,
+   "home_palette_entry": 77,
+   "away_palette_entry": 83,
+   "file_ids": [
+    32,
+    80,
+    248,
+    880,
+    360,
+    480,
+    616,
+    664
+   ],
+   "head_type": "BM_HEAD_4",
+   "components": {
+    "dir": "teams/03_Denmark/",
+    "indexed": {
+     "head_A": "teams/03_Denmark/indexed/head_A.png",
+     "head_B": "teams/03_Denmark/indexed/head_B.png",
+     "torso_A": "teams/03_Denmark/indexed/torso_A.png",
+     "torso_B": "teams/03_Denmark/indexed/torso_B.png",
+     "torso_dark_A": "teams/03_Denmark/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/03_Denmark/indexed/torso_dark_B.png",
+     "limbs_A": "teams/03_Denmark/indexed/limbs_A.png",
+     "limbs_B": "teams/03_Denmark/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/03_Denmark/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/03_Denmark/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/03_Denmark/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/03_Denmark/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/03_Denmark/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/03_Denmark/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/03_Denmark/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/03_Denmark/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/03_Denmark/head.png",
+     "torso": "teams/03_Denmark/torso.png",
+     "torso_dark": "teams/03_Denmark/torso_dark.png",
+     "limbs": "teams/03_Denmark/limbs.png",
+     "limbs_dark": "teams/03_Denmark/limbs_dark.png",
+     "numbers": "teams/03_Denmark/numbers.png",
+     "kitgrid_big": "teams/03_Denmark/kitgrid_big.png",
+     "kitgrid_small": "teams/03_Denmark/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_110",
+   "kit_palette_rgb": [
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     194,
+     194,
+     194
+    ],
+    [
+     186,
+     186,
+     186
+    ],
+    [
+     178,
+     178,
+     178
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     162,
+     162,
+     162
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     146,
+     146,
+     146
+    ],
+    [
+     138,
+     138,
+     138
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     121,
+     121,
+     121
+    ],
+    [
+     113,
+     113,
+     113
+    ],
+    [
+     105,
+     105,
+     105
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     24,
+     49,
+     16
+    ],
+    [
+     28,
+     57,
+     16
+    ],
+    [
+     32,
+     69,
+     20
+    ],
+    [
+     32,
+     77,
+     20
+    ],
+    [
+     36,
+     89,
+     24
+    ],
+    [
+     77,
+     101,
+     69
+    ],
+    [
+     69,
+     97,
+     61
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     24,
+     61,
+     16
+    ],
+    [
+     170,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     210,
+     210,
+     210
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     85,
+     85,
+     85
+    ],
+    [
+     45,
+     45,
+     45
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     101,
+     101,
+     101
+    ],
+    [
+     53,
+     53,
+     53
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 3,
+    "small": "BM_KGRIDS1",
+    "small_cell": 3
+   }
+  },
+  {
+   "id": 4,
+   "name": "England",
+   "head_entry": 5,
+   "torso_entry": 9,
+   "limbs_entry": 24,
+   "numbers_entry": 112,
+   "kit_palette_entry": 44,
+   "skin_palette_entry": 61,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    40,
+    72,
+    192,
+    896,
+    352,
+    488,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_5",
+   "components": {
+    "dir": "teams/04_England/",
+    "indexed": {
+     "head_A": "teams/04_England/indexed/head_A.png",
+     "head_B": "teams/04_England/indexed/head_B.png",
+     "torso_A": "teams/04_England/indexed/torso_A.png",
+     "torso_B": "teams/04_England/indexed/torso_B.png",
+     "torso_dark_A": "teams/04_England/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/04_England/indexed/torso_dark_B.png",
+     "limbs_A": "teams/04_England/indexed/limbs_A.png",
+     "limbs_B": "teams/04_England/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/04_England/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/04_England/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/04_England/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/04_England/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/04_England/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/04_England/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/04_England/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/04_England/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/04_England/head.png",
+     "torso": "teams/04_England/torso.png",
+     "torso_dark": "teams/04_England/torso_dark.png",
+     "limbs": "teams/04_England/limbs.png",
+     "limbs_dark": "teams/04_England/limbs_dark.png",
+     "numbers": "teams/04_England/numbers.png",
+     "kitgrid_big": "teams/04_England/kitgrid_big.png",
+     "kitgrid_small": "teams/04_England/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_112",
+   "kit_palette_rgb": [
+    [
+     219,
+     0,
+     0
+    ],
+    [
+     178,
+     73,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     178,
+     93,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     130,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     202,
+     0,
+     0
+    ],
+    [
+     215,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     174,
+     158,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 4,
+    "small": "BM_KGRIDS1",
+    "small_cell": 4
+   }
+  },
+  {
+   "id": 5,
+   "name": "France",
+   "head_entry": 5,
+   "torso_entry": 12,
+   "limbs_entry": 25,
+   "numbers_entry": 109,
+   "kit_palette_entry": 47,
+   "skin_palette_entry": 61,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    40,
+    96,
+    200,
+    872,
+    376,
+    488,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_5",
+   "components": {
+    "dir": "teams/05_France/",
+    "indexed": {
+     "head_A": "teams/05_France/indexed/head_A.png",
+     "head_B": "teams/05_France/indexed/head_B.png",
+     "torso_A": "teams/05_France/indexed/torso_A.png",
+     "torso_B": "teams/05_France/indexed/torso_B.png",
+     "torso_dark_A": "teams/05_France/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/05_France/indexed/torso_dark_B.png",
+     "limbs_A": "teams/05_France/indexed/limbs_A.png",
+     "limbs_B": "teams/05_France/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/05_France/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/05_France/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/05_France/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/05_France/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/05_France/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/05_France/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/05_France/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/05_France/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/05_France/head.png",
+     "torso": "teams/05_France/torso.png",
+     "torso_dark": "teams/05_France/torso_dark.png",
+     "limbs": "teams/05_France/limbs.png",
+     "limbs_dark": "teams/05_France/limbs_dark.png",
+     "numbers": "teams/05_France/numbers.png",
+     "kitgrid_big": "teams/05_France/kitgrid_big.png",
+     "kitgrid_small": "teams/05_France/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     219,
+     0,
+     0
+    ],
+    [
+     210,
+     0,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     142,
+     73,
+     73
+    ],
+    [
+     146,
+     65,
+     65
+    ],
+    [
+     150,
+     57,
+     57
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     146,
+     146,
+     146
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 5,
+    "small": "BM_KGRIDS1",
+    "small_cell": 5
+   }
+  },
+  {
+   "id": 6,
+   "name": "Germany",
+   "head_entry": 4,
+   "torso_entry": 16,
+   "limbs_entry": 28,
+   "numbers_entry": 109,
+   "kit_palette_entry": 51,
+   "skin_palette_entry": 60,
+   "home_palette_entry": 74,
+   "away_palette_entry": 80,
+   "file_ids": [
+    32,
+    128,
+    224,
+    872,
+    408,
+    480,
+    592,
+    640
+   ],
+   "head_type": "BM_HEAD_4",
+   "components": {
+    "dir": "teams/06_Germany/",
+    "indexed": {
+     "head_A": "teams/06_Germany/indexed/head_A.png",
+     "head_B": "teams/06_Germany/indexed/head_B.png",
+     "torso_A": "teams/06_Germany/indexed/torso_A.png",
+     "torso_B": "teams/06_Germany/indexed/torso_B.png",
+     "torso_dark_A": "teams/06_Germany/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/06_Germany/indexed/torso_dark_B.png",
+     "limbs_A": "teams/06_Germany/indexed/limbs_A.png",
+     "limbs_B": "teams/06_Germany/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/06_Germany/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/06_Germany/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/06_Germany/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/06_Germany/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/06_Germany/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/06_Germany/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/06_Germany/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/06_Germany/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/06_Germany/head.png",
+     "torso": "teams/06_Germany/torso.png",
+     "torso_dark": "teams/06_Germany/torso_dark.png",
+     "limbs": "teams/06_Germany/limbs.png",
+     "limbs_dark": "teams/06_Germany/limbs_dark.png",
+     "numbers": "teams/06_Germany/numbers.png",
+     "kitgrid_big": "teams/06_Germany/kitgrid_big.png",
+     "kitgrid_small": "teams/06_Germany/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     45,
+     121,
+     24
+    ],
+    [
+     40,
+     113,
+     24
+    ],
+    [
+     40,
+     109,
+     24
+    ],
+    [
+     40,
+     101,
+     24
+    ],
+    [
+     40,
+     97,
+     24
+    ],
+    [
+     36,
+     93,
+     24
+    ],
+    [
+     36,
+     85,
+     20
+    ],
+    [
+     36,
+     81,
+     20
+    ],
+    [
+     32,
+     77,
+     20
+    ],
+    [
+     32,
+     69,
+     20
+    ],
+    [
+     28,
+     65,
+     20
+    ],
+    [
+     28,
+     57,
+     16
+    ],
+    [
+     24,
+     53,
+     16
+    ],
+    [
+     24,
+     49,
+     16
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     81,
+     101,
+     73
+    ],
+    [
+     73,
+     97,
+     65
+    ],
+    [
+     69,
+     93,
+     57
+    ],
+    [
+     28,
+     81,
+     20
+    ],
+    [
+     24,
+     65,
+     12
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     61,
+     158,
+     61
+    ],
+    [
+     36,
+     125,
+     36
+    ],
+    [
+     20,
+     97,
+     20
+    ],
+    [
+     8,
+     65,
+     8
+    ],
+    [
+     0,
+     32,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     57,
+     150,
+     57
+    ],
+    [
+     28,
+     113,
+     28
+    ],
+    [
+     12,
+     77,
+     12
+    ],
+    [
+     0,
+     40,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 6,
+    "small": "BM_KGRIDS1",
+    "small_cell": 6
+   }
+  },
+  {
+   "id": 7,
+   "name": "Holland",
+   "head_entry": 6,
+   "torso_entry": 22,
+   "limbs_entry": 29,
+   "numbers_entry": 109,
+   "kit_palette_entry": 57,
+   "skin_palette_entry": 62,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    48,
+    176,
+    232,
+    872,
+    456,
+    496,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_6",
+   "components": {
+    "dir": "teams/07_Holland/",
+    "indexed": {
+     "head_A": "teams/07_Holland/indexed/head_A.png",
+     "head_B": "teams/07_Holland/indexed/head_B.png",
+     "torso_A": "teams/07_Holland/indexed/torso_A.png",
+     "torso_B": "teams/07_Holland/indexed/torso_B.png",
+     "torso_dark_A": "teams/07_Holland/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/07_Holland/indexed/torso_dark_B.png",
+     "limbs_A": "teams/07_Holland/indexed/limbs_A.png",
+     "limbs_B": "teams/07_Holland/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/07_Holland/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/07_Holland/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/07_Holland/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/07_Holland/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/07_Holland/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/07_Holland/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/07_Holland/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/07_Holland/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/07_Holland/head.png",
+     "torso": "teams/07_Holland/torso.png",
+     "torso_dark": "teams/07_Holland/torso_dark.png",
+     "limbs": "teams/07_Holland/limbs.png",
+     "limbs_dark": "teams/07_Holland/limbs_dark.png",
+     "numbers": "teams/07_Holland/numbers.png",
+     "kitgrid_big": "teams/07_Holland/kitgrid_big.png",
+     "kitgrid_small": "teams/07_Holland/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     219,
+     0,
+     0
+    ],
+    [
+     210,
+     0,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     142,
+     73,
+     73
+    ],
+    [
+     146,
+     65,
+     65
+    ],
+    [
+     150,
+     57,
+     57
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     109,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     130,
+     93,
+     53
+    ],
+    [
+     113,
+     77,
+     45
+    ],
+    [
+     101,
+     65,
+     40
+    ],
+    [
+     89,
+     49,
+     32
+    ],
+    [
+     77,
+     40,
+     28
+    ],
+    [
+     65,
+     28,
+     24
+    ],
+    [
+     53,
+     20,
+     20
+    ],
+    [
+     40,
+     16,
+     16
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 7,
+    "small": "BM_KGRIDS1",
+    "small_cell": 7
+   }
+  },
+  {
+   "id": 8,
+   "name": "Italy",
+   "head_entry": 3,
+   "torso_entry": 23,
+   "limbs_entry": 29,
+   "numbers_entry": 109,
+   "kit_palette_entry": 58,
+   "skin_palette_entry": 59,
+   "home_palette_entry": 74,
+   "away_palette_entry": 80,
+   "file_ids": [
+    24,
+    184,
+    232,
+    872,
+    464,
+    472,
+    592,
+    640
+   ],
+   "head_type": "BM_HEAD_3",
+   "components": {
+    "dir": "teams/08_Italy/",
+    "indexed": {
+     "head_A": "teams/08_Italy/indexed/head_A.png",
+     "head_B": "teams/08_Italy/indexed/head_B.png",
+     "torso_A": "teams/08_Italy/indexed/torso_A.png",
+     "torso_B": "teams/08_Italy/indexed/torso_B.png",
+     "torso_dark_A": "teams/08_Italy/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/08_Italy/indexed/torso_dark_B.png",
+     "limbs_A": "teams/08_Italy/indexed/limbs_A.png",
+     "limbs_B": "teams/08_Italy/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/08_Italy/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/08_Italy/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/08_Italy/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/08_Italy/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/08_Italy/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/08_Italy/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/08_Italy/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/08_Italy/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/08_Italy/head.png",
+     "torso": "teams/08_Italy/torso.png",
+     "torso_dark": "teams/08_Italy/torso_dark.png",
+     "limbs": "teams/08_Italy/limbs.png",
+     "limbs_dark": "teams/08_Italy/limbs_dark.png",
+     "numbers": "teams/08_Italy/numbers.png",
+     "kitgrid_big": "teams/08_Italy/kitgrid_big.png",
+     "kitgrid_small": "teams/08_Italy/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     45,
+     121,
+     24
+    ],
+    [
+     40,
+     113,
+     24
+    ],
+    [
+     40,
+     109,
+     24
+    ],
+    [
+     40,
+     101,
+     24
+    ],
+    [
+     40,
+     97,
+     24
+    ],
+    [
+     36,
+     93,
+     24
+    ],
+    [
+     36,
+     85,
+     20
+    ],
+    [
+     36,
+     81,
+     20
+    ],
+    [
+     32,
+     77,
+     20
+    ],
+    [
+     32,
+     69,
+     20
+    ],
+    [
+     28,
+     65,
+     20
+    ],
+    [
+     28,
+     57,
+     16
+    ],
+    [
+     24,
+     53,
+     16
+    ],
+    [
+     24,
+     49,
+     16
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     81,
+     101,
+     73
+    ],
+    [
+     73,
+     97,
+     65
+    ],
+    [
+     69,
+     93,
+     57
+    ],
+    [
+     170,
+     162,
+     0
+    ],
+    [
+     28,
+     28,
+     28
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     77,
+     28,
+     16
+    ],
+    [
+     65,
+     20,
+     8
+    ],
+    [
+     57,
+     12,
+     4
+    ],
+    [
+     49,
+     8,
+     4
+    ],
+    [
+     36,
+     4,
+     0
+    ],
+    [
+     28,
+     0,
+     0
+    ],
+    [
+     20,
+     0,
+     0
+    ],
+    [
+     12,
+     0,
+     0
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     61,
+     158,
+     61
+    ],
+    [
+     36,
+     125,
+     36
+    ],
+    [
+     20,
+     97,
+     20
+    ],
+    [
+     8,
+     65,
+     8
+    ],
+    [
+     0,
+     32,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     57,
+     150,
+     57
+    ],
+    [
+     28,
+     113,
+     28
+    ],
+    [
+     12,
+     77,
+     12
+    ],
+    [
+     0,
+     40,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID1",
+    "big_cell": 8,
+    "small": "BM_KGRIDS1",
+    "small_cell": 8
+   }
+  },
+  {
+   "id": 9,
+   "name": "Portugal",
+   "head_entry": 5,
+   "torso_entry": 21,
+   "limbs_entry": 28,
+   "numbers_entry": 109,
+   "kit_palette_entry": 56,
+   "skin_palette_entry": 61,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    40,
+    168,
+    224,
+    872,
+    448,
+    488,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_5",
+   "components": {
+    "dir": "teams/09_Portugal/",
+    "indexed": {
+     "head_A": "teams/09_Portugal/indexed/head_A.png",
+     "head_B": "teams/09_Portugal/indexed/head_B.png",
+     "torso_A": "teams/09_Portugal/indexed/torso_A.png",
+     "torso_B": "teams/09_Portugal/indexed/torso_B.png",
+     "torso_dark_A": "teams/09_Portugal/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/09_Portugal/indexed/torso_dark_B.png",
+     "limbs_A": "teams/09_Portugal/indexed/limbs_A.png",
+     "limbs_B": "teams/09_Portugal/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/09_Portugal/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/09_Portugal/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/09_Portugal/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/09_Portugal/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/09_Portugal/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/09_Portugal/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/09_Portugal/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/09_Portugal/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/09_Portugal/head.png",
+     "torso": "teams/09_Portugal/torso.png",
+     "torso_dark": "teams/09_Portugal/torso_dark.png",
+     "limbs": "teams/09_Portugal/limbs.png",
+     "limbs_dark": "teams/09_Portugal/limbs_dark.png",
+     "numbers": "teams/09_Portugal/numbers.png",
+     "kitgrid_big": "teams/09_Portugal/kitgrid_big.png",
+     "kitgrid_small": "teams/09_Portugal/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     219,
+     0,
+     0
+    ],
+    [
+     210,
+     0,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     142,
+     73,
+     73
+    ],
+    [
+     146,
+     65,
+     65
+    ],
+    [
+     150,
+     57,
+     57
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     174,
+     174,
+     174
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 0,
+    "small": "BM_KGRIDS1",
+    "small_cell": 9
+   }
+  },
+  {
+   "id": 10,
+   "name": "Romania",
+   "head_entry": 3,
+   "torso_entry": 11,
+   "limbs_entry": 29,
+   "numbers_entry": 112,
+   "kit_palette_entry": 46,
+   "skin_palette_entry": 59,
+   "home_palette_entry": 74,
+   "away_palette_entry": 80,
+   "file_ids": [
+    24,
+    88,
+    232,
+    896,
+    368,
+    472,
+    592,
+    640
+   ],
+   "head_type": "BM_HEAD_3",
+   "components": {
+    "dir": "teams/10_Romania/",
+    "indexed": {
+     "head_A": "teams/10_Romania/indexed/head_A.png",
+     "head_B": "teams/10_Romania/indexed/head_B.png",
+     "torso_A": "teams/10_Romania/indexed/torso_A.png",
+     "torso_B": "teams/10_Romania/indexed/torso_B.png",
+     "torso_dark_A": "teams/10_Romania/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/10_Romania/indexed/torso_dark_B.png",
+     "limbs_A": "teams/10_Romania/indexed/limbs_A.png",
+     "limbs_B": "teams/10_Romania/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/10_Romania/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/10_Romania/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/10_Romania/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/10_Romania/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/10_Romania/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/10_Romania/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/10_Romania/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/10_Romania/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/10_Romania/head.png",
+     "torso": "teams/10_Romania/torso.png",
+     "torso_dark": "teams/10_Romania/torso_dark.png",
+     "limbs": "teams/10_Romania/limbs.png",
+     "limbs_dark": "teams/10_Romania/limbs_dark.png",
+     "numbers": "teams/10_Romania/numbers.png",
+     "kitgrid_big": "teams/10_Romania/kitgrid_big.png",
+     "kitgrid_small": "teams/10_Romania/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_112",
+   "kit_palette_rgb": [
+    [
+     45,
+     121,
+     24
+    ],
+    [
+     40,
+     113,
+     24
+    ],
+    [
+     40,
+     109,
+     24
+    ],
+    [
+     40,
+     101,
+     24
+    ],
+    [
+     40,
+     97,
+     24
+    ],
+    [
+     36,
+     93,
+     24
+    ],
+    [
+     36,
+     85,
+     20
+    ],
+    [
+     36,
+     81,
+     20
+    ],
+    [
+     32,
+     77,
+     20
+    ],
+    [
+     32,
+     69,
+     20
+    ],
+    [
+     28,
+     65,
+     20
+    ],
+    [
+     28,
+     57,
+     16
+    ],
+    [
+     24,
+     53,
+     16
+    ],
+    [
+     24,
+     49,
+     16
+    ],
+    [
+     130,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     81,
+     49,
+     4
+    ],
+    [
+     105,
+     53,
+     4
+    ],
+    [
+     113,
+     40,
+     4
+    ],
+    [
+     170,
+     162,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     77,
+     28,
+     16
+    ],
+    [
+     65,
+     20,
+     8
+    ],
+    [
+     57,
+     12,
+     4
+    ],
+    [
+     49,
+     8,
+     4
+    ],
+    [
+     36,
+     4,
+     0
+    ],
+    [
+     28,
+     0,
+     0
+    ],
+    [
+     20,
+     0,
+     0
+    ],
+    [
+     12,
+     0,
+     0
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     61,
+     158,
+     61
+    ],
+    [
+     36,
+     125,
+     36
+    ],
+    [
+     20,
+     97,
+     20
+    ],
+    [
+     8,
+     65,
+     8
+    ],
+    [
+     0,
+     32,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     93,
+     190,
+     93
+    ],
+    [
+     57,
+     150,
+     57
+    ],
+    [
+     28,
+     113,
+     28
+    ],
+    [
+     12,
+     77,
+     12
+    ],
+    [
+     0,
+     40,
+     0
+    ],
+    [
+     0,
+     4,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 1,
+    "small": "BM_KGRIDS1",
+    "small_cell": 10
+   }
+  },
+  {
+   "id": 11,
+   "name": "Russia",
+   "head_entry": 7,
+   "torso_entry": 19,
+   "limbs_entry": 28,
+   "numbers_entry": 109,
+   "kit_palette_entry": 54,
+   "skin_palette_entry": 63,
+   "home_palette_entry": 73,
+   "away_palette_entry": 79,
+   "file_ids": [
+    56,
+    152,
+    224,
+    872,
+    432,
+    504,
+    584,
+    632
+   ],
+   "head_type": "BM_HEAD_7",
+   "components": {
+    "dir": "teams/11_Russia/",
+    "indexed": {
+     "head_A": "teams/11_Russia/indexed/head_A.png",
+     "head_B": "teams/11_Russia/indexed/head_B.png",
+     "torso_A": "teams/11_Russia/indexed/torso_A.png",
+     "torso_B": "teams/11_Russia/indexed/torso_B.png",
+     "torso_dark_A": "teams/11_Russia/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/11_Russia/indexed/torso_dark_B.png",
+     "limbs_A": "teams/11_Russia/indexed/limbs_A.png",
+     "limbs_B": "teams/11_Russia/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/11_Russia/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/11_Russia/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/11_Russia/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/11_Russia/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/11_Russia/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/11_Russia/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/11_Russia/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/11_Russia/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/11_Russia/head.png",
+     "torso": "teams/11_Russia/torso.png",
+     "torso_dark": "teams/11_Russia/torso_dark.png",
+     "limbs": "teams/11_Russia/limbs.png",
+     "limbs_dark": "teams/11_Russia/limbs_dark.png",
+     "numbers": "teams/11_Russia/numbers.png",
+     "kitgrid_big": "teams/11_Russia/kitgrid_big.png",
+     "kitgrid_small": "teams/11_Russia/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     57,
+     97,
+     150
+    ],
+    [
+     53,
+     89,
+     146
+    ],
+    [
+     49,
+     81,
+     142
+    ],
+    [
+     49,
+     77,
+     138
+    ],
+    [
+     45,
+     69,
+     134
+    ],
+    [
+     40,
+     65,
+     130
+    ],
+    [
+     40,
+     61,
+     125
+    ],
+    [
+     36,
+     53,
+     121
+    ],
+    [
+     32,
+     49,
+     117
+    ],
+    [
+     32,
+     40,
+     113
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     28,
+     32,
+     105
+    ],
+    [
+     24,
+     28,
+     101
+    ],
+    [
+     24,
+     24,
+     97
+    ],
+    [
+     24,
+     24,
+     97
+    ],
+    [
+     24,
+     28,
+     101
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     32,
+     45,
+     117
+    ],
+    [
+     36,
+     49,
+     121
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     28,
+     36,
+     109
+    ],
+    [
+     121,
+     121,
+     121
+    ],
+    [
+     158,
+     158,
+     158
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     150,
+     125,
+     49
+    ],
+    [
+     134,
+     109,
+     40
+    ],
+    [
+     121,
+     93,
+     36
+    ],
+    [
+     109,
+     77,
+     32
+    ],
+    [
+     97,
+     65,
+     28
+    ],
+    [
+     85,
+     53,
+     24
+    ],
+    [
+     73,
+     45,
+     20
+    ],
+    [
+     65,
+     36,
+     16
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     113,
+     215
+    ],
+    [
+     0,
+     73,
+     174
+    ],
+    [
+     0,
+     40,
+     134
+    ],
+    [
+     0,
+     16,
+     93
+    ],
+    [
+     0,
+     4,
+     53
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     105,
+     206
+    ],
+    [
+     0,
+     61,
+     158
+    ],
+    [
+     0,
+     24,
+     109
+    ],
+    [
+     0,
+     4,
+     61
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 2,
+    "small": "BM_KGRIDS1",
+    "small_cell": 11
+   }
+  },
+  {
+   "id": 12,
+   "name": "Scotland",
+   "head_entry": 6,
+   "torso_entry": 14,
+   "limbs_entry": 27,
+   "numbers_entry": 109,
+   "kit_palette_entry": 49,
+   "skin_palette_entry": 62,
+   "home_palette_entry": 73,
+   "away_palette_entry": 79,
+   "file_ids": [
+    48,
+    112,
+    216,
+    872,
+    392,
+    496,
+    584,
+    632
+   ],
+   "head_type": "BM_HEAD_6",
+   "components": {
+    "dir": "teams/12_Scotland/",
+    "indexed": {
+     "head_A": "teams/12_Scotland/indexed/head_A.png",
+     "head_B": "teams/12_Scotland/indexed/head_B.png",
+     "torso_A": "teams/12_Scotland/indexed/torso_A.png",
+     "torso_B": "teams/12_Scotland/indexed/torso_B.png",
+     "torso_dark_A": "teams/12_Scotland/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/12_Scotland/indexed/torso_dark_B.png",
+     "limbs_A": "teams/12_Scotland/indexed/limbs_A.png",
+     "limbs_B": "teams/12_Scotland/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/12_Scotland/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/12_Scotland/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/12_Scotland/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/12_Scotland/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/12_Scotland/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/12_Scotland/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/12_Scotland/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/12_Scotland/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/12_Scotland/head.png",
+     "torso": "teams/12_Scotland/torso.png",
+     "torso_dark": "teams/12_Scotland/torso_dark.png",
+     "limbs": "teams/12_Scotland/limbs.png",
+     "limbs_dark": "teams/12_Scotland/limbs_dark.png",
+     "numbers": "teams/12_Scotland/numbers.png",
+     "kitgrid_big": "teams/12_Scotland/kitgrid_big.png",
+     "kitgrid_small": "teams/12_Scotland/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     0,
+     53,
+     109
+    ],
+    [
+     0,
+     49,
+     101
+    ],
+    [
+     0,
+     45,
+     97
+    ],
+    [
+     0,
+     40,
+     93
+    ],
+    [
+     0,
+     36,
+     89
+    ],
+    [
+     0,
+     32,
+     85
+    ],
+    [
+     0,
+     28,
+     81
+    ],
+    [
+     0,
+     28,
+     77
+    ],
+    [
+     0,
+     24,
+     69
+    ],
+    [
+     0,
+     20,
+     65
+    ],
+    [
+     0,
+     16,
+     61
+    ],
+    [
+     0,
+     16,
+     57
+    ],
+    [
+     0,
+     12,
+     53
+    ],
+    [
+     0,
+     12,
+     49
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     109,
+     109,
+     109
+    ],
+    [
+     125,
+     125,
+     125
+    ],
+    [
+     142,
+     142,
+     142
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     53,
+     69,
+     101
+    ],
+    [
+     40,
+     61,
+     97
+    ],
+    [
+     32,
+     53,
+     93
+    ],
+    [
+     0,
+     8,
+     28
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     130,
+     93,
+     53
+    ],
+    [
+     113,
+     77,
+     45
+    ],
+    [
+     101,
+     65,
+     40
+    ],
+    [
+     89,
+     49,
+     32
+    ],
+    [
+     77,
+     40,
+     28
+    ],
+    [
+     65,
+     28,
+     24
+    ],
+    [
+     53,
+     20,
+     20
+    ],
+    [
+     40,
+     16,
+     16
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     113,
+     215
+    ],
+    [
+     0,
+     73,
+     174
+    ],
+    [
+     0,
+     40,
+     134
+    ],
+    [
+     0,
+     16,
+     93
+    ],
+    [
+     0,
+     4,
+     53
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     105,
+     206
+    ],
+    [
+     0,
+     61,
+     158
+    ],
+    [
+     0,
+     24,
+     109
+    ],
+    [
+     0,
+     4,
+     61
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 3,
+    "small": "BM_KGRIDS1",
+    "small_cell": 12
+   }
+  },
+  {
+   "id": 13,
+   "name": "Spain",
+   "head_entry": 6,
+   "torso_entry": 15,
+   "limbs_entry": 28,
+   "numbers_entry": 109,
+   "kit_palette_entry": 50,
+   "skin_palette_entry": 62,
+   "home_palette_entry": 76,
+   "away_palette_entry": 82,
+   "file_ids": [
+    48,
+    120,
+    224,
+    872,
+    400,
+    496,
+    608,
+    656
+   ],
+   "head_type": "BM_HEAD_6",
+   "components": {
+    "dir": "teams/13_Spain/",
+    "indexed": {
+     "head_A": "teams/13_Spain/indexed/head_A.png",
+     "head_B": "teams/13_Spain/indexed/head_B.png",
+     "torso_A": "teams/13_Spain/indexed/torso_A.png",
+     "torso_B": "teams/13_Spain/indexed/torso_B.png",
+     "torso_dark_A": "teams/13_Spain/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/13_Spain/indexed/torso_dark_B.png",
+     "limbs_A": "teams/13_Spain/indexed/limbs_A.png",
+     "limbs_B": "teams/13_Spain/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/13_Spain/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/13_Spain/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/13_Spain/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/13_Spain/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/13_Spain/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/13_Spain/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/13_Spain/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/13_Spain/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/13_Spain/head.png",
+     "torso": "teams/13_Spain/torso.png",
+     "torso_dark": "teams/13_Spain/torso_dark.png",
+     "limbs": "teams/13_Spain/limbs.png",
+     "limbs_dark": "teams/13_Spain/limbs_dark.png",
+     "numbers": "teams/13_Spain/numbers.png",
+     "kitgrid_big": "teams/13_Spain/kitgrid_big.png",
+     "kitgrid_small": "teams/13_Spain/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     219,
+     0,
+     0
+    ],
+    [
+     210,
+     0,
+     0
+    ],
+    [
+     206,
+     0,
+     0
+    ],
+    [
+     198,
+     0,
+     0
+    ],
+    [
+     190,
+     0,
+     0
+    ],
+    [
+     186,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     174,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     162,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     138,
+     0,
+     0
+    ],
+    [
+     130,
+     0,
+     0
+    ],
+    [
+     142,
+     0,
+     0
+    ],
+    [
+     154,
+     0,
+     0
+    ],
+    [
+     166,
+     0,
+     0
+    ],
+    [
+     178,
+     0,
+     0
+    ],
+    [
+     125,
+     4,
+     4
+    ],
+    [
+     130,
+     4,
+     4
+    ],
+    [
+     134,
+     0,
+     0
+    ],
+    [
+     150,
+     0,
+     0
+    ],
+    [
+     166,
+     166,
+     166
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     130,
+     93,
+     53
+    ],
+    [
+     113,
+     77,
+     45
+    ],
+    [
+     101,
+     65,
+     40
+    ],
+    [
+     89,
+     49,
+     32
+    ],
+    [
+     77,
+     40,
+     28
+    ],
+    [
+     65,
+     28,
+     24
+    ],
+    [
+     53,
+     20,
+     20
+    ],
+    [
+     40,
+     16,
+     16
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     215,
+     49,
+     49
+    ],
+    [
+     178,
+     32,
+     32
+    ],
+    [
+     142,
+     16,
+     16
+    ],
+    [
+     105,
+     4,
+     4
+    ],
+    [
+     69,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     73,
+     73
+    ],
+    [
+     210,
+     45,
+     45
+    ],
+    [
+     166,
+     24,
+     24
+    ],
+    [
+     121,
+     8,
+     8
+    ],
+    [
+     77,
+     0,
+     0
+    ],
+    [
+     32,
+     0,
+     0
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 4,
+    "small": "BM_KGRIDS1",
+    "small_cell": 13
+   }
+  },
+  {
+   "id": 14,
+   "name": "Switzerland",
+   "head_entry": 5,
+   "torso_entry": 13,
+   "limbs_entry": 27,
+   "numbers_entry": 110,
+   "kit_palette_entry": 48,
+   "skin_palette_entry": 61,
+   "home_palette_entry": 77,
+   "away_palette_entry": 83,
+   "file_ids": [
+    40,
+    104,
+    216,
+    880,
+    384,
+    488,
+    616,
+    664
+   ],
+   "head_type": "BM_HEAD_5",
+   "components": {
+    "dir": "teams/14_Switzerland/",
+    "indexed": {
+     "head_A": "teams/14_Switzerland/indexed/head_A.png",
+     "head_B": "teams/14_Switzerland/indexed/head_B.png",
+     "torso_A": "teams/14_Switzerland/indexed/torso_A.png",
+     "torso_B": "teams/14_Switzerland/indexed/torso_B.png",
+     "torso_dark_A": "teams/14_Switzerland/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/14_Switzerland/indexed/torso_dark_B.png",
+     "limbs_A": "teams/14_Switzerland/indexed/limbs_A.png",
+     "limbs_B": "teams/14_Switzerland/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/14_Switzerland/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/14_Switzerland/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/14_Switzerland/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/14_Switzerland/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/14_Switzerland/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/14_Switzerland/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/14_Switzerland/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/14_Switzerland/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/14_Switzerland/head.png",
+     "torso": "teams/14_Switzerland/torso.png",
+     "torso_dark": "teams/14_Switzerland/torso_dark.png",
+     "limbs": "teams/14_Switzerland/limbs.png",
+     "limbs_dark": "teams/14_Switzerland/limbs_dark.png",
+     "numbers": "teams/14_Switzerland/numbers.png",
+     "kitgrid_big": "teams/14_Switzerland/kitgrid_big.png",
+     "kitgrid_small": "teams/14_Switzerland/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_110",
+   "kit_palette_rgb": [
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     194,
+     194,
+     194
+    ],
+    [
+     186,
+     186,
+     186
+    ],
+    [
+     178,
+     178,
+     178
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     162,
+     162,
+     162
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     146,
+     146,
+     146
+    ],
+    [
+     138,
+     138,
+     138
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     121,
+     121,
+     121
+    ],
+    [
+     113,
+     113,
+     113
+    ],
+    [
+     105,
+     105,
+     105
+    ],
+    [
+     97,
+     97,
+     97
+    ],
+    [
+     12,
+     16,
+     61
+    ],
+    [
+     16,
+     20,
+     69
+    ],
+    [
+     24,
+     24,
+     77
+    ],
+    [
+     28,
+     32,
+     85
+    ],
+    [
+     36,
+     40,
+     97
+    ],
+    [
+     61,
+     65,
+     101
+    ],
+    [
+     81,
+     81,
+     109
+    ],
+    [
+     12,
+     16,
+     61
+    ],
+    [
+     69,
+     69,
+     125
+    ],
+    [
+     12,
+     16,
+     61
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     210,
+     210,
+     210
+    ],
+    [
+     170,
+     170,
+     170
+    ],
+    [
+     130,
+     130,
+     130
+    ],
+    [
+     85,
+     85,
+     85
+    ],
+    [
+     45,
+     45,
+     45
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     255,
+     255,
+     255
+    ],
+    [
+     202,
+     202,
+     202
+    ],
+    [
+     154,
+     154,
+     154
+    ],
+    [
+     101,
+     101,
+     101
+    ],
+    [
+     53,
+     53,
+     53
+    ],
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 5,
+    "small": "BM_KGRIDS1",
+    "small_cell": 14
+   }
+  },
+  {
+   "id": 15,
+   "name": "Turkey",
+   "head_entry": 5,
+   "torso_entry": 18,
+   "limbs_entry": 32,
+   "numbers_entry": 109,
+   "kit_palette_entry": 53,
+   "skin_palette_entry": 61,
+   "home_palette_entry": 73,
+   "away_palette_entry": 79,
+   "file_ids": [
+    40,
+    144,
+    256,
+    872,
+    424,
+    488,
+    584,
+    632
+   ],
+   "head_type": "BM_HEAD_5",
+   "components": {
+    "dir": "teams/15_Turkey/",
+    "indexed": {
+     "head_A": "teams/15_Turkey/indexed/head_A.png",
+     "head_B": "teams/15_Turkey/indexed/head_B.png",
+     "torso_A": "teams/15_Turkey/indexed/torso_A.png",
+     "torso_B": "teams/15_Turkey/indexed/torso_B.png",
+     "torso_dark_A": "teams/15_Turkey/indexed/torso_dark_A.png",
+     "torso_dark_B": "teams/15_Turkey/indexed/torso_dark_B.png",
+     "limbs_A": "teams/15_Turkey/indexed/limbs_A.png",
+     "limbs_B": "teams/15_Turkey/indexed/limbs_B.png",
+     "limbs_dark_A": "teams/15_Turkey/indexed/limbs_dark_A.png",
+     "limbs_dark_B": "teams/15_Turkey/indexed/limbs_dark_B.png",
+     "numbers_A_top": "teams/15_Turkey/indexed/numbers_A_top.png",
+     "numbers_B_top": "teams/15_Turkey/indexed/numbers_B_top.png",
+     "numbers_A_bottom": "teams/15_Turkey/indexed/numbers_A_bottom.png",
+     "numbers_B_bottom": "teams/15_Turkey/indexed/numbers_B_bottom.png",
+     "kitgrid_big": "teams/15_Turkey/indexed/kitgrid_big.png",
+     "kitgrid_small": "teams/15_Turkey/indexed/kitgrid_small.png"
+    },
+    "rgba": {
+     "head": "teams/15_Turkey/head.png",
+     "torso": "teams/15_Turkey/torso.png",
+     "torso_dark": "teams/15_Turkey/torso_dark.png",
+     "limbs": "teams/15_Turkey/limbs.png",
+     "limbs_dark": "teams/15_Turkey/limbs_dark.png",
+     "numbers": "teams/15_Turkey/numbers.png",
+     "kitgrid_big": "teams/15_Turkey/kitgrid_big.png",
+     "kitgrid_small": "teams/15_Turkey/kitgrid_small.png"
+    }
+   },
+   "number_style": "BM_NUMBERS_109",
+   "kit_palette_rgb": [
+    [
+     12,
+     4,
+     53
+    ],
+    [
+     12,
+     4,
+     49
+    ],
+    [
+     12,
+     4,
+     49
+    ],
+    [
+     12,
+     4,
+     45
+    ],
+    [
+     12,
+     4,
+     45
+    ],
+    [
+     12,
+     4,
+     40
+    ],
+    [
+     12,
+     4,
+     40
+    ],
+    [
+     12,
+     4,
+     36
+    ],
+    [
+     12,
+     4,
+     36
+    ],
+    [
+     12,
+     4,
+     32
+    ],
+    [
+     12,
+     4,
+     32
+    ],
+    [
+     12,
+     4,
+     32
+    ],
+    [
+     12,
+     4,
+     28
+    ],
+    [
+     12,
+     4,
+     28
+    ],
+    [
+     40,
+     4,
+     32
+    ],
+    [
+     28,
+     4,
+     36
+    ],
+    [
+     20,
+     4,
+     36
+    ],
+    [
+     36,
+     4,
+     36
+    ],
+    [
+     0,
+     32,
+     0
+    ],
+    [
+     0,
+     20,
+     32
+    ],
+    [
+     4,
+     4,
+     40
+    ],
+    [
+     0,
+     16,
+     24
+    ],
+    [
+     12,
+     4,
+     57
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "skin_palette_rgb": [
+    [
+     178,
+     146,
+     101
+    ],
+    [
+     166,
+     130,
+     85
+    ],
+    [
+     154,
+     113,
+     73
+    ],
+    [
+     142,
+     97,
+     57
+    ],
+    [
+     134,
+     85,
+     49
+    ],
+    [
+     121,
+     69,
+     36
+    ],
+    [
+     109,
+     57,
+     28
+    ],
+    [
+     101,
+     45,
+     20
+    ]
+   ],
+   "home_palette_rgb": [
+    [
+     186,
+     125,
+     85
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     113,
+     215
+    ],
+    [
+     0,
+     73,
+     174
+    ],
+    [
+     0,
+     40,
+     134
+    ],
+    [
+     0,
+     16,
+     93
+    ],
+    [
+     0,
+     4,
+     53
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "away_palette_rgb": [
+    [
+     130,
+     89,
+     65
+    ],
+    [
+     101,
+     65,
+     24
+    ],
+    [
+     0,
+     166,
+     255
+    ],
+    [
+     0,
+     105,
+     206
+    ],
+    [
+     0,
+     61,
+     158
+    ],
+    [
+     0,
+     24,
+     109
+    ],
+    [
+     0,
+     4,
+     61
+    ],
+    [
+     0,
+     0,
+     16
+    ]
+   ],
+   "kitgrid_source": {
+    "big": "BM_KGRID2",
+    "big_cell": 6,
+    "small": "BM_KGRIDS1",
+    "small_cell": 15
+   }
+  }
+ ]
+}

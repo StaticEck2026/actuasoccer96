@@ -1,0 +1,2100 @@
+
+========== init_pitch_sprites  (obj line 29, delta 0)
+  ; [29] void init_pitch_sprites()
+    00000: push     ebx                                      
+    00001: push     ecx                                      
+    00002: push     edx                                      
+    00003: push     esi                                      
+    00004: push     edi                                      
+    00005: push     ebp                                      
+    00006: mov      ebp, esp                                 
+    00008: sub      esp, 0                                   
+  ; [31] pitch_sprs=0;
+    0000e: mov      dword ptr [0], 0                         ; pitch_sprs
+  ; [32] spr_coord_tab[0]=0;
+    00018: mov      dword ptr [0], 0                         ; spr_coord_tab
+  ; [33] }
+    00022: pop      ebp                                      
+    00023: pop      edi                                      
+    00024: pop      esi                                      
+    00025: pop      edx                                      
+    00026: pop      ecx                                      
+    00027: pop      ebx                                      
+    00028: ret                                               
+
+========== add_pitch_sprite  (obj line 38, delta 0)
+  ; [38] void add_pitch_sprite(short x,short y,short z,short ref)
+    00029: push     esi                                      
+    0002a: push     edi                                      
+    0002b: push     ebp                                      
+    0002c: mov      ebp, esp                                 
+    0002e: sub      esp, 0x14                                
+    00034: mov      dword ptr [ebp - 0x10], eax              
+    00037: mov      dword ptr [ebp - 0xc], edx               
+    0003a: mov      dword ptr [ebp - 8], ebx                 
+    0003d: mov      dword ptr [ebp - 4], ecx                 
+  ; [41] spr_coord_tab[0]+=1;
+    00040: fld1                                              
+    00042: fadd     dword ptr [0]                            ; spr_coord_tab
+    00048: fstp     dword ptr [0]                            ; spr_coord_tab
+  ; [42] spr_coord_tab[3*pitch_sprs+1]=x;
+    0004e: fild     word ptr [ebp - 0x10]                    
+    00051: mov      edx, dword ptr [0]                       ; pitch_sprs
+    00057: lea      edx, [edx + edx*2]                       
+    0005a: shl      edx, 2                                   
+    0005d: fstp     dword ptr [edx + 4]                      ; spr_coord_tab
+  ; [43] spr_coord_tab[3*pitch_sprs+2]=z;
+    00063: fild     word ptr [ebp - 8]                       
+    00066: mov      edx, dword ptr [0]                       ; pitch_sprs
+    0006c: lea      edx, [edx + edx*2]                       
+    0006f: shl      edx, 2                                   
+    00072: fstp     dword ptr [edx + 8]                      ; spr_coord_tab
+  ; [44] spr_coord_tab[3*pitch_sprs+3]=-y;
+    00078: movsx    edx, word ptr [ebp - 0xc]                
+    0007c: mov      dword ptr [ebp - 0x14], edx              
+    0007f: neg      dword ptr [ebp - 0x14]                   
+    00082: fild     dword ptr [ebp - 0x14]                   
+    00085: mov      edx, dword ptr [0]                       ; pitch_sprs
+    0008b: lea      edx, [edx + edx*2]                       
+    0008e: shl      edx, 2                                   
+    00091: fstp     dword ptr [edx + 0xc]                    ; spr_coord_tab
+  ; [45] spr_ref_tab[pitch_sprs++]=ref;
+    00097: mov      edx, dword ptr [0]                       ; pitch_sprs
+    0009d: inc      dword ptr [0]                            ; pitch_sprs
+    000a3: add      edx, edx                                 
+    000a5: mov      eax, dword ptr [ebp - 4]                 
+    000a8: mov      word ptr [edx], ax                       ; spr_ref_tab
+  ; [46] }
+    000af: mov      esp, ebp                                 
+    000b1: pop      ebp                                      
+    000b2: pop      edi                                      
+    000b3: pop      esi                                      
+    000b4: ret                                               
+
+========== grid_map  (obj line 51, delta 0)
+  ; [51] void grid_map()
+    000b5: push     ebx                                      
+    000b6: push     ecx                                      
+    000b7: push     edx                                      
+    000b8: push     esi                                      
+    000b9: push     edi                                      
+    000ba: push     ebp                                      
+    000bb: mov      ebp, esp                                 
+    000bd: sub      esp, 0x28                                
+  ; [53] int c=_getcolor();
+    000c3: call     0xc8                                     ; getcolor
+    000c8: cwde                                              
+    000c9: mov      dword ptr [ebp - 0x24], eax              
+  ; [54] int g=_getplotaction();
+    000cc: call     0xd1                                     ; getplotaction
+    000d1: cwde                                              
+    000d2: mov      dword ptr [ebp - 0x20], eax              
+  ; [55] _setcolor(2);
+    000d5: mov      eax, 2                                   
+    000da: call     0xdf                                     ; setcolor
+  ; [56] _setplotaction(_GXOR);
+    000df: mov      eax, 4                                   
+    000e4: call     0xe9                                     ; setplotaction
+  ; [57] float step=(320.2)/7;
+    000e9: mov      dword ptr [ebp - 0x1c], 0x4236f8b0       
+  ; [58] float step2=step*224/320;
+    000f0: fld      dword ptr [ebp - 0x1c]                   
+    000f3: fmul     dword ptr [0]                            ; CONST+0 f=224 d=5.76461e+17
+    000f9: pushfd                                            
+    000fa: test     byte ptr [0], 1                          ; chipbug
+    00101: je       0x110                                    
+    00103: push     dword ptr [4]                            ; CONST+4 f=320 d=3.05176e-05
+    00109: call     0x10e                                    ; fdiv_m32
+    0010e: jmp      0x116                                    
+    00110: fdiv     dword ptr [4]                            ; CONST+4 f=320 d=3.05176e-05
+    00116: popfd                                             
+    00117: fstp     dword ptr [ebp - 0x18]                   
+  ; [59] float x=0+(step/2);
+    0011a: fld      dword ptr [ebp - 0x1c]                   
+    0011d: fmul     dword ptr [8]                            ; CONST+8 f=0.5 d=1.37439e+11
+    00123: fstp     dword ptr [ebp - 0x14]                   
+  ; [60] float x2=48+(step2/2);
+    00126: fld      dword ptr [ebp - 0x18]                   
+    00129: fmul     dword ptr [8]                            ; CONST+8 f=0.5 d=1.37439e+11
+    0012f: fadd     dword ptr [0xc]                          ; CONST+12 f=48 d=3.05176e-05
+    00135: fstp     dword ptr [ebp - 0x10]                   
+  ; [61] for (int i=1; i<8; i++, x+=step, x2+=step2 )
+    00138: mov      dword ptr [ebp - 0xc], 1                 
+    0013f: jmp      0x159                                    
+    00141: mov      eax, dword ptr [ebp - 0xc]               
+    00144: inc      dword ptr [ebp - 0xc]                    
+    00147: fld      dword ptr [ebp - 0x14]                   
+    0014a: fadd     dword ptr [ebp - 0x1c]                   
+    0014d: fstp     dword ptr [ebp - 0x14]                   
+    00150: fld      dword ptr [ebp - 0x10]                   
+    00153: fadd     dword ptr [ebp - 0x18]                   
+    00156: fstp     dword ptr [ebp - 0x10]                   
+    00159: cmp      dword ptr [ebp - 0xc], 8                 
+    0015d: jge      0x193                                    
+  ; [63] _moveto((int)x,131);
+    0015f: mov      edx, 0x83                                
+    00164: fld      dword ptr [ebp - 0x14]                   
+    00167: call     0x16c                                    ; CHP
+    0016c: fistp    dword ptr [ebp - 0x28]                   
+    0016f: mov      eax, dword ptr [ebp - 0x28]              
+    00172: cwde                                              
+    00173: call     0x178                                    ; moveto
+  ; [64] _lineto((int)x2,32);
+    00178: mov      edx, 0x20                                
+    0017d: fld      dword ptr [ebp - 0x10]                   
+    00180: call     0x185                                    ; CHP
+    00185: fistp    dword ptr [ebp - 0x28]                   
+    00188: mov      eax, dword ptr [ebp - 0x28]              
+    0018b: cwde                                              
+    0018c: call     0x191                                    ; lineto
+  ; [65] }
+    00191: jmp      0x141                                    
+  ; [66] step=100/3;
+    00193: mov      dword ptr [ebp - 0x1c], 0x42040000       
+  ; [67] float lstep=48/3;
+    0019a: mov      dword ptr [ebp - 8], 0x41800000          
+  ; [68] x=32+(step/2);
+    001a1: fld      dword ptr [ebp - 0x1c]                   
+    001a4: fmul     dword ptr [0x10]                         ; CONST+16 f=0.5 d=8.58994e+09
+    001aa: fadd     dword ptr [0x14]                         ; CONST+20 f=32 d=1.37439e+11
+    001b0: fstp     dword ptr [ebp - 0x14]                   
+  ; [69] float lx=48-(lstep/2);
+    001b3: fld      dword ptr [ebp - 8]                      
+    001b6: fmul     dword ptr [0x10]                         ; CONST+16 f=0.5 d=8.58994e+09
+    001bc: fsubr    dword ptr [0x18]                         ; CONST+24 f=48 d=1.20259e+11
+    001c2: fstp     dword ptr [ebp - 4]                      
+  ; [70] for (i=1; i<4; i++, x+=step, lx-=lstep )
+    001c5: mov      dword ptr [ebp - 0xc], 1                 
+    001cc: jmp      0x1e6                                    
+    001ce: mov      eax, dword ptr [ebp - 0xc]               
+    001d1: inc      dword ptr [ebp - 0xc]                    
+    001d4: fld      dword ptr [ebp - 0x14]                   
+    001d7: fadd     dword ptr [ebp - 0x1c]                   
+    001da: fstp     dword ptr [ebp - 0x14]                   
+    001dd: fld      dword ptr [ebp - 4]                      
+    001e0: fsub     dword ptr [ebp - 8]                      
+    001e3: fstp     dword ptr [ebp - 4]                      
+    001e6: cmp      dword ptr [ebp - 0xc], 4                 
+    001ea: jge      0x259                                    
+  ; [72] _moveto(lx,(int)x);
+    001ec: fld      dword ptr [ebp - 0x14]                   
+    001ef: call     0x1f4                                    ; CHP
+    001f4: fistp    dword ptr [ebp - 0x28]                   
+    001f7: mov      eax, dword ptr [ebp - 0x28]              
+    001fa: movsx    edx, ax                                  
+    001fd: fld      dword ptr [ebp - 4]                      
+    00200: call     0x205                                    ; CHP
+    00205: fistp    dword ptr [ebp - 0x28]                   
+    00208: mov      eax, dword ptr [ebp - 0x28]              
+    0020b: mov      word ptr [ebp - 0x28], ax                
+    0020f: mov      eax, dword ptr [ebp - 0x2a]              
+    00212: sar      eax, 0x10                                
+    00215: call     0x21a                                    ; moveto
+  ; [73] _lineto(272+(47-lx),(int)x);
+    0021a: fld      dword ptr [ebp - 0x14]                   
+    0021d: call     0x222                                    ; CHP
+    00222: fistp    dword ptr [ebp - 0x28]                   
+    00225: mov      eax, dword ptr [ebp - 0x28]              
+    00228: movsx    edx, ax                                  
+    0022b: fld      dword ptr [0x1c]                         ; CONST+28 f=47 d=2.16173e+17
+    00231: fsub     dword ptr [ebp - 4]                      
+    00234: fadd     dword ptr [0x20]                         ; CONST+32 f=272 d=5.5977e-315
+    0023a: call     0x23f                                    ; CHP
+    0023f: fistp    dword ptr [ebp - 0x28]                   
+    00242: mov      eax, dword ptr [ebp - 0x28]              
+    00245: mov      word ptr [ebp - 0x28], ax                
+    00249: mov      eax, dword ptr [ebp - 0x2a]              
+    0024c: sar      eax, 0x10                                
+    0024f: call     0x254                                    ; lineto
+  ; [74] }
+    00254: jmp      0x1ce                                    
+  ; [75] _setcolor(c);
+    00259: movsx    eax, word ptr [ebp - 0x24]               
+    0025d: call     0x262                                    ; setcolor
+  ; [76] _setplotaction(g);
+    00262: movsx    eax, word ptr [ebp - 0x20]               
+    00266: call     0x26b                                    ; setplotaction
+  ; [77] }
+    0026b: mov      esp, ebp                                 
+    0026d: pop      ebp                                      
+    0026e: pop      edi                                      
+    0026f: pop      esi                                      
+    00270: pop      edx                                      
+    00271: pop      ecx                                      
+    00272: pop      ebx                                      
+    00273: ret                                               
+
+========== line_border  (obj line 82, delta 0)
+  ; [82] void line_border(int x,int y,int wid,int hgt,int col)
+    00274: push     esi                                      
+    00275: push     edi                                      
+    00276: push     ebp                                      
+    00277: mov      ebp, esp                                 
+    00279: sub      esp, 0x14                                
+    0027f: mov      dword ptr [ebp - 0x10], eax              
+    00282: mov      dword ptr [ebp - 0xc], edx               
+    00285: mov      dword ptr [ebp - 8], ebx                 
+    00288: mov      dword ptr [ebp - 4], ecx                 
+  ; [84] int c=_getcolor();
+    0028b: call     0x290                                    ; getcolor
+    00290: cwde                                              
+    00291: mov      dword ptr [ebp - 0x14], eax              
+  ; [85] _moveto(x,y);
+    00294: movsx    edx, word ptr [ebp - 0xc]                
+    00298: movsx    eax, word ptr [ebp - 0x10]               
+    0029c: call     0x2a1                                    ; moveto
+  ; [86] _setcolor(col);
+    002a1: movsx    eax, word ptr [ebp + 0x10]               
+    002a5: call     0x2aa                                    ; setcolor
+  ; [87] _lineto(x+wid-1,y);
+    002aa: movsx    edx, word ptr [ebp - 0xc]                
+    002ae: mov      eax, dword ptr [ebp - 0x10]              
+    002b1: add      eax, dword ptr [ebp - 8]                 
+    002b4: dec      eax                                      
+    002b5: cwde                                              
+    002b6: call     0x2bb                                    ; lineto
+  ; [88] _lineto(x+wid-1,y+hgt-1);
+    002bb: mov      eax, dword ptr [ebp - 0xc]               
+    002be: add      eax, dword ptr [ebp - 4]                 
+    002c1: dec      eax                                      
+    002c2: movsx    edx, ax                                  
+    002c5: mov      eax, dword ptr [ebp - 0x10]              
+    002c8: add      eax, dword ptr [ebp - 8]                 
+    002cb: dec      eax                                      
+    002cc: cwde                                              
+    002cd: call     0x2d2                                    ; lineto
+  ; [89] _lineto(x,y+hgt-1);
+    002d2: mov      eax, dword ptr [ebp - 0xc]               
+    002d5: add      eax, dword ptr [ebp - 4]                 
+    002d8: dec      eax                                      
+    002d9: movsx    edx, ax                                  
+    002dc: movsx    eax, word ptr [ebp - 0x10]               
+    002e0: call     0x2e5                                    ; lineto
+  ; [90] _lineto(x,y);
+    002e5: movsx    edx, word ptr [ebp - 0xc]                
+    002e9: movsx    eax, word ptr [ebp - 0x10]               
+    002ed: call     0x2f2                                    ; lineto
+  ; [91] _setcolor(c);
+    002f2: movsx    eax, word ptr [ebp - 0x14]               
+    002f6: call     0x2fb                                    ; setcolor
+  ; [92] }
+    002fb: mov      esp, ebp                                 
+    002fd: pop      ebp                                      
+    002fe: pop      edi                                      
+    002ff: pop      esi                                      
+    00300: ret      4                                        
+
+========== draw_buttons  (obj line 97, delta 0)
+  ; [97] void draw_buttons()
+    00303: push     ebx                                      
+    00304: push     ecx                                      
+    00305: push     edx                                      
+    00306: push     esi                                      
+    00307: push     edi                                      
+    00308: push     ebp                                      
+    00309: mov      ebp, esp                                 
+    0030b: sub      esp, 0x1c                                
+  ; [101] for (int i=0; i<max_butts; i++)
+    00311: mov      dword ptr [ebp - 4], 0                   
+    00318: jmp      0x320                                    
+    0031a: mov      eax, dword ptr [ebp - 4]                 
+    0031d: inc      dword ptr [ebp - 4]                      
+    00320: mov      eax, dword ptr [ebp - 4]                 
+    00323: cmp      eax, dword ptr [0]                       ; max_butts
+    00329: jge      0x3a3                                    
+  ; [103] x=us_buttons[i].x;
+    0032b: imul     eax, dword ptr [ebp - 4], 0x18           
+    0032f: mov      eax, dword ptr [eax]                     ; us_buttons
+    00335: mov      dword ptr [ebp - 0x10], eax              
+  ; [104] y=us_buttons[i].y;
+    00338: imul     eax, dword ptr [ebp - 4], 0x18           
+    0033c: mov      eax, dword ptr [eax + 4]                 ; us_buttons
+    00342: mov      dword ptr [ebp - 8], eax                 
+  ; [105] w=us_buttons[i].w;
+    00345: imul     eax, dword ptr [ebp - 4], 0x18           
+    00349: mov      eax, dword ptr [eax + 8]                 ; us_buttons
+    0034f: mov      dword ptr [ebp - 0xc], eax               
+  ; [106] strcpy(st,us_buttons[i].s);
+    00352: imul     edx, dword ptr [ebp - 4], 0x18           
+    00356: mov      eax, 0                                   ; us_buttons
+    0035b: add      edx, eax                                 
+    0035d: add      edx, 0xc                                 
+    00360: lea      eax, [ebp - 0x1c]                        
+    00363: call     0x368                                    ; strcpy
+  ; [107] _moveto(x,y);
+    00368: movsx    edx, word ptr [ebp - 8]                  
+    0036c: movsx    eax, word ptr [ebp - 0x10]               
+    00370: call     0x375                                    ; moveto
+  ; [108] _outgtext(st);
+    00375: lea      eax, [ebp - 0x1c]                        
+    00378: call     0x37d                                    ; outgtext
+  ; [109] line_border(x-4,y-4,w*8+8,16,1);
+    0037d: push     1                                        
+    0037f: mov      ecx, 0x10                                
+    00384: mov      eax, dword ptr [ebp - 0xc]               
+    00387: shl      eax, 3                                   
+    0038a: lea      ebx, [eax + 8]                           
+    0038d: mov      edx, dword ptr [ebp - 8]                 
+    00390: sub      edx, 4                                   
+    00393: mov      eax, dword ptr [ebp - 0x10]              
+    00396: sub      eax, 4                                   
+    00399: call     0x39e                                    ; line_border
+  ; [110] }
+    0039e: jmp      0x31a                                    
+  ; [111] }
+    003a3: mov      esp, ebp                                 
+    003a5: pop      ebp                                      
+    003a6: pop      edi                                      
+    003a7: pop      esi                                      
+    003a8: pop      edx                                      
+    003a9: pop      ecx                                      
+    003aa: pop      ebx                                      
+    003ab: ret                                               
+
+========== light_button  (obj line 116, delta 0)
+  ; [116] void light_button(int b)
+    003ac: push     ebx                                      
+    003ad: push     ecx                                      
+    003ae: push     edx                                      
+    003af: push     esi                                      
+    003b0: push     edi                                      
+    003b1: push     ebp                                      
+    003b2: mov      ebp, esp                                 
+    003b4: sub      esp, 0x20                                
+    003ba: mov      dword ptr [ebp - 4], eax                 
+  ; [119] c=_getcolor();
+    003bd: call     0x3c2                                    ; getcolor
+    003c2: cwde                                              
+    003c3: mov      dword ptr [ebp - 0xc], eax               
+  ; [121] x=us_buttons[b].x;
+    003c6: imul     eax, dword ptr [ebp - 4], 0x18           
+    003ca: mov      eax, dword ptr [eax]                     ; us_buttons
+    003d0: mov      dword ptr [ebp - 8], eax                 
+  ; [122] y=us_buttons[b].y;
+    003d3: imul     eax, dword ptr [ebp - 4], 0x18           
+    003d7: mov      eax, dword ptr [eax + 4]                 ; us_buttons
+    003dd: mov      dword ptr [ebp - 0x14], eax              
+  ; [123] w=us_buttons[b].w;
+    003e0: imul     eax, dword ptr [ebp - 4], 0x18           
+    003e4: mov      eax, dword ptr [eax + 8]                 ; us_buttons
+    003ea: mov      dword ptr [ebp - 0x10], eax              
+  ; [124] strcpy(st,us_buttons[b].s);
+    003ed: imul     eax, dword ptr [ebp - 4], 0x18           
+    003f1: mov      edx, 0                                   ; us_buttons
+    003f6: add      eax, edx                                 
+    003f8: lea      edx, [eax + 0xc]                         
+    003fb: lea      eax, [ebp - 0x20]                        
+    003fe: call     0x403                                    ; strcpy
+  ; [125] _setcolor(7);
+    00403: mov      eax, 7                                   
+    00408: call     0x40d                                    ; setcolor
+  ; [126] _moveto(x,y);
+    0040d: movsx    edx, word ptr [ebp - 0x14]               
+    00411: movsx    eax, word ptr [ebp - 8]                  
+    00415: call     0x41a                                    ; moveto
+  ; [127] HideMouse();
+    0041a: call     0x41f                                    ; HideMouse
+  ; [128] _outgtext(st);
+    0041f: lea      eax, [ebp - 0x20]                        
+    00422: call     0x427                                    ; outgtext
+  ; [129] _setcolor(c);
+    00427: movsx    eax, word ptr [ebp - 0xc]                
+    0042b: call     0x430                                    ; setcolor
+  ; [130] ShowMouse();
+    00430: call     0x435                                    ; ShowMouse
+  ; [131] button_lit=b+1;
+    00435: mov      eax, dword ptr [ebp - 4]                 
+    00438: inc      eax                                      
+    00439: mov      dword ptr [0], eax                       ; button_lit
+  ; [132] }
+    0043e: mov      esp, ebp                                 
+    00440: pop      ebp                                      
+    00441: pop      edi                                      
+    00442: pop      esi                                      
+    00443: pop      edx                                      
+    00444: pop      ecx                                      
+    00445: pop      ebx                                      
+    00446: ret                                               
+
+========== unlight_button  (obj line 137, delta 0)
+  ; [137] void unlight_button(int b)
+    00447: push     ebx                                      
+    00448: push     ecx                                      
+    00449: push     edx                                      
+    0044a: push     esi                                      
+    0044b: push     edi                                      
+    0044c: push     ebp                                      
+    0044d: mov      ebp, esp                                 
+    0044f: sub      esp, 0x1c                                
+    00455: mov      dword ptr [ebp - 4], eax                 
+  ; [141] x=us_buttons[b].x;
+    00458: imul     eax, dword ptr [ebp - 4], 0x18           
+    0045c: mov      eax, dword ptr [eax]                     ; us_buttons
+    00462: mov      dword ptr [ebp - 8], eax                 
+  ; [142] y=us_buttons[b].y;
+    00465: imul     eax, dword ptr [ebp - 4], 0x18           
+    00469: mov      eax, dword ptr [eax + 4]                 ; us_buttons
+    0046f: mov      dword ptr [ebp - 0x10], eax              
+  ; [143] w=us_buttons[b].w;
+    00472: imul     eax, dword ptr [ebp - 4], 0x18           
+    00476: mov      eax, dword ptr [eax + 8]                 ; us_buttons
+    0047c: mov      dword ptr [ebp - 0xc], eax               
+  ; [144] strcpy(st,us_buttons[b].s);
+    0047f: imul     eax, dword ptr [ebp - 4], 0x18           
+    00483: mov      edx, 0                                   ; us_buttons
+    00488: add      eax, edx                                 
+    0048a: lea      edx, [eax + 0xc]                         
+    0048d: lea      eax, [ebp - 0x1c]                        
+    00490: call     0x495                                    ; strcpy
+  ; [145] _moveto(x,y);
+    00495: movsx    edx, word ptr [ebp - 0x10]               
+    00499: movsx    eax, word ptr [ebp - 8]                  
+    0049d: call     0x4a2                                    ; moveto
+  ; [146] HideMouse();
+    004a2: call     0x4a7                                    ; HideMouse
+  ; [147] _outgtext(st);
+    004a7: lea      eax, [ebp - 0x1c]                        
+    004aa: call     0x4af                                    ; outgtext
+  ; [148] ShowMouse();
+    004af: call     0x4b4                                    ; ShowMouse
+  ; [149] if (button_lit==b+1)
+    004b4: mov      eax, dword ptr [ebp - 4]                 
+    004b7: inc      eax                                      
+    004b8: cmp      eax, dword ptr [0]                       ; button_lit
+    004be: jne      0x4ca                                    
+  ; [150] button_lit=0;					//no other button lit!
+    004c0: mov      dword ptr [0], 0                         ; button_lit
+  ; [151] }
+    004ca: mov      esp, ebp                                 
+    004cc: pop      ebp                                      
+    004cd: pop      edi                                      
+    004ce: pop      esi                                      
+    004cf: pop      edx                                      
+    004d0: pop      ecx                                      
+    004d1: pop      ebx                                      
+    004d2: ret                                               
+
+========== conv_xypitch  (obj line 156, delta 0)
+  ; [156] void conv_xypitch(float x, float y, int *screen_x, int *screen_y)
+    004d3: push     ebx                                      
+    004d4: push     ecx                                      
+    004d5: push     edx                                      
+    004d6: push     esi                                      
+    004d7: push     edi                                      
+    004d8: push     ebp                                      
+    004d9: mov      ebp, esp                                 
+    004db: sub      esp, 8                                   
+  ; [159] x2=x;
+    004e1: mov      eax, dword ptr [ebp + 0x1c]              
+    004e4: mov      dword ptr [ebp - 8], eax                 
+  ; [160] x=-(x-halfway_line);
+    004e7: fild     dword ptr [0]                            ; halfway_line
+    004ed: fsubr    dword ptr [ebp + 0x1c]                   
+    004f0: fchs                                              
+    004f2: fstp     dword ptr [ebp + 0x1c]                   
+  ; [161] xoff=scr_pinch*(((float)pitch_wid-y)/(50.0*16))*x/(40.0*16.0);
+    004f5: fild     dword ptr [0]                            ; pitch_wid
+    004fb: fsub     dword ptr [ebp + 0x20]                   
+    004fe: pushfd                                            
+    004ff: test     byte ptr [0], 1                          ; chipbug
+    00506: je       0x51b                                    
+    00508: push     dword ptr [0x28]                         ; CONST+40 f=4.28125 d=5.34935e-315
+    0050e: push     dword ptr [0x24]                         ; CONST+36 f=0 d=800
+    00514: call     0x519                                    ; fdiv_m64
+    00519: jmp      0x521                                    
+    0051b: fdiv     qword ptr [0x24]                         ; CONST+36 f=0 d=800
+    00521: popfd                                             
+    00522: fild     dword ptr [0]                            ; scr_pinch
+    00528: fmulp    st(1)                                    
+    0052a: fld      dword ptr [ebp + 0x1c]                   
+    0052d: fmulp    st(1)                                    
+    0052f: pushfd                                            
+    00530: test     byte ptr [0], 1                          ; chipbug
+    00537: je       0x54c                                    
+    00539: push     dword ptr [0x30]                         ; CONST+48 f=4.125 d=1.19209e-07
+    0053f: push     dword ptr [0x2c]                         ; CONST+44 f=0 d=640
+    00545: call     0x54a                                    ; fdiv_m64
+    0054a: jmp      0x552                                    
+    0054c: fdiv     qword ptr [0x2c]                         ; CONST+44 f=0 d=640
+    00552: popfd                                             
+    00553: fstp     dword ptr [ebp - 4]                      
+  ; [162] x2=(x2/4)+xoff;
+    00556: fld      dword ptr [ebp - 8]                      
+    00559: fmul     dword ptr [0x34]                         ; CONST+52 f=0.25 d=4.65661e-10
+    0055f: fadd     dword ptr [ebp - 4]                      
+    00562: fstp     dword ptr [ebp - 8]                      
+  ; [163] *screen_x=x2;
+    00565: mov      eax, dword ptr [ebp + 0x24]              
+    00568: fld      dword ptr [ebp - 8]                      
+    0056b: call     0x570                                    ; CHP
+    00570: fistp    dword ptr [eax]                          
+  ; [164] *screen_y=(y/8);
+    00572: fld      dword ptr [ebp + 0x20]                   
+    00575: fmul     dword ptr [0x38]                         ; CONST+56 f=0.125 d=5.13921e-315
+    0057b: mov      eax, dword ptr [ebp + 0x28]              
+    0057e: call     0x583                                    ; CHP
+    00583: fistp    dword ptr [eax]                          
+  ; [165] }
+    00585: mov      esp, ebp                                 
+    00587: pop      ebp                                      
+    00588: pop      edi                                      
+    00589: pop      esi                                      
+    0058a: pop      edx                                      
+    0058b: pop      ecx                                      
+    0058c: pop      ebx                                      
+    0058d: ret      0x10                                     
+
+========== pitch_markings  (obj line 170, delta 0)
+  ; [170] void pitch_markings()
+    00590: push     ebx                                      
+    00591: push     ecx                                      
+    00592: push     edx                                      
+    00593: push     esi                                      
+    00594: push     edi                                      
+    00595: push     ebp                                      
+    00596: mov      ebp, esp                                 
+    00598: sub      esp, 0x14                                
+  ; [172] int g=_getplotaction();
+    0059e: call     0x5a3                                    ; getplotaction
+    005a3: cwde                                              
+    005a4: mov      dword ptr [ebp - 0xc], eax               
+  ; [173] int c=_getcolor();
+    005a7: call     0x5ac                                    ; getcolor
+    005ac: cwde                                              
+    005ad: mov      dword ptr [ebp - 8], eax                 
+  ; [175] _setcolor(7);
+    005b0: mov      eax, 7                                   
+    005b5: call     0x5ba                                    ; setcolor
+  ; [178] conv_xypitch(0,357,&x,&y);
+    005ba: lea      eax, [ebp - 4]                           
+    005bd: push     eax                                      
+    005be: lea      eax, [ebp - 0x10]                        
+    005c1: push     eax                                      
+    005c2: push     0x43b28000                               
+    005c7: push     0                                        
+    005c9: call     0x5ce                                    ; conv_xypitch
+  ; [179] _moveto(x,y+32);
+    005ce: mov      eax, dword ptr [ebp - 4]                 
+    005d1: add      eax, 0x20                                
+    005d6: movsx    edx, ax                                  
+    005d9: movsx    eax, word ptr [ebp - 0x10]               
+    005dd: call     0x5e2                                    ; moveto
+  ; [180] _lineto(x,y+32-4);
+    005e2: mov      eax, dword ptr [ebp - 4]                 
+    005e5: add      eax, 0x1c                                
+    005ea: movsx    edx, ax                                  
+    005ed: movsx    eax, word ptr [ebp - 0x10]               
+    005f1: call     0x5f6                                    ; lineto
+  ; [181] _moveto(x,y+32);
+    005f6: mov      eax, dword ptr [ebp - 4]                 
+    005f9: add      eax, 0x20                                
+    005fe: movsx    edx, ax                                  
+    00601: movsx    eax, word ptr [ebp - 0x10]               
+    00605: call     0x60a                                    ; moveto
+  ; [182] conv_xypitch(-28,357,&x,&y);
+    0060a: lea      eax, [ebp - 4]                           
+    0060d: push     eax                                      
+    0060e: lea      eax, [ebp - 0x10]                        
+    00611: push     eax                                      
+    00612: push     0x43b28000                               
+    00617: push     0xc1e00000                               
+    0061c: call     0x621                                    ; conv_xypitch
+  ; [183] _lineto(x,y+32);
+    00621: mov      eax, dword ptr [ebp - 4]                 
+    00624: add      eax, 0x20                                
+    00629: movsx    edx, ax                                  
+    0062c: movsx    eax, word ptr [ebp - 0x10]               
+    00630: call     0x635                                    ; lineto
+  ; [184] _lineto(x,y+32-4);
+    00635: mov      eax, dword ptr [ebp - 4]                 
+    00638: add      eax, 0x1c                                
+    0063d: movsx    edx, ax                                  
+    00640: movsx    eax, word ptr [ebp - 0x10]               
+    00644: call     0x649                                    ; lineto
+  ; [185] _moveto(x,y+32);
+    00649: mov      eax, dword ptr [ebp - 4]                 
+    0064c: add      eax, 0x20                                
+    00651: movsx    edx, ax                                  
+    00654: movsx    eax, word ptr [ebp - 0x10]               
+    00658: call     0x65d                                    ; moveto
+  ; [186] conv_xypitch(-28,443,&x,&y);
+    0065d: lea      eax, [ebp - 4]                           
+    00660: push     eax                                      
+    00661: lea      eax, [ebp - 0x10]                        
+    00664: push     eax                                      
+    00665: push     0x43dd8000                               
+    0066a: push     0xc1e00000                               
+    0066f: call     0x674                                    ; conv_xypitch
+  ; [187] _lineto(x,y+32);
+    00674: mov      eax, dword ptr [ebp - 4]                 
+    00677: add      eax, 0x20                                
+    0067c: movsx    edx, ax                                  
+    0067f: movsx    eax, word ptr [ebp - 0x10]               
+    00683: call     0x688                                    ; lineto
+  ; [188] _lineto(x,y+32-4);
+    00688: mov      eax, dword ptr [ebp - 4]                 
+    0068b: add      eax, 0x1c                                
+    00690: movsx    edx, ax                                  
+    00693: movsx    eax, word ptr [ebp - 0x10]               
+    00697: call     0x69c                                    ; lineto
+  ; [189] _moveto(x,y+32);
+    0069c: mov      eax, dword ptr [ebp - 4]                 
+    0069f: add      eax, 0x20                                
+    006a4: movsx    edx, ax                                  
+    006a7: movsx    eax, word ptr [ebp - 0x10]               
+    006ab: call     0x6b0                                    ; moveto
+  ; [190] conv_xypitch(0,443,&x,&y);
+    006b0: lea      eax, [ebp - 4]                           
+    006b3: push     eax                                      
+    006b4: lea      eax, [ebp - 0x10]                        
+    006b7: push     eax                                      
+    006b8: push     0x43dd8000                               
+    006bd: push     0                                        
+    006bf: call     0x6c4                                    ; conv_xypitch
+  ; [191] _lineto(x,y+32);
+    006c4: mov      eax, dword ptr [ebp - 4]                 
+    006c7: add      eax, 0x20                                
+    006cc: movsx    edx, ax                                  
+    006cf: movsx    eax, word ptr [ebp - 0x10]               
+    006d3: call     0x6d8                                    ; lineto
+  ; [192] _lineto(x,y+32-4);
+    006d8: mov      eax, dword ptr [ebp - 4]                 
+    006db: add      eax, 0x1c                                
+    006e0: movsx    edx, ax                                  
+    006e3: movsx    eax, word ptr [ebp - 0x10]               
+    006e7: call     0x6ec                                    ; lineto
+  ; [193] conv_xypitch(0,357,&x,&y);
+    006ec: lea      eax, [ebp - 4]                           
+    006ef: push     eax                                      
+    006f0: lea      eax, [ebp - 0x10]                        
+    006f3: push     eax                                      
+    006f4: push     0x43b28000                               
+    006f9: push     0                                        
+    006fb: call     0x700                                    ; conv_xypitch
+  ; [194] _lineto(x,y+32-4);
+    00700: mov      eax, dword ptr [ebp - 4]                 
+    00703: add      eax, 0x1c                                
+    00708: movsx    edx, ax                                  
+    0070b: movsx    eax, word ptr [ebp - 0x10]               
+    0070f: call     0x714                                    ; lineto
+  ; [195] conv_xypitch(-28,357,&x,&y);
+    00714: lea      eax, [ebp - 4]                           
+    00717: push     eax                                      
+    00718: lea      eax, [ebp - 0x10]                        
+    0071b: push     eax                                      
+    0071c: push     0x43b28000                               
+    00721: push     0xc1e00000                               
+    00726: call     0x72b                                    ; conv_xypitch
+  ; [196] _lineto(x,y+32-4);
+    0072b: mov      eax, dword ptr [ebp - 4]                 
+    0072e: add      eax, 0x1c                                
+    00733: movsx    edx, ax                                  
+    00736: movsx    eax, word ptr [ebp - 0x10]               
+    0073a: call     0x73f                                    ; lineto
+  ; [197] conv_xypitch(-28,443,&x,&y);
+    0073f: lea      eax, [ebp - 4]                           
+    00742: push     eax                                      
+    00743: lea      eax, [ebp - 0x10]                        
+    00746: push     eax                                      
+    00747: push     0x43dd8000                               
+    0074c: push     0xc1e00000                               
+    00751: call     0x756                                    ; conv_xypitch
+  ; [198] _lineto(x,y+32-4);
+    00756: mov      eax, dword ptr [ebp - 4]                 
+    00759: add      eax, 0x1c                                
+    0075e: movsx    edx, ax                                  
+    00761: movsx    eax, word ptr [ebp - 0x10]               
+    00765: call     0x76a                                    ; lineto
+  ; [199] conv_xypitch(0,443,&x,&y);
+    0076a: lea      eax, [ebp - 4]                           
+    0076d: push     eax                                      
+    0076e: lea      eax, [ebp - 0x10]                        
+    00771: push     eax                                      
+    00772: push     0x43dd8000                               
+    00777: push     0                                        
+    00779: call     0x77e                                    ; conv_xypitch
+  ; [200] _lineto(x,y+32-4);
+    0077e: mov      eax, dword ptr [ebp - 4]                 
+    00781: add      eax, 0x1c                                
+    00786: movsx    edx, ax                                  
+    00789: movsx    eax, word ptr [ebp - 0x10]               
+    0078d: call     0x792                                    ; lineto
+  ; [203] conv_xypitch(pitch_len,357,&x,&y);
+    00792: lea      eax, [ebp - 4]                           
+    00795: push     eax                                      
+    00796: lea      eax, [ebp - 0x10]                        
+    00799: push     eax                                      
+    0079a: push     0x43b28000                               
+    0079f: fild     dword ptr [0]                            ; pitch_len
+    007a5: sub      esp, 4                                   
+    007a8: fstp     dword ptr [esp]                          
+    007ab: call     0x7b0                                    ; conv_xypitch
+  ; [204] _moveto(x,y+32);
+    007b0: mov      eax, dword ptr [ebp - 4]                 
+    007b3: add      eax, 0x20                                
+    007b8: movsx    edx, ax                                  
+    007bb: movsx    eax, word ptr [ebp - 0x10]               
+    007bf: call     0x7c4                                    ; moveto
+  ; [205] _lineto(x,y+32-4);
+    007c4: mov      eax, dword ptr [ebp - 4]                 
+    007c7: add      eax, 0x1c                                
+    007cc: movsx    edx, ax                                  
+    007cf: movsx    eax, word ptr [ebp - 0x10]               
+    007d3: call     0x7d8                                    ; lineto
+  ; [206] _moveto(x,y+32);
+    007d8: mov      eax, dword ptr [ebp - 4]                 
+    007db: add      eax, 0x20                                
+    007e0: movsx    edx, ax                                  
+    007e3: movsx    eax, word ptr [ebp - 0x10]               
+    007e7: call     0x7ec                                    ; moveto
+  ; [207] conv_xypitch(pitch_len+28,357,&x,&y);
+    007ec: lea      eax, [ebp - 4]                           
+    007ef: push     eax                                      
+    007f0: lea      eax, [ebp - 0x10]                        
+    007f3: push     eax                                      
+    007f4: push     0x43b28000                               
+    007f9: mov      eax, dword ptr [0]                       ; pitch_len
+    007fe: add      eax, 0x1c                                
+    00801: mov      dword ptr [ebp - 0x14], eax              
+    00804: fild     dword ptr [ebp - 0x14]                   
+    00807: sub      esp, 4                                   
+    0080a: fstp     dword ptr [esp]                          
+    0080d: call     0x812                                    ; conv_xypitch
+  ; [208] _lineto(x,y+32);
+    00812: mov      eax, dword ptr [ebp - 4]                 
+    00815: add      eax, 0x20                                
+    0081a: movsx    edx, ax                                  
+    0081d: movsx    eax, word ptr [ebp - 0x10]               
+    00821: call     0x826                                    ; lineto
+  ; [209] _lineto(x,y+32-4);
+    00826: mov      eax, dword ptr [ebp - 4]                 
+    00829: add      eax, 0x1c                                
+    0082e: movsx    edx, ax                                  
+    00831: movsx    eax, word ptr [ebp - 0x10]               
+    00835: call     0x83a                                    ; lineto
+  ; [210] _moveto(x,y+32);
+    0083a: mov      eax, dword ptr [ebp - 4]                 
+    0083d: add      eax, 0x20                                
+    00842: movsx    edx, ax                                  
+    00845: movsx    eax, word ptr [ebp - 0x10]               
+    00849: call     0x84e                                    ; moveto
+  ; [211] conv_xypitch(pitch_len+28,443,&x,&y);
+    0084e: lea      eax, [ebp - 4]                           
+    00851: push     eax                                      
+    00852: lea      eax, [ebp - 0x10]                        
+    00855: push     eax                                      
+    00856: push     0x43dd8000                               
+    0085b: mov      eax, dword ptr [0]                       ; pitch_len
+    00860: add      eax, 0x1c                                
+    00863: mov      dword ptr [ebp - 0x14], eax              
+    00866: fild     dword ptr [ebp - 0x14]                   
+    00869: sub      esp, 4                                   
+    0086c: fstp     dword ptr [esp]                          
+    0086f: call     0x874                                    ; conv_xypitch
+  ; [212] _lineto(x,y+32);
+    00874: mov      eax, dword ptr [ebp - 4]                 
+    00877: add      eax, 0x20                                
+    0087c: movsx    edx, ax                                  
+    0087f: movsx    eax, word ptr [ebp - 0x10]               
+    00883: call     0x888                                    ; lineto
+  ; [213] _lineto(x,y+32-4);
+    00888: mov      eax, dword ptr [ebp - 4]                 
+    0088b: add      eax, 0x1c                                
+    00890: movsx    edx, ax                                  
+    00893: movsx    eax, word ptr [ebp - 0x10]               
+    00897: call     0x89c                                    ; lineto
+  ; [214] _moveto(x,y+32);
+    0089c: mov      eax, dword ptr [ebp - 4]                 
+    0089f: add      eax, 0x20                                
+    008a4: movsx    edx, ax                                  
+    008a7: movsx    eax, word ptr [ebp - 0x10]               
+    008ab: call     0x8b0                                    ; moveto
+  ; [215] conv_xypitch(pitch_len,443,&x,&y);
+    008b0: lea      eax, [ebp - 4]                           
+    008b3: push     eax                                      
+    008b4: lea      eax, [ebp - 0x10]                        
+    008b7: push     eax                                      
+    008b8: push     0x43dd8000                               
+    008bd: fild     dword ptr [0]                            ; pitch_len
+    008c3: sub      esp, 4                                   
+    008c6: fstp     dword ptr [esp]                          
+    008c9: call     0x8ce                                    ; conv_xypitch
+  ; [216] _lineto(x,y+32);
+    008ce: mov      eax, dword ptr [ebp - 4]                 
+    008d1: add      eax, 0x20                                
+    008d6: movsx    edx, ax                                  
+    008d9: movsx    eax, word ptr [ebp - 0x10]               
+    008dd: call     0x8e2                                    ; lineto
+  ; [217] _lineto(x,y+32-4);
+    008e2: mov      eax, dword ptr [ebp - 4]                 
+    008e5: add      eax, 0x1c                                
+    008ea: movsx    edx, ax                                  
+    008ed: movsx    eax, word ptr [ebp - 0x10]               
+    008f1: call     0x8f6                                    ; lineto
+  ; [218] conv_xypitch(pitch_len,357,&x,&y);
+    008f6: lea      eax, [ebp - 4]                           
+    008f9: push     eax                                      
+    008fa: lea      eax, [ebp - 0x10]                        
+    008fd: push     eax                                      
+    008fe: push     0x43b28000                               
+    00903: fild     dword ptr [0]                            ; pitch_len
+    00909: sub      esp, 4                                   
+    0090c: fstp     dword ptr [esp]                          
+    0090f: call     0x914                                    ; conv_xypitch
+  ; [219] _lineto(x,y+32-4);
+    00914: mov      eax, dword ptr [ebp - 4]                 
+    00917: add      eax, 0x1c                                
+    0091c: movsx    edx, ax                                  
+    0091f: movsx    eax, word ptr [ebp - 0x10]               
+    00923: call     0x928                                    ; lineto
+  ; [220] conv_xypitch(pitch_len+28,357,&x,&y);
+    00928: lea      eax, [ebp - 4]                           
+    0092b: push     eax                                      
+    0092c: lea      eax, [ebp - 0x10]                        
+    0092f: push     eax                                      
+    00930: push     0x43b28000                               
+    00935: mov      eax, dword ptr [0]                       ; pitch_len
+    0093a: add      eax, 0x1c                                
+    0093d: mov      dword ptr [ebp - 0x14], eax              
+    00940: fild     dword ptr [ebp - 0x14]                   
+    00943: sub      esp, 4                                   
+    00946: fstp     dword ptr [esp]                          
+    00949: call     0x94e                                    ; conv_xypitch
+  ; [221] _lineto(x,y+32-4);
+    0094e: mov      eax, dword ptr [ebp - 4]                 
+    00951: add      eax, 0x1c                                
+    00956: movsx    edx, ax                                  
+    00959: movsx    eax, word ptr [ebp - 0x10]               
+    0095d: call     0x962                                    ; lineto
+  ; [222] conv_xypitch(pitch_len+28,443,&x,&y);
+    00962: lea      eax, [ebp - 4]                           
+    00965: push     eax                                      
+    00966: lea      eax, [ebp - 0x10]                        
+    00969: push     eax                                      
+    0096a: push     0x43dd8000                               
+    0096f: mov      eax, dword ptr [0]                       ; pitch_len
+    00974: add      eax, 0x1c                                
+    00977: mov      dword ptr [ebp - 0x14], eax              
+    0097a: fild     dword ptr [ebp - 0x14]                   
+    0097d: sub      esp, 4                                   
+    00980: fstp     dword ptr [esp]                          
+    00983: call     0x988                                    ; conv_xypitch
+  ; [223] _lineto(x,y+32-4);
+    00988: mov      eax, dword ptr [ebp - 4]                 
+    0098b: add      eax, 0x1c                                
+    00990: movsx    edx, ax                                  
+    00993: movsx    eax, word ptr [ebp - 0x10]               
+    00997: call     0x99c                                    ; lineto
+  ; [224] conv_xypitch(pitch_len,443,&x,&y);
+    0099c: lea      eax, [ebp - 4]                           
+    0099f: push     eax                                      
+    009a0: lea      eax, [ebp - 0x10]                        
+    009a3: push     eax                                      
+    009a4: push     0x43dd8000                               
+    009a9: fild     dword ptr [0]                            ; pitch_len
+    009af: sub      esp, 4                                   
+    009b2: fstp     dword ptr [esp]                          
+    009b5: call     0x9ba                                    ; conv_xypitch
+  ; [225] _lineto(x,y+32-4);
+    009ba: mov      eax, dword ptr [ebp - 4]                 
+    009bd: add      eax, 0x1c                                
+    009c2: movsx    edx, ax                                  
+    009c5: movsx    eax, word ptr [ebp - 0x10]               
+    009c9: call     0x9ce                                    ; lineto
+  ; [227] _setcolor(1);
+    009ce: mov      eax, 1                                   
+    009d3: call     0x9d8                                    ; setcolor
+  ; [229] conv_xypitch(0,293,&x,&y);
+    009d8: lea      eax, [ebp - 4]                           
+    009db: push     eax                                      
+    009dc: lea      eax, [ebp - 0x10]                        
+    009df: push     eax                                      
+    009e0: push     0x43928000                               
+    009e5: push     0                                        
+    009e7: call     0x9ec                                    ; conv_xypitch
+  ; [230] _moveto(x,y+32);
+    009ec: mov      eax, dword ptr [ebp - 4]                 
+    009ef: add      eax, 0x20                                
+    009f4: movsx    edx, ax                                  
+    009f7: movsx    eax, word ptr [ebp - 0x10]               
+    009fb: call     0xa00                                    ; moveto
+  ; [231] conv_xypitch(6.0*prat,293,&x,&y);
+    00a00: lea      eax, [ebp - 4]                           
+    00a03: push     eax                                      
+    00a04: lea      eax, [ebp - 0x10]                        
+    00a07: push     eax                                      
+    00a08: push     0x43928000                               
+    00a0d: fld      dword ptr [0]                            ; prat
+    00a13: fmul     qword ptr [0x3c]                         ; CONST+60 f=0 d=6
+    00a19: sub      esp, 4                                   
+    00a1c: fstp     dword ptr [esp]                          
+    00a1f: call     0xa24                                    ; conv_xypitch
+  ; [232] _lineto(x,y+32);
+    00a24: mov      eax, dword ptr [ebp - 4]                 
+    00a27: add      eax, 0x20                                
+    00a2c: movsx    edx, ax                                  
+    00a2f: movsx    eax, word ptr [ebp - 0x10]               
+    00a33: call     0xa38                                    ; lineto
+  ; [233] conv_xypitch(6.0*prat,507,&x,&y);
+    00a38: lea      eax, [ebp - 4]                           
+    00a3b: push     eax                                      
+    00a3c: lea      eax, [ebp - 0x10]                        
+    00a3f: push     eax                                      
+    00a40: push     0x43fd8000                               
+    00a45: fld      dword ptr [0]                            ; prat
+    00a4b: fmul     qword ptr [0x3c]                         ; CONST+60 f=0 d=6
+    00a51: sub      esp, 4                                   
+    00a54: fstp     dword ptr [esp]                          
+    00a57: call     0xa5c                                    ; conv_xypitch
+  ; [234] _lineto(x,y+32);
+    00a5c: mov      eax, dword ptr [ebp - 4]                 
+    00a5f: add      eax, 0x20                                
+    00a64: movsx    edx, ax                                  
+    00a67: movsx    eax, word ptr [ebp - 0x10]               
+    00a6b: call     0xa70                                    ; lineto
+  ; [235] conv_xypitch(0,507,&x,&y);
+    00a70: lea      eax, [ebp - 4]                           
+    00a73: push     eax                                      
+    00a74: lea      eax, [ebp - 0x10]                        
+    00a77: push     eax                                      
+    00a78: push     0x43fd8000                               
+    00a7d: push     0                                        
+    00a7f: call     0xa84                                    ; conv_xypitch
+  ; [236] _lineto(x,y+32);
+    00a84: mov      eax, dword ptr [ebp - 4]                 
+    00a87: add      eax, 0x20                                
+    00a8c: movsx    edx, ax                                  
+    00a8f: movsx    eax, word ptr [ebp - 0x10]               
+    00a93: call     0xa98                                    ; lineto
+  ; [239] conv_xypitch(80*16,293,&x,&y);
+    00a98: lea      eax, [ebp - 4]                           
+    00a9b: push     eax                                      
+    00a9c: lea      eax, [ebp - 0x10]                        
+    00a9f: push     eax                                      
+    00aa0: push     0x43928000                               
+    00aa5: push     0x44a00000                               
+    00aaa: call     0xaaf                                    ; conv_xypitch
+  ; [240] _moveto(x,y+32);
+    00aaf: mov      eax, dword ptr [ebp - 4]                 
+    00ab2: add      eax, 0x20                                
+    00ab7: movsx    edx, ax                                  
+    00aba: movsx    eax, word ptr [ebp - 0x10]               
+    00abe: call     0xac3                                    ; moveto
+  ; [241] conv_xypitch(80*16-(6.0*prat),293,&x,&y);
+    00ac3: lea      eax, [ebp - 4]                           
+    00ac6: push     eax                                      
+    00ac7: lea      eax, [ebp - 0x10]                        
+    00aca: push     eax                                      
+    00acb: push     0x43928000                               
+    00ad0: fld      dword ptr [0]                            ; prat
+    00ad6: fmul     qword ptr [0x3c]                         ; CONST+60 f=0 d=6
+    00adc: fsubr    qword ptr [0x44]                         ; CONST+68 f=0 d=1280
+    00ae2: sub      esp, 4                                   
+    00ae5: fstp     dword ptr [esp]                          
+    00ae8: call     0xaed                                    ; conv_xypitch
+  ; [242] _lineto(x,y+32);
+    00aed: mov      eax, dword ptr [ebp - 4]                 
+    00af0: add      eax, 0x20                                
+    00af5: movsx    edx, ax                                  
+    00af8: movsx    eax, word ptr [ebp - 0x10]               
+    00afc: call     0xb01                                    ; lineto
+  ; [243] conv_xypitch(80*16-(6.0*prat),507,&x,&y);
+    00b01: lea      eax, [ebp - 4]                           
+    00b04: push     eax                                      
+    00b05: lea      eax, [ebp - 0x10]                        
+    00b08: push     eax                                      
+    00b09: push     0x43fd8000                               
+    00b0e: fld      dword ptr [0]                            ; prat
+    00b14: fmul     qword ptr [0x3c]                         ; CONST+60 f=0 d=6
+    00b1a: fsubr    qword ptr [0x44]                         ; CONST+68 f=0 d=1280
+    00b20: sub      esp, 4                                   
+    00b23: fstp     dword ptr [esp]                          
+    00b26: call     0xb2b                                    ; conv_xypitch
+  ; [244] _lineto(x,y+32);
+    00b2b: mov      eax, dword ptr [ebp - 4]                 
+    00b2e: add      eax, 0x20                                
+    00b33: movsx    edx, ax                                  
+    00b36: movsx    eax, word ptr [ebp - 0x10]               
+    00b3a: call     0xb3f                                    ; lineto
+  ; [245] conv_xypitch(80*16,507,&x,&y);
+    00b3f: lea      eax, [ebp - 4]                           
+    00b42: push     eax                                      
+    00b43: lea      eax, [ebp - 0x10]                        
+    00b46: push     eax                                      
+    00b47: push     0x43fd8000                               
+    00b4c: push     0x44a00000                               
+    00b51: call     0xb56                                    ; conv_xypitch
+  ; [246] _lineto(x,y+32);
+    00b56: mov      eax, dword ptr [ebp - 4]                 
+    00b59: add      eax, 0x20                                
+    00b5e: movsx    edx, ax                                  
+    00b61: movsx    eax, word ptr [ebp - 0x10]               
+    00b65: call     0xb6a                                    ; lineto
+  ; [249] conv_xypitch(0,208,&x,&y);
+    00b6a: lea      eax, [ebp - 4]                           
+    00b6d: push     eax                                      
+    00b6e: lea      eax, [ebp - 0x10]                        
+    00b71: push     eax                                      
+    00b72: push     0x43500000                               
+    00b77: push     0                                        
+    00b79: call     0xb7e                                    ; conv_xypitch
+  ; [250] _moveto(x,y+32);
+    00b7e: mov      eax, dword ptr [ebp - 4]                 
+    00b81: add      eax, 0x20                                
+    00b86: movsx    edx, ax                                  
+    00b89: movsx    eax, word ptr [ebp - 0x10]               
+    00b8d: call     0xb92                                    ; moveto
+  ; [251] conv_xypitch(18.0*prat,208,&x,&y);
+    00b92: lea      eax, [ebp - 4]                           
+    00b95: push     eax                                      
+    00b96: lea      eax, [ebp - 0x10]                        
+    00b99: push     eax                                      
+    00b9a: push     0x43500000                               
+    00b9f: fld      dword ptr [0]                            ; prat
+    00ba5: fmul     qword ptr [0x4c]                         ; CONST+76 f=0 d=18
+    00bab: sub      esp, 4                                   
+    00bae: fstp     dword ptr [esp]                          
+    00bb1: call     0xbb6                                    ; conv_xypitch
+  ; [252] _lineto(x,y+32);
+    00bb6: mov      eax, dword ptr [ebp - 4]                 
+    00bb9: add      eax, 0x20                                
+    00bbe: movsx    edx, ax                                  
+    00bc1: movsx    eax, word ptr [ebp - 0x10]               
+    00bc5: call     0xbca                                    ; lineto
+  ; [253] conv_xypitch(18.0*prat,592,&x,&y);
+    00bca: lea      eax, [ebp - 4]                           
+    00bcd: push     eax                                      
+    00bce: lea      eax, [ebp - 0x10]                        
+    00bd1: push     eax                                      
+    00bd2: push     0x44140000                               
+    00bd7: fld      dword ptr [0]                            ; prat
+    00bdd: fmul     qword ptr [0x4c]                         ; CONST+76 f=0 d=18
+    00be3: sub      esp, 4                                   
+    00be6: fstp     dword ptr [esp]                          
+    00be9: call     0xbee                                    ; conv_xypitch
+  ; [254] _lineto(x,y+32);
+    00bee: mov      eax, dword ptr [ebp - 4]                 
+    00bf1: add      eax, 0x20                                
+    00bf6: movsx    edx, ax                                  
+    00bf9: movsx    eax, word ptr [ebp - 0x10]               
+    00bfd: call     0xc02                                    ; lineto
+  ; [255] conv_xypitch(0,592,&x,&y);
+    00c02: lea      eax, [ebp - 4]                           
+    00c05: push     eax                                      
+    00c06: lea      eax, [ebp - 0x10]                        
+    00c09: push     eax                                      
+    00c0a: push     0x44140000                               
+    00c0f: push     0                                        
+    00c11: call     0xc16                                    ; conv_xypitch
+  ; [256] _lineto(x,y+32);
+    00c16: mov      eax, dword ptr [ebp - 4]                 
+    00c19: add      eax, 0x20                                
+    00c1e: movsx    edx, ax                                  
+    00c21: movsx    eax, word ptr [ebp - 0x10]               
+    00c25: call     0xc2a                                    ; lineto
+  ; [259] conv_xypitch(80*16,208,&x,&y);
+    00c2a: lea      eax, [ebp - 4]                           
+    00c2d: push     eax                                      
+    00c2e: lea      eax, [ebp - 0x10]                        
+    00c31: push     eax                                      
+    00c32: push     0x43500000                               
+    00c37: push     0x44a00000                               
+    00c3c: call     0xc41                                    ; conv_xypitch
+  ; [260] _moveto(x,y+32);
+    00c41: mov      eax, dword ptr [ebp - 4]                 
+    00c44: add      eax, 0x20                                
+    00c49: movsx    edx, ax                                  
+    00c4c: movsx    eax, word ptr [ebp - 0x10]               
+    00c50: call     0xc55                                    ; moveto
+  ; [261] conv_xypitch(80*16-(18.0*prat),208,&x,&y);
+    00c55: lea      eax, [ebp - 4]                           
+    00c58: push     eax                                      
+    00c59: lea      eax, [ebp - 0x10]                        
+    00c5c: push     eax                                      
+    00c5d: push     0x43500000                               
+    00c62: fld      dword ptr [0]                            ; prat
+    00c68: fmul     qword ptr [0x4c]                         ; CONST+76 f=0 d=18
+    00c6e: fsubr    qword ptr [0x44]                         ; CONST+68 f=0 d=1280
+    00c74: sub      esp, 4                                   
+    00c77: fstp     dword ptr [esp]                          
+    00c7a: call     0xc7f                                    ; conv_xypitch
+  ; [262] _lineto(x,y+32);
+    00c7f: mov      eax, dword ptr [ebp - 4]                 
+    00c82: add      eax, 0x20                                
+    00c87: movsx    edx, ax                                  
+    00c8a: movsx    eax, word ptr [ebp - 0x10]               
+    00c8e: call     0xc93                                    ; lineto
+  ; [263] conv_xypitch(80*16-(18.0*prat),592,&x,&y);
+    00c93: lea      eax, [ebp - 4]                           
+    00c96: push     eax                                      
+    00c97: lea      eax, [ebp - 0x10]                        
+    00c9a: push     eax                                      
+    00c9b: push     0x44140000                               
+    00ca0: fld      dword ptr [0]                            ; prat
+    00ca6: fmul     qword ptr [0x4c]                         ; CONST+76 f=0 d=18
+    00cac: fsubr    qword ptr [0x44]                         ; CONST+68 f=0 d=1280
+    00cb2: sub      esp, 4                                   
+    00cb5: fstp     dword ptr [esp]                          
+    00cb8: call     0xcbd                                    ; conv_xypitch
+  ; [264] _lineto(x,y+32);
+    00cbd: mov      eax, dword ptr [ebp - 4]                 
+    00cc0: add      eax, 0x20                                
+    00cc5: movsx    edx, ax                                  
+    00cc8: movsx    eax, word ptr [ebp - 0x10]               
+    00ccc: call     0xcd1                                    ; lineto
+  ; [265] conv_xypitch(80*16,592,&x,&y);
+    00cd1: lea      eax, [ebp - 4]                           
+    00cd4: push     eax                                      
+    00cd5: lea      eax, [ebp - 0x10]                        
+    00cd8: push     eax                                      
+    00cd9: push     0x44140000                               
+    00cde: push     0x44a00000                               
+    00ce3: call     0xce8                                    ; conv_xypitch
+  ; [266] _lineto(x,y+32);
+    00ce8: mov      eax, dword ptr [ebp - 4]                 
+    00ceb: add      eax, 0x20                                
+    00cf0: movsx    edx, ax                                  
+    00cf3: movsx    eax, word ptr [ebp - 0x10]               
+    00cf7: call     0xcfc                                    ; lineto
+  ; [270] _ellipse(_GBORDER,160-13,82-13,160+13,82+13);
+    00cfc: mov      eax, 0x5f                                
+    00d01: push     eax                                      
+    00d02: mov      ecx, 0xad                                
+    00d07: mov      ebx, 0x45                                
+    00d0c: mov      edx, 0x93                                
+    00d11: mov      eax, 2                                   
+    00d16: call     0xd1b                                    ; ellipse
+  ; [271] _setcolor(c);
+    00d1b: movsx    eax, word ptr [ebp - 8]                  
+    00d1f: call     0xd24                                    ; setcolor
+  ; [272] _setplotaction(g);
+    00d24: movsx    eax, word ptr [ebp - 0xc]                
+    00d28: call     0xd2d                                    ; setplotaction
+  ; [273] }
+    00d2d: mov      esp, ebp                                 
+    00d2f: pop      ebp                                      
+    00d30: pop      edi                                      
+    00d31: pop      esi                                      
+    00d32: pop      edx                                      
+    00d33: pop      ecx                                      
+    00d34: pop      ebx                                      
+    00d35: ret                                               
+
+========== draw_pitch  (obj line 278, delta 0)
+  ; [278] void draw_pitch()
+    00d36: push     ebx                                      
+    00d37: push     ecx                                      
+    00d38: push     edx                                      
+    00d39: push     esi                                      
+    00d3a: push     edi                                      
+    00d3b: push     ebp                                      
+    00d3c: mov      ebp, esp                                 
+    00d3e: sub      esp, 0                                   
+  ; [280] _setcolor(0);
+    00d44: xor      eax, eax                                 
+    00d46: call     0xd4b                                    ; setcolor
+  ; [281] _lineto(48,32);
+    00d4b: mov      edx, 0x20                                
+    00d50: mov      eax, 0x30                                
+    00d55: call     0xd5a                                    ; lineto
+  ; [282] _setcolor(1);
+    00d5a: mov      eax, 1                                   
+    00d5f: call     0xd64                                    ; setcolor
+  ; [283] _lineto(48+112+111,32);
+    00d64: mov      edx, 0x20                                
+    00d69: mov      eax, 0x10f                               
+    00d6e: call     0xd73                                    ; lineto
+  ; [284] _lineto(319,131);
+    00d73: mov      edx, 0x83                                
+    00d78: mov      eax, 0x13f                               
+    00d7d: call     0xd82                                    ; lineto
+  ; [285] _lineto(0,131);
+    00d82: mov      edx, 0x83                                
+    00d87: xor      eax, eax                                 
+    00d89: call     0xd8e                                    ; lineto
+  ; [286] _lineto(48,32);
+    00d8e: mov      edx, 0x20                                
+    00d93: mov      eax, 0x30                                
+    00d98: call     0xd9d                                    ; lineto
+  ; [287] _lineto(160,32);
+    00d9d: mov      edx, 0x20                                
+    00da2: mov      eax, 0xa0                                
+    00da7: call     0xdac                                    ; lineto
+  ; [288] _lineto(160,131);
+    00dac: mov      edx, 0x83                                
+    00db1: mov      eax, 0xa0                                
+    00db6: call     0xdbb                                    ; lineto
+  ; [289] }
+    00dbb: pop      ebp                                      
+    00dbc: pop      edi                                      
+    00dbd: pop      esi                                      
+    00dbe: pop      edx                                      
+    00dbf: pop      ecx                                      
+    00dc0: pop      ebx                                      
+    00dc1: ret                                               
+
+========== pitch_plot  (obj line 294, delta 0)
+  ; [294] void pitch_plot(int x,int y,int z,char c,char a)		//Place screen coords on plot buffer.
+    00dc2: push     esi                                      
+    00dc3: push     edi                                      
+    00dc4: push     ebp                                      
+    00dc5: mov      ebp, esp                                 
+    00dc7: sub      esp, 0x10                                
+    00dcd: mov      dword ptr [ebp - 0x10], eax              
+    00dd0: mov      dword ptr [ebp - 0xc], edx               
+    00dd3: mov      dword ptr [ebp - 8], ebx                 
+    00dd6: mov      byte ptr [ebp - 4], cl                   
+  ; [296] if (plot_buffer)							//Choose Buffer.
+    00dd9: cmp      dword ptr [0], 0                         ; plot_buffer
+    00de0: je       0xe46                                    
+  ; [298] scr_a[plot_cnta][0]=x;
+    00de2: mov      edx, dword ptr [0]                       ; plot_cnta
+    00de8: shl      edx, 4                                   
+    00deb: mov      eax, dword ptr [ebp - 0x10]              
+    00dee: mov      dword ptr [edx], eax                     ; scr_a
+  ; [299] scr_a[plot_cnta][1]=y-(z/8);
+    00df4: mov      eax, dword ptr [ebp - 8]                 
+    00df7: mov      edx, dword ptr [ebp - 8]                 
+    00dfa: sar      edx, 0x1f                                
+    00dfd: shl      edx, 3                                   
+    00e00: sbb      eax, edx                                 
+    00e02: sar      eax, 3                                   
+    00e05: mov      edx, dword ptr [ebp - 0xc]               
+    00e08: sub      edx, eax                                 
+    00e0a: mov      eax, dword ptr [0]                       ; plot_cnta
+    00e0f: shl      eax, 4                                   
+    00e12: mov      dword ptr [eax + 4], edx                 ; scr_a
+  ; [300] scr_a[plot_cnta][2]=c;
+    00e18: xor      edx, edx                                 
+    00e1a: mov      dl, byte ptr [ebp - 4]                   
+    00e1d: mov      eax, dword ptr [0]                       ; plot_cnta
+    00e22: shl      eax, 4                                   
+    00e25: mov      dword ptr [eax + 8], edx                 ; scr_a
+  ; [301] scr_a[plot_cnta++][3]=a;
+    00e2b: xor      edx, edx                                 
+    00e2d: mov      dl, byte ptr [ebp + 0x10]                
+    00e30: mov      eax, dword ptr [0]                       ; plot_cnta
+    00e35: inc      dword ptr [0]                            ; plot_cnta
+    00e3b: shl      eax, 4                                   
+    00e3e: mov      dword ptr [eax + 0xc], edx               ; scr_a
+  ; [302] }
+    00e44: jmp      0xea8                                    
+  ; [305] scr_b[plot_cntb][0]=x;
+    00e46: mov      edx, dword ptr [0]                       ; plot_cntb
+    00e4c: shl      edx, 4                                   
+    00e4f: mov      eax, dword ptr [ebp - 0x10]              
+    00e52: mov      dword ptr [edx], eax                     ; scr_b
+  ; [306] scr_b[plot_cntb][1]=y-(z/8);
+    00e58: mov      eax, dword ptr [ebp - 8]                 
+    00e5b: mov      edx, dword ptr [ebp - 8]                 
+    00e5e: sar      edx, 0x1f                                
+    00e61: shl      edx, 3                                   
+    00e64: sbb      eax, edx                                 
+    00e66: sar      eax, 3                                   
+    00e69: mov      edx, dword ptr [ebp - 0xc]               
+    00e6c: sub      edx, eax                                 
+    00e6e: mov      eax, dword ptr [0]                       ; plot_cntb
+    00e73: shl      eax, 4                                   
+    00e76: mov      dword ptr [eax + 4], edx                 ; scr_b
+  ; [307] scr_b[plot_cntb][2]=c;
+    00e7c: xor      edx, edx                                 
+    00e7e: mov      dl, byte ptr [ebp - 4]                   
+    00e81: mov      eax, dword ptr [0]                       ; plot_cntb
+    00e86: shl      eax, 4                                   
+    00e89: mov      dword ptr [eax + 8], edx                 ; scr_b
+  ; [308] scr_b[plot_cntb++][3]=a;
+    00e8f: xor      edx, edx                                 
+    00e91: mov      dl, byte ptr [ebp + 0x10]                
+    00e94: mov      eax, dword ptr [0]                       ; plot_cntb
+    00e99: inc      dword ptr [0]                            ; plot_cntb
+    00e9f: shl      eax, 4                                   
+    00ea2: mov      dword ptr [eax + 0xc], edx               ; scr_b
+  ; [310] }
+    00ea8: mov      esp, ebp                                 
+    00eaa: pop      ebp                                      
+    00eab: pop      edi                                      
+    00eac: pop      esi                                      
+    00ead: ret      4                                        
+
+========== draw_buffer  (obj line 315, delta 0)
+  ; [315] void draw_buffer()
+    00eb0: push     ebx                                      
+    00eb1: push     ecx                                      
+    00eb2: push     edx                                      
+    00eb3: push     esi                                      
+    00eb4: push     edi                                      
+    00eb5: push     ebp                                      
+    00eb6: mov      ebp, esp                                 
+    00eb8: sub      esp, 0x14                                
+  ; [317] char pn[3]="  ";
+    00ebe: lea      edi, [ebp - 4]                           
+    00ec1: mov      esi, 0                                   ; W?$Wsi07pn$n[]a$:.0$:?draw_buffer$n()vnx[]a
+    00ec6: movsw    word ptr es:[edi], word ptr [esi]        
+    00ec8: movsb    byte ptr es:[edi], byte ptr [esi]        
+  ; [318] for (int coords=1; (plot_buffer) ? coords<plot_cnta : coords<plot_cntb;
+    00ec9: mov      dword ptr [ebp - 8], 1                   
+    00ed0: jmp      0xed8                                    
+  ; [319] coords++)
+    00ed2: mov      eax, dword ptr [ebp - 8]                 
+    00ed5: inc      dword ptr [ebp - 8]                      
+  ; [318] for (int coords=1; (plot_buffer) ? coords<plot_cnta : coords<plot_cntb;
+    00ed8: cmp      dword ptr [0], 0                         ; plot_buffer
+    00edf: je       0xf04                                    
+    00ee1: mov      eax, dword ptr [ebp - 8]                 
+    00ee4: cmp      eax, dword ptr [0]                       ; plot_cnta
+    00eea: jge      0xef5                                    
+    00eec: mov      dword ptr [ebp - 0xc], 1                 
+    00ef3: jmp      0xefc                                    
+    00ef5: mov      dword ptr [ebp - 0xc], 0                 
+    00efc: mov      eax, dword ptr [ebp - 0xc]               
+    00eff: mov      dword ptr [ebp - 0x10], eax              
+    00f02: jmp      0xf25                                    
+    00f04: mov      eax, dword ptr [ebp - 8]                 
+    00f07: cmp      eax, dword ptr [0]                       ; plot_cntb
+    00f0d: jge      0xf18                                    
+    00f0f: mov      dword ptr [ebp - 0x14], 1                
+    00f16: jmp      0xf1f                                    
+    00f18: mov      dword ptr [ebp - 0x14], 0                
+    00f1f: mov      eax, dword ptr [ebp - 0x14]              
+    00f22: mov      dword ptr [ebp - 0x10], eax              
+    00f25: cmp      dword ptr [ebp - 0x10], 0                
+    00f29: je       0x109c                                   
+  ; [321] if (plot_buffer)							//Choose Buffer.
+    00f2f: cmp      dword ptr [0], 0                         ; plot_buffer
+    00f36: je       0xfec                                    
+  ; [323] if (scr_a[coords][3]==0)
+    00f3c: mov      eax, dword ptr [ebp - 8]                 
+    00f3f: shl      eax, 4                                   
+    00f42: cmp      dword ptr [eax + 0xc], 0                 ; scr_a
+    00f49: jne      0xf84                                    
+  ; [325] _setcolor(scr_a[coords][2]);
+    00f4b: mov      eax, dword ptr [ebp - 8]                 
+    00f4e: shl      eax, 4                                   
+    00f51: mov      eax, dword ptr [eax + 6]                 ; scr_a
+    00f57: sar      eax, 0x10                                
+    00f5a: call     0xf5f                                    ; setcolor
+  ; [326] _setpixel(scr_a[coords][0],scr_a[coords][1]);
+    00f5f: mov      eax, dword ptr [ebp - 8]                 
+    00f62: shl      eax, 4                                   
+    00f65: mov      edx, dword ptr [eax + 2]                 ; scr_a
+    00f6b: sar      edx, 0x10                                
+    00f6e: mov      eax, dword ptr [ebp - 8]                 
+    00f71: shl      eax, 4                                   
+    00f74: mov      eax, dword ptr [eax - 2]                 ; scr_a
+    00f7a: sar      eax, 0x10                                
+    00f7d: call     0xf82                                    ; setpixel
+  ; [327] }
+    00f82: jmp      0xfe7                                    
+  ; [330] _setcolor(scr_a[coords][2]);
+    00f84: mov      eax, dword ptr [ebp - 8]                 
+    00f87: shl      eax, 4                                   
+    00f8a: mov      eax, dword ptr [eax + 6]                 ; scr_a
+    00f90: sar      eax, 0x10                                
+    00f93: call     0xf98                                    ; setcolor
+  ; [331] _moveto(scr_a[coords][0]-3,scr_a[coords][1]-3);
+    00f98: mov      eax, dword ptr [ebp - 8]                 
+    00f9b: shl      eax, 4                                   
+    00f9e: mov      ax, word ptr [eax + 4]                   ; scr_a
+    00fa5: sub      eax, 3                                   
+    00fa8: movsx    edx, ax                                  
+    00fab: mov      eax, dword ptr [ebp - 8]                 
+    00fae: shl      eax, 4                                   
+    00fb1: mov      ax, word ptr [eax]                       ; scr_a
+    00fb8: sub      eax, 3                                   
+    00fbb: cwde                                              
+    00fbc: call     0xfc1                                    ; moveto
+  ; [332] sprintf(pn,"%d",scr_a[coords][3]);
+    00fc1: mov      eax, dword ptr [ebp - 8]                 
+    00fc4: shl      eax, 4                                   
+    00fc7: push     dword ptr [eax + 0xc]                    ; scr_a
+    00fcd: mov      eax, 0x54                                ; CONST+84 f=1.11362e-16 d=2.59716e+174
+    00fd2: push     eax                                      
+    00fd3: lea      eax, [ebp - 4]                           
+    00fd6: push     eax                                      
+    00fd7: call     0xfdc                                    ; sprintf
+    00fdc: add      esp, 0xc                                 
+  ; [333] _outgtext(pn);
+    00fdf: lea      eax, [ebp - 4]                           
+    00fe2: call     0xfe7                                    ; outgtext
+  ; [335] }
+    00fe7: jmp      0x1097                                   
+  ; [338] if (scr_b[coords][3]==0)
+    00fec: mov      eax, dword ptr [ebp - 8]                 
+    00fef: shl      eax, 4                                   
+    00ff2: cmp      dword ptr [eax + 0xc], 0                 ; scr_b
+    00ff9: jne      0x1034                                   
+  ; [340] _setcolor(scr_b[coords][2]);
+    00ffb: mov      eax, dword ptr [ebp - 8]                 
+    00ffe: shl      eax, 4                                   
+    01001: mov      eax, dword ptr [eax + 6]                 ; scr_b
+    01007: sar      eax, 0x10                                
+    0100a: call     0x100f                                   ; setcolor
+  ; [341] _setpixel(scr_b[coords][0],scr_b[coords][1]);
+    0100f: mov      eax, dword ptr [ebp - 8]                 
+    01012: shl      eax, 4                                   
+    01015: mov      edx, dword ptr [eax + 2]                 ; scr_b
+    0101b: sar      edx, 0x10                                
+    0101e: mov      eax, dword ptr [ebp - 8]                 
+    01021: shl      eax, 4                                   
+    01024: mov      eax, dword ptr [eax - 2]                 ; scr_b
+    0102a: sar      eax, 0x10                                
+    0102d: call     0x1032                                   ; setpixel
+  ; [342] }
+    01032: jmp      0x1097                                   
+  ; [345] _setcolor(scr_b[coords][2]);
+    01034: mov      eax, dword ptr [ebp - 8]                 
+    01037: shl      eax, 4                                   
+    0103a: mov      eax, dword ptr [eax + 6]                 ; scr_b
+    01040: sar      eax, 0x10                                
+    01043: call     0x1048                                   ; setcolor
+  ; [346] _moveto(scr_b[coords][0]-3,scr_b[coords][1]-3);
+    01048: mov      eax, dword ptr [ebp - 8]                 
+    0104b: shl      eax, 4                                   
+    0104e: mov      ax, word ptr [eax + 4]                   ; scr_b
+    01055: sub      eax, 3                                   
+    01058: movsx    edx, ax                                  
+    0105b: mov      eax, dword ptr [ebp - 8]                 
+    0105e: shl      eax, 4                                   
+    01061: mov      ax, word ptr [eax]                       ; scr_b
+    01068: sub      eax, 3                                   
+    0106b: cwde                                              
+    0106c: call     0x1071                                   ; moveto
+  ; [347] sprintf(pn,"%d",scr_b[coords][3]);
+    01071: mov      eax, dword ptr [ebp - 8]                 
+    01074: shl      eax, 4                                   
+    01077: push     dword ptr [eax + 0xc]                    ; scr_b
+    0107d: mov      eax, 0x57                                ; CONST+87 f=1.11362e-16 d=1.08618e-153
+    01082: push     eax                                      
+    01083: lea      eax, [ebp - 4]                           
+    01086: push     eax                                      
+    01087: call     0x108c                                   ; sprintf
+    0108c: add      esp, 0xc                                 
+  ; [348] _outgtext(pn);
+    0108f: lea      eax, [ebp - 4]                           
+    01092: call     0x1097                                   ; outgtext
+  ; [351] }
+    01097: jmp      0xed2                                    
+  ; [352] }
+    0109c: mov      esp, ebp                                 
+    0109e: pop      ebp                                      
+    0109f: pop      edi                                      
+    010a0: pop      esi                                      
+    010a1: pop      edx                                      
+    010a2: pop      ecx                                      
+    010a3: pop      ebx                                      
+    010a4: ret                                               
+
+========== draw_ball  (obj line 357, delta 0)
+  ; [357] void draw_ball()
+    010a5: push     ebx                                      
+    010a6: push     ecx                                      
+    010a7: push     edx                                      
+    010a8: push     esi                                      
+    010a9: push     edi                                      
+    010aa: push     ebp                                      
+    010ab: mov      ebp, esp                                 
+    010ad: sub      esp, 0x10                                
+  ; [359] float bx=(pos+25)->x;
+    010b3: mov      eax, dword ptr [0x3e8]                   ; pos
+    010b8: mov      dword ptr [ebp - 0xc], eax               
+  ; [360] float bz=((pos+25)->y);
+    010bb: mov      eax, dword ptr [0x3ec]                   ; pos
+    010c0: mov      dword ptr [ebp - 8], eax                 
+  ; [361] float by=((pos+25)->z);
+    010c3: mov      eax, dword ptr [0x3f0]                   ; pos
+    010c8: mov      dword ptr [ebp - 4], eax                 
+  ; [362] conv_xypitch(bx,by,&scr_x,&scr_y);
+    010cb: mov      eax, 0                                   ; scr_y
+    010d0: push     eax                                      
+    010d1: mov      eax, 0                                   ; scr_x
+    010d6: push     eax                                      
+    010d7: fld      dword ptr [ebp - 4]                      
+    010da: sub      esp, 4                                   
+    010dd: fstp     dword ptr [esp]                          
+    010e0: fld      dword ptr [ebp - 0xc]                    
+    010e3: sub      esp, 4                                   
+    010e6: fstp     dword ptr [esp]                          
+    010e9: call     0x10ee                                   ; conv_xypitch
+  ; [363] pitch_plot(scr_x,scr_y+32,(int)bz,ball_col,0);
+    010ee: xor      eax, eax                                 
+    010f0: push     eax                                      
+    010f1: xor      ecx, ecx                                 
+    010f3: mov      cl, byte ptr [0]                         ; ball_col
+    010f9: fld      dword ptr [ebp - 8]                      
+    010fc: call     0x1101                                   ; CHP
+    01101: fistp    dword ptr [ebp - 0x10]                   
+    01104: mov      edx, dword ptr [0]                       ; scr_y
+    0110a: add      edx, 0x20                                
+    0110d: mov      eax, dword ptr [0]                       ; scr_x
+    01112: mov      ebx, dword ptr [ebp - 0x10]              
+    01115: call     0x111a                                   ; pitch_plot
+  ; [364] pitch_plot(scr_x,scr_y+31,(int)bz,ball_col,0);
+    0111a: xor      eax, eax                                 
+    0111c: push     eax                                      
+    0111d: xor      ecx, ecx                                 
+    0111f: mov      cl, byte ptr [0]                         ; ball_col
+    01125: fld      dword ptr [ebp - 8]                      
+    01128: call     0x112d                                   ; CHP
+    0112d: fistp    dword ptr [ebp - 0x10]                   
+    01130: mov      edx, dword ptr [0]                       ; scr_y
+    01136: add      edx, 0x1f                                
+    01139: mov      eax, dword ptr [0]                       ; scr_x
+    0113e: mov      ebx, dword ptr [ebp - 0x10]              
+    01141: call     0x1146                                   ; pitch_plot
+  ; [365] pitch_plot(scr_x+1,scr_y+32,(int)bz,ball_col,0);
+    01146: xor      eax, eax                                 
+    01148: push     eax                                      
+    01149: xor      ecx, ecx                                 
+    0114b: mov      cl, byte ptr [0]                         ; ball_col
+    01151: fld      dword ptr [ebp - 8]                      
+    01154: call     0x1159                                   ; CHP
+    01159: fistp    dword ptr [ebp - 0x10]                   
+    0115c: mov      edx, dword ptr [0]                       ; scr_y
+    01162: add      edx, 0x20                                
+    01165: mov      eax, dword ptr [0]                       ; scr_x
+    0116a: inc      eax                                      
+    0116b: mov      ebx, dword ptr [ebp - 0x10]              
+    0116e: call     0x1173                                   ; pitch_plot
+  ; [366] pitch_plot(scr_x+1,scr_y+31,(int)bz,ball_col,0);
+    01173: xor      eax, eax                                 
+    01175: push     eax                                      
+    01176: xor      ecx, ecx                                 
+    01178: mov      cl, byte ptr [0]                         ; ball_col
+    0117e: fld      dword ptr [ebp - 8]                      
+    01181: call     0x1186                                   ; CHP
+    01186: fistp    dword ptr [ebp - 0x10]                   
+    01189: mov      edx, dword ptr [0]                       ; scr_y
+    0118f: add      edx, 0x1f                                
+    01192: mov      eax, dword ptr [0]                       ; scr_x
+    01197: inc      eax                                      
+    01198: mov      ebx, dword ptr [ebp - 0x10]              
+    0119b: call     0x11a0                                   ; pitch_plot
+  ; [367] pitch_plot(scr_x,scr_y+32,0,shadow_col,0);
+    011a0: xor      eax, eax                                 
+    011a2: push     eax                                      
+    011a3: xor      ecx, ecx                                 
+    011a5: mov      cl, byte ptr [0]                         ; shadow_col
+    011ab: xor      ebx, ebx                                 
+    011ad: mov      edx, dword ptr [0]                       ; scr_y
+    011b3: add      edx, 0x20                                
+    011b6: mov      eax, dword ptr [0]                       ; scr_x
+    011bb: call     0x11c0                                   ; pitch_plot
+  ; [368] pitch_plot(scr_x+1,scr_y+32,0,shadow_col,0);
+    011c0: xor      eax, eax                                 
+    011c2: push     eax                                      
+    011c3: xor      ecx, ecx                                 
+    011c5: mov      cl, byte ptr [0]                         ; shadow_col
+    011cb: xor      ebx, ebx                                 
+    011cd: mov      edx, dword ptr [0]                       ; scr_y
+    011d3: add      edx, 0x20                                
+    011d6: mov      eax, dword ptr [0]                       ; scr_x
+    011db: inc      eax                                      
+    011dc: call     0x11e1                                   ; pitch_plot
+  ; [369] }
+    011e1: mov      esp, ebp                                 
+    011e3: pop      ebp                                      
+    011e4: pop      edi                                      
+    011e5: pop      esi                                      
+    011e6: pop      edx                                      
+    011e7: pop      ecx                                      
+    011e8: pop      ebx                                      
+    011e9: ret                                               
+
+========== draw_team  (obj line 374, delta 0)
+  ; [374] void draw_team()
+    011ea: push     ebx                                      
+    011eb: push     ecx                                      
+    011ec: push     edx                                      
+    011ed: push     esi                                      
+    011ee: push     edi                                      
+    011ef: push     ebp                                      
+    011f0: mov      ebp, esp                                 
+    011f2: sub      esp, 0x14                                
+  ; [378] for (int i=0; i<(players/2); i++)
+    011f8: mov      dword ptr [ebp - 4], 0                   
+    011ff: jmp      0x1207                                   
+    01201: mov      eax, dword ptr [ebp - 4]                 
+    01204: inc      dword ptr [ebp - 4]                      
+    01207: mov      eax, dword ptr [0]                       ; players
+    0120c: mov      edx, dword ptr [0]                       ; players
+    01212: sar      edx, 0x1f                                
+    01215: sub      eax, edx                                 
+    01217: sar      eax, 1                                   
+    01219: cmp      eax, dword ptr [ebp - 4]                 
+    0121c: jle      0x135c                                   
+  ; [380] tx=(pos+i)->x;
+    01222: imul     eax, dword ptr [ebp - 4], 0x28           
+    01226: mov      eax, dword ptr [eax]                     ; pos
+    0122c: mov      dword ptr [ebp - 0x10], eax              
+  ; [381] tz=(pos+i)->y;
+    0122f: imul     eax, dword ptr [ebp - 4], 0x28           
+    01233: mov      eax, dword ptr [eax + 4]                 ; pos
+    01239: mov      dword ptr [ebp - 8], eax                 
+  ; [382] ty=(pos+i)->z;
+    0123c: imul     eax, dword ptr [ebp - 4], 0x28           
+    01240: mov      eax, dword ptr [eax + 8]                 ; pos
+    01246: mov      dword ptr [ebp - 0xc], eax               
+  ; [383] conv_xypitch(tx,ty,&scr_x,&scr_y);
+    01249: mov      eax, 0                                   ; scr_y
+    0124e: push     eax                                      
+    0124f: mov      eax, 0                                   ; scr_x
+    01254: push     eax                                      
+    01255: fld      dword ptr [ebp - 0xc]                    
+    01258: sub      esp, 4                                   
+    0125b: fstp     dword ptr [esp]                          
+    0125e: fld      dword ptr [ebp - 0x10]                   
+    01261: sub      esp, 4                                   
+    01264: fstp     dword ptr [esp]                          
+    01267: call     0x126c                                   ; conv_xypitch
+  ; [384] if (play_nums_on)
+    0126c: cmp      dword ptr [0], 0                         ; play_nums_on
+    01273: je       0x12ae                                   
+  ; [386] pitch_plot(scr_x,scr_y+32,(int)tz,team_a_col,i+2);
+    01275: mov      al, byte ptr [ebp - 4]                   
+    01278: add      al, 2                                    
+    0127a: and      eax, 0xff                                
+    0127f: push     eax                                      
+    01280: xor      ecx, ecx                                 
+    01282: mov      cl, byte ptr [0]                         ; team_a_col
+    01288: fld      dword ptr [ebp - 8]                      
+    0128b: call     0x1290                                   ; CHP
+    01290: fistp    dword ptr [ebp - 0x14]                   
+    01293: mov      edx, dword ptr [0]                       ; scr_y
+    01299: add      edx, 0x20                                
+    0129c: mov      eax, dword ptr [0]                       ; scr_x
+    012a1: mov      ebx, dword ptr [ebp - 0x14]              
+    012a4: call     0x12a9                                   ; pitch_plot
+  ; [387] }
+    012a9: jmp      0x1357                                   
+  ; [390] pitch_plot(scr_x,scr_y+32,(int)tz,team_a_col,0);
+    012ae: xor      eax, eax                                 
+    012b0: push     eax                                      
+    012b1: xor      ecx, ecx                                 
+    012b3: mov      cl, byte ptr [0]                         ; team_a_col
+    012b9: fld      dword ptr [ebp - 8]                      
+    012bc: call     0x12c1                                   ; CHP
+    012c1: fistp    dword ptr [ebp - 0x14]                   
+    012c4: mov      edx, dword ptr [0]                       ; scr_y
+    012ca: add      edx, 0x20                                
+    012cd: mov      eax, dword ptr [0]                       ; scr_x
+    012d2: mov      ebx, dword ptr [ebp - 0x14]              
+    012d5: call     0x12da                                   ; pitch_plot
+  ; [391] pitch_plot(scr_x,scr_y+33,(int)tz,team_a_col,0);
+    012da: xor      eax, eax                                 
+    012dc: push     eax                                      
+    012dd: xor      ecx, ecx                                 
+    012df: mov      cl, byte ptr [0]                         ; team_a_col
+    012e5: fld      dword ptr [ebp - 8]                      
+    012e8: call     0x12ed                                   ; CHP
+    012ed: fistp    dword ptr [ebp - 0x14]                   
+    012f0: mov      edx, dword ptr [0]                       ; scr_y
+    012f6: add      edx, 0x21                                
+    012f9: mov      eax, dword ptr [0]                       ; scr_x
+    012fe: mov      ebx, dword ptr [ebp - 0x14]              
+    01301: call     0x1306                                   ; pitch_plot
+  ; [392] if ((teams[i].int_cnt) && (teams[i].int_move==I_INTERCEPT))
+    01306: imul     eax, dword ptr [ebp - 4], 0xcb           
+    0130d: cmp      word ptr [eax + 0xc1], 0                 ; teams
+    01315: je       0x132c                                   
+    01317: imul     eax, dword ptr [ebp - 4], 0xcb           
+    0131e: mov      eax, dword ptr [eax + 0xbd]              ; teams
+    01324: sar      eax, 0x10                                
+    01327: cmp      eax, 1                                   
+    0132a: je       0x132e                                   
+    0132c: jmp      0x1357                                   
+  ; [393] pitch_plot(scr_x,scr_y+31,(int)tz,7,0);
+    0132e: xor      eax, eax                                 
+    01330: push     eax                                      
+    01331: mov      ecx, 7                                   
+    01336: fld      dword ptr [ebp - 8]                      
+    01339: call     0x133e                                   ; CHP
+    0133e: fistp    dword ptr [ebp - 0x14]                   
+    01341: mov      edx, dword ptr [0]                       ; scr_y
+    01347: add      edx, 0x1f                                
+    0134a: mov      eax, dword ptr [0]                       ; scr_x
+    0134f: mov      ebx, dword ptr [ebp - 0x14]              
+    01352: call     0x1357                                   ; pitch_plot
+  ; [395] }
+    01357: jmp      0x1201                                   
+  ; [397] for (i=11; i<players; i++)
+    0135c: mov      dword ptr [ebp - 4], 0xb                 
+    01363: jmp      0x136b                                   
+    01365: mov      eax, dword ptr [ebp - 4]                 
+    01368: inc      dword ptr [ebp - 4]                      
+    0136b: mov      eax, dword ptr [ebp - 4]                 
+    0136e: cmp      eax, dword ptr [0]                       ; players
+    01374: jge      0x14b4                                   
+  ; [399] tx=(pos+i)->x;
+    0137a: imul     eax, dword ptr [ebp - 4], 0x28           
+    0137e: mov      eax, dword ptr [eax]                     ; pos
+    01384: mov      dword ptr [ebp - 0x10], eax              
+  ; [400] tz=(pos+i)->y;
+    01387: imul     eax, dword ptr [ebp - 4], 0x28           
+    0138b: mov      eax, dword ptr [eax + 4]                 ; pos
+    01391: mov      dword ptr [ebp - 8], eax                 
+  ; [401] ty=(pos+i)->z;
+    01394: imul     eax, dword ptr [ebp - 4], 0x28           
+    01398: mov      eax, dword ptr [eax + 8]                 ; pos
+    0139e: mov      dword ptr [ebp - 0xc], eax               
+  ; [402] conv_xypitch(tx,ty,&scr_x,&scr_y);
+    013a1: mov      eax, 0                                   ; scr_y
+    013a6: push     eax                                      
+    013a7: mov      eax, 0                                   ; scr_x
+    013ac: push     eax                                      
+    013ad: fld      dword ptr [ebp - 0xc]                    
+    013b0: sub      esp, 4                                   
+    013b3: fstp     dword ptr [esp]                          
+    013b6: fld      dword ptr [ebp - 0x10]                   
+    013b9: sub      esp, 4                                   
+    013bc: fstp     dword ptr [esp]                          
+    013bf: call     0x13c4                                   ; conv_xypitch
+  ; [403] if (play_nums_on)
+    013c4: cmp      dword ptr [0], 0                         ; play_nums_on
+    013cb: je       0x1406                                   
+  ; [405] pitch_plot(scr_x,scr_y+32,(int)tz,team_b_col,i-8);
+    013cd: mov      al, byte ptr [ebp - 4]                   
+    013d0: sub      al, 8                                    
+    013d2: and      eax, 0xff                                
+    013d7: push     eax                                      
+    013d8: xor      ecx, ecx                                 
+    013da: mov      cl, byte ptr [0]                         ; team_b_col
+    013e0: fld      dword ptr [ebp - 8]                      
+    013e3: call     0x13e8                                   ; CHP
+    013e8: fistp    dword ptr [ebp - 0x14]                   
+    013eb: mov      edx, dword ptr [0]                       ; scr_y
+    013f1: add      edx, 0x20                                
+    013f4: mov      eax, dword ptr [0]                       ; scr_x
+    013f9: mov      ebx, dword ptr [ebp - 0x14]              
+    013fc: call     0x1401                                   ; pitch_plot
+  ; [406] }
+    01401: jmp      0x14af                                   
+  ; [409] pitch_plot(scr_x,scr_y+32,(int)tz,team_b_col,0);
+    01406: xor      eax, eax                                 
+    01408: push     eax                                      
+    01409: xor      ecx, ecx                                 
+    0140b: mov      cl, byte ptr [0]                         ; team_b_col
+    01411: fld      dword ptr [ebp - 8]                      
+    01414: call     0x1419                                   ; CHP
+    01419: fistp    dword ptr [ebp - 0x14]                   
+    0141c: mov      edx, dword ptr [0]                       ; scr_y
+    01422: add      edx, 0x20                                
+    01425: mov      eax, dword ptr [0]                       ; scr_x
+    0142a: mov      ebx, dword ptr [ebp - 0x14]              
+    0142d: call     0x1432                                   ; pitch_plot
+  ; [410] pitch_plot(scr_x,scr_y+33,(int)tz,team_b_col,0);
+    01432: xor      eax, eax                                 
+    01434: push     eax                                      
+    01435: xor      ecx, ecx                                 
+    01437: mov      cl, byte ptr [0]                         ; team_b_col
+    0143d: fld      dword ptr [ebp - 8]                      
+    01440: call     0x1445                                   ; CHP
+    01445: fistp    dword ptr [ebp - 0x14]                   
+    01448: mov      edx, dword ptr [0]                       ; scr_y
+    0144e: add      edx, 0x21                                
+    01451: mov      eax, dword ptr [0]                       ; scr_x
+    01456: mov      ebx, dword ptr [ebp - 0x14]              
+    01459: call     0x145e                                   ; pitch_plot
+  ; [411] if ((teams[i].int_cnt) && (teams[i].int_move==I_INTERCEPT))
+    0145e: imul     eax, dword ptr [ebp - 4], 0xcb           
+    01465: cmp      word ptr [eax + 0xc1], 0                 ; teams
+    0146d: je       0x1484                                   
+    0146f: imul     eax, dword ptr [ebp - 4], 0xcb           
+    01476: mov      eax, dword ptr [eax + 0xbd]              ; teams
+    0147c: sar      eax, 0x10                                
+    0147f: cmp      eax, 1                                   
+    01482: je       0x1486                                   
+    01484: jmp      0x14af                                   
+  ; [412] pitch_plot(scr_x,scr_y+31,(int)tz,7,0);
+    01486: xor      eax, eax                                 
+    01488: push     eax                                      
+    01489: mov      ecx, 7                                   
+    0148e: fld      dword ptr [ebp - 8]                      
+    01491: call     0x1496                                   ; CHP
+    01496: fistp    dword ptr [ebp - 0x14]                   
+    01499: mov      edx, dword ptr [0]                       ; scr_y
+    0149f: add      edx, 0x1f                                
+    014a2: mov      eax, dword ptr [0]                       ; scr_x
+    014a7: mov      ebx, dword ptr [ebp - 0x14]              
+    014aa: call     0x14af                                   ; pitch_plot
+  ; [414] }
+    014af: jmp      0x1365                                   
+  ; [415] }
+    014b4: mov      esp, ebp                                 
+    014b6: pop      ebp                                      
+    014b7: pop      edi                                      
+    014b8: pop      esi                                      
+    014b9: pop      edx                                      
+    014ba: pop      ecx                                      
+    014bb: pop      ebx                                      
+    014bc: ret                                               
+
+========== panel_data  (obj line 420, delta 0)
+  ; [420] void panel_data()
+    014bd: push     ebx                                      
+    014be: push     ecx                                      
+    014bf: push     edx                                      
+    014c0: push     esi                                      
+    014c1: push     edi                                      
+    014c2: push     ebp                                      
+    014c3: mov      ebp, esp                                 
+    014c5: sub      esp, 0x60                                
+  ; [440] sprintf(info_str4,"%d - %d     ",team_a_goals,team_b_goals);
+    014cb: push     dword ptr [0]                            ; team_b_goals
+    014d1: push     dword ptr [0]                            ; team_a_goals
+    014d7: mov      eax, 0x5a                                ; CONST+90 f=9.11718e-12 d=1.20199e-152
+    014dc: push     eax                                      
+    014dd: lea      eax, [ebp - 0x10]                        
+    014e0: push     eax                                      
+    014e1: call     0x14e6                                   ; sprintf
+    014e6: add      esp, 0x10                                
+  ; [441] _settextposition(20,0);
+    014e9: xor      edx, edx                                 
+    014eb: mov      eax, 0x14                                
+    014f0: call     0x14f5                                   ; settextposition
+  ; [442] _outtext(info_str4);
+    014f5: lea      eax, [ebp - 0x10]                        
+    014f8: call     0x14fd                                   ; outtext
+  ; [444] sprintf(info_str3,"%d ",delay_cnt);
+    014fd: push     dword ptr [0]                            ; delay_cnt
+    01503: mov      eax, 0x67                                ; CONST+103
+    01508: push     eax                                      
+    01509: lea      eax, [ebp - 4]                           
+    0150c: push     eax                                      
+    0150d: call     0x1512                                   ; sprintf
+    01512: add      esp, 0xc                                 
+  ; [445] _settextposition(20,37);
+    01515: mov      edx, 0x25                                
+    0151a: mov      eax, 0x14                                
+    0151f: call     0x1524                                   ; settextposition
+  ; [446] _outtext(info_str3);
+    01524: lea      eax, [ebp - 4]                           
+    01527: call     0x152c                                   ; outtext
+  ; [447] }
+    0152c: mov      esp, ebp                                 
+    0152e: pop      ebp                                      
+    0152f: pop      edi                                      
+    01530: pop      esi                                      
+    01531: pop      edx                                      
+    01532: pop      ecx                                      
+    01533: pop      ebx                                      
+    01534: ret                                               
+
+========== slower  (obj line 452, delta 0)
+  ; [452] void slower()
+    01535: push     ebx                                      
+    01536: push     ecx                                      
+    01537: push     edx                                      
+    01538: push     esi                                      
+    01539: push     edi                                      
+    0153a: push     ebp                                      
+    0153b: mov      ebp, esp                                 
+    0153d: sub      esp, 0                                   
+  ; [454] delay_cnt++;
+    01543: inc      dword ptr [0]                            ; delay_cnt
+  ; [455] }
+    01549: pop      ebp                                      
+    0154a: pop      edi                                      
+    0154b: pop      esi                                      
+    0154c: pop      edx                                      
+    0154d: pop      ecx                                      
+    0154e: pop      ebx                                      
+    0154f: ret                                               
+
+========== faster  (obj line 460, delta 0)
+  ; [460] void faster()
+    01550: push     ebx                                      
+    01551: push     ecx                                      
+    01552: push     edx                                      
+    01553: push     esi                                      
+    01554: push     edi                                      
+    01555: push     ebp                                      
+    01556: mov      ebp, esp                                 
+    01558: sub      esp, 0                                   
+  ; [462] if (delay_cnt>0)
+    0155e: cmp      dword ptr [0], 0                         ; delay_cnt
+    01565: jle      0x156d                                   
+  ; [463] delay_cnt--;
+    01567: dec      dword ptr [0]                            ; delay_cnt
+  ; [464] }
+    0156d: pop      ebp                                      
+    0156e: pop      edi                                      
+    0156f: pop      esi                                      
+    01570: pop      edx                                      
+    01571: pop      ecx                                      
+    01572: pop      ebx                                      
+    01573: ret                                               
+
+========== show_nums  (obj line 469, delta 0)
+  ; [469] void show_nums()
+    01574: push     ebx                                      
+    01575: push     ecx                                      
+    01576: push     edx                                      
+    01577: push     esi                                      
+    01578: push     edi                                      
+    01579: push     ebp                                      
+    0157a: mov      ebp, esp                                 
+    0157c: sub      esp, 0                                   
+  ; [471] if (play_nums_on)
+    01582: cmp      dword ptr [0], 0                         ; play_nums_on
+    01589: je       0x1597                                   
+  ; [472] play_nums_on=FALSE;
+    0158b: mov      dword ptr [0], 0                         ; play_nums_on
+    01595: jmp      0x15a1                                   
+  ; [474] play_nums_on=TRUE;
+    01597: mov      dword ptr [0], 1                         ; play_nums_on
+  ; [475] }
+    015a1: pop      ebp                                      
+    015a2: pop      edi                                      
+    015a3: pop      esi                                      
+    015a4: pop      edx                                      
+    015a5: pop      ecx                                      
+    015a6: pop      ebx                                      
+    015a7: ret                                               
+
+========== frame_count  (obj line 484, delta 0)
+  ; [484] void frame_count()
+    015a8: push     ebx                                      
+    015a9: push     ecx                                      
+    015aa: push     edx                                      
+    015ab: push     esi                                      
+    015ac: push     edi                                      
+    015ad: push     ebp                                      
+    015ae: mov      ebp, esp                                 
+    015b0: sub      esp, 8                                   
+  ; [486] updates++;
+    015b6: inc      word ptr [0]                             ; updates
+  ; [487] frames++;
+    015bd: inc      dword ptr [0]                            ; frames
+  ; [488] times++;
+    015c3: inc      dword ptr [0]                            ; times
+  ; [490] int cl=count-oldcnt;
+    015c9: mov      eax, dword ptr [0]                       ; count
+    015ce: sub      eax, dword ptr [0]                       ; oldcnt
+    015d4: mov      dword ptr [ebp - 4], eax                 
+  ; [492] if (count-prev_count>TIMER_SPEED)
+    015d7: mov      eax, dword ptr [0]                       ; count
+    015dc: sub      eax, dword ptr [0]                       ; prev_count
+    015e2: cmp      eax, 0xc8                                
+    015e7: jle      0x15fd                                   
+  ; [494] prev_count=count;
+    015e9: mov      eax, dword ptr [0]                       ; count
+    015ee: mov      dword ptr [0], eax                       ; prev_count
+  ; [495] old_time=times;
+    015f3: mov      eax, dword ptr [0]                       ; times
+    015f8: mov      dword ptr [0], eax                       ; old_time
+  ; [498] if (cl>(TIMER_SPEED/4))			// Re-time interval (1/4 sec)!
+    015fd: cmp      dword ptr [ebp - 4], 0x32                
+    01601: jle      0x1678                                   
+  ; [500] oldcnt=count;
+    01607: mov      eax, dword ptr [0]                       ; count
+    0160c: mov      dword ptr [0], eax                       ; oldcnt
+  ; [501] MF=((float)cl*game_speed)/(frames*TIMER_SPEED);
+    01611: fild     dword ptr [ebp - 4]                      
+    01614: fild     dword ptr [0]                            ; game_speed
+    0161a: fmulp    st(1)                                    
+    0161c: imul     eax, dword ptr [0], 0xc8                 ; frames
+    01626: mov      dword ptr [ebp - 8], eax                 
+    01629: fild     dword ptr [ebp - 8]                      
+    0162c: pushfd                                            
+    0162d: test     byte ptr [0], 1                          ; chipbug
+    01634: je       0x1644                                   
+    01636: push     eax                                      
+    01637: mov      eax, 0xd                                 
+    0163c: call     0x1641                                   ; fdiv_fpr
+    01641: pop      eax                                      
+    01642: jmp      0x1646                                   
+    01644: fdivp    st(1)                                    
+    01646: popfd                                             
+    01647: fstp     dword ptr [0]                            ; MF
+  ; [502] if (MF>6 && game_speed==REAL_SPEED)
+    0164d: cmp      dword ptr [0], 0x40c00000                ; MF
+    01657: jle      0x1662                                   
+    01659: cmp      dword ptr [0], 0x14                      ; game_speed
+    01660: je       0x1664                                   
+    01662: jmp      0x166e                                   
+  ; [503] MF=6;
+    01664: mov      dword ptr [0], 0x40c00000                ; MF
+  ; [504] frames=0;
+    0166e: mov      dword ptr [0], 0                         ; frames
+  ; [506] }
+    01678: mov      esp, ebp                                 
+    0167a: pop      ebp                                      
+    0167b: pop      edi                                      
+    0167c: pop      esi                                      
+    0167d: pop      edx                                      
+    0167e: pop      ecx                                      
+    0167f: pop      ebx                                      
+    01680: ret                                               
+
+========== oframe_count  (obj line 508, delta 0)
+  ; [508] void oframe_count()
+    01681: push     ebx                                      
+    01682: push     ecx                                      
+    01683: push     edx                                      
+    01684: push     esi                                      
+    01685: push     edi                                      
+    01686: push     ebp                                      
+    01687: mov      ebp, esp                                 
+    01689: sub      esp, 0x10                                
+  ; [510] updates++;
+    0168f: inc      word ptr [0]                             ; updates
+  ; [511] int cl=clock();
+    01696: call     0x169b                                   ; clock
+    0169b: mov      dword ptr [ebp - 8], eax                 
+  ; [512] frames++;
+    0169e: inc      dword ptr [0]                            ; frames
+  ; [513] int c=cl/CLOCKS_PER_SEC;
+    016a4: mov      ebx, 0x64                                
+    016a9: mov      eax, dword ptr [ebp - 8]                 
+    016ac: mov      edx, dword ptr [ebp - 8]                 
+    016af: sar      edx, 0x1f                                
+    016b2: idiv     ebx                                      
+    016b4: mov      dword ptr [ebp - 4], eax                 
+  ; [514] if (c!=last_second)
+    016b7: mov      eax, dword ptr [ebp - 4]                 
+    016ba: cmp      eax, dword ptr [0]                       ; last_second
+    016c0: je       0x1731                                   
+  ; [516] seconds++;
+    016c2: inc      dword ptr [0]                            ; seconds
+  ; [517] frms_per_sec=frames;
+    016c8: mov      eax, dword ptr [0]                       ; frames
+    016cd: mov      dword ptr [0], eax                       ; frms_per_sec
+  ; [518] frames=0;
+    016d2: mov      dword ptr [0], 0                         ; frames
+  ; [519] last_second=c;
+    016dc: mov      eax, dword ptr [ebp - 4]                 
+    016df: mov      dword ptr [0], eax                       ; last_second
+  ; [520] int frame_time=cl-old_clock;
+    016e4: mov      eax, dword ptr [ebp - 8]                 
+    016e7: sub      eax, dword ptr [0]                       ; old_clock
+    016ed: mov      dword ptr [ebp - 0xc], eax               
+  ; [521] old_clock=cl;
+    016f0: mov      eax, dword ptr [ebp - 8]                 
+    016f3: mov      dword ptr [0], eax                       ; old_clock
+  ; [522] MF=((float)(frame_time)*game_speed)/(frms_per_sec*100);
+    016f8: fild     dword ptr [ebp - 0xc]                    
+    016fb: fild     dword ptr [0]                            ; game_speed
+    01701: fmulp    st(1)                                    
+    01703: imul     eax, dword ptr [0], 0x64                 ; frms_per_sec
+    0170a: mov      dword ptr [ebp - 0x10], eax              
+    0170d: fild     dword ptr [ebp - 0x10]                   
+    01710: pushfd                                            
+    01711: test     byte ptr [0], 1                          ; chipbug
+    01718: je       0x1728                                   
+    0171a: push     eax                                      
+    0171b: mov      eax, 0xd                                 
+    01720: call     0x1725                                   ; fdiv_fpr
+    01725: pop      eax                                      
+    01726: jmp      0x172a                                   
+    01728: fdivp    st(1)                                    
+    0172a: popfd                                             
+    0172b: fstp     dword ptr [0]                            ; MF
+  ; [524] }
+    01731: mov      esp, ebp                                 
+    01733: pop      ebp                                      
+    01734: pop      edi                                      
+    01735: pop      esi                                      
+    01736: pop      edx                                      
+    01737: pop      ecx                                      
+    01738: pop      ebx                                      
+    01739: ret                                               

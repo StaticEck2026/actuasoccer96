@@ -1,0 +1,2140 @@
+
+========== init_keyboard  (obj line 26, delta 3)
+  ; [23] void init_keyboard()
+    00000: push     ebx                                      
+    00001: push     ecx                                      
+    00002: push     edx                                      
+    00003: push     esi                                      
+    00004: push     edi                                      
+    00005: push     ebp                                      
+    00006: mov      ebp, esp                                 
+    00008: sub      esp, 0                                   
+  ; [25] key2[UP_KEY]=0x1e;		// A
+    0000e: mov      byte ptr [0], 0x1e                       ; key2
+  ; [26] key2[DN_KEY]=0x2c;		// Z
+    00015: mov      byte ptr [1], 0x2c                       ; key2
+  ; [27] key2[LF_KEY]=0x33;		// <
+    0001c: mov      byte ptr [2], 0x33                       ; key2
+  ; [28] key2[RT_KEY]=0x34;		// >
+    00023: mov      byte ptr [3], 0x34                       ; key2
+  ; [29] key2[F1_KEY]=0x10;		// Q
+    0002a: mov      byte ptr [4], 0x10                       ; key2
+  ; [30] key2[F2_KEY]=0x35;		// /
+    00031: mov      byte ptr [5], 0x35                       ; key2
+  ; [32] key1[UP_KEY]=-0x48;		// Arrow Up
+    00038: mov      byte ptr [0], 0xb8                       ; key1
+  ; [33] key1[DN_KEY]=-0x50;		// Arrow Dn
+    0003f: mov      byte ptr [1], 0xb0                       ; key1
+  ; [34] key1[LF_KEY]=-0x4b;		// Arrow Lf
+    00046: mov      byte ptr [2], 0xb5                       ; key1
+  ; [35] key1[RT_KEY]=-0x4d;		// Arrow Rt
+    0004d: mov      byte ptr [3], 0xb3                       ; key1
+  ; [36] key1[F1_KEY]=0x52;		// 0(num)
+    00054: mov      byte ptr [4], 0x52                       ; key1
+  ; [37] key1[F2_KEY]=0x53;		// .(num)
+    0005b: mov      byte ptr [5], 0x53                       ; key1
+  ; [38] }
+    00062: pop      ebp                                      
+    00063: pop      edi                                      
+    00064: pop      esi                                      
+    00065: pop      edx                                      
+    00066: pop      ecx                                      
+    00067: pop      ebx                                      
+    00068: ret                                               
+
+========== add_net_user  (obj line 46, delta 3)
+  ; [43] void delete_net_user(int u)
+    00069: push     ebx                                      
+    0006a: push     ecx                                      
+    0006b: push     edx                                      
+    0006c: push     esi                                      
+    0006d: push     edi                                      
+    0006e: push     ebp                                      
+    0006f: mov      ebp, esp                                 
+    00071: sub      esp, 4                                   
+    00077: mov      dword ptr [ebp - 4], eax                 
+  ; [45] users_left--;
+    0007a: mov      esp, ebp                                 
+    0007c: pop      ebp                                      
+    0007d: pop      edi                                      
+    0007e: pop      esi                                      
+    0007f: pop      edx                                      
+    00080: pop      ecx                                      
+    00081: pop      ebx                                      
+    00082: ret                                               
+
+========== delete_net_user  (obj line 53, delta 10)
+  ; [43] void delete_net_user(int u)
+    00083: push     ebx                                      
+    00084: push     ecx                                      
+    00085: push     edx                                      
+    00086: push     esi                                      
+    00087: push     edi                                      
+    00088: push     ebp                                      
+    00089: mov      ebp, esp                                 
+    0008b: sub      esp, 0x14                                
+    00091: mov      dword ptr [ebp - 4], eax                 
+  ; [45] users_left--;
+    00094: dec      word ptr [0]                             ; users_left
+  ; [46] if (u==user_taker)
+    0009b: mov      eax, dword ptr [0xfffffffe]              ; user_taker
+    000a0: sar      eax, 0x10                                
+    000a3: cmp      eax, dword ptr [ebp - 4]                 
+    000a6: jne      0xb1                                     
+  ; [47] user_taker=FALSE;
+    000a8: mov      word ptr [0], 0                          ; user_taker
+  ; [49] short tm=0;
+    000b1: mov      dword ptr [ebp - 0x10], 0                
+  ; [52] char copy=FALSE;
+    000b8: mov      byte ptr [ebp - 8], 0                    
+  ; [54] short type=users[u-1].type;
+    000bc: mov      eax, dword ptr [ebp - 4]                 
+    000bf: dec      eax                                      
+    000c0: imul     eax, eax, 0x18                           
+    000c3: mov      ax, word ptr [eax]                       ; users
+    000ca: mov      dword ptr [ebp - 0xc], eax               
+  ; [56] if (type<0)
+    000cd: movsx    eax, word ptr [ebp - 0xc]                
+    000d1: test     eax, eax                                 
+    000d3: jge      0x1bf                                    
+  ; [59] if (type==-1)
+    000d9: movsx    eax, word ptr [ebp - 0xc]                
+    000dd: cmp      eax, -1                                  
+    000e0: jne      0x154                                    
+  ; [62] for (i=0; i<auto_users_a; i++)
+    000e6: mov      dword ptr [ebp - 0x14], 0                
+    000ed: jmp      0xf5                                     
+    000ef: mov      eax, dword ptr [ebp - 0x14]              
+    000f2: inc      dword ptr [ebp - 0x14]                   
+    000f5: mov      eax, dword ptr [0xfffffffe]              ; auto_users_a
+    000fa: sar      eax, 0x10                                
+    000fd: cmp      eax, dword ptr [ebp - 0x14]              
+    00100: jle      0x148                                    
+  ; [64] if (auto_users_list_a[i]==u)
+    00102: mov      eax, dword ptr [ebp - 0x14]              
+    00105: add      eax, eax                                 
+    00107: mov      eax, dword ptr [eax - 2]                 ; auto_users_list_a
+    0010d: sar      eax, 0x10                                
+    00110: cmp      eax, dword ptr [ebp - 4]                 
+    00113: jne      0x119                                    
+  ; [74] copy=TRUE;
+    00115: mov      byte ptr [ebp - 8], 1                    
+  ; [77] if (copy && i<auto_users_a)
+    00119: cmp      byte ptr [ebp - 8], 0                    
+    0011d: je       0x12c                                    
+    0011f: mov      eax, dword ptr [0xfffffffe]              ; auto_users_a
+    00124: sar      eax, 0x10                                
+    00127: cmp      eax, dword ptr [ebp - 0x14]              
+    0012a: jg       0x12e                                    
+    0012c: jmp      0x146                                    
+  ; [78] auto_users_list_a[i]=auto_users_list_a[i+1];
+    0012e: mov      eax, dword ptr [ebp - 0x14]              
+    00131: add      eax, eax                                 
+    00133: mov      edx, dword ptr [ebp - 0x14]              
+    00136: add      edx, edx                                 
+    00138: mov      ax, word ptr [eax + 2]                   ; auto_users_list_a
+    0013f: mov      word ptr [edx], ax                       ; auto_users_list_a
+  ; [79] }
+    00146: jmp      0xef                                     
+  ; [81] auto_users_a--;
+    00148: dec      word ptr [0]                             ; auto_users_a
+  ; [82] }
+    0014f: jmp      0x1bd                                    
+  ; [86] for (i=0; i<auto_users_b; i++)
+    00154: mov      dword ptr [ebp - 0x14], 0                
+    0015b: jmp      0x163                                    
+    0015d: mov      eax, dword ptr [ebp - 0x14]              
+    00160: inc      dword ptr [ebp - 0x14]                   
+    00163: mov      eax, dword ptr [0xfffffffe]              ; auto_users_b
+    00168: sar      eax, 0x10                                
+    0016b: cmp      eax, dword ptr [ebp - 0x14]              
+    0016e: jle      0x1b6                                    
+  ; [88] if (auto_users_list_b[i]==u)
+    00170: mov      eax, dword ptr [ebp - 0x14]              
+    00173: add      eax, eax                                 
+    00175: mov      eax, dword ptr [eax - 2]                 ; auto_users_list_b
+    0017b: sar      eax, 0x10                                
+    0017e: cmp      eax, dword ptr [ebp - 4]                 
+    00181: jne      0x187                                    
+  ; [98] copy=TRUE;
+    00183: mov      byte ptr [ebp - 8], 1                    
+  ; [101] if (copy && i<auto_users_b)
+    00187: cmp      byte ptr [ebp - 8], 0                    
+    0018b: je       0x19a                                    
+    0018d: mov      eax, dword ptr [0xfffffffe]              ; auto_users_b
+    00192: sar      eax, 0x10                                
+    00195: cmp      eax, dword ptr [ebp - 0x14]              
+    00198: jg       0x19c                                    
+    0019a: jmp      0x1b4                                    
+  ; [102] auto_users_list_b[i]=auto_users_list_b[i+1];
+    0019c: mov      eax, dword ptr [ebp - 0x14]              
+    0019f: add      eax, eax                                 
+    001a1: mov      edx, dword ptr [ebp - 0x14]              
+    001a4: add      edx, edx                                 
+    001a6: mov      ax, word ptr [eax + 2]                   ; auto_users_list_b
+    001ad: mov      word ptr [edx], ax                       ; auto_users_list_b
+  ; [103] }
+    001b4: jmp      0x15d                                    
+  ; [105] auto_users_b--;
+    001b6: dec      word ptr [0]                             ; auto_users_b
+  ; [107] }
+    001bd: jmp      0x1d5                                    
+  ; [111] if (fixed_net_user==u)
+    001bf: mov      eax, dword ptr [0xfffffffe]              ; fixed_net_user
+    001c4: sar      eax, 0x10                                
+    001c7: cmp      eax, dword ptr [ebp - 4]                 
+    001ca: jne      0x1d5                                    
+  ; [112] fixed_net_user=0;
+    001cc: mov      word ptr [0], 0                          ; fixed_net_user
+  ; [115] for (i=0; i<22; i++)
+    001d5: mov      dword ptr [ebp - 0x14], 0                
+    001dc: jmp      0x1e4                                    
+    001de: mov      eax, dword ptr [ebp - 0x14]              
+    001e1: inc      dword ptr [ebp - 0x14]                   
+    001e4: cmp      dword ptr [ebp - 0x14], 0x16             
+    001e8: jge      0x211                                    
+  ; [117] if (teams[i].control==u)
+    001ea: imul     eax, dword ptr [ebp - 0x14], 0xcb        
+    001f1: mov      al, byte ptr [eax + 0x2e]                ; teams
+    001f7: and      eax, 0xff                                
+    001fc: cmp      eax, dword ptr [ebp - 4]                 
+    001ff: jne      0x20f                                    
+  ; [118] teams[i].control=FALSE;		// No user control of player!
+    00201: imul     eax, dword ptr [ebp - 0x14], 0xcb        
+    00208: mov      byte ptr [eax + 0x2e], 0                 ; teams
+  ; [119] }
+    0020f: jmp      0x1de                                    
+  ; [121] users[u-1].type=0;
+    00211: mov      eax, dword ptr [ebp - 4]                 
+    00214: dec      eax                                      
+    00215: imul     eax, eax, 0x18                           
+    00218: mov      word ptr [eax], 0                        ; users
+  ; [122] users[u-1].control=NO_CTRL;
+    00221: mov      eax, dword ptr [ebp - 4]                 
+    00224: dec      eax                                      
+    00225: imul     eax, eax, 0x18                           
+    00228: mov      word ptr [eax + 2], 0                    ; users
+  ; [124] sprintf(glob_str1,"USER %d has quit!",u);
+    00231: mov      eax, dword ptr [ebp - 4]                 
+    00234: push     eax                                      
+    00235: mov      eax, 0x64f                               
+    0023a: call     0x23f                                    ; GetTEXT
+    0023f: push     eax                                      
+    00240: mov      eax, 0                                   ; glob_str1
+    00245: push     eax                                      
+    00246: call     0x24b                                    ; sprintf
+    0024b: add      esp, 0xc                                 
+  ; [125] add_message(&glob_str1[0],RED,TRUE);
+    0024e: mov      ebx, 1                                   
+    00253: mov      edx, 0x7f                                
+    00258: mov      eax, 0                                   ; glob_str1
+    0025d: call     0x262                                    ; add_message
+  ; [127] if (users_left==1)
+    00262: mov      eax, dword ptr [0xfffffffe]              ; users_left
+    00267: sar      eax, 0x10                                
+    0026a: cmp      eax, 1                                   
+    0026d: jne      0x28a                                    
+  ; [128] sprintf(glob_str2,"You are now the only user in the game!");
+    0026f: mov      eax, 0x650                               
+    00274: call     0x279                                    ; GetTEXT
+    00279: push     eax                                      
+    0027a: mov      eax, 0                                   ; glob_str2
+    0027f: push     eax                                      
+    00280: call     0x285                                    ; sprintf
+    00285: add      esp, 8                                   
+    00288: jmp      0x2ac                                    
+  ; [130] sprintf(glob_str2,"There are %d users left in the game!",users_left);
+    0028a: mov      eax, dword ptr [0xfffffffe]              ; users_left
+    0028f: sar      eax, 0x10                                
+    00292: push     eax                                      
+    00293: mov      eax, 0x651                               
+    00298: call     0x29d                                    ; GetTEXT
+    0029d: push     eax                                      
+    0029e: mov      eax, 0                                   ; glob_str2
+    002a3: push     eax                                      
+    002a4: call     0x2a9                                    ; sprintf
+    002a9: add      esp, 0xc                                 
+  ; [132] add_message(&glob_str2[0],YELLOW);
+    002ac: call     0x2b1                                    ; W?$Wdf0madd_message$n(pnasa)v2$n()a
+    002b1: xor      ebx, ebx                                 
+    002b3: mov      bl, al                                   
+    002b5: mov      edx, 0x9d                                
+    002ba: mov      eax, 0                                   ; glob_str2
+    002bf: call     0x2c4                                    ; add_message
+  ; [133] }
+    002c4: mov      esp, ebp                                 
+    002c6: pop      ebp                                      
+    002c7: pop      edi                                      
+    002c8: pop      esi                                      
+    002c9: pop      edx                                      
+    002ca: pop      ecx                                      
+    002cb: pop      ebx                                      
+    002cc: ret                                               
+
+========== add_team_user  (obj line 150, delta 10)
+  ; [140] void add_team_user(short t,short c)
+    002cd: push     ebx                                      
+    002ce: push     ecx                                      
+    002cf: push     esi                                      
+    002d0: push     edi                                      
+    002d1: push     ebp                                      
+    002d2: mov      ebp, esp                                 
+    002d4: sub      esp, 8                                   
+    002da: mov      dword ptr [ebp - 8], eax                 
+    002dd: mov      dword ptr [ebp - 4], edx                 
+  ; [142] users[num_of_users].type=t;						// User team.
+    002e0: imul     edx, dword ptr [0], 0x18                 ; num_of_users
+    002e7: mov      eax, dword ptr [ebp - 8]                 
+    002ea: mov      word ptr [edx], ax                       ; users
+  ; [143] users[num_of_users].control=c;					// Control type.
+    002f1: imul     edx, dword ptr [0], 0x18                 ; num_of_users
+    002f8: mov      eax, dword ptr [ebp - 4]                 
+    002fb: mov      word ptr [edx + 2], ax                   ; users
+  ; [144] users[num_of_users++].plr=-1;						// Current player.
+    00302: mov      edx, dword ptr [0]                       ; num_of_users
+    00308: inc      dword ptr [0]                            ; num_of_users
+    0030e: imul     edx, edx, 0x18                           
+    00311: mov      byte ptr [edx + 0x17], 0xff              ; users
+  ; [152] if (t==-1)
+    00318: movsx    edx, word ptr [ebp - 8]                  
+    0031c: cmp      edx, -1                                  
+    0031f: jne      0x33f                                    
+  ; [153] auto_users_list_a[auto_users_a++]=num_of_users;
+    00321: mov      ax, word ptr [0]                         ; auto_users_a
+    00327: inc      word ptr [0]                             ; auto_users_a
+    0032e: cwde                                              
+    0032f: add      eax, eax                                 
+    00331: mov      dx, word ptr [0]                         ; num_of_users
+    00338: mov      word ptr [eax], dx                       ; auto_users_list_a
+  ; [154] if (t==-2)
+    0033f: movsx    eax, word ptr [ebp - 8]                  
+    00343: cmp      eax, -2                                  
+    00346: jne      0x366                                    
+  ; [155] auto_users_list_b[auto_users_b++]=num_of_users;
+    00348: mov      ax, word ptr [0]                         ; auto_users_b
+    0034e: inc      word ptr [0]                             ; auto_users_b
+    00355: cwde                                              
+    00356: add      eax, eax                                 
+    00358: mov      dx, word ptr [0]                         ; num_of_users
+    0035f: mov      word ptr [eax], dx                       ; auto_users_list_b
+  ; [161] }
+    00366: mov      esp, ebp                                 
+    00368: pop      ebp                                      
+    00369: pop      edi                                      
+    0036a: pop      esi                                      
+    0036b: pop      ecx                                      
+    0036c: pop      ebx                                      
+    0036d: ret                                               
+
+========== add_fixed_user  (obj line 178, delta 10)
+  ; [168] void add_fixed_user(short p,short c)
+    0036e: push     ebx                                      
+    0036f: push     ecx                                      
+    00370: push     esi                                      
+    00371: push     edi                                      
+    00372: push     ebp                                      
+    00373: mov      ebp, esp                                 
+    00375: sub      esp, 8                                   
+    0037b: mov      dword ptr [ebp - 8], eax                 
+    0037e: mov      dword ptr [ebp - 4], edx                 
+  ; [170] users[num_of_users].type=p;						// User fixed player.
+    00381: imul     edx, dword ptr [0], 0x18                 ; num_of_users
+    00388: mov      eax, dword ptr [ebp - 8]                 
+    0038b: mov      word ptr [edx], ax                       ; users
+  ; [171] users[num_of_users].control=c;					// Control type.
+    00392: imul     edx, dword ptr [0], 0x18                 ; num_of_users
+    00399: mov      eax, dword ptr [ebp - 4]                 
+    0039c: mov      word ptr [edx + 2], ax                   ; users
+  ; [172] users[num_of_users++].plr=p;						// Current player.
+    003a3: mov      edx, dword ptr [0]                       ; num_of_users
+    003a9: inc      dword ptr [0]                            ; num_of_users
+    003af: imul     edx, edx, 0x18                           
+    003b2: mov      al, byte ptr [ebp - 8]                   
+    003b5: mov      byte ptr [edx + 0x17], al                ; users
+  ; [181] teams[p-1].control=num_of_users;					// Tag player as user controlled!
+    003bb: movsx    edx, word ptr [ebp - 8]                  
+    003bf: dec      edx                                      
+    003c0: imul     edx, edx, 0xcb                           
+    003c6: mov      al, byte ptr [0]                         ; num_of_users
+    003cb: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [183] if (c!=NET_CTRL && network_on)
+    003d1: movsx    edx, word ptr [ebp - 4]                  
+    003d5: cmp      edx, 6                                   
+    003d8: je       0x3e3                                    
+    003da: cmp      dword ptr [0], 0                         ; network_on
+    003e1: jne      0x3e5                                    
+    003e3: jmp      0x3f1                                    
+  ; [184] fixed_net_user=num_of_users;
+    003e5: mov      ax, word ptr [0]                         ; num_of_users
+    003eb: mov      word ptr [0], ax                         ; fixed_net_user
+  ; [190] }
+    003f1: mov      esp, ebp                                 
+    003f3: pop      ebp                                      
+    003f4: pop      edi                                      
+    003f5: pop      esi                                      
+    003f6: pop      ecx                                      
+    003f7: pop      ebx                                      
+    003f8: ret                                               
+
+========== clear_all_fixed  (obj line 207, delta 10)
+  ; [197] void clear_all_fixed()
+    003f9: push     ebx                                      
+    003fa: push     ecx                                      
+    003fb: push     edx                                      
+    003fc: push     esi                                      
+    003fd: push     edi                                      
+    003fe: push     ebp                                      
+    003ff: mov      ebp, esp                                 
+    00401: sub      esp, 4                                   
+  ; [199] for (int i=0; i<players; i++)
+    00407: mov      dword ptr [ebp - 4], 0                   
+    0040e: jmp      0x416                                    
+    00410: mov      eax, dword ptr [ebp - 4]                 
+    00413: inc      dword ptr [ebp - 4]                      
+    00416: mov      eax, dword ptr [ebp - 4]                 
+    00419: cmp      eax, dword ptr [0]                       ; players
+    0041f: jge      0x431                                    
+  ; [201] teams[i].control=FALSE;
+    00421: imul     eax, dword ptr [ebp - 4], 0xcb           
+    00428: mov      byte ptr [eax + 0x2e], 0                 ; teams
+  ; [202] }
+    0042f: jmp      0x410                                    
+  ; [203] }
+    00431: mov      esp, ebp                                 
+    00433: pop      ebp                                      
+    00434: pop      edi                                      
+    00435: pop      esi                                      
+    00436: pop      edx                                      
+    00437: pop      ecx                                      
+    00438: pop      ebx                                      
+    00439: ret                                               
+
+========== init_users  (obj line 220, delta 10)
+  ; [210] void init_users()
+    0043a: push     ebx                                      
+    0043b: push     ecx                                      
+    0043c: push     edx                                      
+    0043d: push     esi                                      
+    0043e: push     edi                                      
+    0043f: push     ebp                                      
+    00440: mov      ebp, esp                                 
+    00442: sub      esp, 0                                   
+  ; [212] memset((void *)users,0,MAX_NET_USERS*(sizeof(user_config)));
+    00448: mov      ebx, 0x1e0                               
+    0044d: xor      edx, edx                                 
+    0044f: mov      eax, 0                                   ; users
+    00454: call     0x459                                    ; memset
+  ; [213] num_of_users=0;
+    00459: mov      dword ptr [0], 0                         ; num_of_users
+  ; [214] auto_users_a=0;
+    00463: mov      word ptr [0], 0                          ; auto_users_a
+  ; [215] auto_users_b=0;
+    0046c: mov      word ptr [0], 0                          ; auto_users_b
+  ; [216] fixed_net_user=0;
+    00475: mov      word ptr [0], 0                          ; fixed_net_user
+  ; [217] clear_all_fixed();
+    0047e: call     0x483                                    ; clear_all_fixed
+  ; [227] }
+    00483: pop      ebp                                      
+    00484: pop      edi                                      
+    00485: pop      esi                                      
+    00486: pop      edx                                      
+    00487: pop      ecx                                      
+    00488: pop      ebx                                      
+    00489: ret                                               
+
+========== go_button  (obj line 242, delta 10)
+  ; [232] void go_button()
+    0048a: push     ebx                                      
+    0048b: push     ecx                                      
+    0048c: push     edx                                      
+    0048d: push     esi                                      
+    0048e: push     edi                                      
+    0048f: push     ebp                                      
+    00490: mov      ebp, esp                                 
+    00492: sub      esp, 8                                   
+  ; [234] switch(button_lit)
+    00498: mov      eax, dword ptr [0]                       ; button_lit
+    0049d: mov      dword ptr [ebp - 4], eax                 
+    004a0: jmp      0x548                                    
+  ; [238] in_game=FALSE;
+    004a5: mov      byte ptr [0], 0                          ; in_game
+  ; [239] break;
+    004ac: jmp      0x562                                    
+  ; [243] grid_map();					//Draw zonal grid on pitch.
+    004b1: call     0x4b6                                    ; grid_map
+  ; [244] MouseRelease();
+    004b6: call     0x4bb                                    ; MouseRelease
+  ; [245] break;
+    004bb: jmp      0x562                                    
+  ; [249] faster();					//Speed up.
+    004c0: call     0x4c5                                    ; faster
+  ; [250] break;
+    004c5: jmp      0x562                                    
+  ; [254] slower();					//Slow down.
+    004ca: call     0x4cf                                    ; slower
+  ; [255] break;
+    004cf: jmp      0x562                                    
+  ; [259] show_nums();				//Show player nos.
+    004d4: call     0x4d9                                    ; show_nums
+  ; [260] MouseRelease();
+    004d9: call     0x4de                                    ; MouseRelease
+  ; [261] break;
+    004de: jmp      0x562                                    
+  ; [265] set_xyspin++;				//Add clockwise swerve.
+    004e3: inc      dword ptr [0]                            ; set_xyspin
+  ; [266] MouseRelease();
+    004e9: call     0x4ee                                    ; MouseRelease
+  ; [267] break;
+    004ee: jmp      0x562                                    
+  ; [271] set_xyspin--;				//Add anti-clockwise swerve.
+    004f3: dec      dword ptr [0]                            ; set_xyspin
+  ; [272] MouseRelease();
+    004f9: call     0x4fe                                    ; MouseRelease
+  ; [273] break;
+    004fe: jmp      0x562                                    
+  ; [277] set_zspin++;				//Add Top-spin swerve.
+    00500: inc      dword ptr [0]                            ; set_zspin
+  ; [278] MouseRelease();
+    00506: call     0x50b                                    ; MouseRelease
+  ; [279] break;
+    0050b: jmp      0x562                                    
+  ; [283] set_zspin--;				//Add Back-spin swerve.
+    0050d: dec      dword ptr [0]                            ; set_zspin
+  ; [284] MouseRelease();
+    00513: call     0x518                                    ; MouseRelease
+  ; [285] break;
+    00518: jmp      0x562                                    
+  ; [290] break;
+    0051a: jmp      0x562                                    
+  ; [293] }
+    0051c: jmp      0x562                                    
+    0051e: mov      eax, eax                                 
+  ; [234] switch(button_lit)
+    00520: movsd    dword ptr es:[edi], dword ptr [esi]      ; init_keyboard
+    00521: add      al, 0                                    
+    00523: add      byte ptr [ecx - 0x3ffffffc], dh          ; init_keyboard, init_keyboard
+    00529: add      al, 0                                    
+    0052b: add      dl, cl                                   ; init_keyboard
+    0052d: add      al, 0                                    
+    0052f: add      ah, dl                                   ; init_keyboard
+    00531: add      al, 0                                    
+    00533: add      bl, ah                                   ; init_keyboard
+    00535: add      al, 0                                    
+    00537: add      bl, dh                                   ; init_keyboard
+    00539: add      al, 0                                    
+    0053b: add      byte ptr [eax], al                       ; init_keyboard
+    0053d: add      eax, 0x50d0000                           ; init_keyboard
+    00542: add      byte ptr [eax], al                       
+    00544: sbb      al, byte ptr [0x458b0000]                ; init_keyboard
+    0054a: cld                                               
+    0054b: dec      eax                                      
+    0054c: mov      dword ptr [ebp - 8], eax                 
+    0054f: cmp      dword ptr [ebp - 8], 9                   
+    00553: ja       0x51c                                    
+    00555: mov      eax, dword ptr [ebp - 8]                 
+    00558: shl      eax, 2                                   
+    0055b: jmp      dword ptr cs:[eax + 0x520]               ; init_keyboard
+  ; [294] }
+    00562: mov      esp, ebp                                 
+    00564: pop      ebp                                      
+    00565: pop      edi                                      
+    00566: pop      esi                                      
+    00567: pop      edx                                      
+    00568: pop      ecx                                      
+    00569: pop      ebx                                      
+    0056a: ret                                               
+
+========== mouse_fired  (obj line 309, delta 10)
+  ; [299] void mouse_fired()
+    0056b: push     ebx                                      
+    0056c: push     ecx                                      
+    0056d: push     edx                                      
+    0056e: push     esi                                      
+    0056f: push     edi                                      
+    00570: push     ebp                                      
+    00571: mov      ebp, esp                                 
+    00573: sub      esp, 0                                   
+  ; [301] if (!on_3d)
+    00579: cmp      byte ptr [0], 0                          ; on_3d
+    00580: jne      0x590                                    
+  ; [303] if (button_lit)
+    00582: cmp      dword ptr [0], 0                         ; button_lit
+    00589: je       0x590                                    
+  ; [304] go_button();
+    0058b: call     0x590                                    ; go_button
+  ; [306] }
+    00590: pop      ebp                                      
+    00591: pop      edi                                      
+    00592: pop      esi                                      
+    00593: pop      edx                                      
+    00594: pop      ecx                                      
+    00595: pop      ebx                                      
+    00596: ret                                               
+
+========== process_butts  (obj line 321, delta 10)
+  ; [311] void process_butts()
+    00597: push     ebx                                      
+    00598: push     ecx                                      
+    00599: push     edx                                      
+    0059a: push     esi                                      
+    0059b: push     edi                                      
+    0059c: push     ebp                                      
+    0059d: mov      ebp, esp                                 
+    0059f: sub      esp, 0x10                                
+  ; [314] for (int i=0; i<max_butts; i++)
+    005a5: mov      dword ptr [ebp - 4], 0                   
+    005ac: jmp      0x5b4                                    
+    005ae: mov      eax, dword ptr [ebp - 4]                 
+    005b1: inc      dword ptr [ebp - 4]                      
+    005b4: mov      eax, dword ptr [ebp - 4]                 
+    005b7: cmp      eax, dword ptr [0]                       ; max_butts
+    005bd: jge      0x693                                    
+  ; [316] x=us_buttons[i].x;
+    005c3: imul     eax, dword ptr [ebp - 4], 0x18           
+    005c7: mov      eax, dword ptr [eax]                     ; us_buttons
+    005cd: mov      dword ptr [ebp - 0x10], eax              
+  ; [317] y=us_buttons[i].y;
+    005d0: imul     eax, dword ptr [ebp - 4], 0x18           
+    005d4: mov      eax, dword ptr [eax + 4]                 ; us_buttons
+    005da: mov      dword ptr [ebp - 0xc], eax               
+  ; [318] w=us_buttons[i].w;
+    005dd: imul     eax, dword ptr [ebp - 4], 0x18           
+    005e1: mov      eax, dword ptr [eax + 8]                 ; us_buttons
+    005e7: mov      dword ptr [ebp - 8], eax                 
+  ; [320] && (Mouse.y>=y-4) && (Mouse.y<=y+12))
+    005ea: mov      eax, dword ptr [0]                       ; Mouse
+    005ef: mov      edx, dword ptr [0]                       ; Mouse
+    005f5: sar      edx, 0x1f                                
+    005f8: sub      eax, edx                                 
+    005fa: sar      eax, 1                                   
+    005fc: mov      edx, dword ptr [ebp - 0x10]              
+    005ff: sub      edx, 4                                   
+    00602: cmp      eax, edx                                 
+    00604: jl       0x62a                                    
+    00606: mov      eax, dword ptr [ebp - 8]                 
+    00609: shl      eax, 3                                   
+    0060c: mov      ebx, dword ptr [ebp - 0x10]              
+    0060f: add      ebx, eax                                 
+    00611: mov      eax, dword ptr [0]                       ; Mouse
+    00616: mov      edx, dword ptr [0]                       ; Mouse
+    0061c: sar      edx, 0x1f                                
+    0061f: sub      eax, edx                                 
+    00621: sar      eax, 1                                   
+    00623: lea      edx, [ebx + 4]                           
+    00626: cmp      eax, edx                                 
+    00628: jle      0x62c                                    
+    0062a: jmp      0x63a                                    
+    0062c: mov      eax, dword ptr [ebp - 0xc]               
+    0062f: sub      eax, 4                                   
+    00632: cmp      eax, dword ptr [4]                       ; Mouse
+    00638: jle      0x63c                                    
+    0063a: jmp      0x64a                                    
+    0063c: mov      eax, dword ptr [ebp - 0xc]               
+    0063f: add      eax, 0xc                                 
+    00642: cmp      eax, dword ptr [4]                       ; Mouse
+    00648: jge      0x64c                                    
+    0064a: jmp      0x66e                                    
+  ; [322] if (!us_buttons[i].l)
+    0064c: imul     eax, dword ptr [ebp - 4], 0x18           
+    00650: cmp      byte ptr [eax + 0x16], 0                 ; us_buttons
+    00657: jne      0x66c                                    
+  ; [324] light_button(i);			//Mouse will highlight button.
+    00659: mov      eax, dword ptr [ebp - 4]                 
+    0065c: call     0x661                                    ; light_button
+  ; [325] us_buttons[i].l=1;
+    00661: imul     eax, dword ptr [ebp - 4], 0x18           
+    00665: mov      byte ptr [eax + 0x16], 1                 ; us_buttons
+  ; [327] }
+    0066c: jmp      0x68e                                    
+  ; [330] if (us_buttons[i].l)
+    0066e: imul     eax, dword ptr [ebp - 4], 0x18           
+    00672: cmp      byte ptr [eax + 0x16], 0                 ; us_buttons
+    00679: je       0x68e                                    
+  ; [332] unlight_button(i);
+    0067b: mov      eax, dword ptr [ebp - 4]                 
+    0067e: call     0x683                                    ; unlight_button
+  ; [333] us_buttons[i].l=0;
+    00683: imul     eax, dword ptr [ebp - 4], 0x18           
+    00687: mov      byte ptr [eax + 0x16], 0                 ; us_buttons
+  ; [336] }
+    0068e: jmp      0x5ae                                    
+  ; [337] }
+    00693: mov      esp, ebp                                 
+    00695: pop      ebp                                      
+    00696: pop      edi                                      
+    00697: pop      esi                                      
+    00698: pop      edx                                      
+    00699: pop      ecx                                      
+    0069a: pop      ebx                                      
+    0069b: ret                                               
+
+========== convert_inputs  (obj line 361, delta 10)
+  ; [351] void convert_inputs()
+    0069c: push     ebx                                      
+    0069d: push     ecx                                      
+    0069e: push     edx                                      
+    0069f: push     esi                                      
+    006a0: push     edi                                      
+    006a1: push     ebp                                      
+    006a2: mov      ebp, esp                                 
+    006a4: sub      esp, 0x1c                                
+  ; [354] for (int i=0; i<num_of_users; i++)
+    006aa: mov      dword ptr [ebp - 0x10], 0                
+    006b1: jmp      0x6b9                                    
+    006b3: mov      eax, dword ptr [ebp - 0x10]              
+    006b6: inc      dword ptr [ebp - 0x10]                   
+    006b9: mov      eax, dword ptr [ebp - 0x10]              
+    006bc: cmp      eax, dword ptr [0]                       ; num_of_users
+    006c2: jge      0x83f                                    
+  ; [356] x=users_dir_i[readptr][i].x_f1;
+    006c8: imul     edx, dword ptr [0], 0x3c                 ; readptr
+    006cf: mov      eax, dword ptr [ebp - 0x10]              
+    006d2: lea      eax, [eax + eax*2]                       
+    006d5: add      eax, edx                                 
+    006d7: mov      al, byte ptr [eax]                       ; users_dir_i
+    006dd: mov      byte ptr [ebp - 0xc], al                 
+  ; [357] y=users_dir_i[readptr][i].y_f2;
+    006e0: imul     edx, dword ptr [0], 0x3c                 ; readptr
+    006e7: mov      eax, dword ptr [ebp - 0x10]              
+    006ea: lea      eax, [eax + eax*2]                       
+    006ed: add      eax, edx                                 
+    006ef: mov      al, byte ptr [eax + 1]                   ; users_dir_i
+    006f5: mov      byte ptr [ebp - 4], al                   
+  ; [358] 
+    006f8: imul     edx, dword ptr [0], 0x3c                 ; readptr
+    006ff: mov      eax, dword ptr [ebp - 0x10]              
+    00702: lea      eax, [eax + eax*2]                       
+    00705: add      eax, edx                                 
+    00707: mov      al, byte ptr [eax + 2]                   ; users_dir_i
+    0070d: mov      byte ptr [ebp - 8], al                   
+  ; [360] delete_net_user(i+1);
+    00710: test     byte ptr [ebp - 8], 0x80                 
+    00714: je       0x73e                                    
+  ; [361] else
+    00716: imul     eax, dword ptr [ebp - 0x10], 0x18        
+    0071a: movsx    eax, word ptr [eax + 2]                  ; users
+    00721: test     eax, eax                                 
+    00723: je       0x730                                    
+  ; [362] {
+    00725: mov      eax, dword ptr [ebp - 0x10]              
+    00728: inc      eax                                      
+    00729: call     0x72e                                    ; delete_net_user
+    0072e: jmp      0x739                                    
+  ; [364] 
+    00730: mov      eax, dword ptr [ebp - 0x10]              
+    00733: inc      eax                                      
+    00734: call     0x739                                    ; add_net_user
+    00739: jmp      0x83a                                    
+  ; [367] users_dir[i].f+=((y&6)<<3);
+    0073e: movsx    ax, byte ptr [ebp - 0xc]                 
+    00743: mov      dword ptr [ebp - 0x18], eax              
+    00746: fild     word ptr [ebp - 0x18]                    
+    00749: fmul     qword ptr [0]                            ; CONST+0 f=0 d=0.0078125
+    0074f: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    00753: fstp     dword ptr [eax]                          ; users_dir
+  ; [368] 
+    00759: movsx    ax, byte ptr [ebp - 4]                   
+    0075e: mov      dword ptr [ebp - 0x18], eax              
+    00761: fild     word ptr [ebp - 0x18]                    
+    00764: fmul     qword ptr [0]                            ; CONST+0 f=0 d=0.0078125
+    0076a: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    0076e: fstp     dword ptr [eax + 4]                      ; users_dir
+  ; [369] x&=0xfff8;
+    00774: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    00778: push     dword ptr [eax + 4]                      ; users_dir
+    0077e: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    00782: push     dword ptr [eax]                          ; users_dir
+    00788: call     0x78d                                    ; calc_dist
+    0078d: fstp     dword ptr [ebp - 0x1c]                   
+  ; [370] y&=0xfff8;
+    00790: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    00794: fld      dword ptr [eax]                          ; users_dir
+    0079a: pushfd                                            
+    0079b: test     byte ptr [0], 1                          ; chipbug
+    007a2: je       0x7ae                                    
+    007a4: push     dword ptr [ebp - 0x1c]                   
+    007a7: call     0x7ac                                    ; fdiv_m32
+    007ac: jmp      0x7b1                                    
+    007ae: fdiv     dword ptr [ebp - 0x1c]                   
+    007b1: popfd                                             
+    007b2: fstp     dword ptr [eax]                          ; users_dir
+  ; [371] #else
+    007b8: imul     eax, dword ptr [ebp - 0x10], 0xc         
+    007bc: fld      dword ptr [eax + 4]                      ; users_dir
+    007c2: pushfd                                            
+    007c3: test     byte ptr [0], 1                          ; chipbug
+    007ca: je       0x7d6                                    
+    007cc: push     dword ptr [ebp - 0x1c]                   
+    007cf: call     0x7d4                                    ; fdiv_m32
+    007d4: jmp      0x7d9                                    
+    007d6: fdiv     dword ptr [ebp - 0x1c]                   
+    007d9: popfd                                             
+    007da: fstp     dword ptr [eax + 4]                      ; users_dir
+  ; [373] #ifdef SUPPORT_LP
+    007e0: cmp      byte ptr [ebp - 0xc], 0                  
+    007e4: jne      0x7ec                                    
+    007e6: cmp      byte ptr [ebp - 4], 0                    
+    007ea: je       0x7f2                                    
+    007ec: mov      byte ptr [ebp - 0x14], 1                 
+    007f0: jmp      0x7f6                                    
+    007f2: mov      byte ptr [ebp - 0x14], 0                 
+    007f6: imul     edx, dword ptr [ebp - 0x10], 0xc         
+    007fa: mov      al, byte ptr [ebp - 0x14]                
+    007fd: mov      byte ptr [edx + 8], al                   ; users_dir
+  ; [374] if (users[i].control==LOGPAD_CTRL)
+    00803: imul     edx, dword ptr [ebp - 0x10], 0xc         
+    00807: mov      al, byte ptr [ebp - 8]                   
+    0080a: mov      byte ptr [edx + 9], al                   ; users_dir
+  ; [376] users_dir[i].f+=((x&6)<<1);
+    00810: imul     edx, dword ptr [ebp - 0x10], 0xc         
+    00814: fld      dword ptr [edx]                          ; users_dir
+    0081a: call     0x81f                                    ; CHP
+    0081f: fistp    dword ptr [0]                            ; deb_a
+  ; [377] users_dir[i].f+=((y&6)<<3);
+    00825: imul     edx, dword ptr [ebp - 0x10], 0xc         
+    00829: fld      dword ptr [edx + 4]                      ; users_dir
+    0082f: call     0x834                                    ; CHP
+    00834: fistp    dword ptr [0]                            ; deb_b
+  ; [380] x&=0xfff8;
+    0083a: jmp      0x6b3                                    
+  ; [381] y&=0xfff8;
+    0083f: mov      esp, ebp                                 
+    00841: pop      ebp                                      
+    00842: pop      edi                                      
+    00843: pop      esi                                      
+    00844: pop      edx                                      
+    00845: pop      ecx                                      
+    00846: pop      ebx                                      
+    00847: ret                                               
+
+========== clear_auto  (obj line 398, delta -4)
+  ; [402] void clear_auto(short u)
+    00848: push     ebx                                      
+    00849: push     ecx                                      
+    0084a: push     edx                                      
+    0084b: push     esi                                      
+    0084c: push     edi                                      
+    0084d: push     ebp                                      
+    0084e: mov      ebp, esp                                 
+    00850: sub      esp, 8                                   
+    00856: mov      dword ptr [ebp - 4], eax                 
+  ; [404] users[u-1].plr=0;
+    00859: movsx    eax, word ptr [ebp - 4]                  
+    0085d: dec      eax                                      
+    0085e: imul     eax, eax, 0x18                           
+    00861: mov      byte ptr [eax + 0x17], 0                 ; users
+  ; [406] for (int i=1; i<=players; i++)
+    00868: mov      dword ptr [ebp - 8], 1                   
+    0086f: jmp      0x877                                    
+    00871: mov      eax, dword ptr [ebp - 8]                 
+    00874: inc      dword ptr [ebp - 8]                      
+    00877: mov      eax, dword ptr [ebp - 8]                 
+    0087a: cmp      eax, dword ptr [0]                       ; players
+    00880: jg       0x8c0                                    
+  ; [408] if (teams[i-1].control==u)
+    00882: mov      eax, dword ptr [ebp - 8]                 
+    00885: dec      eax                                      
+    00886: imul     eax, eax, 0xcb                           
+    0088c: xor      edx, edx                                 
+    0088e: mov      dl, byte ptr [eax + 0x2e]                ; teams
+    00894: movsx    eax, word ptr [ebp - 4]                  
+    00898: cmp      edx, eax                                 
+    0089a: jne      0x8be                                    
+  ; [410] teams[i-1].control=FALSE;
+    0089c: mov      eax, dword ptr [ebp - 8]                 
+    0089f: dec      eax                                      
+    008a0: imul     eax, eax, 0xcb                           
+    008a6: mov      byte ptr [eax + 0x2e], 0                 ; teams
+  ; [411] teams[i-1].tm_htype=FALSE;
+    008ad: mov      eax, dword ptr [ebp - 8]                 
+    008b0: dec      eax                                      
+    008b1: imul     eax, eax, 0xcb                           
+    008b7: mov      byte ptr [eax + 0x7a], 0                 ; teams
+  ; [413] }
+    008be: jmp      0x871                                    
+  ; [414] }
+    008c0: mov      esp, ebp                                 
+    008c2: pop      ebp                                      
+    008c3: pop      edi                                      
+    008c4: pop      esi                                      
+    008c5: pop      edx                                      
+    008c6: pop      ecx                                      
+    008c7: pop      ebx                                      
+    008c8: ret                                               
+
+========== clear_all_autos  (obj line 417, delta -4)
+  ; [421] void clear_all_autos()
+    008c9: push     ebx                                      
+    008ca: push     ecx                                      
+    008cb: push     edx                                      
+    008cc: push     esi                                      
+    008cd: push     edi                                      
+    008ce: push     ebp                                      
+    008cf: mov      ebp, esp                                 
+    008d1: sub      esp, 4                                   
+  ; [423] for (short i=0; i<auto_users_a; i++)
+    008d7: mov      dword ptr [ebp - 4], 0                   
+    008de: jmp      0x8e6                                    
+    008e0: mov      eax, dword ptr [ebp - 4]                 
+    008e3: inc      dword ptr [ebp - 4]                      
+    008e6: mov      eax, dword ptr [ebp - 4]                 
+    008e9: cmp      ax, word ptr [0]                         ; auto_users_a
+    008f0: jge      0x908                                    
+  ; [425] clear_auto(auto_users_list_a[i]);
+    008f2: movsx    eax, word ptr [ebp - 4]                  
+    008f6: add      eax, eax                                 
+    008f8: mov      eax, dword ptr [eax - 2]                 ; auto_users_list_a
+    008fe: sar      eax, 0x10                                
+    00901: call     0x906                                    ; clear_auto
+  ; [426] }
+    00906: jmp      0x8e0                                    
+  ; [427] for (i=0; i<auto_users_b; i++)
+    00908: mov      dword ptr [ebp - 4], 0                   
+    0090f: jmp      0x917                                    
+    00911: mov      eax, dword ptr [ebp - 4]                 
+    00914: inc      dword ptr [ebp - 4]                      
+    00917: mov      eax, dword ptr [ebp - 4]                 
+    0091a: cmp      ax, word ptr [0]                         ; auto_users_b
+    00921: jge      0x939                                    
+  ; [429] clear_auto(auto_users_list_b[i]);
+    00923: movsx    eax, word ptr [ebp - 4]                  
+    00927: add      eax, eax                                 
+    00929: mov      eax, dword ptr [eax - 2]                 ; auto_users_list_b
+    0092f: sar      eax, 0x10                                
+    00932: call     0x937                                    ; clear_auto
+  ; [430] }
+    00937: jmp      0x911                                    
+  ; [431] }
+    00939: mov      esp, ebp                                 
+    0093b: pop      ebp                                      
+    0093c: pop      edi                                      
+    0093d: pop      esi                                      
+    0093e: pop      edx                                      
+    0093f: pop      ecx                                      
+    00940: pop      ebx                                      
+    00941: ret                                               
+
+========== reset_f_held  (obj line 432, delta -4)
+  ; [436] void reset_f_held()
+    00942: push     ebx                                      
+    00943: push     ecx                                      
+    00944: push     edx                                      
+    00945: push     esi                                      
+    00946: push     edi                                      
+    00947: push     ebp                                      
+    00948: mov      ebp, esp                                 
+    0094a: sub      esp, 0                                   
+  ; [438] f1_down=FALSE;
+    00950: mov      word ptr [0], 0                          ; f1_down
+  ; [439] f2_down=FALSE;
+    00959: mov      word ptr [0], 0                          ; f2_down
+  ; [440] }
+    00962: pop      ebp                                      
+    00963: pop      edi                                      
+    00964: pop      esi                                      
+    00965: pop      edx                                      
+    00966: pop      ecx                                      
+    00967: pop      ebx                                      
+    00968: ret                                               
+
+========== user_keeper_a  (obj line 441, delta -4)
+  ; [445] short user_keeper_a()
+    00969: push     ebx                                      
+    0096a: push     ecx                                      
+    0096b: push     edx                                      
+    0096c: push     esi                                      
+    0096d: push     edi                                      
+    0096e: push     ebp                                      
+    0096f: mov      ebp, esp                                 
+    00971: sub      esp, 8                                   
+  ; [447] short u=teams[KP_A-1].control;
+    00977: xor      eax, eax                                 
+    00979: mov      al, byte ptr [0x2e]                      ; teams
+    0097e: mov      dword ptr [ebp - 4], eax                 
+  ; [448] if (!u)
+    00981: cmp      word ptr [ebp - 4], 0                    
+    00986: jne      0x9d7                                    
+  ; [449] if (auto_users_a)
+    00988: cmp      word ptr [0], 0                          ; auto_users_a
+    00990: je       0x9d0                                    
+  ; [451] if (++play_ball_a>=auto_users_a)
+    00992: inc      word ptr [0]                             ; play_ball_a
+    00999: mov      ax, word ptr [0]                         ; play_ball_a
+    0099f: cmp      ax, word ptr [0]                         ; auto_users_a
+    009a6: jl       0x9b1                                    
+  ; [452] play_ball_a=0;
+    009a8: mov      word ptr [0], 0                          ; play_ball_a
+  ; [453] u=auto_users_list_a[play_ball_a];
+    009b1: mov      eax, dword ptr [0xfffffffe]              ; play_ball_a
+    009b6: sar      eax, 0x10                                
+    009b9: add      eax, eax                                 
+    009bb: mov      ax, word ptr [eax]                       ; auto_users_list_a
+    009c2: mov      dword ptr [ebp - 4], eax                 
+  ; [454] clear_auto(u);
+    009c5: movsx    eax, word ptr [ebp - 4]                  
+    009c9: call     0x9ce                                    ; clear_auto
+  ; [455] }
+    009ce: jmp      0x9d7                                    
+  ; [457] u=0;
+    009d0: mov      dword ptr [ebp - 4], 0                   
+  ; [459] return(u);
+    009d7: mov      eax, dword ptr [ebp - 4]                 
+    009da: mov      dword ptr [ebp - 8], eax                 
+  ; [460] }
+    009dd: mov      eax, dword ptr [ebp - 8]                 
+    009e0: mov      esp, ebp                                 
+    009e2: pop      ebp                                      
+    009e3: pop      edi                                      
+    009e4: pop      esi                                      
+    009e5: pop      edx                                      
+    009e6: pop      ecx                                      
+    009e7: pop      ebx                                      
+    009e8: ret                                               
+
+========== user_keeper_b  (obj line 461, delta -4)
+  ; [465] short user_keeper_b()
+    009e9: push     ebx                                      
+    009ea: push     ecx                                      
+    009eb: push     edx                                      
+    009ec: push     esi                                      
+    009ed: push     edi                                      
+    009ee: push     ebp                                      
+    009ef: mov      ebp, esp                                 
+    009f1: sub      esp, 8                                   
+  ; [467] short u=teams[KP_B-1].control;
+    009f7: xor      eax, eax                                 
+    009f9: mov      al, byte ptr [0x8e7]                     ; teams
+    009fe: mov      dword ptr [ebp - 4], eax                 
+  ; [468] if (!u)
+    00a01: cmp      word ptr [ebp - 4], 0                    
+    00a06: jne      0xa57                                    
+  ; [469] if (auto_users_b)
+    00a08: cmp      word ptr [0], 0                          ; auto_users_b
+    00a10: je       0xa50                                    
+  ; [471] if (++play_ball_b>=auto_users_b)
+    00a12: inc      word ptr [0]                             ; play_ball_b
+    00a19: mov      ax, word ptr [0]                         ; play_ball_b
+    00a1f: cmp      ax, word ptr [0]                         ; auto_users_b
+    00a26: jl       0xa31                                    
+  ; [472] play_ball_b=0;
+    00a28: mov      word ptr [0], 0                          ; play_ball_b
+  ; [473] u=auto_users_list_b[play_ball_b];
+    00a31: mov      eax, dword ptr [0xfffffffe]              ; play_ball_b
+    00a36: sar      eax, 0x10                                
+    00a39: add      eax, eax                                 
+    00a3b: mov      ax, word ptr [eax]                       ; auto_users_list_b
+    00a42: mov      dword ptr [ebp - 4], eax                 
+  ; [474] clear_auto(u);
+    00a45: movsx    eax, word ptr [ebp - 4]                  
+    00a49: call     0xa4e                                    ; clear_auto
+  ; [475] }
+    00a4e: jmp      0xa57                                    
+  ; [477] u=0;
+    00a50: mov      dword ptr [ebp - 4], 0                   
+  ; [479] return(u);
+    00a57: mov      eax, dword ptr [ebp - 4]                 
+    00a5a: mov      dword ptr [ebp - 8], eax                 
+  ; [480] }
+    00a5d: mov      eax, dword ptr [ebp - 8]                 
+    00a60: mov      esp, ebp                                 
+    00a62: pop      ebp                                      
+    00a63: pop      edi                                      
+    00a64: pop      esi                                      
+    00a65: pop      edx                                      
+    00a66: pop      ecx                                      
+    00a67: pop      ebx                                      
+    00a68: ret                                               
+
+========== user_taker_a  (obj line 481, delta -4)
+  ; [485] short user_taker_a(short p)
+    00a69: push     ebx                                      
+    00a6a: push     ecx                                      
+    00a6b: push     edx                                      
+    00a6c: push     esi                                      
+    00a6d: push     edi                                      
+    00a6e: push     ebp                                      
+    00a6f: mov      ebp, esp                                 
+    00a71: sub      esp, 0xc                                 
+    00a77: mov      dword ptr [ebp - 4], eax                 
+  ; [487] reset_f_held();
+    00a7a: call     0xa7f                                    ; reset_f_held
+  ; [488] short u=teams[p-1].control;
+    00a7f: movsx    edx, word ptr [ebp - 4]                  
+    00a83: dec      edx                                      
+    00a84: imul     edx, edx, 0xcb                           
+    00a8a: xor      eax, eax                                 
+    00a8c: mov      al, byte ptr [edx + 0x2e]                ; teams
+    00a92: mov      dword ptr [ebp - 8], eax                 
+  ; [489] if (!u)
+    00a95: cmp      word ptr [ebp - 8], 0                    
+    00a9a: jne      0xaeb                                    
+  ; [491] if (auto_users_a)
+    00a9c: cmp      word ptr [0], 0                          ; auto_users_a
+    00aa4: je       0xae4                                    
+  ; [493] if (++play_ball_a>=auto_users_a)
+    00aa6: inc      word ptr [0]                             ; play_ball_a
+    00aad: mov      ax, word ptr [0]                         ; play_ball_a
+    00ab3: cmp      ax, word ptr [0]                         ; auto_users_a
+    00aba: jl       0xac5                                    
+  ; [494] play_ball_a=0;
+    00abc: mov      word ptr [0], 0                          ; play_ball_a
+  ; [495] u=auto_users_list_a[play_ball_a];
+    00ac5: mov      eax, dword ptr [0xfffffffe]              ; play_ball_a
+    00aca: sar      eax, 0x10                                
+    00acd: add      eax, eax                                 
+    00acf: mov      ax, word ptr [eax]                       ; auto_users_list_a
+    00ad6: mov      dword ptr [ebp - 8], eax                 
+  ; [496] clear_auto(u);
+    00ad9: movsx    eax, word ptr [ebp - 8]                  
+    00add: call     0xae2                                    ; clear_auto
+  ; [497] }
+    00ae2: jmp      0xaeb                                    
+  ; [499] u=0;
+    00ae4: mov      dword ptr [ebp - 8], 0                   
+  ; [501] return(u);
+    00aeb: mov      eax, dword ptr [ebp - 8]                 
+    00aee: mov      dword ptr [ebp - 0xc], eax               
+  ; [502] }
+    00af1: mov      eax, dword ptr [ebp - 0xc]               
+    00af4: mov      esp, ebp                                 
+    00af6: pop      ebp                                      
+    00af7: pop      edi                                      
+    00af8: pop      esi                                      
+    00af9: pop      edx                                      
+    00afa: pop      ecx                                      
+    00afb: pop      ebx                                      
+    00afc: ret                                               
+
+========== user_taker_b  (obj line 503, delta -4)
+  ; [507] short user_taker_b(short p)
+    00afd: push     ebx                                      
+    00afe: push     ecx                                      
+    00aff: push     edx                                      
+    00b00: push     esi                                      
+    00b01: push     edi                                      
+    00b02: push     ebp                                      
+    00b03: mov      ebp, esp                                 
+    00b05: sub      esp, 0xc                                 
+    00b0b: mov      dword ptr [ebp - 4], eax                 
+  ; [509] reset_f_held();
+    00b0e: call     0xb13                                    ; reset_f_held
+  ; [510] short u=teams[p-1].control;
+    00b13: movsx    edx, word ptr [ebp - 4]                  
+    00b17: dec      edx                                      
+    00b18: imul     edx, edx, 0xcb                           
+    00b1e: xor      eax, eax                                 
+    00b20: mov      al, byte ptr [edx + 0x2e]                ; teams
+    00b26: mov      dword ptr [ebp - 8], eax                 
+  ; [511] if (!u)
+    00b29: cmp      word ptr [ebp - 8], 0                    
+    00b2e: jne      0xb7f                                    
+  ; [513] if (auto_users_b)
+    00b30: cmp      word ptr [0], 0                          ; auto_users_b
+    00b38: je       0xb78                                    
+  ; [515] if (++play_ball_b>=auto_users_b)
+    00b3a: inc      word ptr [0]                             ; play_ball_b
+    00b41: mov      ax, word ptr [0]                         ; play_ball_b
+    00b47: cmp      ax, word ptr [0]                         ; auto_users_b
+    00b4e: jl       0xb59                                    
+  ; [516] play_ball_b=0;
+    00b50: mov      word ptr [0], 0                          ; play_ball_b
+  ; [517] u=auto_users_list_b[play_ball_b];
+    00b59: mov      eax, dword ptr [0xfffffffe]              ; play_ball_b
+    00b5e: sar      eax, 0x10                                
+    00b61: add      eax, eax                                 
+    00b63: mov      ax, word ptr [eax]                       ; auto_users_list_b
+    00b6a: mov      dword ptr [ebp - 8], eax                 
+  ; [518] clear_auto(u);
+    00b6d: movsx    eax, word ptr [ebp - 8]                  
+    00b71: call     0xb76                                    ; clear_auto
+  ; [519] }
+    00b76: jmp      0xb7f                                    
+  ; [521] u=0;
+    00b78: mov      dword ptr [ebp - 8], 0                   
+  ; [523] return(u);
+    00b7f: mov      eax, dword ptr [ebp - 8]                 
+    00b82: mov      dword ptr [ebp - 0xc], eax               
+  ; [524] }
+    00b85: mov      eax, dword ptr [ebp - 0xc]               
+    00b88: mov      esp, ebp                                 
+    00b8a: pop      ebp                                      
+    00b8b: pop      edi                                      
+    00b8c: pop      esi                                      
+    00b8d: pop      edx                                      
+    00b8e: pop      ecx                                      
+    00b8f: pop      ebx                                      
+    00b90: ret                                               
+
+========== auto_select_a  (obj line 525, delta -4)
+  ; [529] void auto_select_a(short u)
+    00b91: push     ebx                                      
+    00b92: push     ecx                                      
+    00b93: push     edx                                      
+    00b94: push     esi                                      
+    00b95: push     edi                                      
+    00b96: push     ebp                                      
+    00b97: mov      ebp, esp                                 
+    00b99: sub      esp, 0x18                                
+    00b9f: mov      dword ptr [ebp - 4], eax                 
+  ; [532] closest=FALSE;
+    00ba2: mov      byte ptr [0], 0                          ; closest
+  ; [534] last_plr_a=users[u-1].plr;
+    00ba9: movsx    eax, word ptr [ebp - 4]                  
+    00bad: dec      eax                                      
+    00bae: imul     eax, eax, 0x18                           
+    00bb1: movsx    ax, byte ptr [eax + 0x17]                ; users
+    00bb9: mov      word ptr [0], ax                         ; last_plr_a
+  ; [536] if (!(ball_poss && u==teams[ball_poss-1].control))
+    00bbf: cmp      dword ptr [0], 0                         ; ball_poss
+    00bc6: je       0xbeb                                    
+    00bc8: mov      eax, dword ptr [0]                       ; ball_poss
+    00bcd: dec      eax                                      
+    00bce: imul     eax, eax, 0xcb                           
+    00bd4: mov      al, byte ptr [eax + 0x2e]                ; teams
+    00bda: and      eax, 0xff                                
+    00bdf: movsx    edx, word ptr [ebp - 4]                  
+    00be3: cmp      edx, eax                                 
+    00be5: je       0xe6c                                    
+  ; [540] && !teams[ball_poss-1].control)
+    00beb: cmp      dword ptr [0], 1                         ; ball_poss
+    00bf2: je       0xc0e                                    
+    00bf4: mov      eax, dword ptr [0]                       ; players
+    00bf9: mov      edx, dword ptr [0]                       ; players
+    00bff: sar      edx, 0x1f                                
+    00c02: sub      eax, edx                                 
+    00c04: sar      eax, 1                                   
+    00c06: cmp      eax, dword ptr [0]                       ; ball_poss
+    00c0c: jge      0xc10                                    
+    00c0e: jmp      0xc19                                    
+    00c10: cmp      dword ptr [0], 0                         ; ball_poss
+    00c17: jne      0xc1b                                    
+    00c19: jmp      0xc30                                    
+    00c1b: mov      eax, dword ptr [0]                       ; ball_poss
+    00c20: dec      eax                                      
+    00c21: imul     eax, eax, 0xcb                           
+    00c27: cmp      byte ptr [eax + 0x2e], 0                 ; teams
+    00c2e: je       0xc32                                    
+    00c30: jmp      0xc90                                    
+  ; [543] clear_auto(u);
+    00c32: movsx    eax, word ptr [ebp - 4]                  
+    00c36: call     0xc3b                                    ; clear_auto
+  ; [544] users[u-1].chng=TRUE;				// changed control.
+    00c3b: movsx    eax, word ptr [ebp - 4]                  
+    00c3f: dec      eax                                      
+    00c40: imul     eax, eax, 0x18                           
+    00c43: mov      byte ptr [eax + 0x16], 1                 ; users
+  ; [546] reset_ideas(&teams[ball_poss-1]);
+    00c4a: mov      eax, dword ptr [0]                       ; ball_poss
+    00c4f: dec      eax                                      
+    00c50: imul     eax, eax, 0xcb                           
+    00c56: mov      edx, 0                                   ; teams
+    00c5b: add      eax, edx                                 
+    00c5d: call     0xc62                                    ; reset_ideas
+  ; [547] teams[ball_poss-1].control=u;
+    00c62: mov      eax, dword ptr [0]                       ; ball_poss
+    00c67: dec      eax                                      
+    00c68: imul     edx, eax, 0xcb                           
+    00c6e: mov      al, byte ptr [ebp - 4]                   
+    00c71: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [548] users[u-1].plr=ball_poss;
+    00c77: movsx    eax, word ptr [ebp - 4]                  
+    00c7b: dec      eax                                      
+    00c7c: imul     eax, eax, 0x18                           
+    00c7f: mov      dl, byte ptr [0]                         ; ball_poss
+    00c85: mov      byte ptr [eax + 0x17], dl                ; users
+  ; [549] }
+    00c8b: jmp      0xe6c                                    
+  ; [554] if (user_taker2==u)
+    00c90: mov      ax, word ptr [0]                         ; user_taker2
+    00c96: cmp      ax, word ptr [ebp - 4]                   
+    00c9a: jne      0xca5                                    
+  ; [555] main_guy=KP_A;
+    00c9c: mov      dword ptr [ebp - 8], 1                   
+    00ca3: jmp      0xcea                                    
+  ; [557] if (receiver_a)
+    00ca5: cmp      word ptr [0], 0                          ; receiver_a
+    00cad: je       0xcba                                    
+  ; [558] main_guy=receiver_a;
+    00caf: mov      ax, word ptr [0]                         ; receiver_a
+    00cb5: mov      dword ptr [ebp - 8], eax                 
+    00cb8: jmp      0xcea                                    
+  ; [560] if (interceptor_a)
+    00cba: cmp      dword ptr [0], 0                         ; interceptor_a
+    00cc1: je       0xcce                                    
+  ; [561] main_guy=interceptor_a;
+    00cc3: mov      ax, word ptr [0]                         ; interceptor_a
+    00cc9: mov      dword ptr [ebp - 8], eax                 
+    00ccc: jmp      0xcea                                    
+  ; [563] if (near_path_a)
+    00cce: cmp      word ptr [0], 0                          ; near_path_a
+    00cd6: je       0xce3                                    
+  ; [564] main_guy=near_path_a;
+    00cd8: mov      ax, word ptr [0]                         ; near_path_a
+    00cde: mov      dword ptr [ebp - 8], eax                 
+    00ce1: jmp      0xcea                                    
+  ; [566] main_guy=0;
+    00ce3: mov      dword ptr [ebp - 8], 0                   
+  ; [569] int guy=0;
+    00cea: mov      dword ptr [ebp - 0xc], 0                 
+  ; [570] float lowest=2000;
+    00cf1: mov      dword ptr [ebp - 0x10], 0x44fa0000       
+  ; [572] for (int i=1; i<12; i++)
+    00cf8: mov      dword ptr [ebp - 0x14], 1                
+    00cff: jmp      0xd07                                    
+    00d01: mov      eax, dword ptr [ebp - 0x14]              
+    00d04: inc      dword ptr [ebp - 0x14]                   
+    00d07: cmp      dword ptr [ebp - 0x14], 0xc              
+    00d0b: jge      0xde0                                    
+  ; [575] && teams[i-1].guy_on>0 && (!teams[i-1].control || teams[i-1].control==u))
+    00d11: cmp      dword ptr [ebp - 0x14], 1                
+    00d15: jne      0xd23                                    
+    00d17: xor      eax, eax                                 
+    00d19: mov      al, byte ptr [0]                         ; match_mode
+    00d1e: cmp      eax, 8                                   
+    00d21: jne      0xd25                                    
+    00d23: jmp      0xd31                                    
+    00d25: xor      eax, eax                                 
+    00d27: mov      al, byte ptr [0]                         ; match_mode
+    00d2c: cmp      eax, 7                                   
+    00d2f: jne      0xd33                                    
+    00d31: jmp      0xd3d                                    
+    00d33: cmp      word ptr [0], 0                          ; user_taker2
+    00d3b: je       0xd54                                    
+    00d3d: mov      eax, dword ptr [ebp - 0x14]              
+    00d40: dec      eax                                      
+    00d41: imul     eax, eax, 0xcb                           
+    00d47: mov      eax, dword ptr [eax + 0x2a]              ; teams
+    00d4d: sar      eax, 0x10                                
+    00d50: test     eax, eax                                 
+    00d52: jg       0xd56                                    
+    00d54: jmp      0xd85                                    
+    00d56: mov      eax, dword ptr [ebp - 0x14]              
+    00d59: dec      eax                                      
+    00d5a: imul     eax, eax, 0xcb                           
+    00d60: cmp      byte ptr [eax + 0x2e], 0                 ; teams
+    00d67: je       0xd83                                    
+    00d69: mov      eax, dword ptr [ebp - 0x14]              
+    00d6c: dec      eax                                      
+    00d6d: imul     eax, eax, 0xcb                           
+    00d73: xor      edx, edx                                 
+    00d75: mov      dl, byte ptr [eax + 0x2e]                ; teams
+    00d7b: movsx    eax, word ptr [ebp - 4]                  
+    00d7f: cmp      edx, eax                                 
+    00d81: jne      0xd85                                    
+    00d83: jmp      0xd87                                    
+    00d85: jmp      0xddb                                    
+  ; [577] if (teams[i-1].tm_act!=FALL_ACT)
+    00d87: mov      eax, dword ptr [ebp - 0x14]              
+    00d8a: dec      eax                                      
+    00d8b: imul     eax, eax, 0xcb                           
+    00d91: mov      eax, dword ptr [eax + 0x8c]              ; teams
+    00d97: sar      eax, 0x10                                
+    00d9a: cmp      eax, 5                                   
+    00d9d: je       0xddb                                    
+  ; [579] if (i==main_guy)
+    00d9f: movsx    eax, word ptr [ebp - 8]                  
+    00da3: cmp      eax, dword ptr [ebp - 0x14]              
+    00da6: jne      0xdb1                                    
+  ; [580] d=1;
+    00da8: mov      dword ptr [ebp - 0x18], 0x3f800000       
+    00daf: jmp      0xdc4                                    
+  ; [582] d=teams[i-1].tm_dist;
+    00db1: mov      eax, dword ptr [ebp - 0x14]              
+    00db4: dec      eax                                      
+    00db5: imul     eax, eax, 0xcb                           
+    00dbb: mov      eax, dword ptr [eax + 0x25]              ; teams
+    00dc1: mov      dword ptr [ebp - 0x18], eax              
+  ; [584] if (d<lowest)
+    00dc4: fld      dword ptr [ebp - 0x18]                   
+    00dc7: fcomp    dword ptr [ebp - 0x10]                   
+    00dca: fnstsw   ax                                       
+    00dcc: sahf                                              
+    00dcd: jae      0xddb                                    
+  ; [586] guy=i;
+    00dcf: mov      eax, dword ptr [ebp - 0x14]              
+    00dd2: mov      dword ptr [ebp - 0xc], eax               
+  ; [587] lowest=d;
+    00dd5: mov      eax, dword ptr [ebp - 0x18]              
+    00dd8: mov      dword ptr [ebp - 0x10], eax              
+  ; [591] }
+    00ddb: jmp      0xd01                                    
+  ; [593] if (guy!=last_plr_a && guy &&
+    00de0: mov      eax, dword ptr [0xfffffffe]              ; last_plr_a
+    00de5: sar      eax, 0x10                                
+    00de8: cmp      eax, dword ptr [ebp - 0xc]               
+    00deb: je       0xdf3                                    
+    00ded: cmp      dword ptr [ebp - 0xc], 0                 
+    00df1: jne      0xdf5                                    
+    00df3: jmp      0xe2e                                    
+    00df5: mov      eax, dword ptr [0xfffffffe]              ; last_plr_a
+    00dfa: sar      eax, 0x10                                
+    00dfd: test     eax, eax                                 
+    00dff: jle      0xe20                                    
+    00e01: mov      eax, dword ptr [0xfffffffe]              ; last_plr_a
+    00e06: sar      eax, 0x10                                
+    00e09: test     eax, eax                                 
+    00e0b: jle      0xe1e                                    
+    00e0d: mov      eax, dword ptr [0xfffffffe]              ; last_plr_a
+    00e12: sar      eax, 0x10                                
+    00e15: cmp      byte ptr [eax - 1], 0                    ; sel_circle
+    00e1c: je       0xe20                                    
+    00e1e: jmp      0xe22                                    
+    00e20: jmp      0xe2c                                    
+    00e22: cmp      word ptr [0], 0                          ; receiver_a
+    00e2a: je       0xe2e                                    
+    00e2c: jmp      0xe30                                    
+    00e2e: jmp      0xe6c                                    
+  ; [596] clear_auto(u);
+    00e30: movsx    eax, word ptr [ebp - 4]                  
+    00e34: call     0xe39                                    ; clear_auto
+  ; [597] teams[guy-1].control=u;
+    00e39: mov      edx, dword ptr [ebp - 0xc]               
+    00e3c: dec      edx                                      
+    00e3d: imul     edx, edx, 0xcb                           
+    00e43: mov      al, byte ptr [ebp - 4]                   
+    00e46: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [598] users[u-1].chng=TRUE;				// changed control
+    00e4c: movsx    eax, word ptr [ebp - 4]                  
+    00e50: dec      eax                                      
+    00e51: imul     eax, eax, 0x18                           
+    00e54: mov      byte ptr [eax + 0x16], 1                 ; users
+  ; [599] users[u-1].plr=guy;
+    00e5b: movsx    eax, word ptr [ebp - 4]                  
+    00e5f: dec      eax                                      
+    00e60: imul     edx, eax, 0x18                           
+    00e63: mov      al, byte ptr [ebp - 0xc]                 
+    00e66: mov      byte ptr [edx + 0x17], al                ; users
+  ; [603] }
+    00e6c: mov      esp, ebp                                 
+    00e6e: pop      ebp                                      
+    00e6f: pop      edi                                      
+    00e70: pop      esi                                      
+    00e71: pop      edx                                      
+    00e72: pop      ecx                                      
+    00e73: pop      ebx                                      
+    00e74: ret                                               
+
+========== auto_select_b  (obj line 605, delta -4)
+  ; [609] void auto_select_b(short u)
+    00e75: push     ebx                                      
+    00e76: push     ecx                                      
+    00e77: push     edx                                      
+    00e78: push     esi                                      
+    00e79: push     edi                                      
+    00e7a: push     ebp                                      
+    00e7b: mov      ebp, esp                                 
+    00e7d: sub      esp, 0x18                                
+    00e83: mov      dword ptr [ebp - 4], eax                 
+  ; [612] closest=FALSE;
+    00e86: mov      byte ptr [0], 0                          ; closest
+  ; [614] last_plr_b=users[u-1].plr;
+    00e8d: movsx    eax, word ptr [ebp - 4]                  
+    00e91: dec      eax                                      
+    00e92: imul     eax, eax, 0x18                           
+    00e95: movsx    ax, byte ptr [eax + 0x17]                ; users
+    00e9d: mov      word ptr [0], ax                         ; last_plr_b
+  ; [616] if (!(ball_poss && u==teams[ball_poss-1].control))
+    00ea3: cmp      dword ptr [0], 0                         ; ball_poss
+    00eaa: je       0xecf                                    
+    00eac: mov      eax, dword ptr [0]                       ; ball_poss
+    00eb1: dec      eax                                      
+    00eb2: imul     eax, eax, 0xcb                           
+    00eb8: mov      al, byte ptr [eax + 0x2e]                ; teams
+    00ebe: and      eax, 0xff                                
+    00ec3: movsx    edx, word ptr [ebp - 4]                  
+    00ec7: cmp      edx, eax                                 
+    00ec9: je       0x114a                                   
+  ; [620] && !teams[ball_poss-1].control)
+    00ecf: cmp      dword ptr [0], 0xc                       ; ball_poss
+    00ed6: je       0xef2                                    
+    00ed8: mov      eax, dword ptr [0]                       ; players
+    00edd: mov      edx, dword ptr [0]                       ; players
+    00ee3: sar      edx, 0x1f                                
+    00ee6: sub      eax, edx                                 
+    00ee8: sar      eax, 1                                   
+    00eea: cmp      eax, dword ptr [0]                       ; ball_poss
+    00ef0: jl       0xef4                                    
+    00ef2: jmp      0xf09                                    
+    00ef4: mov      eax, dword ptr [0]                       ; ball_poss
+    00ef9: dec      eax                                      
+    00efa: imul     eax, eax, 0xcb                           
+    00f00: cmp      byte ptr [eax + 0x2e], 0                 ; teams
+    00f07: je       0xf0b                                    
+    00f09: jmp      0xf69                                    
+  ; [623] clear_auto(u);
+    00f0b: movsx    eax, word ptr [ebp - 4]                  
+    00f0f: call     0xf14                                    ; clear_auto
+  ; [624] users[u-1].chng=TRUE;				// changed control.
+    00f14: movsx    eax, word ptr [ebp - 4]                  
+    00f18: dec      eax                                      
+    00f19: imul     eax, eax, 0x18                           
+    00f1c: mov      byte ptr [eax + 0x16], 1                 ; users
+  ; [626] reset_ideas(&teams[ball_poss-1]);
+    00f23: mov      eax, dword ptr [0]                       ; ball_poss
+    00f28: dec      eax                                      
+    00f29: imul     eax, eax, 0xcb                           
+    00f2f: mov      edx, 0                                   ; teams
+    00f34: add      eax, edx                                 
+    00f36: call     0xf3b                                    ; reset_ideas
+  ; [627] teams[ball_poss-1].control=u;
+    00f3b: mov      eax, dword ptr [0]                       ; ball_poss
+    00f40: dec      eax                                      
+    00f41: imul     edx, eax, 0xcb                           
+    00f47: mov      al, byte ptr [ebp - 4]                   
+    00f4a: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [628] users[u-1].plr=ball_poss;
+    00f50: movsx    eax, word ptr [ebp - 4]                  
+    00f54: dec      eax                                      
+    00f55: imul     eax, eax, 0x18                           
+    00f58: mov      dl, byte ptr [0]                         ; ball_poss
+    00f5e: mov      byte ptr [eax + 0x17], dl                ; users
+  ; [629] }
+    00f64: jmp      0x114a                                   
+  ; [634] if (user_taker2==u)
+    00f69: mov      ax, word ptr [0]                         ; user_taker2
+    00f6f: cmp      ax, word ptr [ebp - 4]                   
+    00f73: jne      0xf7e                                    
+  ; [635] main_guy=KP_B;
+    00f75: mov      dword ptr [ebp - 8], 0xc                 
+    00f7c: jmp      0xfc3                                    
+  ; [637] if (receiver_b)
+    00f7e: cmp      word ptr [0], 0                          ; receiver_b
+    00f86: je       0xf93                                    
+  ; [638] main_guy=receiver_b;
+    00f88: mov      ax, word ptr [0]                         ; receiver_b
+    00f8e: mov      dword ptr [ebp - 8], eax                 
+    00f91: jmp      0xfc3                                    
+  ; [640] if (interceptor_b)
+    00f93: cmp      dword ptr [0], 0                         ; interceptor_b
+    00f9a: je       0xfa7                                    
+  ; [641] main_guy=interceptor_b;
+    00f9c: mov      ax, word ptr [0]                         ; interceptor_b
+    00fa2: mov      dword ptr [ebp - 8], eax                 
+    00fa5: jmp      0xfc3                                    
+  ; [643] if (near_path_b)
+    00fa7: cmp      word ptr [0], 0                          ; near_path_b
+    00faf: je       0xfbc                                    
+  ; [644] main_guy=near_path_b;
+    00fb1: mov      ax, word ptr [0]                         ; near_path_b
+    00fb7: mov      dword ptr [ebp - 8], eax                 
+    00fba: jmp      0xfc3                                    
+  ; [646] main_guy=0;
+    00fbc: mov      dword ptr [ebp - 8], 0                   
+  ; [649] int guy=0;
+    00fc3: mov      dword ptr [ebp - 0xc], 0                 
+  ; [650] float lowest=2000;
+    00fca: mov      dword ptr [ebp - 0x10], 0x44fa0000       
+  ; [652] for (int i=12; i<=players; i++)
+    00fd1: mov      dword ptr [ebp - 0x14], 0xc              
+    00fd8: jmp      0xfe0                                    
+    00fda: mov      eax, dword ptr [ebp - 0x14]              
+    00fdd: inc      dword ptr [ebp - 0x14]                   
+    00fe0: mov      eax, dword ptr [ebp - 0x14]              
+    00fe3: cmp      eax, dword ptr [0]                       ; players
+    00fe9: jg       0x10be                                   
+  ; [655] && teams[i-1].guy_on>0 && (!teams[i-1].control || teams[i-1].control==u))
+    00fef: cmp      dword ptr [ebp - 0x14], 0xc              
+    00ff3: jne      0x1001                                   
+    00ff5: xor      eax, eax                                 
+    00ff7: mov      al, byte ptr [0]                         ; match_mode
+    00ffc: cmp      eax, 0xa                                 
+    00fff: jne      0x1003                                   
+    01001: jmp      0x100f                                   
+    01003: xor      eax, eax                                 
+    01005: mov      al, byte ptr [0]                         ; match_mode
+    0100a: cmp      eax, 9                                   
+    0100d: jne      0x1011                                   
+    0100f: jmp      0x101b                                   
+    01011: cmp      word ptr [0], 0                          ; user_taker2
+    01019: je       0x1032                                   
+    0101b: mov      eax, dword ptr [ebp - 0x14]              
+    0101e: dec      eax                                      
+    0101f: imul     eax, eax, 0xcb                           
+    01025: mov      eax, dword ptr [eax + 0x2a]              ; teams
+    0102b: sar      eax, 0x10                                
+    0102e: test     eax, eax                                 
+    01030: jg       0x1034                                   
+    01032: jmp      0x1063                                   
+    01034: mov      eax, dword ptr [ebp - 0x14]              
+    01037: dec      eax                                      
+    01038: imul     eax, eax, 0xcb                           
+    0103e: cmp      byte ptr [eax + 0x2e], 0                 ; teams
+    01045: je       0x1061                                   
+    01047: mov      eax, dword ptr [ebp - 0x14]              
+    0104a: dec      eax                                      
+    0104b: imul     eax, eax, 0xcb                           
+    01051: xor      edx, edx                                 
+    01053: mov      dl, byte ptr [eax + 0x2e]                ; teams
+    01059: movsx    eax, word ptr [ebp - 4]                  
+    0105d: cmp      edx, eax                                 
+    0105f: jne      0x1063                                   
+    01061: jmp      0x1065                                   
+    01063: jmp      0x10b9                                   
+  ; [657] if (teams[i-1].tm_act!=FALL_ACT)
+    01065: mov      eax, dword ptr [ebp - 0x14]              
+    01068: dec      eax                                      
+    01069: imul     eax, eax, 0xcb                           
+    0106f: mov      eax, dword ptr [eax + 0x8c]              ; teams
+    01075: sar      eax, 0x10                                
+    01078: cmp      eax, 5                                   
+    0107b: je       0x10b9                                   
+  ; [659] if (i==main_guy)
+    0107d: movsx    eax, word ptr [ebp - 8]                  
+    01081: cmp      eax, dword ptr [ebp - 0x14]              
+    01084: jne      0x108f                                   
+  ; [660] d=1;
+    01086: mov      dword ptr [ebp - 0x18], 0x3f800000       
+    0108d: jmp      0x10a2                                   
+  ; [662] d=teams[i-1].tm_dist;
+    0108f: mov      eax, dword ptr [ebp - 0x14]              
+    01092: dec      eax                                      
+    01093: imul     eax, eax, 0xcb                           
+    01099: mov      eax, dword ptr [eax + 0x25]              ; teams
+    0109f: mov      dword ptr [ebp - 0x18], eax              
+  ; [664] if (d<lowest)
+    010a2: fld      dword ptr [ebp - 0x18]                   
+    010a5: fcomp    dword ptr [ebp - 0x10]                   
+    010a8: fnstsw   ax                                       
+    010aa: sahf                                              
+    010ab: jae      0x10b9                                   
+  ; [666] guy=i;
+    010ad: mov      eax, dword ptr [ebp - 0x14]              
+    010b0: mov      dword ptr [ebp - 0xc], eax               
+  ; [667] lowest=d;
+    010b3: mov      eax, dword ptr [ebp - 0x18]              
+    010b6: mov      dword ptr [ebp - 0x10], eax              
+  ; [671] }
+    010b9: jmp      0xfda                                    
+  ; [673] if (guy!=last_plr_b && guy &&
+    010be: mov      eax, dword ptr [0xfffffffe]              ; last_plr_b
+    010c3: sar      eax, 0x10                                
+    010c6: cmp      eax, dword ptr [ebp - 0xc]               
+    010c9: je       0x10d1                                   
+    010cb: cmp      dword ptr [ebp - 0xc], 0                 
+    010cf: jne      0x10d3                                   
+    010d1: jmp      0x110c                                   
+    010d3: mov      eax, dword ptr [0xfffffffe]              ; last_plr_b
+    010d8: sar      eax, 0x10                                
+    010db: test     eax, eax                                 
+    010dd: jle      0x10fe                                   
+    010df: mov      eax, dword ptr [0xfffffffe]              ; last_plr_b
+    010e4: sar      eax, 0x10                                
+    010e7: test     eax, eax                                 
+    010e9: jle      0x10fc                                   
+    010eb: mov      eax, dword ptr [0xfffffffe]              ; last_plr_b
+    010f0: sar      eax, 0x10                                
+    010f3: cmp      byte ptr [eax - 1], 0                    ; sel_circle
+    010fa: je       0x10fe                                   
+    010fc: jmp      0x1100                                   
+    010fe: jmp      0x110a                                   
+    01100: cmp      word ptr [0], 0                          ; receiver_b
+    01108: je       0x110c                                   
+    0110a: jmp      0x110e                                   
+    0110c: jmp      0x114a                                   
+  ; [676] clear_auto(u);
+    0110e: movsx    eax, word ptr [ebp - 4]                  
+    01112: call     0x1117                                   ; clear_auto
+  ; [677] teams[guy-1].control=u;
+    01117: mov      edx, dword ptr [ebp - 0xc]               
+    0111a: dec      edx                                      
+    0111b: imul     edx, edx, 0xcb                           
+    01121: mov      al, byte ptr [ebp - 4]                   
+    01124: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [678] users[u-1].chng=TRUE;				// changed control
+    0112a: movsx    eax, word ptr [ebp - 4]                  
+    0112e: dec      eax                                      
+    0112f: imul     eax, eax, 0x18                           
+    01132: mov      byte ptr [eax + 0x16], 1                 ; users
+  ; [679] users[u-1].plr=guy;
+    01139: movsx    eax, word ptr [ebp - 4]                  
+    0113d: dec      eax                                      
+    0113e: imul     edx, eax, 0x18                           
+    01141: mov      al, byte ptr [ebp - 0xc]                 
+    01144: mov      byte ptr [edx + 0x17], al                ; users
+  ; [683] }
+    0114a: mov      esp, ebp                                 
+    0114c: pop      ebp                                      
+    0114d: pop      edi                                      
+    0114e: pop      esi                                      
+    0114f: pop      edx                                      
+    01150: pop      ecx                                      
+    01151: pop      ebx                                      
+    01152: ret                                               
+
+========== reselect_a  (obj line 684, delta -4)
+  ; [688] void reselect_a()
+    01153: push     ebx                                      
+    01154: push     ecx                                      
+    01155: push     edx                                      
+    01156: push     esi                                      
+    01157: push     edi                                      
+    01158: push     ebp                                      
+    01159: mov      ebp, esp                                 
+    0115b: sub      esp, 0x20                                
+  ; [693] float max=-1;
+    01161: mov      dword ptr [ebp - 0x18], 0xbf800000       
+  ; [696] if (auto_users_a)
+    01168: cmp      word ptr [0], 0                          ; auto_users_a
+    01170: je       0x128b                                   
+  ; [698] if (last_user_a==auto_users_a)
+    01176: mov      ax, word ptr [0]                         ; last_user_a
+    0117c: cmp      ax, word ptr [0]                         ; auto_users_a
+    01183: jne      0x118e                                   
+  ; [699] last_user_a=0;
+    01185: mov      word ptr [0], 0                          ; last_user_a
+  ; [701] maxu=auto_users_list_a[last_user_a];
+    0118e: mov      eax, dword ptr [0xfffffffe]              ; last_user_a
+    01193: sar      eax, 0x10                                
+    01196: add      eax, eax                                 
+    01198: mov      ax, word ptr [eax]                       ; auto_users_list_a
+    0119f: mov      dword ptr [ebp - 0x14], eax              
+  ; [703] if (++last_user_a==auto_users_a)
+    011a2: inc      word ptr [0]                             ; last_user_a
+    011a9: mov      ax, word ptr [0]                         ; last_user_a
+    011af: cmp      ax, word ptr [0]                         ; auto_users_a
+    011b6: jne      0x11c1                                   
+  ; [704] last_user_a=0;
+    011b8: mov      word ptr [0], 0                          ; last_user_a
+  ; [706] au=last_user_a;
+    011c1: mov      ax, word ptr [0]                         ; last_user_a
+    011c7: mov      dword ptr [ebp - 8], eax                 
+  ; [707] max_au=au;
+    011ca: mov      eax, dword ptr [ebp - 8]                 
+    011cd: mov      dword ptr [ebp - 0xc], eax               
+  ; [709] for (short i=1; i<auto_users_a; i++)
+    011d0: mov      dword ptr [ebp - 0x20], 1                
+    011d7: jmp      0x11df                                   
+    011d9: mov      eax, dword ptr [ebp - 0x20]              
+    011dc: inc      dword ptr [ebp - 0x20]                   
+    011df: mov      eax, dword ptr [ebp - 0x20]              
+    011e2: cmp      ax, word ptr [0]                         ; auto_users_a
+    011e9: jge      0x1270                                   
+  ; [711] if (au==auto_users_a)
+    011ef: mov      eax, dword ptr [ebp - 8]                 
+    011f2: cmp      ax, word ptr [0]                         ; auto_users_a
+    011f9: jne      0x1202                                   
+  ; [712] au=0;
+    011fb: mov      dword ptr [ebp - 8], 0                   
+  ; [714] user=auto_users_list_a[au];
+    01202: movsx    eax, word ptr [ebp - 8]                  
+    01206: add      eax, eax                                 
+    01208: mov      ax, word ptr [eax]                       ; auto_users_list_a
+    0120f: mov      dword ptr [ebp - 0x10], eax              
+  ; [715] p=users[user-1].plr;
+    01212: movsx    eax, word ptr [ebp - 0x10]               
+    01216: dec      eax                                      
+    01217: imul     eax, eax, 0x18                           
+    0121a: mov      al, byte ptr [eax + 0x17]                ; users
+    01220: mov      byte ptr [ebp - 4], al                   
+  ; [716] if (p<=0)
+    01223: movsx    eax, byte ptr [ebp - 4]                  
+    01227: test     eax, eax                                 
+    01229: jg       0x1234                                   
+  ; [717] d=1500;
+    0122b: mov      dword ptr [ebp - 0x1c], 0x44bb8000       
+    01232: jmp      0x1248                                   
+  ; [719] d=(teams[p-1].tm_dist);
+    01234: movsx    eax, byte ptr [ebp - 4]                  
+    01238: dec      eax                                      
+    01239: imul     eax, eax, 0xcb                           
+    0123f: mov      eax, dword ptr [eax + 0x25]              ; teams
+    01245: mov      dword ptr [ebp - 0x1c], eax              
+  ; [721] if (d>max)
+    01248: fld      dword ptr [ebp - 0x1c]                   
+    0124b: fcomp    dword ptr [ebp - 0x18]                   
+    0124e: fnstsw   ax                                       
+    01250: sahf                                              
+    01251: jbe      0x1265                                   
+  ; [723] max=d;
+    01253: mov      eax, dword ptr [ebp - 0x1c]              
+    01256: mov      dword ptr [ebp - 0x18], eax              
+  ; [724] maxu=user;
+    01259: mov      eax, dword ptr [ebp - 0x10]              
+    0125c: mov      dword ptr [ebp - 0x14], eax              
+  ; [725] max_au=au;
+    0125f: mov      eax, dword ptr [ebp - 8]                 
+    01262: mov      dword ptr [ebp - 0xc], eax               
+  ; [727] au++;
+    01265: mov      eax, dword ptr [ebp - 8]                 
+    01268: inc      dword ptr [ebp - 8]                      
+  ; [728] }
+    0126b: jmp      0x11d9                                   
+  ; [729] auto_select_a(maxu);			// Team Control.
+    01270: movsx    eax, word ptr [ebp - 0x14]               
+    01274: call     0x1279                                   ; auto_select_a
+  ; [730] if (!ball_poss)
+    01279: cmp      dword ptr [0], 0                         ; ball_poss
+    01280: jne      0x128b                                   
+  ; [731] last_user_a=max_au;
+    01282: mov      eax, dword ptr [ebp - 0xc]               
+    01285: mov      word ptr [0], ax                         ; last_user_a
+  ; [733] }
+    0128b: mov      esp, ebp                                 
+    0128d: pop      ebp                                      
+    0128e: pop      edi                                      
+    0128f: pop      esi                                      
+    01290: pop      edx                                      
+    01291: pop      ecx                                      
+    01292: pop      ebx                                      
+    01293: ret                                               
+
+========== reselect_b  (obj line 734, delta -4)
+  ; [738] void reselect_b()
+    01294: push     ebx                                      
+    01295: push     ecx                                      
+    01296: push     edx                                      
+    01297: push     esi                                      
+    01298: push     edi                                      
+    01299: push     ebp                                      
+    0129a: mov      ebp, esp                                 
+    0129c: sub      esp, 0x20                                
+  ; [743] float max=-1;
+    012a2: mov      dword ptr [ebp - 0x18], 0xbf800000       
+  ; [746] if (auto_users_b)
+    012a9: cmp      word ptr [0], 0                          ; auto_users_b
+    012b1: je       0x13cc                                   
+  ; [748] if (last_user_b==auto_users_b)
+    012b7: mov      ax, word ptr [0]                         ; last_user_b
+    012bd: cmp      ax, word ptr [0]                         ; auto_users_b
+    012c4: jne      0x12cf                                   
+  ; [749] last_user_b=0;
+    012c6: mov      word ptr [0], 0                          ; last_user_b
+  ; [751] maxu=auto_users_list_b[last_user_b];
+    012cf: mov      eax, dword ptr [0xfffffffe]              ; last_user_b
+    012d4: sar      eax, 0x10                                
+    012d7: add      eax, eax                                 
+    012d9: mov      ax, word ptr [eax]                       ; auto_users_list_b
+    012e0: mov      dword ptr [ebp - 0x14], eax              
+  ; [753] if (++last_user_b==auto_users_b)
+    012e3: inc      word ptr [0]                             ; last_user_b
+    012ea: mov      ax, word ptr [0]                         ; last_user_b
+    012f0: cmp      ax, word ptr [0]                         ; auto_users_b
+    012f7: jne      0x1302                                   
+  ; [754] last_user_b=0;
+    012f9: mov      word ptr [0], 0                          ; last_user_b
+  ; [756] au=last_user_b;
+    01302: mov      ax, word ptr [0]                         ; last_user_b
+    01308: mov      dword ptr [ebp - 8], eax                 
+  ; [757] max_au=au;
+    0130b: mov      eax, dword ptr [ebp - 8]                 
+    0130e: mov      dword ptr [ebp - 0xc], eax               
+  ; [759] for (short i=1; i<auto_users_b; i++)
+    01311: mov      dword ptr [ebp - 0x20], 1                
+    01318: jmp      0x1320                                   
+    0131a: mov      eax, dword ptr [ebp - 0x20]              
+    0131d: inc      dword ptr [ebp - 0x20]                   
+    01320: mov      eax, dword ptr [ebp - 0x20]              
+    01323: cmp      ax, word ptr [0]                         ; auto_users_b
+    0132a: jge      0x13b1                                   
+  ; [761] if (au==auto_users_b)
+    01330: mov      eax, dword ptr [ebp - 8]                 
+    01333: cmp      ax, word ptr [0]                         ; auto_users_b
+    0133a: jne      0x1343                                   
+  ; [762] au=0;
+    0133c: mov      dword ptr [ebp - 8], 0                   
+  ; [764] user=auto_users_list_b[au];
+    01343: movsx    eax, word ptr [ebp - 8]                  
+    01347: add      eax, eax                                 
+    01349: mov      ax, word ptr [eax]                       ; auto_users_list_b
+    01350: mov      dword ptr [ebp - 0x10], eax              
+  ; [765] p=users[user-1].plr;
+    01353: movsx    eax, word ptr [ebp - 0x10]               
+    01357: dec      eax                                      
+    01358: imul     eax, eax, 0x18                           
+    0135b: mov      al, byte ptr [eax + 0x17]                ; users
+    01361: mov      byte ptr [ebp - 4], al                   
+  ; [766] if (p<=0)
+    01364: movsx    eax, byte ptr [ebp - 4]                  
+    01368: test     eax, eax                                 
+    0136a: jg       0x1375                                   
+  ; [767] d=1500;
+    0136c: mov      dword ptr [ebp - 0x1c], 0x44bb8000       
+    01373: jmp      0x1389                                   
+  ; [769] d=(teams[p-1].tm_dist);
+    01375: movsx    eax, byte ptr [ebp - 4]                  
+    01379: dec      eax                                      
+    0137a: imul     eax, eax, 0xcb                           
+    01380: mov      eax, dword ptr [eax + 0x25]              ; teams
+    01386: mov      dword ptr [ebp - 0x1c], eax              
+  ; [771] if (d>max)
+    01389: fld      dword ptr [ebp - 0x1c]                   
+    0138c: fcomp    dword ptr [ebp - 0x18]                   
+    0138f: fnstsw   ax                                       
+    01391: sahf                                              
+    01392: jbe      0x13a6                                   
+  ; [773] max=d;
+    01394: mov      eax, dword ptr [ebp - 0x1c]              
+    01397: mov      dword ptr [ebp - 0x18], eax              
+  ; [774] maxu=user;
+    0139a: mov      eax, dword ptr [ebp - 0x10]              
+    0139d: mov      dword ptr [ebp - 0x14], eax              
+  ; [775] max_au=au;
+    013a0: mov      eax, dword ptr [ebp - 8]                 
+    013a3: mov      dword ptr [ebp - 0xc], eax               
+  ; [777] au++;
+    013a6: mov      eax, dword ptr [ebp - 8]                 
+    013a9: inc      dword ptr [ebp - 8]                      
+  ; [778] }
+    013ac: jmp      0x131a                                   
+  ; [779] auto_select_b(maxu);			// Team Control.
+    013b1: movsx    eax, word ptr [ebp - 0x14]               
+    013b5: call     0x13ba                                   ; auto_select_b
+  ; [780] if (!ball_poss)
+    013ba: cmp      dword ptr [0], 0                         ; ball_poss
+    013c1: jne      0x13cc                                   
+  ; [781] last_user_b=max_au;
+    013c3: mov      eax, dword ptr [ebp - 0xc]               
+    013c6: mov      word ptr [0], ax                         ; last_user_b
+  ; [783] }
+    013cc: mov      esp, ebp                                 
+    013ce: pop      ebp                                      
+    013cf: pop      edi                                      
+    013d0: pop      esi                                      
+    013d1: pop      edx                                      
+    013d2: pop      ecx                                      
+    013d3: pop      ebx                                      
+    013d4: ret                                               
+
+========== reselect  (obj line 784, delta -4)
+  ; [788] void reselect()
+    013d5: push     ebx                                      
+    013d6: push     ecx                                      
+    013d7: push     edx                                      
+    013d8: push     esi                                      
+    013d9: push     edi                                      
+    013da: push     ebp                                      
+    013db: mov      ebp, esp                                 
+    013dd: sub      esp, 0                                   
+  ; [790] predict_ball();
+    013e3: call     0x13e8                                   ; predict_ball
+  ; [791] get_nearest();
+    013e8: call     0x13ed                                   ; get_nearest
+  ; [792] new_select=FALSE;		// Can be same player...
+    013ed: mov      byte ptr [0], 0                          ; new_select
+  ; [793] closest=FALSE;
+    013f4: mov      byte ptr [0], 0                          ; closest
+  ; [794] reselect_a();
+    013fb: call     0x1400                                   ; reselect_a
+  ; [795] reselect_b();
+    01400: call     0x1405                                   ; reselect_b
+  ; [796] }
+    01405: pop      ebp                                      
+    01406: pop      edi                                      
+    01407: pop      esi                                      
+    01408: pop      edx                                      
+    01409: pop      ecx                                      
+    0140a: pop      ebx                                      
+    0140b: ret                                               
+
+========== reselect_all_users  (obj line 797, delta -4)
+  ; [801] void reselect_all_users()
+    0140c: push     ebx                                      
+    0140d: push     ecx                                      
+    0140e: push     edx                                      
+    0140f: push     esi                                      
+    01410: push     edi                                      
+    01411: push     ebp                                      
+    01412: mov      ebp, esp                                 
+    01414: sub      esp, 4                                   
+  ; [803] for (short i=0; i<num_of_users; i++)
+    0141a: mov      dword ptr [ebp - 4], 0                   
+    01421: jmp      0x1429                                   
+    01423: mov      eax, dword ptr [ebp - 4]                 
+    01426: inc      dword ptr [ebp - 4]                      
+    01429: movsx    eax, word ptr [ebp - 4]                  
+    0142d: cmp      eax, dword ptr [0]                       ; num_of_users
+    01433: jge      0x143c                                   
+  ; [805] reselect();
+    01435: call     0x143a                                   ; reselect
+  ; [806] }
+    0143a: jmp      0x1423                                   
+  ; [807] }
+    0143c: mov      esp, ebp                                 
+    0143e: pop      ebp                                      
+    0143f: pop      edi                                      
+    01440: pop      esi                                      
+    01441: pop      edx                                      
+    01442: pop      ecx                                      
+    01443: pop      ebx                                      
+    01444: ret                                               
+
+========== force_users  (obj line 809, delta -4)
+  ; [813] void force_users()
+    01445: push     ebx                                      
+    01446: push     ecx                                      
+    01447: push     edx                                      
+    01448: push     esi                                      
+    01449: push     edi                                      
+    0144a: push     ebp                                      
+    0144b: mov      ebp, esp                                 
+    0144d: sub      esp, 0x14                                
+  ; [815] if (!match_mode && num_of_users)
+    01453: cmp      byte ptr [0], 0                          ; match_mode
+    0145a: jne      0x1465                                   
+    0145c: cmp      dword ptr [0], 0                         ; num_of_users
+    01463: jne      0x146a                                   
+    01465: jmp      0x1596                                   
+  ; [818] for (f_user=1; f_user<=MAX_USERS; f_user++)
+    0146a: mov      dword ptr [ebp - 0x10], 1                
+    01471: jmp      0x1479                                   
+    01473: mov      eax, dword ptr [ebp - 0x10]              
+    01476: inc      dword ptr [ebp - 0x10]                   
+    01479: movsx    eax, word ptr [ebp - 0x10]               
+    0147d: cmp      eax, 4                                   
+    01480: jg       0x1498                                   
+  ; [820] if (!(forced&1))
+    01482: test     byte ptr [0], 1                          ; forced
+    01489: jne      0x1494                                   
+  ; [821] forced>>=1;
+    0148b: sar      word ptr [0], 1                          ; forced
+    01492: jmp      0x1496                                   
+  ; [823] break;
+    01494: jmp      0x1498                                   
+  ; [824] }
+    01496: jmp      0x1473                                   
+  ; [826] short p=users[f_user-1].plr;
+    01498: movsx    eax, word ptr [ebp - 0x10]               
+    0149c: dec      eax                                      
+    0149d: imul     eax, eax, 0x18                           
+    014a0: movsx    ax, byte ptr [eax + 0x17]                ; users
+    014a8: mov      dword ptr [ebp - 0xc], eax               
+  ; [827] short tm=(p<12 ? 12:23);
+    014ab: movsx    eax, word ptr [ebp - 0xc]                
+    014af: cmp      eax, 0xc                                 
+    014b2: jge      0x14bd                                   
+    014b4: mov      dword ptr [ebp - 0x14], 0xc              
+    014bb: jmp      0x14c4                                   
+    014bd: mov      dword ptr [ebp - 0x14], 0x17             
+    014c4: mov      eax, dword ptr [ebp - 0x14]              
+    014c7: mov      dword ptr [ebp - 8], eax                 
+  ; [828] for (short i=1; i<=10; i++)
+    014ca: mov      dword ptr [ebp - 4], 1                   
+    014d1: jmp      0x14d9                                   
+    014d3: mov      eax, dword ptr [ebp - 4]                 
+    014d6: inc      dword ptr [ebp - 4]                      
+    014d9: movsx    eax, word ptr [ebp - 4]                  
+    014dd: cmp      eax, 0xa                                 
+    014e0: jg       0x1519                                   
+  ; [830] if (++p==tm)
+    014e2: inc      dword ptr [ebp - 0xc]                    
+    014e5: mov      eax, dword ptr [ebp - 0xc]               
+    014e8: cmp      ax, word ptr [ebp - 8]                   
+    014ec: jne      0x14f2                                   
+  ; [831] p-=10;				// Can't be keeper!
+    014ee: add      dword ptr [ebp - 0xc], -0xa              
+  ; [833] if (sel_circle[p-1] && !teams[p-1].control)
+    014f2: movsx    eax, word ptr [ebp - 0xc]                
+    014f6: cmp      byte ptr [eax - 1], 0                    ; sel_circle
+    014fd: je       0x1513                                   
+    014ff: movsx    eax, word ptr [ebp - 0xc]                
+    01503: dec      eax                                      
+    01504: imul     eax, eax, 0xcb                           
+    0150a: cmp      byte ptr [eax + 0x2e], 0                 ; teams
+    01511: je       0x1515                                   
+    01513: jmp      0x1517                                   
+  ; [834] break;
+    01515: jmp      0x1519                                   
+  ; [835] }
+    01517: jmp      0x14d3                                   
+  ; [836] if (i!=11)
+    01519: movsx    eax, word ptr [ebp - 4]                  
+    0151d: cmp      eax, 0xb                                 
+    01520: je       0x1596                                   
+  ; [839] if (p<12)
+    01522: movsx    eax, word ptr [ebp - 0xc]                
+    01526: cmp      eax, 0xc                                 
+    01529: jge      0x1543                                   
+  ; [840] last_plr_a=users[f_user-1].plr;
+    0152b: movsx    eax, word ptr [ebp - 0x10]               
+    0152f: dec      eax                                      
+    01530: imul     eax, eax, 0x18                           
+    01533: movsx    ax, byte ptr [eax + 0x17]                ; users
+    0153b: mov      word ptr [0], ax                         ; last_plr_a
+    01541: jmp      0x1559                                   
+  ; [842] last_plr_b=users[f_user-1].plr;
+    01543: movsx    eax, word ptr [ebp - 0x10]               
+    01547: dec      eax                                      
+    01548: imul     eax, eax, 0x18                           
+    0154b: movsx    ax, byte ptr [eax + 0x17]                ; users
+    01553: mov      word ptr [0], ax                         ; last_plr_b
+  ; [844] clear_auto(f_user);
+    01559: movsx    eax, word ptr [ebp - 0x10]               
+    0155d: call     0x1562                                   ; clear_auto
+  ; [845] teams[p-1].control=f_user;
+    01562: movsx    edx, word ptr [ebp - 0xc]                
+    01566: dec      edx                                      
+    01567: imul     edx, edx, 0xcb                           
+    0156d: mov      al, byte ptr [ebp - 0x10]                
+    01570: mov      byte ptr [edx + 0x2e], al                ; teams
+  ; [846] users[f_user-1].chng=TRUE;				// changed control
+    01576: movsx    eax, word ptr [ebp - 0x10]               
+    0157a: dec      eax                                      
+    0157b: imul     eax, eax, 0x18                           
+    0157e: mov      byte ptr [eax + 0x16], 1                 ; users
+  ; [847] users[f_user-1].plr=p;
+    01585: movsx    eax, word ptr [ebp - 0x10]               
+    01589: dec      eax                                      
+    0158a: imul     edx, eax, 0x18                           
+    0158d: mov      al, byte ptr [ebp - 0xc]                 
+    01590: mov      byte ptr [edx + 0x17], al                ; users
+  ; [850] }
+    01596: mov      esp, ebp                                 
+    01598: pop      ebp                                      
+    01599: pop      edi                                      
+    0159a: pop      esi                                      
+    0159b: pop      edx                                      
+    0159c: pop      ecx                                      
+    0159d: pop      ebx                                      
+    0159e: ret                                               
+
+========== new_users  (obj line 852, delta -4)
+  ; [856] void new_users()
+    0159f: push     ebx                                      
+    015a0: push     ecx                                      
+    015a1: push     edx                                      
+    015a2: push     esi                                      
+    015a3: push     edi                                      
+    015a4: push     ebp                                      
+    015a5: mov      ebp, esp                                 
+    015a7: sub      esp, 0                                   
+  ; [859] if (!key_togs[0x43])
+    015ad: cmp      byte ptr [0x43], 0                       ; key_togs
+    015b4: jne      0x160c                                   
+  ; [862] if (ball_poss && num_of_users && !match_mode)
+    015b6: cmp      dword ptr [0], 0                         ; ball_poss
+    015bd: je       0x15c8                                   
+    015bf: cmp      dword ptr [0], 0                         ; num_of_users
+    015c6: jne      0x15ca                                   
+    015c8: jmp      0x15d3                                   
+    015ca: cmp      byte ptr [0], 0                          ; match_mode
+    015d1: je       0x15d5                                   
+    015d3: jmp      0x160c                                   
+  ; [866] if (ball_travel++>select_cnt)
+    015d5: mov      ax, word ptr [0]                         ; ball_travel
+    015db: inc      word ptr [0]                             ; ball_travel
+    015e2: cmp      ax, word ptr [0]                         ; select_cnt
+    015e9: jle      0x160c                                   
+  ; [868] ball_travel=0;
+    015eb: mov      word ptr [0], 0                          ; ball_travel
+  ; [869] new_select=FALSE;		// Can be same player...
+    015f4: mov      byte ptr [0], 0                          ; new_select
+  ; [870] closest=TRUE;
+    015fb: mov      byte ptr [0], 1                          ; closest
+  ; [872] reselect_a();
+    01602: call     0x1607                                   ; reselect_a
+  ; [873] reselect_b();
+    01607: call     0x160c                                   ; reselect_b
+  ; [878] if (forced)
+    0160c: cmp      word ptr [0], 0                          ; forced
+    01614: je       0x161b                                   
+  ; [879] force_users();
+    01616: call     0x161b                                   ; force_users
+  ; [881] }
+    0161b: pop      ebp                                      
+    0161c: pop      edi                                      
+    0161d: pop      esi                                      
+    0161e: pop      edx                                      
+    0161f: pop      ecx                                      
+    01620: pop      ebx                                      
+    01621: ret                                               

@@ -1,0 +1,1837 @@
+{
+ "note": "EUROREND.DAT directory; engine file id = entry*8 (readfile uses id/8)",
+ "entries": [
+  {
+   "entry": 0,
+   "file_id": 0,
+   "offset": 0,
+   "size": 768,
+   "name": "PAL_FOOTY",
+   "raw_png": null
+  },
+  {
+   "entry": 1,
+   "file_id": 8,
+   "offset": 768,
+   "size": 32192,
+   "name": "TMD_TEXDATA",
+   "raw_png": null
+  },
+  {
+   "entry": 2,
+   "file_id": 16,
+   "offset": 32960,
+   "size": 18336,
+   "name": "TMD_MANDATA",
+   "raw_png": null
+  },
+  {
+   "entry": 3,
+   "file_id": 24,
+   "offset": 51296,
+   "size": 32768,
+   "name": "BM_HEAD_3",
+   "raw_png": "indexed/BM_HEAD_3.png"
+  },
+  {
+   "entry": 4,
+   "file_id": 32,
+   "offset": 84064,
+   "size": 32768,
+   "name": "BM_HEAD_4",
+   "raw_png": "indexed/BM_HEAD_4.png"
+  },
+  {
+   "entry": 5,
+   "file_id": 40,
+   "offset": 116832,
+   "size": 32768,
+   "name": "BM_HEAD_5",
+   "raw_png": "indexed/BM_HEAD_5.png"
+  },
+  {
+   "entry": 6,
+   "file_id": 48,
+   "offset": 149600,
+   "size": 32768,
+   "name": "BM_HEAD_6",
+   "raw_png": "indexed/BM_HEAD_6.png"
+  },
+  {
+   "entry": 7,
+   "file_id": 56,
+   "offset": 182368,
+   "size": 32768,
+   "name": "BM_HEAD_7",
+   "raw_png": "indexed/BM_HEAD_7.png"
+  },
+  {
+   "entry": 8,
+   "file_id": 64,
+   "offset": 215136,
+   "size": 65536,
+   "name": "BM_TORSO_Bulgaria",
+   "raw_png": "indexed/BM_TORSO_Bulgaria.png"
+  },
+  {
+   "entry": 9,
+   "file_id": 72,
+   "offset": 280672,
+   "size": 65536,
+   "name": "BM_TORSO_England",
+   "raw_png": "indexed/BM_TORSO_England.png"
+  },
+  {
+   "entry": 10,
+   "file_id": 80,
+   "offset": 346208,
+   "size": 65536,
+   "name": "BM_TORSO_Denmark",
+   "raw_png": "indexed/BM_TORSO_Denmark.png"
+  },
+  {
+   "entry": 11,
+   "file_id": 88,
+   "offset": 411744,
+   "size": 65536,
+   "name": "BM_TORSO_Romania",
+   "raw_png": "indexed/BM_TORSO_Romania.png"
+  },
+  {
+   "entry": 12,
+   "file_id": 96,
+   "offset": 477280,
+   "size": 65536,
+   "name": "BM_TORSO_France",
+   "raw_png": "indexed/BM_TORSO_France.png"
+  },
+  {
+   "entry": 13,
+   "file_id": 104,
+   "offset": 542816,
+   "size": 65536,
+   "name": "BM_TORSO_Switzerland",
+   "raw_png": "indexed/BM_TORSO_Switzerland.png"
+  },
+  {
+   "entry": 14,
+   "file_id": 112,
+   "offset": 608352,
+   "size": 65536,
+   "name": "BM_TORSO_Scotland",
+   "raw_png": "indexed/BM_TORSO_Scotland.png"
+  },
+  {
+   "entry": 15,
+   "file_id": 120,
+   "offset": 673888,
+   "size": 65536,
+   "name": "BM_TORSO_Spain",
+   "raw_png": "indexed/BM_TORSO_Spain.png"
+  },
+  {
+   "entry": 16,
+   "file_id": 128,
+   "offset": 739424,
+   "size": 65536,
+   "name": "BM_TORSO_Germany",
+   "raw_png": "indexed/BM_TORSO_Germany.png"
+  },
+  {
+   "entry": 17,
+   "file_id": 136,
+   "offset": 804960,
+   "size": 65536,
+   "name": "BM_TORSO_Croatia",
+   "raw_png": "indexed/BM_TORSO_Croatia.png"
+  },
+  {
+   "entry": 18,
+   "file_id": 144,
+   "offset": 870496,
+   "size": 65536,
+   "name": "BM_TORSO_Turkey",
+   "raw_png": "indexed/BM_TORSO_Turkey.png"
+  },
+  {
+   "entry": 19,
+   "file_id": 152,
+   "offset": 936032,
+   "size": 65536,
+   "name": "BM_TORSO_Russia",
+   "raw_png": "indexed/BM_TORSO_Russia.png"
+  },
+  {
+   "entry": 20,
+   "file_id": 160,
+   "offset": 1001568,
+   "size": 65536,
+   "name": "BM_TORSO_CzechRepublic",
+   "raw_png": "indexed/BM_TORSO_CzechRepublic.png"
+  },
+  {
+   "entry": 21,
+   "file_id": 168,
+   "offset": 1067104,
+   "size": 65536,
+   "name": "BM_TORSO_Portugal",
+   "raw_png": "indexed/BM_TORSO_Portugal.png"
+  },
+  {
+   "entry": 22,
+   "file_id": 176,
+   "offset": 1132640,
+   "size": 65536,
+   "name": "BM_TORSO_Holland",
+   "raw_png": "indexed/BM_TORSO_Holland.png"
+  },
+  {
+   "entry": 23,
+   "file_id": 184,
+   "offset": 1198176,
+   "size": 65536,
+   "name": "BM_TORSO_Italy",
+   "raw_png": "indexed/BM_TORSO_Italy.png"
+  },
+  {
+   "entry": 24,
+   "file_id": 192,
+   "offset": 1263712,
+   "size": 19968,
+   "name": "BM_LIMBS_24",
+   "raw_png": "indexed/BM_LIMBS_24.png"
+  },
+  {
+   "entry": 25,
+   "file_id": 200,
+   "offset": 1283680,
+   "size": 19968,
+   "name": "BM_LIMBS_25",
+   "raw_png": "indexed/BM_LIMBS_25.png"
+  },
+  {
+   "entry": 26,
+   "file_id": 208,
+   "offset": 1303648,
+   "size": 19968,
+   "name": "BM_LIMBS (not referenced by the Euro teamlist)",
+   "raw_png": null
+  },
+  {
+   "entry": 27,
+   "file_id": 216,
+   "offset": 1323616,
+   "size": 19968,
+   "name": "BM_LIMBS_27",
+   "raw_png": "indexed/BM_LIMBS_27.png"
+  },
+  {
+   "entry": 28,
+   "file_id": 224,
+   "offset": 1343584,
+   "size": 19968,
+   "name": "BM_LIMBS_28",
+   "raw_png": "indexed/BM_LIMBS_28.png"
+  },
+  {
+   "entry": 29,
+   "file_id": 232,
+   "offset": 1363552,
+   "size": 19968,
+   "name": "BM_LIMBS_29",
+   "raw_png": "indexed/BM_LIMBS_29.png"
+  },
+  {
+   "entry": 30,
+   "file_id": 240,
+   "offset": 1383520,
+   "size": 19968,
+   "name": "BM_LIMBS_30",
+   "raw_png": "indexed/BM_LIMBS_30.png"
+  },
+  {
+   "entry": 31,
+   "file_id": 248,
+   "offset": 1403488,
+   "size": 19968,
+   "name": "BM_LIMBS_31",
+   "raw_png": "indexed/BM_LIMBS_31.png"
+  },
+  {
+   "entry": 32,
+   "file_id": 256,
+   "offset": 1423456,
+   "size": 19968,
+   "name": "BM_LIMBS_32",
+   "raw_png": "indexed/BM_LIMBS_32.png"
+  },
+  {
+   "entry": 33,
+   "file_id": 264,
+   "offset": 1443424,
+   "size": 19968,
+   "name": "BM_LIMBS (not referenced by the Euro teamlist)",
+   "raw_png": null
+  },
+  {
+   "entry": 34,
+   "file_id": 272,
+   "offset": 1463392,
+   "size": 17152,
+   "name": "BM_FEET",
+   "raw_png": "indexed/BM_FEET.png"
+  },
+  {
+   "entry": 35,
+   "file_id": 280,
+   "offset": 1480544,
+   "size": 65536,
+   "name": "BM_REFKPTOR",
+   "raw_png": "indexed/BM_REFKPTOR.png"
+  },
+  {
+   "entry": 36,
+   "file_id": 288,
+   "offset": 1546080,
+   "size": 15872,
+   "name": "BM_EXTRA1",
+   "raw_png": "indexed/BM_EXTRA1.png"
+  },
+  {
+   "entry": 37,
+   "file_id": 296,
+   "offset": 1561952,
+   "size": 65536,
+   "name": "BM_EXTRA3",
+   "raw_png": "indexed/BM_EXTRA3.png"
+  },
+  {
+   "entry": 38,
+   "file_id": 304,
+   "offset": 1627488,
+   "size": 65536,
+   "name": "BM_XLIMBS",
+   "raw_png": "indexed/BM_XLIMBS.png"
+  },
+  {
+   "entry": 39,
+   "file_id": 312,
+   "offset": 1693024,
+   "size": 65536,
+   "name": "BM_XRFKPLIM",
+   "raw_png": "indexed/BM_XRFKPLIM.png"
+  },
+  {
+   "entry": 40,
+   "file_id": 320,
+   "offset": 1758560,
+   "size": 65536,
+   "name": "BM_NETS",
+   "raw_png": "indexed/BM_NETS.png"
+  },
+  {
+   "entry": 41,
+   "file_id": 328,
+   "offset": 1824096,
+   "size": 65536,
+   "name": "BM_STAND1",
+   "raw_png": "indexed/BM_STAND1.png"
+  },
+  {
+   "entry": 42,
+   "file_id": 336,
+   "offset": 1889632,
+   "size": 65536,
+   "name": "BM_STAND2",
+   "raw_png": "indexed/BM_STAND2.png"
+  },
+  {
+   "entry": 43,
+   "file_id": 344,
+   "offset": 1955168,
+   "size": 72,
+   "name": "COL_KIT_Bulgaria",
+   "raw_png": null
+  },
+  {
+   "entry": 44,
+   "file_id": 352,
+   "offset": 1955240,
+   "size": 72,
+   "name": "COL_KIT_England",
+   "raw_png": null
+  },
+  {
+   "entry": 45,
+   "file_id": 360,
+   "offset": 1955312,
+   "size": 72,
+   "name": "COL_KIT_Denmark",
+   "raw_png": null
+  },
+  {
+   "entry": 46,
+   "file_id": 368,
+   "offset": 1955384,
+   "size": 72,
+   "name": "COL_KIT_Romania",
+   "raw_png": null
+  },
+  {
+   "entry": 47,
+   "file_id": 376,
+   "offset": 1955456,
+   "size": 72,
+   "name": "COL_KIT_France",
+   "raw_png": null
+  },
+  {
+   "entry": 48,
+   "file_id": 384,
+   "offset": 1955528,
+   "size": 72,
+   "name": "COL_KIT_Switzerland",
+   "raw_png": null
+  },
+  {
+   "entry": 49,
+   "file_id": 392,
+   "offset": 1955600,
+   "size": 72,
+   "name": "COL_KIT_Scotland",
+   "raw_png": null
+  },
+  {
+   "entry": 50,
+   "file_id": 400,
+   "offset": 1955672,
+   "size": 72,
+   "name": "COL_KIT_Spain",
+   "raw_png": null
+  },
+  {
+   "entry": 51,
+   "file_id": 408,
+   "offset": 1955744,
+   "size": 72,
+   "name": "COL_KIT_Germany",
+   "raw_png": null
+  },
+  {
+   "entry": 52,
+   "file_id": 416,
+   "offset": 1955816,
+   "size": 72,
+   "name": "COL_KIT_Croatia",
+   "raw_png": null
+  },
+  {
+   "entry": 53,
+   "file_id": 424,
+   "offset": 1955888,
+   "size": 72,
+   "name": "COL_KIT_Turkey",
+   "raw_png": null
+  },
+  {
+   "entry": 54,
+   "file_id": 432,
+   "offset": 1955960,
+   "size": 72,
+   "name": "COL_KIT_Russia",
+   "raw_png": null
+  },
+  {
+   "entry": 55,
+   "file_id": 440,
+   "offset": 1956032,
+   "size": 72,
+   "name": "COL_KIT_CzechRepublic",
+   "raw_png": null
+  },
+  {
+   "entry": 56,
+   "file_id": 448,
+   "offset": 1956104,
+   "size": 72,
+   "name": "COL_KIT_Portugal",
+   "raw_png": null
+  },
+  {
+   "entry": 57,
+   "file_id": 456,
+   "offset": 1956176,
+   "size": 72,
+   "name": "COL_KIT_Holland",
+   "raw_png": null
+  },
+  {
+   "entry": 58,
+   "file_id": 464,
+   "offset": 1956248,
+   "size": 72,
+   "name": "COL_KIT_Italy",
+   "raw_png": null
+  },
+  {
+   "entry": 59,
+   "file_id": 472,
+   "offset": 1956320,
+   "size": 24,
+   "name": "COL_SKIN_59",
+   "raw_png": null
+  },
+  {
+   "entry": 60,
+   "file_id": 480,
+   "offset": 1956344,
+   "size": 24,
+   "name": "COL_SKIN_60",
+   "raw_png": null
+  },
+  {
+   "entry": 61,
+   "file_id": 488,
+   "offset": 1956368,
+   "size": 24,
+   "name": "COL_SKIN_61",
+   "raw_png": null
+  },
+  {
+   "entry": 62,
+   "file_id": 496,
+   "offset": 1956392,
+   "size": 24,
+   "name": "COL_SKIN_62",
+   "raw_png": null
+  },
+  {
+   "entry": 63,
+   "file_id": 504,
+   "offset": 1956416,
+   "size": 24,
+   "name": "COL_SKIN_63",
+   "raw_png": null
+  },
+  {
+   "entry": 64,
+   "file_id": 512,
+   "offset": 1956440,
+   "size": 48,
+   "name": "COL_PITCH_64 (unreferenced)",
+   "raw_png": null
+  },
+  {
+   "entry": 65,
+   "file_id": 520,
+   "offset": 1956488,
+   "size": 48,
+   "name": "COL_PITCH_65",
+   "raw_png": null
+  },
+  {
+   "entry": 66,
+   "file_id": 528,
+   "offset": 1956536,
+   "size": 48,
+   "name": "COL_PITCH_66 (unreferenced)",
+   "raw_png": null
+  },
+  {
+   "entry": 67,
+   "file_id": 536,
+   "offset": 1956584,
+   "size": 48,
+   "name": "COL_PITCH_67",
+   "raw_png": null
+  },
+  {
+   "entry": 68,
+   "file_id": 544,
+   "offset": 1956632,
+   "size": 48,
+   "name": "COL_PITCH_68",
+   "raw_png": null
+  },
+  {
+   "entry": 69,
+   "file_id": 552,
+   "offset": 1956680,
+   "size": 48,
+   "name": "COL_PITCH_69",
+   "raw_png": null
+  },
+  {
+   "entry": 70,
+   "file_id": 560,
+   "offset": 1956728,
+   "size": 48,
+   "name": "COL_PITCH_70",
+   "raw_png": null
+  },
+  {
+   "entry": 71,
+   "file_id": 568,
+   "offset": 1956776,
+   "size": 48,
+   "name": "COL_PITCH_71",
+   "raw_png": null
+  },
+  {
+   "entry": 72,
+   "file_id": 576,
+   "offset": 1956824,
+   "size": 48,
+   "name": "COL_PITCH_72",
+   "raw_png": null
+  },
+  {
+   "entry": 73,
+   "file_id": 584,
+   "offset": 1956872,
+   "size": 24,
+   "name": "COL_HOME_73",
+   "raw_png": null
+  },
+  {
+   "entry": 74,
+   "file_id": 592,
+   "offset": 1956896,
+   "size": 24,
+   "name": "COL_HOME_74",
+   "raw_png": null
+  },
+  {
+   "entry": 75,
+   "file_id": 600,
+   "offset": 1956920,
+   "size": 24,
+   "name": null,
+   "raw_png": null
+  },
+  {
+   "entry": 76,
+   "file_id": 608,
+   "offset": 1956944,
+   "size": 24,
+   "name": "COL_HOME_76",
+   "raw_png": null
+  },
+  {
+   "entry": 77,
+   "file_id": 616,
+   "offset": 1956968,
+   "size": 24,
+   "name": "COL_HOME_77",
+   "raw_png": null
+  },
+  {
+   "entry": 78,
+   "file_id": 624,
+   "offset": 1956992,
+   "size": 24,
+   "name": null,
+   "raw_png": null
+  },
+  {
+   "entry": 79,
+   "file_id": 632,
+   "offset": 1957016,
+   "size": 24,
+   "name": "COL_AWAY_79",
+   "raw_png": null
+  },
+  {
+   "entry": 80,
+   "file_id": 640,
+   "offset": 1957040,
+   "size": 24,
+   "name": "COL_AWAY_80",
+   "raw_png": null
+  },
+  {
+   "entry": 81,
+   "file_id": 648,
+   "offset": 1957064,
+   "size": 24,
+   "name": null,
+   "raw_png": null
+  },
+  {
+   "entry": 82,
+   "file_id": 656,
+   "offset": 1957088,
+   "size": 24,
+   "name": "COL_AWAY_82",
+   "raw_png": null
+  },
+  {
+   "entry": 83,
+   "file_id": 664,
+   "offset": 1957112,
+   "size": 24,
+   "name": "COL_AWAY_83",
+   "raw_png": null
+  },
+  {
+   "entry": 84,
+   "file_id": 672,
+   "offset": 1957136,
+   "size": 24,
+   "name": null,
+   "raw_png": null
+  },
+  {
+   "entry": 85,
+   "file_id": 680,
+   "offset": 1957160,
+   "size": 48,
+   "name": "COL_SKY3DB_85",
+   "raw_png": null
+  },
+  {
+   "entry": 86,
+   "file_id": 688,
+   "offset": 1957208,
+   "size": 48,
+   "name": "COL_SKY1",
+   "raw_png": null
+  },
+  {
+   "entry": 87,
+   "file_id": 696,
+   "offset": 1957256,
+   "size": 48,
+   "name": "COL_SKY2",
+   "raw_png": null
+  },
+  {
+   "entry": 88,
+   "file_id": 704,
+   "offset": 1957304,
+   "size": 48,
+   "name": "COL_SKY4",
+   "raw_png": null
+  },
+  {
+   "entry": 89,
+   "file_id": 712,
+   "offset": 1957352,
+   "size": 48,
+   "name": "COL_SKY3",
+   "raw_png": null
+  },
+  {
+   "entry": 90,
+   "file_id": 720,
+   "offset": 1957400,
+   "size": 48,
+   "name": "COL_SKY0",
+   "raw_png": null
+  },
+  {
+   "entry": 91,
+   "file_id": 728,
+   "offset": 1957448,
+   "size": 307200,
+   "name": "BM_SKY5",
+   "raw_png": "indexed/BM_SKY5.png"
+  },
+  {
+   "entry": 92,
+   "file_id": 736,
+   "offset": 2264648,
+   "size": 307200,
+   "name": "BM_SKY1",
+   "raw_png": "indexed/BM_SKY1.png"
+  },
+  {
+   "entry": 93,
+   "file_id": 744,
+   "offset": 2571848,
+   "size": 307200,
+   "name": "BM_SKY2",
+   "raw_png": "indexed/BM_SKY2.png"
+  },
+  {
+   "entry": 94,
+   "file_id": 752,
+   "offset": 2879048,
+   "size": 307200,
+   "name": "BM_SKY4",
+   "raw_png": "indexed/BM_SKY4.png"
+  },
+  {
+   "entry": 95,
+   "file_id": 760,
+   "offset": 3186248,
+   "size": 307200,
+   "name": "BM_SKY3",
+   "raw_png": "indexed/BM_SKY3.png"
+  },
+  {
+   "entry": 96,
+   "file_id": 768,
+   "offset": 3493448,
+   "size": 307200,
+   "name": "BM_SKY0",
+   "raw_png": "indexed/BM_SKY0.png"
+  },
+  {
+   "entry": 97,
+   "file_id": 776,
+   "offset": 3800648,
+   "size": 65536,
+   "name": "BM_SKY3DB_97",
+   "raw_png": "indexed/BM_SKY3DB_97.png"
+  },
+  {
+   "entry": 98,
+   "file_id": 784,
+   "offset": 3866184,
+   "size": 65536,
+   "name": "BM_SKY3DB_98",
+   "raw_png": "indexed/BM_SKY3DB_98.png"
+  },
+  {
+   "entry": 99,
+   "file_id": 792,
+   "offset": 3931720,
+   "size": 65536,
+   "name": "BM_SKY3DB_99",
+   "raw_png": "indexed/BM_SKY3DB_99.png"
+  },
+  {
+   "entry": 100,
+   "file_id": 800,
+   "offset": 3997256,
+   "size": 65536,
+   "name": "BM_KGRID1",
+   "raw_png": "indexed/BM_KGRID1.png"
+  },
+  {
+   "entry": 101,
+   "file_id": 808,
+   "offset": 4062792,
+   "size": 65536,
+   "name": "BM_KGRID2",
+   "raw_png": "indexed/BM_KGRID2.png"
+  },
+  {
+   "entry": 102,
+   "file_id": 816,
+   "offset": 4128328,
+   "size": 65536,
+   "name": "BM_KGRID3",
+   "raw_png": "indexed/BM_KGRID3.png"
+  },
+  {
+   "entry": 103,
+   "file_id": 824,
+   "offset": 4193864,
+   "size": 65536,
+   "name": "BM_KGRID4",
+   "raw_png": "indexed/BM_KGRID4.png"
+  },
+  {
+   "entry": 104,
+   "file_id": 832,
+   "offset": 4259400,
+   "size": 65536,
+   "name": "BM_KGRID5",
+   "raw_png": "indexed/BM_KGRID5.png"
+  },
+  {
+   "entry": 105,
+   "file_id": 840,
+   "offset": 4324936,
+   "size": 65536,
+   "name": "BM_KGRID6",
+   "raw_png": "indexed/BM_KGRID6.png"
+  },
+  {
+   "entry": 106,
+   "file_id": 848,
+   "offset": 4390472,
+   "size": 65536,
+   "name": "BM_KGRIDS1",
+   "raw_png": "indexed/BM_KGRIDS1.png"
+  },
+  {
+   "entry": 107,
+   "file_id": 856,
+   "offset": 4456008,
+   "size": 65536,
+   "name": "BM_KGRIDS2",
+   "raw_png": "indexed/BM_KGRIDS2.png"
+  },
+  {
+   "entry": 108,
+   "file_id": 864,
+   "offset": 4521544,
+   "size": 65536,
+   "name": "BM_REFKPLIM",
+   "raw_png": "indexed/BM_REFKPLIM.png"
+  },
+  {
+   "entry": 109,
+   "file_id": 872,
+   "offset": 4587080,
+   "size": 13824,
+   "name": "BM_NUMBERS_109",
+   "raw_png": "indexed/BM_NUMBERS_109.png"
+  },
+  {
+   "entry": 110,
+   "file_id": 880,
+   "offset": 4600904,
+   "size": 13824,
+   "name": "BM_NUMBERS_110",
+   "raw_png": "indexed/BM_NUMBERS_110.png"
+  },
+  {
+   "entry": 111,
+   "file_id": 888,
+   "offset": 4614728,
+   "size": 13824,
+   "name": "BM_NUMBERS (not referenced by the Euro teamlist)",
+   "raw_png": null
+  },
+  {
+   "entry": 112,
+   "file_id": 896,
+   "offset": 4628552,
+   "size": 13824,
+   "name": "BM_NUMBERS_112",
+   "raw_png": "indexed/BM_NUMBERS_112.png"
+  },
+  {
+   "entry": 113,
+   "file_id": 904,
+   "offset": 4642376,
+   "size": 16384,
+   "name": "BM_PITCH_113",
+   "raw_png": "indexed/BM_PITCH_113.png"
+  },
+  {
+   "entry": 114,
+   "file_id": 912,
+   "offset": 4658760,
+   "size": 16384,
+   "name": "BM_PITCH_114",
+   "raw_png": "indexed/BM_PITCH_114.png"
+  },
+  {
+   "entry": 115,
+   "file_id": 920,
+   "offset": 4675144,
+   "size": 16384,
+   "name": "BM_PITCH_115",
+   "raw_png": "indexed/BM_PITCH_115.png"
+  },
+  {
+   "entry": 116,
+   "file_id": 928,
+   "offset": 4691528,
+   "size": 16384,
+   "name": "BM_PITCH_116",
+   "raw_png": "indexed/BM_PITCH_116.png"
+  },
+  {
+   "entry": 117,
+   "file_id": 936,
+   "offset": 4707912,
+   "size": 4096,
+   "name": "BM_PITCH3DB_0",
+   "raw_png": "indexed/BM_PITCH3DB_0.png"
+  },
+  {
+   "entry": 118,
+   "file_id": 944,
+   "offset": 4712008,
+   "size": 4096,
+   "name": "BM_PITCH3DB_1",
+   "raw_png": "indexed/BM_PITCH3DB_1.png"
+  },
+  {
+   "entry": 119,
+   "file_id": 952,
+   "offset": 4716104,
+   "size": 4096,
+   "name": "BM_PITCH3DB_2",
+   "raw_png": "indexed/BM_PITCH3DB_2.png"
+  },
+  {
+   "entry": 120,
+   "file_id": 960,
+   "offset": 4720200,
+   "size": 4096,
+   "name": "BM_PITCH3DB_3",
+   "raw_png": "indexed/BM_PITCH3DB_3.png"
+  },
+  {
+   "entry": 121,
+   "file_id": 968,
+   "offset": 4724296,
+   "size": 19456,
+   "name": "BM_EXTRA2",
+   "raw_png": "indexed/BM_EXTRA2.png"
+  },
+  {
+   "entry": 122,
+   "file_id": 976,
+   "offset": 4743752,
+   "size": 65536,
+   "name": "unreferenced 256x256 bitmap",
+   "raw_png": null
+  },
+  {
+   "entry": 123,
+   "file_id": 984,
+   "offset": 4809288,
+   "size": 32768,
+   "name": "unreferenced 256x128 bitmap",
+   "raw_png": null
+  },
+  {
+   "entry": 124,
+   "file_id": 992,
+   "offset": 4842056,
+   "size": 65536,
+   "name": "unreferenced 256x256 bitmap",
+   "raw_png": null
+  },
+  {
+   "entry": 125,
+   "file_id": 1000,
+   "offset": 4907592,
+   "size": 1568,
+   "name": "TMD_STADIUM",
+   "raw_png": null
+  },
+  {
+   "entry": 126,
+   "file_id": 1008,
+   "offset": 4909160,
+   "size": 1610,
+   "name": "FCE_STAND1",
+   "raw_png": null
+  },
+  {
+   "entry": 127,
+   "file_id": 1016,
+   "offset": 4910772,
+   "size": 1708,
+   "name": "PTS_STAND1",
+   "raw_png": null
+  },
+  {
+   "entry": 128,
+   "file_id": 1024,
+   "offset": 4912480,
+   "size": 542,
+   "name": "FCE_STAND2",
+   "raw_png": null
+  },
+  {
+   "entry": 129,
+   "file_id": 1032,
+   "offset": 4913024,
+   "size": 1036,
+   "name": "PTS_STAND2",
+   "raw_png": null
+  },
+  {
+   "entry": 130,
+   "file_id": 1040,
+   "offset": 4914060,
+   "size": 622,
+   "name": "FCE_STAND4",
+   "raw_png": null
+  },
+  {
+   "entry": 131,
+   "file_id": 1048,
+   "offset": 4914684,
+   "size": 1180,
+   "name": "PTS_STAND4",
+   "raw_png": null
+  },
+  {
+   "entry": 132,
+   "file_id": 1056,
+   "offset": 4915864,
+   "size": 1610,
+   "name": "FCE_STAND3",
+   "raw_png": null
+  },
+  {
+   "entry": 133,
+   "file_id": 1064,
+   "offset": 4917476,
+   "size": 1708,
+   "name": "PTS_STAND3",
+   "raw_png": null
+  },
+  {
+   "entry": 134,
+   "file_id": 1072,
+   "offset": 4919184,
+   "size": 7820,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 135,
+   "file_id": 1080,
+   "offset": 4927004,
+   "size": 29240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 136,
+   "file_id": 1088,
+   "offset": 4956244,
+   "size": 18020,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 137,
+   "file_id": 1096,
+   "offset": 4974264,
+   "size": 14620,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 138,
+   "file_id": 1104,
+   "offset": 4988884,
+   "size": 9180,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 139,
+   "file_id": 1112,
+   "offset": 4998064,
+   "size": 15640,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 140,
+   "file_id": 1120,
+   "offset": 5013704,
+   "size": 9520,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 141,
+   "file_id": 1128,
+   "offset": 5023224,
+   "size": 12920,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 142,
+   "file_id": 1136,
+   "offset": 5036144,
+   "size": 7140,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 143,
+   "file_id": 1144,
+   "offset": 5043284,
+   "size": 14280,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 144,
+   "file_id": 1152,
+   "offset": 5057564,
+   "size": 9180,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 145,
+   "file_id": 1160,
+   "offset": 5066744,
+   "size": 14620,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 146,
+   "file_id": 1168,
+   "offset": 5081364,
+   "size": 10880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 147,
+   "file_id": 1176,
+   "offset": 5092244,
+   "size": 12240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 148,
+   "file_id": 1184,
+   "offset": 5104484,
+   "size": 12240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 149,
+   "file_id": 1192,
+   "offset": 5116724,
+   "size": 16660,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 150,
+   "file_id": 1200,
+   "offset": 5133384,
+   "size": 17000,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 151,
+   "file_id": 1208,
+   "offset": 5150384,
+   "size": 15300,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 152,
+   "file_id": 1216,
+   "offset": 5165684,
+   "size": 16320,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 153,
+   "file_id": 1224,
+   "offset": 5182004,
+   "size": 14960,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 154,
+   "file_id": 1232,
+   "offset": 5196964,
+   "size": 15980,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 155,
+   "file_id": 1240,
+   "offset": 5212944,
+   "size": 12240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 156,
+   "file_id": 1248,
+   "offset": 5225184,
+   "size": 10200,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 157,
+   "file_id": 1256,
+   "offset": 5235384,
+   "size": 11220,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 158,
+   "file_id": 1264,
+   "offset": 5246604,
+   "size": 12240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 159,
+   "file_id": 1272,
+   "offset": 5258844,
+   "size": 10200,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 160,
+   "file_id": 1280,
+   "offset": 5269044,
+   "size": 11220,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 161,
+   "file_id": 1288,
+   "offset": 5280264,
+   "size": 11220,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 162,
+   "file_id": 1296,
+   "offset": 5291484,
+   "size": 10880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 163,
+   "file_id": 1304,
+   "offset": 5302364,
+   "size": 10880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 164,
+   "file_id": 1312,
+   "offset": 5313244,
+   "size": 23120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 165,
+   "file_id": 1320,
+   "offset": 5336364,
+   "size": 32300,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 166,
+   "file_id": 1328,
+   "offset": 5368664,
+   "size": 6800,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 167,
+   "file_id": 1336,
+   "offset": 5375464,
+   "size": 9520,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 168,
+   "file_id": 1344,
+   "offset": 5384984,
+   "size": 23120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 169,
+   "file_id": 1352,
+   "offset": 5408104,
+   "size": 9180,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 170,
+   "file_id": 1360,
+   "offset": 5417284,
+   "size": 9520,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 171,
+   "file_id": 1368,
+   "offset": 5426804,
+   "size": 8500,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 172,
+   "file_id": 1376,
+   "offset": 5435304,
+   "size": 10880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 173,
+   "file_id": 1384,
+   "offset": 5446184,
+   "size": 8840,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 174,
+   "file_id": 1392,
+   "offset": 5455024,
+   "size": 8840,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 175,
+   "file_id": 1400,
+   "offset": 5463864,
+   "size": 9860,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 176,
+   "file_id": 1408,
+   "offset": 5473724,
+   "size": 9180,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 177,
+   "file_id": 1416,
+   "offset": 5482904,
+   "size": 4420,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 178,
+   "file_id": 1424,
+   "offset": 5487324,
+   "size": 11220,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 179,
+   "file_id": 1432,
+   "offset": 5498544,
+   "size": 13260,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 180,
+   "file_id": 1440,
+   "offset": 5511804,
+   "size": 17340,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 181,
+   "file_id": 1448,
+   "offset": 5529144,
+   "size": 17680,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 182,
+   "file_id": 1456,
+   "offset": 5546824,
+   "size": 12920,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 183,
+   "file_id": 1464,
+   "offset": 5559744,
+   "size": 12240,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 184,
+   "file_id": 1472,
+   "offset": 5571984,
+   "size": 16660,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 185,
+   "file_id": 1480,
+   "offset": 5588644,
+   "size": 33320,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 186,
+   "file_id": 1488,
+   "offset": 5621964,
+   "size": 5780,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 187,
+   "file_id": 1496,
+   "offset": 5627744,
+   "size": 15300,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 188,
+   "file_id": 1504,
+   "offset": 5643044,
+   "size": 14620,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 189,
+   "file_id": 1512,
+   "offset": 5657664,
+   "size": 11900,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 190,
+   "file_id": 1520,
+   "offset": 5669564,
+   "size": 11560,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 191,
+   "file_id": 1528,
+   "offset": 5681124,
+   "size": 40120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 192,
+   "file_id": 1536,
+   "offset": 5721244,
+   "size": 27880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 193,
+   "file_id": 1544,
+   "offset": 5749124,
+   "size": 27880,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 194,
+   "file_id": 1552,
+   "offset": 5777004,
+   "size": 29580,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 195,
+   "file_id": 1560,
+   "offset": 5806584,
+   "size": 9860,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 196,
+   "file_id": 1568,
+   "offset": 5816444,
+   "size": 14620,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 197,
+   "file_id": 1576,
+   "offset": 5831064,
+   "size": 23120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 198,
+   "file_id": 1584,
+   "offset": 5854184,
+   "size": 23120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 199,
+   "file_id": 1592,
+   "offset": 5877304,
+   "size": 20060,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 200,
+   "file_id": 1600,
+   "offset": 5897364,
+   "size": 27540,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 201,
+   "file_id": 1608,
+   "offset": 5924904,
+   "size": 10200,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 202,
+   "file_id": 1616,
+   "offset": 5935104,
+   "size": 16660,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 203,
+   "file_id": 1624,
+   "offset": 5951764,
+   "size": 21760,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 204,
+   "file_id": 1632,
+   "offset": 5973524,
+   "size": 18700,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 205,
+   "file_id": 1640,
+   "offset": 5992224,
+   "size": 14620,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 206,
+   "file_id": 1648,
+   "offset": 6006844,
+   "size": 102000,
+   "name": "MPB_JUGGLE",
+   "raw_png": null
+  },
+  {
+   "entry": 207,
+   "file_id": 1656,
+   "offset": 6108844,
+   "size": 21080,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 208,
+   "file_id": 1664,
+   "offset": 6129924,
+   "size": 9180,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 209,
+   "file_id": 1672,
+   "offset": 6139104,
+   "size": 13940,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 210,
+   "file_id": 1680,
+   "offset": 6153044,
+   "size": 15300,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 211,
+   "file_id": 1688,
+   "offset": 6168344,
+   "size": 15300,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 212,
+   "file_id": 1696,
+   "offset": 6183644,
+   "size": 13600,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 213,
+   "file_id": 1704,
+   "offset": 6197244,
+   "size": 23120,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 214,
+   "file_id": 1712,
+   "offset": 6220364,
+   "size": 10200,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 215,
+   "file_id": 1720,
+   "offset": 6230564,
+   "size": 16660,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 216,
+   "file_id": 1728,
+   "offset": 6247224,
+   "size": 28560,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 217,
+   "file_id": 1736,
+   "offset": 6275784,
+   "size": 17000,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 218,
+   "file_id": 1744,
+   "offset": 6292784,
+   "size": 17340,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 219,
+   "file_id": 1752,
+   "offset": 6310124,
+   "size": 52700,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 220,
+   "file_id": 1760,
+   "offset": 6362824,
+   "size": 76500,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 221,
+   "file_id": 1768,
+   "offset": 6439324,
+   "size": 68340,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 222,
+   "file_id": 1776,
+   "offset": 6507664,
+   "size": 13940,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 223,
+   "file_id": 1784,
+   "offset": 6521604,
+   "size": 15640,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 224,
+   "file_id": 1792,
+   "offset": 6537244,
+   "size": 29920,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 225,
+   "file_id": 1800,
+   "offset": 6567164,
+   "size": 9860,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 226,
+   "file_id": 1808,
+   "offset": 6577024,
+   "size": 13600,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 227,
+   "file_id": 1816,
+   "offset": 6590624,
+   "size": 9520,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  },
+  {
+   "entry": 228,
+   "file_id": 1824,
+   "offset": 6600144,
+   "size": 13260,
+   "name": "MPB (motion capture)",
+   "raw_png": null
+  }
+ ]
+}

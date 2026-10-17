@@ -1,0 +1,69 @@
+{
+ "objects": {
+  "goal1_1": {
+   "position_engine": [
+    0,
+    0,
+    -443.5
+   ],
+   "lod_model": "goal1_a"
+  },
+  "goal2_1": {
+   "position_engine": [
+    0,
+    0,
+    -356.5
+   ],
+   "lod_model": "goal2_a"
+  },
+  "goal3_1": {
+   "position_engine": [
+    0,
+    37,
+    -400
+   ],
+   "lod_model": "goal3_a"
+  },
+  "goal4_1": {
+   "position_engine": [
+    -28,
+    0,
+    -400
+   ],
+   "lod_model": "goal4_a"
+  },
+  "goal1_2": {
+   "position_engine": [
+    1280,
+    0,
+    -443.5
+   ],
+   "lod_model": "goal1_b"
+  },
+  "goal2_2": {
+   "position_engine": [
+    1280,
+    0,
+    -356.5
+   ],
+   "lod_model": "goal2_b"
+  },
+  "goal3_2": {
+   "position_engine": [
+    1280,
+    37,
+    -400
+   ],
+   "lod_model": "goal3_b"
+  },
+  "goal4_2": {
+   "position_engine": [
+    1308,
+    0,
+    -400
+   ],
+   "lod_model": "goal4_b"
+  }
+ },
+ "note": "position_engine is engine world (X, Y up, Z=-game_y)"
+}

@@ -1,0 +1,848 @@
+{
+ "MAX_Z_USW": {
+  "value": 0.12,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6135 full_zspin=MAX_Z_USW*tm_flair/128: fild flair; fmul qword d=0.12; fmul d=1/128"
+ },
+ "MC_ABODYB_FS": {
+  "value": 0.08490566037735849,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:478 fmul qword CONST+168 d=0.0849056603773585 exactly 9/106 = 4.5/53 (53 frames; not the usual 2/frames, value is exact)",
+  "expr": "(4.5/53)"
+ },
+ "MC_ABODYC_FS": {
+  "value": 0.046511627906976744,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:500 fmul qword CONST+200 d=0.0465116279 (verified: following init_save_act passes matching MC_ id); = 2/43 (2/frames, DATA.H says 43 frames)",
+  "expr": "(2./43)"
+ },
+ "MC_AFOOTB_FS": {
+  "value": 0.08695652173913043,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:424 fmul qword CONST+96 d=0.0869565217391 (verified: following init_save_act passes matching MC_ id); = 2/23 (2/frames, DATA.H says 23 frames)",
+  "expr": "(2./23)"
+ },
+ "MC_AFOOTC_FS": {
+  "value": 0.023255813953488372,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:446 fmul qword CONST+128 d=0.0232558139535 (verified: following init_save_act passes matching MC_ id); = 2/86 (2/frames, DATA.H says 86 frames)",
+  "expr": "(2./86)"
+ },
+ "MC_AHEADB_FS": {
+  "value": 0.10030864197530864,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:531 fmul qword CONST+240 d=0.1003086419753086 exactly 65/648 (=(2/27)*(65/48); 27 frames; original expression unclear, value exact)",
+  "expr": "(65./648)"
+ },
+ "MC_AHEADC_FS": {
+  "value": 0.043478260869565216,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:553 fmul qword CONST+272 d=0.0434782608696 (verified: following init_save_act passes matching MC_ id); = 2/46 (2/frames, DATA.H says 46 frames)",
+  "expr": "(2./46)"
+ },
+ "MC_AJUMPB_FS": {
+  "value": 0.07142857142857142,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:584 fmul qword CONST+312 d=0.0714285714 (verified: following init_save_act passes matching MC_ id); = 2/28 (2/frames, DATA.H says 28 frames)",
+  "expr": "(2./28)"
+ },
+ "MC_AJUMPC_FS": {
+  "value": 0.05263157894736842,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:606 fmul qword CONST+344 d=0.0526315789 (verified: following init_save_act passes matching MC_ id); = 2/38 (2/frames, DATA.H says 38 frames)",
+  "expr": "(2./38)"
+ },
+ "MC_BABY_FS": {
+  "value": 0.05,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim (obj 0be2d, case 113=MC_BABY) mov [eax+0x73],0x3d4ccccd=0.05; = 2/40 (2/frames, DATA.H says 40 frames)",
+  "expr": "(2./40)"
+ },
+ "MC_BACKHEEL_FS": {
+  "value": 0.0625,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5086 init_kick_anim case 0x35 (MC_BACKHEELL) mov [eax+0x73],0x3d800000=0.0625; = 2/32 (2/frames, DATA.H says 32 frames)",
+  "expr": "(2./32)"
+ },
+ "MC_BARGE_FS": {
+  "value": 0.07407407407407407,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4880 init_barge_anim fdiv 3.19 (MC_RUN_SPD) then fmul qword d=0.0740740741; = 2/27 (2/frames, DATA.H says 27 frames)",
+  "expr": "(2./27)"
+ },
+ "MC_BBODYB_FS": {
+  "value": 0.07407407407407407,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:700 fmul qword CONST+448 d=0.0740740741; same value as MC_BARGE_FS (verified: following init_save_act passes matching MC_ id); = 2/27 (2/frames, DATA.H says 27 frames)",
+  "expr": "(2./27)"
+ },
+ "MC_BBODYC_FS": {
+  "value": 0.046511627906976744,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:722 fmul qword CONST+480 d=0.0465116279 (verified: following init_save_act passes matching MC_ id); = 2/43 (2/frames, DATA.H says 43 frames)",
+  "expr": "(2./43)"
+ },
+ "MC_BFOOTB_FS": {
+  "value": 0.09523809523809523,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:647 fmul qword CONST+376 d=0.0952380952 (verified: following init_save_act passes matching MC_ id); = 2/21 (2/frames, DATA.H says 21 frames)",
+  "expr": "(2./21)"
+ },
+ "MC_BFOOTC_FS": {
+  "value": 0.047619047619047616,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:669 fmul qword CONST+408 d=0.0476190476 (verified: following init_save_act passes matching MC_ id); = 2/42 (2/frames, DATA.H says 42 frames)",
+  "expr": "(2./42)"
+ },
+ "MC_BHEADB_FS": {
+  "value": 0.0625,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:753 fmul qword CONST+520 d=0.0625 (verified: following init_save_act passes matching MC_ id); = 2/32 (2/frames, DATA.H says 32 frames)",
+  "expr": "(2./32)"
+ },
+ "MC_BHEADC_FS": {
+  "value": 0.05555555555555555,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:774 fmul qword CONST+552 d=0.0555555556 (verified: following init_save_act passes matching MC_ id); = 2/36 (2/frames, DATA.H says 36 frames)",
+  "expr": "(2./36)"
+ },
+ "MC_BJUMPB_FS": {
+  "value": 0.05555555555555555,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:804 fmul qword CONST+592 d=0.0555555556 (verified: following init_save_act passes matching MC_ id); = 2/36 (2/frames, DATA.H says 36 frames)",
+  "expr": "(2./36)"
+ },
+ "MC_BOUNCE_FS": {
+  "value": 0.046511627906976744,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5412 init_bounce_anim mov [eax+0x73],0x3d3e82fa; ACTIONS:3366 int_cnt=(1./MC_BOUNCE_FS) -> 21; = 2/43 (2/frames, DATA.H says 43 frames)",
+  "expr": "(2./43)"
+ },
+ "MC_CBODYB_FS": {
+  "value": 0.05925925925925926,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:897 fmul qword CONST+696 d=0.05925925925925926 exactly 8/135 (=(2/45)*(4/3); 45 frames; original expression unclear, value exact)",
+  "expr": "(8./135)"
+ },
+ "MC_CBODYC_FS": {
+  "value": 0.041666666666666664,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:919 fmul qword CONST+728 d=0.0416666667 (verified: following init_save_act passes matching MC_ id); = 2/48 (2/frames, DATA.H says 48 frames)",
+  "expr": "(2./48)"
+ },
+ "MC_CELEB_FS": {
+  "value": 0.01694915254237288,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim (obj 0be0f, case 92=MC_CELEB) mov [eax+0x73],0x3c8ad8f3=1/59 (note: the evidence script's first hit 0x3dcccccd belongs to the misaligned init_step_anim); = 2/118 (2/frames, DATA.H says 118 frames)",
+  "expr": "(2./118)"
+ },
+ "MC_CELEB_SPD": {
+  "value": 1.69,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:37/54 a=MC_CELEB_SPD: mov [ebp-8],0x3fd851ec (1.69) (given example)"
+ },
+ "MC_CFOOTB_FS": {
+  "value": 0.04081632653061224,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:844 fmul qword CONST+624 d=0.0408163265 (verified: following init_save_act passes matching MC_ id); = 2/49 (2/frames, DATA.H says 49 frames)",
+  "expr": "(2./49)"
+ },
+ "MC_CFOOTC_FS": {
+  "value": 0.04,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:866 fmul qword CONST+656 d=0.04 (verified: following init_save_act passes matching MC_ id); = 2/50 (2/frames, DATA.H says 50 frames)",
+  "expr": "(2./50)"
+ },
+ "MC_CHEADB_FS": {
+  "value": 0.045454545454545456,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:950 fmul qword CONST+768 d=0.0454545455 (verified: following init_save_act passes matching MC_ id); = 2/44 (2/frames, DATA.H says 44 frames)",
+  "expr": "(2./44)"
+ },
+ "MC_CHEST_FS": {
+  "value": 0.04081632653061224,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5355 fmul qword d=0.0408163265; BALLINT:696 0x3d272f05; INTELL:2778 same; = 2/49 (2/frames, DATA.H says 49 frames)",
+  "expr": "(2./49)"
+ },
+ "MC_CHIP_FS": {
+  "value": 0.06666666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5083 init_kick_anim case 0x25 (MC_CHIPL) 0x3d888889; BALLINT:711 same; = 2/30 (2/frames, DATA.H says 30 frames)",
+  "expr": "(2./30)"
+ },
+ "MC_CJUMPB_FS": {
+  "value": 0.0425531914893617,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:980 fmul qword CONST+808 d=0.0425531915 (verified: following init_save_act passes matching MC_ id); = 2/47 (2/frames, DATA.H says 47 frames)",
+  "expr": "(2./47)"
+ },
+ "MC_CROSS_FS": {
+  "value": 0.05555555555555555,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5092/5522/5532 0x3d638e39 (init_crl/crr_anim); = 2/36 (2/frames, DATA.H says 36 frames)",
+  "expr": "(2./36)"
+ },
+ "MC_CRTOSTB_FS": {
+  "value": 0.03636363636363636,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5511 init_crtostb_anim 0x3d14f209; = 2/55 (2/frames, DATA.H says 55 frames)",
+  "expr": "(2./55)"
+ },
+ "MC_DIAGBACK_FS": {
+  "value": 0.06060606060606061,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5137/5184 init_kick_l/r_anim case MC_DIAGBACK 0x3d783e10; = 2/33 (2/frames, DATA.H says 33 frames)",
+  "expr": "(2./33)"
+ },
+ "MC_DIAGPASS_FS": {
+  "value": 0.06060606060606061,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5134/5181 case MC_DIAGPASS 0x3d783e10; = 2/33 (2/frames, DATA.H says 33 frames)",
+  "expr": "(2./33)"
+ },
+ "MC_DUCK_FS": {
+  "value": 0.03225806451612903,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 111=MC_DUCK 0x3d042108=1/31; = 2/62 (2/frames, DATA.H says 62 frames)",
+  "expr": "(2./62)"
+ },
+ "MC_DUCK_SPD": {
+  "value": 0.332258064516129,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:1577/1578 go_txdis=tm_xdis*MC_DUCK_SPD: fmul qword CONST+360 d=0.332258064516129 (= 10.3/31 = 10.3*MC_DUCK_FS? folded double; exact source form unknown)",
+  "expr": "(10.3/31)"
+ },
+ "MC_DV_HEAD_FS": {
+  "value": 0.05555555555555555,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5311 fmul qword d=0.0555556; BALLINT:724 0x3d638e39; INTELL:2760 same; = 2/36 (2/frames, DATA.H says 36 frames)",
+  "expr": "(2./36)"
+ },
+ "MC_D_HEAD_FS": {
+  "value": 0.05263157894736842,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5366 fmul qword d=0.0526316; BALLINT:692 0x3d579436; INTELL:2781 same; = 2/38 (2/frames, DATA.H says 38 frames)",
+  "expr": "(2./38)"
+ },
+ "MC_FALLR_FS": {
+  "value": 0.058823529411764705,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5344 init_fallr_anim 0x3d70f0f1=1/17; = 2/34 (2/frames, DATA.H says 34 frames)",
+  "expr": "(2./34)"
+ },
+ "MC_FINGER_FS": {
+  "value": 0.07407407407407407,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 109=MC_FINGER 0x3d97b426; = 2/27 (2/frames, DATA.H says 27 frames)",
+  "expr": "(2./27)"
+ },
+ "MC_GETUPF_FS": {
+  "value": 0.022988505747126436,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5377 0x3cbc5264; ACTIONS:3722 tm_limbo=1/MC_GETUPF_FS -> 43; = 2/87 (2/frames, DATA.H says 87 frames)",
+  "expr": "(2./87)"
+ },
+ "MC_GETUP_FS": {
+  "value": 0.024390243902439025,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5388 0x3cc7ce0c; ACTIONS:3714 tm_limbo=1/FS -> 41; = 2/82 (2/frames, DATA.H says 82 frames)",
+  "expr": "(2./82)"
+ },
+ "MC_HALFVOLL_FS": {
+  "value": 0.029411764705882353,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5434 0x3cf0f0f1; INTELL:5062 tm_limbo=1/FS -> 34; = 2/68 (2/frames, DATA.H says 68 frames)",
+  "expr": "(2./68)"
+ },
+ "MC_JOG_FS": {
+  "value": 0.06896551724137931,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4920 fmul qword d=0.0689655172 (after /2 and /2.025); RULES:2492 lman->fstep 0x3d8d3dcb; = 2/29 (2/frames, DATA.H says 29 frames)",
+  "expr": "(2./29)"
+ },
+ "MC_JOG_SPD": {
+  "value": 2.025,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4920 (actual_spd/2)/MC_JOG_SPD: fdiv qword CONST+1003 d=2.025"
+ },
+ "MC_J_HEAD_FS": {
+  "value": 0.047619047619047616,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5300 fmul qword d=0.047619; BALLINT:732 0x3d430c31=1/21; INTELL:2769 same (DATA.H comment says 52 frames); = 2/42 (2/frames, DATA.H says 42 frames)",
+  "expr": "(2./42)"
+ },
+ "MC_KICKOUT_FS": {
+  "value": 0.029411764705882353,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5423 0x3cf0f0f1; INTELL:5766 tm_limbo=1/FS -> 34; = 2/68 (2/frames, DATA.H says 68 frames)",
+  "expr": "(2./68)"
+ },
+ "MC_KNEE_FS": {
+  "value": 0.04878048780487805,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 110=MC_KNEE 0x3d47ce0c; ACTIONS:1367 go_cnt=1/MC_KNEE_FS -> 20; = 2/41 (2/frames, DATA.H says 41 frames)",
+  "expr": "(2./41)"
+ },
+ "MC_MILLER_FS": {
+  "value": 0.044444444444444446,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 112=MC_MILLER 0x3d360b61; = 2/45 (2/frames, DATA.H says 45 frames)",
+  "expr": "(2./45)"
+ },
+ "MC_MOON_FS": {
+  "value": 0.05263157894736842,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 114=MC_MOON 0x3d579436=1/19 (DATA.H comment says 68 frames); = 2/38",
+  "expr": "(2./38)"
+ },
+ "MC_OVERHEAD_FS": {
+  "value": 0.044444444444444446,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5322 fmul qword d=0.0444444; BALLINT:720 0x3d360b61; INTELL:2763; = 2/45 (2/frames, DATA.H says 45 frames)",
+  "expr": "(2./45)"
+ },
+ "MC_PASS_DIST": {
+  "value": 10.14,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:2885/2886 MC_PASS_DIST*tm_fstep*tm_xdis: fmul qword CONST+635 d=10.14"
+ },
+ "MC_PASS_FS": {
+  "value": 0.06060606060606061,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5080 init_kick_anim case 0x27 (MC_PASSL) 0x3d783e10; = 2/33 (2/frames, DATA.H says 33 frames)",
+  "expr": "(2./33)"
+ },
+ "MC_PENALTY_FS": {
+  "value": 0.03125,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4846 init_penalty_anim 0x3d000000=1/32; = 2/64 (2/frames, DATA.H says 64 frames)",
+  "expr": "(2./64)"
+ },
+ "MC_PICKBALL_FS": {
+  "value": 0.046511627906976744,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5628 init_pickup_anim 0x3d3e82fa; ACTIONS:1320 int_cnt=1/FS -> 21; = 2/43 (2/frames, DATA.H says 43 frames)",
+  "expr": "(2./43)"
+ },
+ "MC_PLANE_FS": {
+  "value": 0.044444444444444446,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 108=MC_PLANE 0x3d360b61; = 2/45 (2/frames, DATA.H says 45 frames)",
+  "expr": "(2./45)"
+ },
+ "MC_PLEAD_FS": {
+  "value": 0.015625,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:115 refs[0].fstep=0x3c800000=1/64; = 2/128 (2/frames, DATA.H says 128 frames)",
+  "expr": "(2./128)"
+ },
+ "MC_PUMP_FS": {
+  "value": 0.06666666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 115=MC_PUMP 0x3d888889=1/15 (first evidence hit 0x3dcccccd is misaligned init_step_anim); = 2/30 (2/frames, DATA.H says 30 frames)",
+  "expr": "(2./30)"
+ },
+ "MC_REEVES_FS": {
+  "value": 0.04081632653061224,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS init_celeb_anim case 116=MC_REEVES 0x3d272f05 (first evidence hit 0x3dc7ce0c is misaligned init_step_anim); = 2/49 (2/frames, DATA.H says 49 frames)",
+  "expr": "(2./49)"
+ },
+ "MC_RIDE_FS": {
+  "value": 0.07142857142857142,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5266 f=MC_RIDE_FS+(0.000536*f): fadd qword d=0.0714285714; = 2/28 (2/frames, DATA.H says 28 frames)",
+  "expr": "(2./28)"
+ },
+ "MC_ROLL_FS": {
+  "value": 0.024691358024691357,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5456 0x3cca4588; INTELL:5089 tm_limbo=1/FS -> 40; = 2/81 (2/frames, DATA.H says 81 frames)",
+  "expr": "(2./81)"
+ },
+ "MC_RUNWITHB_FS": {
+  "value": 0.06666666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5467 0x3d888889; ACTIONS:1713 keeper_steps=(1./FS) -> 15; = 2/30 (2/frames, DATA.H says 30 frames)",
+  "expr": "(2./30)"
+ },
+ "MC_RUN_FS": {
+  "value": 0.07692307692307693,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4893/4895 fmul qword d=0.0769230769 after fdiv 3.19; RULES:2471 lman->fstep 0x3d9d89d9; = 2/26 (2/frames, DATA.H says 26 frames)",
+  "expr": "(2./26)"
+ },
+ "MC_RUN_SPD": {
+  "value": 3.19,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4880/4893/4895 actual_spd/MC_RUN_SPD: fdiv qword d=3.19"
+ },
+ "MC_SHAMEW_FS": {
+  "value": 0.06060606060606061,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4858 init_shame_anim (anim 0x4c=MC_SHAMEW) 0x3d783e10; = 2/33 (2/frames, DATA.H says 33 frames)",
+  "expr": "(2./33)"
+ },
+ "MC_SHAME_FS": {
+  "value": 0.024390243902439025,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:2445 init_get_up(player,MC_SHAME_FS): push 0x3cc7ce0c; = 2/82 (2/frames, DATA.H says 82 frames)",
+  "expr": "(2./82)"
+ },
+ "MC_SHOOT_FS": {
+  "value": 0.05555555555555555,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4951/5089, BALLINT:706 0x3d638e39; = 2/36 (2/frames, DATA.H says 36 frames)",
+  "expr": "(2./36)"
+ },
+ "MC_SIDEPASS_FS": {
+  "value": 0.0625,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5140/5187 case MC_SIDEPASS 0x3d800000; = 2/32 (2/frames, DATA.H says 32 frames)",
+  "expr": "(2./32)"
+ },
+ "MC_SOCKS_FS": {
+  "value": 0.029411764705882353,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:3038 push 0x3cf0f0f1; ACTIONS:5565 same; = 2/68 (2/frames, DATA.H says 68 frames)",
+  "expr": "(2./68)"
+ },
+ "MC_STANDB_FS": {
+  "value": 0.06896551724137931,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4869 init_standb_anim 0x3d8d3dcb; = 2/29 (2/frames, DATA.H says 29 frames)",
+  "expr": "(2./29)"
+ },
+ "MC_STAND_FS": {
+  "value": 0.05128205128205128,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:116/117 refs[1/2].fstep=0x3d520d21; ACTIONS:4833 init_stand_anim same; = 2/39 (2/frames, DATA.H says 39 frames)",
+  "expr": "(2./39)"
+ },
+ "MC_STOSB_FS": {
+  "value": 0.021052631578947368,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5554 init_tostandb_anim 0x3cac7692; = 2/95 (2/frames, DATA.H says 95 frames)",
+  "expr": "(2./95)"
+ },
+ "MC_STOS_FS": {
+  "value": 0.029411764705882353,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5543 init_tostand_anim 0x3cf0f0f1; = 2/68 (2/frames, DATA.H says 68 frames)",
+  "expr": "(2./68)"
+ },
+ "MC_S_HEAD_FS": {
+  "value": 0.06451612903225806,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5288 fmul qword d=0.0645161; BALLINT:728 0x3d842108; INTELL:2766 (DATA.H comment says 51 frames); = 2/31",
+  "expr": "(2./31)"
+ },
+ "MC_S_TACKLE_FS": {
+  "value": 0.04,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5275 0x3d23d70a=0.04; ACTIONS:2180 go_cnt=1/FS -> 25 (DATA.H comment says 98 frames); = 2/50",
+  "expr": "(2./50)"
+ },
+ "MC_THROWL_FS": {
+  "value": 0.046511627906976744,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:1280/5489 0x3d3e82fa; ACTIONS:3124 tm_limbo=1/FS -> 21; = 2/43 (2/frames, DATA.H says 43 frames)",
+  "expr": "(2./43)"
+ },
+ "MC_THROWS_FS": {
+  "value": 0.05714285714285714,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5500 0x3d6a0ea1; INTELL:5102 tm_limbo=1/FS -> 17; = 2/35 (2/frames, DATA.H says 35 frames)",
+  "expr": "(2./35)"
+ },
+ "MC_THROW_FS": {
+  "value": 0.03389830508474576,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5445 0x3d0ad8f3; INTELL:5076 tm_limbo=1/FS -> 29; = 2/59 (2/frames, DATA.H says 59 frames)",
+  "expr": "(2./59)"
+ },
+ "MC_TRAP_FS": {
+  "value": 0.1,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5197 fmul qword d=0.1; BALLINT:701 0x3dcccccd; INTELL:2775; = 2/20 (2/frames, DATA.H says 20 frames)",
+  "expr": "(2./20)"
+ },
+ "MC_TROTA_FS": {
+  "value": 0.0625,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5641 actual_spd*MC_TROTA_FS/2: fmul d=0.0625, fmul 0.5; RULES:2514 0x3d800000; = 2/32 (2/frames, DATA.H says 32 frames)",
+  "expr": "(2./32)"
+ },
+ "MC_VOLLEY_FS": {
+  "value": 0.06666666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5333 fmul qword d=0.0666667; BALLINT:716 0x3d888889; INTELL:2757; = 2/30 (2/frames, DATA.H says 30 frames)",
+  "expr": "(2./30)"
+ },
+ "MC_WAVEUP_FS": {
+  "value": 0.03333333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:5478 0x3d088889=1/30; ACTIONS:3375 int_cnt=(1./FS) -> 30 (DATA.H comment says 49 frames); = 2/60",
+  "expr": "(2./60)"
+ },
+ "MEGA_DANGER_AREA": {
+  "value": 2,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:1125 tm_dist<=MEGA_DANGER_AREA: fld prat; fmul qword d=2; fcompp (DRIB_DANGER_AREA on 1122 = prat*13) -> macro is (prat*2); value given in prat units",
+  "expr": "(prat*2)"
+ },
+ "MESSAGE_TIME": {
+  "value": 40,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:636/657, FOOTBALL:271 new_text=MESSAGE_TIME: mov word [new_text],0x28"
+ },
+ "MIN": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom/stdlib macro MIN(a,b) ((a)<(b)?(a):(b)) - FOOTBALL:942/953 compiled as compare+select"
+ },
+ "MIN_HEADER_POW": {
+  "value": 192.0,
+  "type": "float",
+  "confidence": "medium",
+  "evidence": "BALLINT:114/126/142 ...*tm_pow/16+(MIN_HEADER_POW/16): int part fild'ed then fadd qword d=12.0 -> MIN_HEADER_POW/16 is a double 12.0, so MIN_HEADER_POW is a floating literal 192. (an int would have been added as integer)"
+ },
+ "MIN_HEADER_RNG": {
+  "value": 4,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:1553/7135 d<MIN_HEADER_RNG+(prat*pow/8): fld prat; fmul qword d=4; faddp -> macro is (prat*4); value given in prat units",
+  "expr": "(prat*4)"
+ },
+ "MIN_HELP_CHANCE": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:7508/7509 cmp [ebp-8],2 / mov [ebp-8],2"
+ },
+ "MIN_PASS_DIST": {
+  "value": 8,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4318/4326/6407 MIN_PASS_DIST+(float)pow/3.6: fld prat; fmul qword d=8; faddp -> macro is (prat*8); value given in prat units",
+  "expr": "(prat*8)"
+ },
+ "MIN_PASS_PROB": {
+  "value": 125,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6836/6837 if(chance>MIN_PASS_PROB) chance=MIN_PASS_PROB: cmp/mov 0x7d. Acts as the upper clamp, while MAX_PASS_PROB (6833) is the lower clamp = 5, so the MIN/MAX names look swapped"
+ },
+ "MIN_PUNT_PROB": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:5810/5811 cmp/mov [ebp-0x20],3"
+ },
+ "MIN_RUN_PROB": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:5694 opps=MIN_RUN_PROB: mov [ebp-8],0x10 (after if(opps<=0))"
+ },
+ "MIN_SHOOT_DIST": {
+  "value": 12,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:1189/1201, INTELL:1512 MIN_SHOOT_DIST+pow*3: fld prat; fmul qword d=12 -> macro is (prat*12); value given in prat units",
+  "expr": "(prat*12)"
+ },
+ "MIN_SHOOT_PROB": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6305/6306/6343/6344 cmp/mov 4"
+ },
+ "MOUSE_CTRL": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:379 convert_control case 4 -> return 3 (jump table verified). Family: JOY1=1 JOY2=2 MOUSE=3 KEY1=4 KEY2=5 NET=6 LOGPAD=7, NO=0"
+ },
+ "MUST_MARK_DIST": {
+  "value": 32,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "FOOTBALL:142 calc_dist(..)<MUST_MARK_DIST: fld prat; fmul dword CONST+7 f=32 -> macro is (prat*32); value given in prat units",
+  "expr": "(prat*32)"
+ },
+ "NET_CTRL": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:6100 and USER:183 cmp control,6; FOOTBALL NetUserInit (obj rev): else-branch ctrl=6 (the 'ctrl=4' shown at aligned line 3343 is the console-node branch = KEY1_CTRL in obj revision)"
+ },
+ "NET_DEBUG": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3541/3616/3736 #ifdef NET_DEBUG: no calls to opendebugfile/writeplayerdata/writecontroldata/closedebugfile in FOOTBALL.OBJ (no such externs)"
+ },
+ "NET_GAME": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3400 #ifdef NET_GAME NetTest(): obj goes initialise_vars() -> if(network_on) directly; no NetTest extern"
+ },
+ "NORMAL_PLAY": {
+  "value": 0,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:915/1006 match_mode==NORMAL_PLAY: test eax,eax / jne"
+ },
+ "NO_AUTO_SEL": {
+  "value": true,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "USER:858 new_users() starts with cmp key_togs[0x43],0 / jne; FOOTBALL:2447 block present (obj 06518: cmp keys[0x43]; cmp key_togs[0x43]; add_message(GetTEXT(..)))"
+ },
+ "NO_CTRL": {
+  "value": 0,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "USER:122 users[u-1].control=NO_CTRL: mov word [eax+2],0"
+ },
+ "OFFSIDE_REL_CNT": {
+  "value": 40,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:1288 ball_released=0x28; 1290 =-OFFSIDE_REL_CNT -> 0xffffffd8"
+ },
+ "ONE_MACHINE": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:1036 #ifndef ONE_MACHINE VGAmode(0x13): obj has call VGAmode at [1037]"
+ },
+ "OPTIMUM_PASS": {
+  "value": 10,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6678/6679 tm_dist<OPTIMUM_PASS: fld prat; fmul qword d=10 -> macro is (prat*10); value given in prat units",
+  "expr": "(prat*10)"
+ },
+ "PASS_ACC_ARC": {
+  "value": 0.1,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4833 rand_range(..)*PASS_ACC_ARC*D2RAD: fmul qword d=0.1, fmul pi, fdiv 180"
+ },
+ "PASS_FEET": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:189 go_set_kick switch(type): case 1 -> must_pass block w/o chip (0x625); go_ckick same (PUNT=6, PASS_HEAD=2)"
+ },
+ "PASS_HEAD": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:196 go_set_kick switch: case 2 -> must_pass+chip_pass block (0x673); go_ckick same"
+ },
+ "PENALTIES": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3110 match_info.CompetitionType==PENALTIES: cmp dword [match_info+0x70],5 (DEFINES.H: FRIENDLY 0, LEAGUE 1, CUP 2, PRACTICE 3, NETWORK 4)"
+ },
+ "PEN_KICK_A": {
+  "value": 17,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1675/5981 cmp match_mode,0x11; FOOTBALL:3070 match_mode>=PEN_KICK_A -> cmp 0x11 jl; INTELL set_there_flags cmp 0x11"
+ },
+ "PEN_KICK_B": {
+  "value": 18,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1675/5981 cmp match_mode,0x12; 3D_UPD2:1292 match_mode>=IF_KICK_A(13) && <=PEN_KICK_B -> cmp 0x12 jle"
+ },
+ "PEN_RUNUP_DIST": {
+  "value": 30,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:2240/2249 taker_x=ballx-/+PEN_RUNUP_DIST: fadd float -30/+30; INTELL set_there_flags tm_dist<(PEN_RUNUP_DIST+4) -> cmp 0x42080000 (34.0). Plain literal (no prat)"
+ },
+ "PEN_SCORE_WAIT": {
+  "value": 60,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:695/714 just_scored=0x3c"
+ },
+ "PER_BOOKINGS": {
+  "value": -5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:454 (obj 0cce): tm_book[+0x4e]*(clock*d=-5)"
+ },
+ "PER_FOULS": {
+  "value": -5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:455 (obj 0d0e): tm_fouls[+0x4f]*(clock*d=-5)"
+ },
+ "PER_GOALS": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:456 (obj 0d4e): tm_goals[+0x58]*(clock*d=10)"
+ },
+ "PER_GOALSIN": {
+  "value": -4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:451 (obj 0c97): goals*(clock*fmul qword d=-4)"
+ },
+ "PER_KPSAVES": {
+  "value": 1,
+  "type": "int",
+  "confidence": "medium",
+  "evidence": "FOOTBALL:450 get_performance (obj 0c4a): fild word tm_kpsaves[+0x65]; fld clock; fmulp - no constant multiply, so PER_KPSAVES*clock folded with PER_KPSAVES=1"
+ },
+ "PER_OGS": {
+  "value": -15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:457 (obj 0d8e): tm_ogs[+0x67]*(clock*d=-15) (the 0.15 shown by the evidence script is misaligned code)"
+ },
+ "PER_PASSES": {
+  "value": 25,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:468 (obj 0fb0): tm_pwon[+0x5b]*d=25 / (tm_pass[+0x59]+10/clock)"
+ },
+ "PER_POSS": {
+  "value": 0.02,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "FOOTBALL:458 (obj 0dcc): tm_posst[+0x5f]*(clock*d=0.02)"
+ },
+ "PER_SHOTS": {
+  "value": 35,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:465 (obj 0f1a): tm_saved[+0x56]*d=35 / (tm_shots[+0x54]+10/clock)"
+ },
+ "PER_TACKS": {
+  "value": 35,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:462 (obj 0e84): tm_twon[+0x52]*d=35 / (tm_tacks[+0x50]+10/clock)"
+ },
+ "PER_WORK": {
+  "value": 0.0005,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "FOOTBALL:459 (obj 0e04): tm_work[+0x61]*(clock*d=0.0005)"
+ },
+ "PICKUP_ACT": {
+  "value": 19,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1317 tm_act=0x13; BALLINT:847 and RULES:532 cmp tm_act,0x13"
+ },
+ "PLAYER_HEIGHT": {
+  "value": 25,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1189/1207 fadd float 25; 3D_UPD2:1197 tz=PLAYER_HEIGHT-3 -> 22.0; INTELL:4471 z<PLAYER_HEIGHT/3 compiled as cmp z,0x41000000 (8.0) => integer division 25/3=8, so it is an int 25"
+ },
+ "PLAYER_SIZE": {
+  "value": 1,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4471 calc_dist(x,y)<=PLAYER_SIZE: fld prat; fcompp (no multiplier) -> macro is just prat (prat*1)",
+  "expr": "prat"
+ }
+}

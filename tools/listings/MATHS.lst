@@ -1,0 +1,182 @@
+
+========== matherr  (obj line 22, delta 0)
+  ; [22] int matherr(struct exception *)
+    00000: push     ebx                                      
+    00001: push     ecx                                      
+    00002: push     edx                                      
+    00003: push     esi                                      
+    00004: push     edi                                      
+    00005: push     ebp                                      
+    00006: mov      ebp, esp                                 
+    00008: sub      esp, 8                                   
+    0000e: mov      dword ptr [ebp - 4], eax                 
+  ; [24] keys[0x01]=1;			// Simulate escape.
+    00011: mov      byte ptr [1], 1                          ; keys
+  ; [25] return(0);
+    00018: mov      dword ptr [ebp - 8], 0                   
+  ; [26] }
+    0001f: mov      eax, dword ptr [ebp - 8]                 
+    00022: mov      esp, ebp                                 
+    00024: pop      ebp                                      
+    00025: pop      edi                                      
+    00026: pop      esi                                      
+    00027: pop      edx                                      
+    00028: pop      ecx                                      
+    00029: pop      ebx                                      
+    0002a: ret                                               
+
+========== af_randomize  (obj line 31, delta 0)
+  ; [31] void af_randomize()
+    0002b: push     ebx                                      
+    0002c: push     ecx                                      
+    0002d: push     edx                                      
+    0002e: push     esi                                      
+    0002f: push     edi                                      
+    00030: push     ebp                                      
+    00031: mov      ebp, esp                                 
+    00033: sub      esp, 0                                   
+  ; [33] rand_seed=rand();
+    00039: call     0x3e                                     ; rand
+    0003e: mov      word ptr [0], ax                         ; rand_seed
+  ; [35] seed=rand_seed&127;
+    00044: mov      ax, word ptr [0]                         ; rand_seed
+    0004a: and      eax, 0x7f                                
+    0004f: mov      word ptr [0], ax                         ; seed
+  ; [37] }
+    00055: pop      ebp                                      
+    00056: pop      edi                                      
+    00057: pop      esi                                      
+    00058: pop      edx                                      
+    00059: pop      ecx                                      
+    0005a: pop      ebx                                      
+    0005b: ret                                               
+
+========== random_vector  (obj line 42, delta 0)
+  ; [42] void random_vector(float &a,float &b)
+    0005c: push     ebx                                      
+    0005d: push     ecx                                      
+    0005e: push     esi                                      
+    0005f: push     edi                                      
+    00060: push     ebp                                      
+    00061: mov      ebp, esp                                 
+    00063: sub      esp, 0x18                                
+    00069: mov      dword ptr [ebp - 8], eax                 
+    0006c: mov      dword ptr [ebp - 4], edx                 
+  ; [45] signed short ang=(rand_seed&32767)<<1;
+    0006f: mov      ax, word ptr [0]                         ; rand_seed
+    00075: and      ah, 0x7f                                 
+    00078: add      eax, eax                                 
+    0007a: mov      dword ptr [ebp - 0xc], eax               
+  ; [46] float ab=modf(((float)ang/PI),&n);
+    0007d: lea      eax, [ebp - 0x18]                        
+    00080: push     eax                                      
+    00081: fild     word ptr [ebp - 0xc]                     
+    00084: pushfd                                            
+    00085: test     byte ptr [0], 1                          ; chipbug
+    0008c: je       0xa1                                     
+    0008e: push     dword ptr [4]                            ; CONST+4 f=2.1427 d=-2.35344e-185
+    00094: push     dword ptr [0]                            ; CONST+0 f=3.37631e+12 d=3.14159
+    0009a: call     0x9f                                     ; fdiv_m64
+    0009f: jmp      0xa7                                     
+    000a1: fdiv     qword ptr [0]                            ; CONST+0 f=3.37631e+12 d=3.14159
+    000a7: popfd                                             
+    000a8: sub      esp, 8                                   
+    000ab: fstp     qword ptr [esp]                          
+    000ae: call     0xb3                                     ; modf
+    000b3: fstp     dword ptr [ebp - 0x10]                   
+  ; [47] a=cos(ab);
+    000b6: fld      dword ptr [ebp - 0x10]                   
+    000b9: call     0xbe                                     ; IF@DCOS
+    000be: mov      eax, dword ptr [ebp - 8]                 
+    000c1: fstp     dword ptr [eax]                          
+  ; [48] b=sin(ab);
+    000c3: fld      dword ptr [ebp - 0x10]                   
+    000c6: call     0xcb                                     ; IF@DSIN
+    000cb: mov      eax, dword ptr [ebp - 4]                 
+    000ce: fstp     dword ptr [eax]                          
+  ; [49] }
+    000d0: mov      esp, ebp                                 
+    000d2: pop      ebp                                      
+    000d3: pop      edi                                      
+    000d4: pop      esi                                      
+    000d5: pop      ecx                                      
+    000d6: pop      ebx                                      
+    000d7: ret                                               
+
+========== rand_range  (obj line 56, delta 0)
+  ; [56] int rand_range(int range)
+    000d8: push     ebx                                      
+    000d9: push     ecx                                      
+    000da: push     edx                                      
+    000db: push     esi                                      
+    000dc: push     edi                                      
+    000dd: push     ebp                                      
+    000de: mov      ebp, esp                                 
+    000e0: sub      esp, 0xc                                 
+    000e6: mov      dword ptr [ebp - 4], eax                 
+  ; [58] int rs=(seed*range)/128;
+    000e9: mov      edx, dword ptr [0xfffffffe]              ; seed
+    000ef: sar      edx, 0x10                                
+    000f2: imul     edx, dword ptr [ebp - 4]                 
+    000f6: mov      eax, edx                                 
+    000f8: sar      edx, 0x1f                                
+    000fb: shl      edx, 7                                   
+    000fe: sbb      eax, edx                                 
+    00100: sar      eax, 7                                   
+    00103: mov      dword ptr [ebp - 8], eax                 
+  ; [59] return(rs);
+    00106: mov      eax, dword ptr [ebp - 8]                 
+    00109: mov      dword ptr [ebp - 0xc], eax               
+  ; [60] }
+    0010c: mov      eax, dword ptr [ebp - 0xc]               
+    0010f: mov      esp, ebp                                 
+    00111: pop      ebp                                      
+    00112: pop      edi                                      
+    00113: pop      esi                                      
+    00114: pop      edx                                      
+    00115: pop      ecx                                      
+    00116: pop      ebx                                      
+    00117: ret                                               
+
+========== calc_dist  (obj line 65, delta 0)
+  ; [65] float calc_dist(float x,float y)
+    00118: push     eax                                      
+    00119: push     ebx                                      
+    0011a: push     ecx                                      
+    0011b: push     edx                                      
+    0011c: push     esi                                      
+    0011d: push     edi                                      
+    0011e: push     ebp                                      
+    0011f: mov      ebp, esp                                 
+    00121: sub      esp, 8                                   
+  ; [68] r=sqrt((x*x)+(y*y));
+    00127: fld      dword ptr [ebp + 0x20]                   
+    0012a: fmul     dword ptr [ebp + 0x20]                   
+    0012d: fld      dword ptr [ebp + 0x24]                   
+    00130: fmul     dword ptr [ebp + 0x24]                   
+    00133: faddp    st(1)                                    
+    00135: call     0x13a                                    ; IF@DSQRT
+    0013a: fstp     dword ptr [ebp - 4]                      
+  ; [69] if (r>0.1)
+    0013d: fld      dword ptr [ebp - 4]                      
+    00140: fcomp    qword ptr [8]                            ; CONST+8 f=-1.58819e-23 d=0.1
+    00146: fnstsw   ax                                       
+    00148: sahf                                              
+    00149: jbe      0x153                                    
+  ; [70] return(r);
+    0014b: mov      eax, dword ptr [ebp - 4]                 
+    0014e: mov      dword ptr [ebp - 8], eax                 
+    00151: jmp      0x15a                                    
+  ; [72] return(0.1);
+    00153: mov      dword ptr [ebp - 8], 0x3dcccccd          
+  ; [73] }
+    0015a: fld      dword ptr [ebp - 8]                      
+    0015d: mov      esp, ebp                                 
+    0015f: pop      ebp                                      
+    00160: pop      edi                                      
+    00161: pop      esi                                      
+    00162: pop      edx                                      
+    00163: pop      ecx                                      
+    00164: pop      ebx                                      
+    00165: pop      eax                                      
+    00166: ret      8                                        
