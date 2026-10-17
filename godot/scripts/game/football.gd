@@ -1152,7 +1152,10 @@ static func process_keys() -> void:
 				Upd3D.add_message(" ", WHITE, TRUE)
 				escape_pending = FALSE
 				stop_mf_time()
-			return
+			# (the C while-loop only exits once Y/N was pressed and then carries on
+			#  with the rest of process_keys() in the same call)
+			if escape_pending > 0:
+				return
 
 		if paused:
 			pause_game()
