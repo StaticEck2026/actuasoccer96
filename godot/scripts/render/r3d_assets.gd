@@ -38,8 +38,9 @@ static func json(path: String):
 	return d
 
 static func image(path: String) -> Image:
-	var img := Image.load_from_file(ROOT + path)
-	if img == null:
+	var img := Image.new()
+	var err := img.load_png_from_buffer(FileAccess.get_file_as_bytes(ROOT + path))
+	if err != OK:
 		push_error("R3DAssets: cannot load image " + ROOT + path)
 	return img
 

@@ -278,7 +278,7 @@ func _model_mesh(points: Array, faces: Array, mat: Material, flatten_y := false)
 func _build_stands() -> void:
 	for k in range(4):
 		var sd = stad.stands[k]
-		var m = R3DAssets.json(String(sd.model).trim_prefix("models/"))
+		var m = R3DAssets.json(String(sd.model))
 		var pos := Vector3(sd.x, sd.y, -float(sd.z))
 		var mm := _model_mesh(m.points, m.faces, _mat(sh_world_vidi, PRI_STANDS))
 		var mv := _model_mesh(m.points, m.faces, _mat(sh_world, PRI_STANDS))

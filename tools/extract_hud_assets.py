@@ -89,7 +89,7 @@ def read_fgfx(eng):
 
 def read_buffs(eng):
     """buff_info tables (MCGA_buff, VESA_buff, menu_buff_l/h): 32-byte records
-    {BYTE *buff_start; short buff_wid,buff_hgt,clip_wid,clip_hgt; float scale_x,
+    {BYTE *buff_start; scrpt(int) buff_wid,buff_hgt,clip_wid,clip_hgt; float scale_x,
     scale_y; void (*dump)()}"""
     d, p = eng.d, eng.pub
 
@@ -97,8 +97,8 @@ def read_buffs(eng):
         out = []
         for i in range(eng.size[name] // 32):
             b = p[name] + 32 * i
-            bw, bh, cw, ch = struct.unpack_from("<4h", d, b + 4)
-            sx, sy = struct.unpack_from("<2f", d, b + 12)
+            bw, bh, cw, ch = struct.unpack_from("<4i", d, b + 4)
+            sx, sy = struct.unpack_from("<2f", d, b + 20)
             out.append([bw, bh, cw, ch, round(sx, 6), round(sy, 6)])
         return out
     return {n: tab(n) for n in ("MCGA_buff", "VESA_buff", "menu_buff_l", "menu_buff_h")}
@@ -142,10 +142,11 @@ def script_texts(src):
             prefix.append(1 if sw and sw.group(1).upper() in (b"MC", b"LE") else 0)
     assert len(names) == 320, len(names)
     texts = {}
-    for start, tag in ((1600, b"QUIT_TEXT"), (1700, b"GLSC_TEXT")):
+    # EURO_SYM.H: QUIT_TEXT 1600 .. USRSLEFT_TEXT 1617, GLSC_TEXT 1700 .. OWNG_TEXT 1730
+    for start, last, tag in ((1600, 1617, b"QUIT_TEXT"), (1700, 1730, b"GLSC_TEXT")):
         k = start
         for l in lines[index_of(tag):]:
-            if l.startswith(b"[") and k > start:
+            if k > last:
                 break
             if re.match(rb"\s*t:\s*\"", l):
                 texts[k] = tstring(l)

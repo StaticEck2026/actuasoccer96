@@ -26,11 +26,22 @@ func _initialize() -> void:
 		shots = [[5, -1], [60, -1], [200, -1], [400, -1]]
 	main = load("res://scripts/main.gd").new()
 	root.add_child(main)
+
+var started := false
+
+func _start() -> void:
 	main.start_match({"team_a": 4, "team_b": 6, "time": 0, "users": []})
 	main.running = false      # we drive the frames ourselves
 	Glob.demo_match = 0
+	started = true
 
 func _process(delta: float) -> bool:
+	if not started:
+		_start()
+		return false
+	if main.view == null:
+		push_error("no view")
+		return true
 	for s in shots:
 		if s[0] == frame and s[1] >= 0:
 			Glob.camera = s[1]
