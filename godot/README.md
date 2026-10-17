@@ -79,3 +79,23 @@ godot --headless --path godot -s res://tests/sim_modes.gd -- 5 6000           # 
   fills `game_data[]` for all 16 Euro teams so the source logic runs as written).
 * The Euro 96 front end (tournament, squad management, redefine keys) is replaced
   by a single selection screen; the values it passes to the match are the same.
+* Renderer (`scripts/render/`): the 3DENG.C painter's-algorithm renderer is
+  reproduced (same draw order, camera/projection maths, sprite-built players from
+  the 28 motion-capture points, palette/transparency rules, ground and sky
+  routine, LODs, highlights, shadows, vidi wall) on the GPU. Deviations: world
+  polygons are perspective-correct (the original was affine), the translucent
+  shadow/grey filters are 50% blends instead of nearest-palette lookup tables,
+  speech-bubble sprites and the FAP video-wall clips are not drawn.
+* The kit artwork comes from the shipped EUROREND.DAT, whose team table still
+  points at the Actua Soccer (World Cup) kits — e.g. England play in red. This is
+  what the data contains; it is reproduced as is.
+* The match runs in the compiled default 640x400 mode (F10 toggles 320x200, `-`/`=`
+  screen size, F5–F8 detail levels), shown in the largest 4:3 area of the window.
+
+## Visual tests (need a display; Xvfb + Mesa works)
+
+```
+xvfb-run -a -s "-screen 0 1280x800x24" godot --path godot --rendering-driver opengl3 -s res://tests/drive_main.gd -- /tmp/drive 60
+xvfb-run -a -s "-screen 0 1280x800x24" godot --path godot --rendering-driver opengl3 -s res://tests/screenshot.gd -- /tmp/shots 40 300 400:0 600:14
+xvfb-run -a -s "-screen 0 1280x800x24" godot --path godot --rendering-driver opengl3 -s res://tests/hud_menus.gd -- --quick /tmp/hud
+```
