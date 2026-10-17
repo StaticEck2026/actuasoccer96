@@ -1,0 +1,127 @@
+
+========== play_fx  (obj line 21, delta 1)
+  ; [20] void play_fx(int fx,float x,float y)
+    00000: push     ebx                                      
+    00001: push     ecx                                      
+    00002: push     edx                                      
+    00003: push     esi                                      
+    00004: push     edi                                      
+    00005: push     ebp                                      
+    00006: mov      ebp, esp                                 
+    00008: sub      esp, 0x1c                                
+    0000e: mov      dword ptr [ebp - 4], eax                 
+  ; [24] xd=x-camera_x;
+    00011: fld      dword ptr [ebp + 0x1c]                   
+    00014: fsub     dword ptr [0]                            ; camera_x
+    0001a: fstp     dword ptr [ebp - 0x10]                   
+  ; [25] yd=y-camera_x;
+    0001d: fld      dword ptr [ebp + 0x20]                   
+    00020: fsub     dword ptr [0]                            ; camera_x
+    00026: fstp     dword ptr [ebp - 0xc]                    
+  ; [26] zd=camera_z;
+    00029: mov      eax, dword ptr [0]                       ; camera_z
+    0002e: mov      dword ptr [ebp - 8], eax                 
+  ; [28] d=calc_dist(x-camera_x,y-camera_y);
+    00031: fld      dword ptr [ebp + 0x20]                   
+    00034: fsub     dword ptr [0]                            ; camera_y
+    0003a: sub      esp, 4                                   
+    0003d: fstp     dword ptr [esp]                          
+    00040: fld      dword ptr [ebp + 0x1c]                   
+    00043: fsub     dword ptr [0]                            ; camera_x
+    00049: sub      esp, 4                                   
+    0004c: fstp     dword ptr [esp]                          
+    0004f: call     0x54                                     ; calc_dist
+    00054: fstp     dword ptr [ebp - 0x14]                   
+  ; [29] d=calc_dist(d,zd);
+    00057: fld      dword ptr [ebp - 8]                      
+    0005a: sub      esp, 4                                   
+    0005d: fstp     dword ptr [esp]                          
+    00060: fld      dword ptr [ebp - 0x14]                   
+    00063: sub      esp, 4                                   
+    00066: fstp     dword ptr [esp]                          
+    00069: call     0x6e                                     ; calc_dist
+    0006e: fstp     dword ptr [ebp - 0x14]                   
+  ; [30] xd=xd/d;
+    00071: fld      dword ptr [ebp - 0x10]                   
+    00074: pushfd                                            
+    00075: test     byte ptr [0], 1                          ; chipbug
+    0007c: je       0x88                                     
+    0007e: push     dword ptr [ebp - 0x14]                   
+    00081: call     0x86                                     ; fdiv_m32
+    00086: jmp      0x8b                                     
+    00088: fdiv     dword ptr [ebp - 0x14]                   
+    0008b: popfd                                             
+    0008c: fstp     dword ptr [ebp - 0x10]                   
+  ; [31] yd=yd/d;
+    0008f: fld      dword ptr [ebp - 0xc]                    
+    00092: pushfd                                            
+    00093: test     byte ptr [0], 1                          ; chipbug
+    0009a: je       0xa6                                     
+    0009c: push     dword ptr [ebp - 0x14]                   
+    0009f: call     0xa4                                     ; fdiv_m32
+    000a4: jmp      0xa9                                     
+    000a6: fdiv     dword ptr [ebp - 0x14]                   
+    000a9: popfd                                             
+    000aa: fstp     dword ptr [ebp - 0xc]                    
+  ; [33] if (d<MAX_VOL_DIST)
+    000ad: fld      dword ptr [0]                            ; prat
+    000b3: fmul     dword ptr [0]                            ; CONST+0 f=4 d=512
+    000b9: fcomp    dword ptr [ebp - 0x14]                   
+    000bc: fnstsw   ax                                       
+    000be: sahf                                              
+    000bf: jbe      0xca                                     
+  ; [34] vol=0x7fff;
+    000c1: mov      dword ptr [ebp - 0x18], 0x7fff           
+    000c8: jmp      0xfc                                     
+  ; [36] vol=(MAX_VOL_DIST/d)*0x7fff;
+    000ca: fld      dword ptr [0]                            ; prat
+    000d0: fmul     dword ptr [4]                            ; CONST+4 f=4 d=1.03821e+34
+    000d6: pushfd                                            
+    000d7: test     byte ptr [0], 1                          ; chipbug
+    000de: je       0xea                                     
+    000e0: push     dword ptr [ebp - 0x14]                   
+    000e3: call     0xe8                                     ; fdiv_m32
+    000e8: jmp      0xed                                     
+    000ea: fdiv     dword ptr [ebp - 0x14]                   
+    000ed: popfd                                             
+    000ee: fmul     dword ptr [8]                            ; CONST+8 f=32767 d=1.03846e+34
+    000f4: call     0xf9                                     ; CHP
+    000f9: fistp    dword ptr [ebp - 0x18]                   
+  ; [38] d=((xd*cth)+(yd*sth));
+    000fc: fld      dword ptr [ebp - 0x10]                   
+    000ff: fmul     dword ptr [0]                            ; cth
+    00105: fld      dword ptr [ebp - 0xc]                    
+    00108: fmul     dword ptr [0]                            ; sth
+    0010e: faddp    st(1)                                    
+    00110: fstp     dword ptr [ebp - 0x14]                   
+  ; [39] pan=0x8000+(d*0x8000);
+    00113: fld      dword ptr [ebp - 0x14]                   
+    00116: fmul     dword ptr [0xc]                          ; CONST+12
+    0011c: fadd     dword ptr [0xc]                          ; CONST+12
+    00122: call     0x127                                    ; CHP
+    00127: fistp    dword ptr [ebp - 0x1c]                   
+  ; [41] if (EUROmatch_info.audio==2)
+    0012a: mov      eax, dword ptr [0]                       ; EUROmatch_info
+    0012f: sar      eax, 0x10                                
+    00132: cmp      eax, 2                                   
+    00135: jne      0x149                                    
+  ; [43] PlayPitchSample(fx,vol,pan);
+    00137: movsx    ebx, word ptr [ebp - 0x1c]               
+    0013b: movsx    edx, word ptr [ebp - 0x18]               
+    0013f: mov      eax, dword ptr [ebp - 4]                 
+    00142: call     0x147                                    ; PlayPitchSample
+    00147: jmp      0x15b                                    
+  ; [46] PlayPitchSample(fx,0x7fff,0x8000);
+    00149: mov      ebx, 0xffff8000                          
+    0014e: mov      edx, 0x7fff                              
+    00153: mov      eax, dword ptr [ebp - 4]                 
+    00156: call     0x15b                                    ; PlayPitchSample
+  ; [47] }
+    0015b: mov      esp, ebp                                 
+    0015d: pop      ebp                                      
+    0015e: pop      edi                                      
+    0015f: pop      esi                                      
+    00160: pop      edx                                      
+    00161: pop      ecx                                      
+    00162: pop      ebx                                      
+    00163: ret      8                                        

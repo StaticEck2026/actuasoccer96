@@ -1,0 +1,50 @@
+{
+ "MCC_TRAP": {
+  "value": 0.6666666666666666,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_TRAP (40./60); ACTIONS:3627 player->contact=MCC_TRAP 0x3f2aaaab (float, matches)"
+ },
+ "MCC_CHEST": {
+  "value": 0.33557046979865773,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_CHEST (50./149); ACTIONS:3633 contact=MCC_CHEST 0x3eabcfe5 (float, matches)"
+ },
+ "MCC_D_HEAD": {
+  "value": 0.2956521739130435,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_D_HEAD (34./115); ACTIONS:3639 contact=MCC_D_HEAD 0x3e975fb9 (float, matches)"
+ },
+ "MCC_OVERHEAD": {
+  "value": 0.5147058823529411,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_OVERHEAD (70./136); ACTIONS:3902 push 0x3f03c3c4 (float, matches)"
+ },
+ "MCC_VOLLEY": {
+  "value": 0.45054945054945056,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_VOLLEY (41./91); ACTIONS:3907 push 0x3ee6ae6b (float, matches)"
+ },
+ "MCC_DV_HEAD": {
+  "value": 0.3302752293577982,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_DV_HEAD (36./109); ACTIONS:3912 push 0x3ea919d6 (float, matches)"
+ },
+ "MCC_J_HEAD": {
+  "value": 0.34177215189873417,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_J_HEAD (54./158); ACTIONS:3917 push 0x3eaefcc2 (float, matches)"
+ },
+ "MCC_S_HEAD": {
+  "value": 0.6645161290322581,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_S_HEAD (103./155); ACTIONS:3927 push 0x3f2a1dbb (float, matches)"
+ }
+}

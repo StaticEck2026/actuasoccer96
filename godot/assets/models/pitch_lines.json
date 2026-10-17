@@ -1,0 +1,101 @@
+{
+ "objects": {
+  "l1": {
+   "position_engine": [
+    210,
+    0,
+    -200
+   ],
+   "lod_model": "l1_d"
+  },
+  "l2": {
+   "position_engine": [
+    1070,
+    0,
+    -200
+   ],
+   "lod_model": "l2_d"
+  },
+  "l3": {
+   "position_engine": [
+    1070,
+    0,
+    -600
+   ],
+   "lod_model": "l3_d"
+  },
+  "l4": {
+   "position_engine": [
+    210,
+    0,
+    -600
+   ],
+   "lod_model": "l4_d"
+  },
+  "l5": {
+   "position_engine": [
+    640,
+    0,
+    -200
+   ],
+   "lod_model": "l5_d"
+  },
+  "l6": {
+   "position_engine": [
+    640,
+    0,
+    -600
+   ],
+   "lod_model": "l6_d"
+  },
+  "circle": {
+   "position_engine": [
+    640,
+    0,
+    -400
+   ],
+   "lod_model": "circle_d"
+  },
+  "semi1": {
+   "position_engine": [
+    123,
+    0,
+    -400
+   ],
+   "lod_model": "s_circle_d1"
+  },
+  "semi2": {
+   "position_engine": [
+    1157,
+    0,
+    -400
+   ],
+   "lod_model": "s_circle_d2"
+  },
+  "spot1": {
+   "position_engine": [
+    640,
+    0,
+    -400
+   ],
+   "model": "lines_spot"
+  },
+  "spot2": {
+   "position_engine": [
+    128,
+    0,
+    -400
+   ],
+   "model": "lines_spot"
+  },
+  "spot3": {
+   "position_engine": [
+    1152,
+    0,
+    -400
+   ],
+   "model": "lines_spot"
+  }
+ },
+ "note": "l1..l6 penalty/goal areas and halfway line halves; drawn with addobjfc"
+}

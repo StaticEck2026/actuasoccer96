@@ -1,0 +1,1243 @@
+#### MODULE FOOTBALL
+match_tactics1 int[2][10][70]
+match_tactics2 int[2][10][70]
+in_game char
+flag char
+time_table int16[5]
+escape_pending int8
+simulate_match char
+first_mf char
+xinfo int16
+performance passback_per[40]
+user_perform int16[4]
+man_of_match int16
+max_kp_margin float32
+users_dir user_vectors[20]
+message_buffer message_type[8]
+mess_col int16
+new_text int16
+text_mess char*
+message_cnt int16
+current_mess int16
+check_str char[8]
+not_ahead char
+deb_data float32
+rand1_setup int16[5]
+rand2_setup int16[6]
+cam_array int16[7]
+comsetp int16
+updates int16
+old_count int
+strike intercept_data[11]
+first_time_it char
+seconds int
+ft_ktm float32
+ft_vtm float32
+ft_dtm float32
+ft_otm float32
+ft_stm float32
+ft_jtm float32
+ft_ttm float32
+ft_ctm float32
+ft_utm float32
+replay_seconds int16
+debug char
+us_buttons butts[10]
+max_butts int
+ball_col char
+shadow_col char
+team_a_col char
+team_b_col char
+bounce_dis float32
+gravity float32
+cntspot_x int
+cntspot_y int
+ball_diam float32
+pitch_len int
+pitch_wid int
+halfway_line int
+scr_pinch int
+right_bounds int
+left_bounds int
+lower_bounds int
+upper_bounds int
+zone_wid float32
+zone_hgt float32
+prat float32
+goal_height int
+goal_depth int
+post_width int
+top_post_y int
+bot_post_y int
+var_start int16
+glob_str1 char[40]
+glob_str2 char[40]
+teams match_player[22]
+match_time mtime
+refs officials[3]
+speech_tab bubbles[26]
+wguys wall[5]
+home_team_sheet team_sheet
+away_team_sheet team_sheet
+stat_sheet int16[2][11]
+stat_menu_up char
+golden_goal char
+return_12 char
+shamed_player int16
+old_min uint16
+users_left int16
+setp_x float32
+setp_y float32
+setp_wait_cnt int16
+frame char
+kick_off char
+sel_circle char[22]
+burst_timer int16[5]
+keep_timer int16
+stop_clock char
+keep_dive char
+hold_up_play int16
+wall_is_up char
+card_is_out int16
+crowd_mood_a int16
+crowd_mood_b int16
+possession float32
+poss_held float32
+arrow_on char
+logic_cnt int
+ball_move char
+first_bounce int
+swerve int
+spin_cnt int
+spin_ball int
+prediction int
+set_xyspin int
+set_zspin int
+ball_horz_ang float32
+ball_vert_ang float32
+max_sw_factor float32
+swerve_factor float32
+rebound_ball char
+headed_ball char
+say_names char
+fired_a_shot char
+comm_pass char
+comm_pass_type char
+keeper_spd float32
+keeper_down int16
+save_direction int16
+keeper_will_save int
+keeper_on_grnd char
+keeper_contact float32
+ball_in_goal char
+ball_in_hands char
+game_action int16
+throw_cnt int
+team_a_goals int
+team_b_goals int
+last_goal char
+scorer_running char
+just_scored int
+just_thrown int
+goal_scorer int
+pass_type int
+kick_type int
+receiver int
+cross_now char
+auto_select char
+must_face char
+must_face_time int16
+must_face_x float32
+must_face_y float32
+must_shoot char
+chip_pass char
+must_pass char
+must_punt char
+keeper_a_in_box char
+keeper_b_in_box char
+keeper_steps int
+save_block int16
+save_xoff float32
+save_yoff float32
+save_zoff float32
+shot_speed float32
+scr_x int
+scr_y int
+ball_speed int
+ball_int_speed int
+interceptor_a int
+interceptor_b int
+in_cross_area int
+close_in_number float32
+shooter int
+ball_inair int
+super_shot int
+opponents_near_holder int
+opponents_really_close int
+ball_poss int
+sender_1_2 int
+ball_still int
+last_touch int
+want_pass int
+before int
+support_me int
+pre_kp_touch int
+prev_touch int
+ball_limbo_p int
+ball_limbo_on char
+ball_limbo_c float32
+ball_released int
+cannot_pick_up int
+forced int16
+last_user_a int16
+last_user_b int16
+last_plr_a int16
+last_plr_b int16
+players_off_a int16
+players_off_b int16
+want_pass_stat int
+ball_zone1 int
+ball_zone2 int
+ball_out_of_play int
+receiver_a int16
+receiver_b int16
+ready_centre int
+shot_attempt char
+force_select char
+heading_ball int16
+rep_camera char
+sub_camera char
+allow_replay char
+replay_pos int
+old_rep_pos int
+replay_cnt int
+pitch_sprs int
+lp_user int16
+fixed_net_user int16
+auto_users_list_a int16[10]
+auto_users_a int16
+auto_users_list_b int16[10]
+auto_users_b int16
+play_ball_a int16
+play_ball_b int16
+new_select char
+auto_intercept char
+closest char
+f1_down int16
+f2_down int16
+spec_kick_type char
+setp_hgt float32
+setp_power float32
+setp_held char
+setp_kick_x float32
+setp_kick_y float32
+setp_bxd float32
+setp_byd float32
+setp_bzd float32
+user_taker int16
+user_taker2 int16
+user_controlled char
+user_scorer char
+user_plr char
+after_touch_on char
+drive_shot char
+newk_shot char
+wallx float32
+wally float32
+men_in_wall int
+keeper_pos_x float32
+keeper_pos_y float32
+centre_guy_1 int
+centre_guy_2 int
+in_range char
+in_header_rng char
+in_shot_rng char
+taker_x int
+taker_y int
+penalty_shot char
+penalties int16
+penalty_game char
+home_pens_left int16
+away_pens_left int16
+penalty_counter int16
+pen_taker_a int16
+pen_taker_b int16
+penalty_team char
+penalty_taker int
+penalty_taker_a int
+penalty_taker_b int
+setp_taker int
+fkick_taker int
+fkick_taker_a int
+fkick_taker_b int
+gkick_taker int
+goal_kicker_a int
+goal_kicker_b int
+corner_taker int
+corn_kicker_a int
+corn_kicker_b int
+ktaker int
+bad_guy int
+direct_fk char
+play_advantage char
+set_piece_on char
+throw_in_taker int
+main_man int
+player_num int
+savex int
+savey int
+savez int
+shot_acknowledged char
+shot_pending int
+real_shot int
+shot_missed int16
+shot_saved int16
+opp_dir_tab float32[3][11]
+drib_opps int
+stop_and_face char
+x_face float32
+y_face float32
+offside_now char
+can_be_offside char
+ref_accuracy int
+ref_strictness int
+ref_wait int
+tussle_tab int[23]
+tussle_ptr int*
+Sample char*[32]
+crowd_a int
+crowd_b int
+kickoff char
+end_game char
+team_a char
+team_b char
+last_centre char
+need_result char
+injury_time int16
+special_move char
+match_half char
+opt_user int16
+opt_team int16
+options_on char
+line_up int16
+player_being_subbed int16
+player_on_off int16
+player_coming_on int16
+booking char
+subbing_now int16
+first_update char
+newdx float32
+newdy float32
+wind_on int16
+wind_d_trend int16
+wind_s_trend int16
+wind_x float32
+wind_y float32
+wind_speed float32
+init_wind_x float32
+init_wind_y float32
+init_wind_speed float32
+wind_var_ang float32
+tactics_a char
+tactics_b char
+old_tac_a char
+old_tac_b char
+rand1_tab int16[5]
+rand2_tab int16[6]
+afr1 int16*
+afr2 int16*
+man2man int[2][10]
+man2man_a char
+man2man_b char
+next_mins int16
+time_factor int
+clock_running char
+demo_match char
+rolling_clock int
+arrow_guy char
+rand_seed int16
+seed int16
+man_down float32
+launch_type int
+launch_x float32
+launch_y float32
+ballxdis float32
+ballydis float32
+ballzdis float32
+ballx float32
+bally float32
+ballz float32
+ballx_out float32
+bally_out float32
+ballz_out float32
+b_xoff float32
+b_yoff float32
+b_zoff float32
+save_ballx float32
+save_bally float32
+save_ballz float32
+save_ball_poss int
+good_poss int16
+eff_ballx float32
+eff_bally float32
+eff_ballz float32
+prev_ballx float32
+prev_bally float32
+prev_ballz float32
+ns_ballx float32
+ns_bally float32
+ns_ballz float32
+ball_zspin float32
+ball_xyspin float32
+full_zspin float32
+full_xyspin float32
+shoot_x float32
+shoot_y float32
+nearest_a int
+nearest_b int
+old_ltouch int
+old_ball_poss int
+use_ball_limit char
+near_path_a int16
+near_path_b int16
+zone1_x int
+zone1_y int
+zone2_x int
+zone2_y int
+incident_x int
+incident_y int
+difficulty int
+match_mode char
+dead_ball_cnt int
+defense_a int
+defense_b int
+poss_mode float32
+ball_pred_tab float32[3][50]
+ns_ball_pred_tab float32[3][50]
+ball_travel int16
+select_cnt int16
+already_there char
+reselection char
+offside_on char
+var_end int16
+players int
+avg1_rate int
+avg1_power int
+avg1_bcontrol int
+avg1_flair int
+avg1_vision int
+avg1_accuracy int
+avg1_fitness int
+avg1_disc int
+avg2_rate int
+avg2_power int
+avg2_bcontrol int
+avg2_flair int
+avg2_vision int
+avg2_accuracy int
+avg2_fitness int
+avg2_disc int
+audio_version char
+vidi_wall_on char
+MF float32
+mf_scale float32
+omf_scale float32
+log_factor float32
+mf_fixed char
+alarm char
+watch char
+stop_min int
+stop_sec int
+practice char
+team_a_on char
+team_b_on char
+camera_dist float32
+analogue char
+camera char
+old_cam char
+tweening char
+zoom float32
+scr_a int[4][100]
+scr_b int[4][100]
+plot_cnta int
+plot_cntb int
+plot_buffer int
+button_lit int
+delay_cnt int
+play_nums_on int
+oldcnt int
+frames int
+frms_per_sec int
+last_second int
+action char*
+old_clock int
+on_3d char
+ux float32
+uy float32
+uf1 char
+uf2 char
+um char
+state1 save_data
+state2 save_data
+state_ptr save_data*
+checksum_ptr int16*
+pen_cnt int
+coo int
+gkey char
+otick int
+## STRUCT passback_per size 6
+    0 per int16
+    2 inj int16
+    4 dpts char
+## STRUCT user_vectors size 12
+    0 x float32
+    4 y float32
+    8 m char
+    9 f char
+## STRUCT message_type size 8
+    0 ptr char*
+    4 col int16
+## STRUCT intercept_data size 28
+    0 t int16
+    2 free int16
+    4 ptype int16
+    6 pplr int16
+    8 gt int16
+    12 x float32
+    16 y float32
+    20 atime float32
+    24 stop char
+## STRUCT butts size 24
+    0 x int
+    4 y int
+    8 w int
+    12 s char[10]
+    22 l char
+## STRUCT match_player size 203
+    0 tm_player int16
+    2 tm_x float32
+    6 tm_xdis float32
+    10 tm_y float32
+    14 tm_ydis float32
+    18 tm_z float32
+    22 tm_zdis float32
+    26 mface_x float32
+    30 mface_y float32
+    34 mface_time int16
+    36 mface char
+    37 tm_dist float32
+    41 tm_pos char
+    42 tm_limbo int16
+    44 guy_on int16
+    46 control char
+    47 tm_srng char
+    48 tm_off int8
+    49 tm_stopped char
+    50 tm_trap char
+    51 special int16
+    53 tm_strike int16
+    55 tm_stime float32
+    59 tm_ftime int16
+    61 ball_state int16
+    63 tm_fpass_type int16
+    65 tm_fpass_to int16
+    67 draw_me char
+    68 shirt int16
+    70 tm_rate uint8
+    71 tm_pow uint8
+    72 tm_cont uint8
+    73 tm_flair uint8
+    74 tm_vis uint8
+    75 tm_ac uint8
+    76 tm_stam uint8
+    77 tm_disc uint8
+    78 tm_book uint8
+    79 tm_fouls uint8
+    80 tm_tacks int16
+    82 tm_twon int16
+    84 tm_shots int16
+    86 tm_saved int16
+    88 tm_goals uint8
+    89 tm_pass int16
+    91 tm_pwon int16
+    93 tm_inj uint16
+    95 tm_posst int16
+    97 tm_work int
+    101 tm_kpsaves int16
+    103 tm_ogs uint8
+    104 tm_time uint8
+    105 turn_dir int16
+    107 face_dir int16
+    109 dir_mode int16
+    111 tm_frm float32
+    115 tm_fstep float32
+    119 tm_anim uint16
+    121 tm_hcol uint8
+    122 tm_htype uint8
+    123 tm_mcspd float32
+    127 ls_anim float32
+    131 ls_frm float32
+    135 contact float32
+    139 tm_newanim char
+    140 tm_barge char
+    141 tm_limp char
+    142 tm_act int16
+    144 tm_poss int16
+    146 tm_wall int16
+    148 tm_leave int16
+    150 tm_mark int16
+    152 go_dist int
+    156 go_cnt int
+    160 go_txdis float32
+    164 go_tydis float32
+    168 go_tx float32
+    172 go_ty float32
+    176 go_xoff float32
+    180 go_yoff float32
+    184 tm_jump float32
+    188 go_stop char
+    189 go_step char
+    190 tm_notme char
+    191 int_move int16
+    193 int_cnt int16
+    195 mess_num int16
+    197 mess_cnt int16
+    199 tm_comm int16
+    201 tm_ccnt int16
+## STRUCT mtime size 8
+    0 min uint16
+    4 sec float32
+## STRUCT officials size 52
+    0 x float32
+    4 y float32
+    8 z float32
+    12 dir_x float32
+    16 dir_y float32
+    20 anim float32
+    24 frm float32
+    28 fstep float32
+    32 goto_x float32
+    36 goto_y float32
+    40 act int
+    44 go int
+    48 target int16
+    50 newanim char
+## STRUCT bubbles size 8
+    0 say int
+    4 cnt int
+## STRUCT wall size 12
+    0 guy int
+    4 x float32
+    8 y float32
+## STRUCT team_sheet size 32
+    0 tacks_att uint16
+    2 tacks_won uint16
+    4 pass_att uint16
+    6 pass_complete uint16
+    8 shots_att uint16
+    10 shots_ontarg uint16
+    12 poss unsigned int
+    16 work unsigned int
+    20 corners uint16
+    22 dfkicks uint16
+    24 penalties uint16
+    26 offsides uint16
+    28 yellows uint16
+    30 reds uint16
+## STRUCT save_data size 6308
+    0 teams match_player[22]
+    4468 match_time mtime
+    4476 refs officials[3]
+    4632 speech_tab bubbles[26]
+    4840 wguys wall[5]
+    4900 sel_circle char[22]
+    4922 burst_timer int16[5]
+    4932 auto_users_list_a int16[10]
+    4952 auto_users_list_b int16[10]
+    4972 rand1_tab int16[5]
+    4982 rand2_tab int16[6]
+    4996 man2man int[2][10]
+    5076 glob_str1 char[40]
+    5116 glob_str2 char[40]
+    5156 home_team_sheet team_sheet
+    5188 away_team_sheet team_sheet
+    5220 stat_sheet int16[2][11]
+    5264 sub_pending char
+    5265 return_12 char
+    5266 shamed_player int16
+    5268 old_min uint16
+    5270 users_left int16
+    5272 setp_x float32
+    5276 setp_y float32
+    5280 setp_wait_cnt int16
+    5282 frame char
+    5283 kick_off char
+    5284 keep_timer int16
+    5286 stop_clock char
+    5287 keep_dive char
+    5288 hold_up_play int16
+    5290 wall_is_up char
+    5292 card_is_out int16
+    5294 crowd_mood_a int16
+    5296 crowd_mood_b int16
+    5300 possession float32
+    5304 poss_held float32
+    5308 arrow_on char
+    5312 logic_cnt int
+    5316 ball_move char
+    5320 first_bounce int
+    5324 swerve int
+    5328 spin_cnt int
+    5332 spin_ball int
+    5336 prediction int
+    5340 set_xyspin int
+    5344 set_zspin int
+    5348 ball_horz_ang float32
+    5352 ball_vert_ang float32
+    5356 max_sw_factor float32
+    5360 swerve_factor float32
+    5364 rebound_ball char
+    5365 headed_ball char
+    5366 say_names char
+    5367 fired_a_shot char
+    5368 comm_pass char
+    5369 comm_pass_type char
+    5372 keeper_spd float32
+    5376 keeper_down int16
+    5378 save_direction int16
+    5380 keeper_will_save int
+    5384 keeper_on_grnd char
+    5388 keeper_contact float32
+    5392 ball_in_goal char
+    5393 ball_in_hands char
+    5394 game_action int16
+    5396 throw_cnt int
+    5400 team_a_goals int
+    5404 team_b_goals int
+    5408 last_goal char
+    5409 scorer_running char
+    5412 just_scored int
+    5416 just_thrown int
+    5420 goal_scorer int
+    5424 pass_type int
+    5428 kick_type int
+    5432 receiver int
+    5436 cross_now char
+    5437 auto_select char
+    5438 must_face char
+    5440 must_face_time int16
+    5444 must_face_x float32
+    5448 must_face_y float32
+    5452 must_shoot char
+    5453 chip_pass char
+    5454 must_pass char
+    5455 must_punt char
+    5456 keeper_a_in_box char
+    5457 keeper_b_in_box char
+    5460 keeper_steps int
+    5464 save_block int16
+    5468 save_xoff float32
+    5472 save_yoff float32
+    5476 save_zoff float32
+    5480 shot_speed float32
+    5484 scr_x int
+    5488 scr_y int
+    5492 ball_speed int
+    5496 ball_int_speed int
+    5500 interceptor_a int
+    5504 interceptor_b int
+    5508 in_cross_area int
+    5512 close_in_number float32
+    5516 shooter int
+    5520 ball_inair int
+    5524 super_shot int
+    5528 opponents_near_holder int
+    5532 opponents_really_close int
+    5536 ball_poss int
+    5540 sender_1_2 int
+    5544 ball_still int
+    5548 last_touch int
+    5552 want_pass int
+    5556 before int
+    5560 support_me int
+    5564 pre_kp_touch int
+    5568 prev_touch int
+    5572 ball_limbo_p int
+    5576 ball_limbo_on char
+    5580 ball_limbo_c float32
+    5584 ball_released int
+    5588 cannot_pick_up int
+    5592 forced int16
+    5594 last_user_a int16
+    5596 last_user_b int16
+    5598 last_plr_a int16
+    5600 last_plr_b int16
+    5602 players_off_a int16
+    5604 players_off_b int16
+    5608 want_pass_stat int
+    5612 ball_zone1 int
+    5616 ball_zone2 int
+    5620 ball_out_of_play int
+    5624 receiver_a int16
+    5626 receiver_b int16
+    5628 ready_centre int
+    5632 shot_attempt char
+    5633 force_select char
+    5634 heading_ball int16
+    5636 flag char
+    5637 rep_camera char
+    5638 sub_camera char
+    5639 allow_replay char
+    5640 replay_pos int
+    5644 old_rep_pos int
+    5648 replay_cnt int
+    5652 pitch_sprs int
+    5656 lp_user int16
+    5658 fixed_net_user int16
+    5660 auto_users_a int16
+    5662 auto_users_b int16
+    5664 play_ball_a int16
+    5666 play_ball_b int16
+    5668 new_select char
+    5669 auto_intercept char
+    5670 closest char
+    5672 f1_down int16
+    5674 f2_down int16
+    5676 spec_kick_type char
+    5680 setp_hgt float32
+    5684 setp_power float32
+    5688 setp_held char
+    5692 setp_kick_x float32
+    5696 setp_kick_y float32
+    5700 setp_bxd float32
+    5704 setp_byd float32
+    5708 setp_bzd float32
+    5712 user_taker int16
+    5714 user_taker2 int16
+    5716 user_controlled char
+    5717 user_scorer char
+    5718 user_plr char
+    5719 after_touch_on char
+    5720 drive_shot char
+    5721 newk_shot char
+    5724 wallx float32
+    5728 wally float32
+    5732 men_in_wall int
+    5736 keeper_pos_x float32
+    5740 keeper_pos_y float32
+    5744 centre_guy_1 int
+    5748 centre_guy_2 int
+    5752 in_range char
+    5753 in_header_rng char
+    5754 in_shot_rng char
+    5756 taker_x int
+    5760 taker_y int
+    5764 penalty_shot char
+    5766 penalties int16
+    5768 penalty_game char
+    5770 home_pens_left int16
+    5772 away_pens_left int16
+    5774 penalty_counter int16
+    5776 pen_taker_a int16
+    5778 pen_taker_b int16
+    5780 penalty_team char
+    5784 penalty_taker int
+    5788 penalty_taker_a int
+    5792 penalty_taker_b int
+    5796 setp_taker int
+    5800 fkick_taker int
+    5804 fkick_taker_a int
+    5808 fkick_taker_b int
+    5812 gkick_taker int
+    5816 goal_kicker_a int
+    5820 goal_kicker_b int
+    5824 corner_taker int
+    5828 corn_kicker_a int
+    5832 corn_kicker_b int
+    5836 ktaker int
+    5840 bad_guy int
+    5844 direct_fk char
+    5845 play_advantage char
+    5846 set_piece_on char
+    5848 throw_in_taker int
+    5852 main_man int
+    5856 player_num int
+    5860 savex int
+    5864 savey int
+    5868 savez int
+    5872 shot_acknowledged char
+    5876 shot_pending int
+    5880 real_shot int
+    5884 shot_missed int16
+    5886 shot_saved int16
+    5888 drib_opps int
+    5892 stop_and_face char
+    5896 x_face float32
+    5900 y_face float32
+    5904 offside_now char
+    5905 can_be_offside char
+    5908 ref_accuracy int
+    5912 ref_strictness int
+    5916 ref_wait int
+    5920 tussle_ptr int*
+    5924 crowd_a int
+    5928 crowd_b int
+    5932 kickoff char
+    5933 end_game char
+    5934 team_a char
+    5935 team_b char
+    5936 last_centre char
+    5937 need_result char
+    5938 injury_time int16
+    5940 special_move char
+    5941 match_half char
+    5942 opt_user int16
+    5944 opt_team int16
+    5946 options_on char
+    5948 line_up int16
+    5950 player_being_subbed int16
+    5952 player_on_off int16
+    5954 player_coming_on int16
+    5956 booking char
+    5958 subbing_now int16
+    5960 first_update char
+    5964 newdx float32
+    5968 newdy float32
+    5972 wind_on int16
+    5974 wind_d_trend int16
+    5976 wind_s_trend int16
+    5980 wind_x float32
+    5984 wind_y float32
+    5988 wind_speed float32
+    5992 init_wind_x float32
+    5996 init_wind_y float32
+    6000 init_wind_speed float32
+    6004 wind_var_ang float32
+    6008 tactics_a char
+    6009 tactics_b char
+    6010 old_tac_a char
+    6011 old_tac_b char
+    6012 afr1 int16*
+    6016 afr2 int16*
+    6020 man2man_a char
+    6021 man2man_b char
+    6022 next_mins int16
+    6024 time_factor int
+    6028 clock_running char
+    6029 demo_match char
+    6032 rolling_clock int
+    6036 arrow_guy char
+    6038 rand_seed int16
+    6040 seed int16
+    6044 man_down float32
+    6048 launch_type int
+    6052 launch_x float32
+    6056 launch_y float32
+    6060 ballxdis float32
+    6064 ballydis float32
+    6068 ballzdis float32
+    6072 ballx float32
+    6076 bally float32
+    6080 ballz float32
+    6084 ballx_out float32
+    6088 bally_out float32
+    6092 ballz_out float32
+    6096 b_xoff float32
+    6100 b_yoff float32
+    6104 b_zoff float32
+    6108 save_ballx float32
+    6112 save_bally float32
+    6116 save_ballz float32
+    6120 save_ball_poss int
+    6124 good_poss int16
+    6128 eff_ballx float32
+    6132 eff_bally float32
+    6136 eff_ballz float32
+    6140 prev_ballx float32
+    6144 prev_bally float32
+    6148 prev_ballz float32
+    6152 ns_ballx float32
+    6156 ns_bally float32
+    6160 ns_ballz float32
+    6164 ball_zspin float32
+    6168 ball_xyspin float32
+    6172 full_zspin float32
+    6176 full_xyspin float32
+    6180 shoot_x float32
+    6184 shoot_y float32
+    6188 nearest_a int
+    6192 nearest_b int
+    6196 old_ltouch int
+    6200 old_ball_poss int
+    6204 use_ball_limit char
+    6206 near_path_a int16
+    6208 near_path_b int16
+    6212 zone1_x int
+    6216 zone1_y int
+    6220 zone2_x int
+    6224 zone2_y int
+    6228 incident_x int
+    6232 incident_y int
+    6236 difficulty int
+    6240 match_mode char
+    6244 dead_ball_cnt int
+    6248 defense_a int
+    6252 defense_b int
+    6256 poss_mode float32
+    6260 ball_travel int16
+    6262 select_cnt int16
+    6264 already_there char
+    6265 reselection char
+    6266 offside_on char
+    6268 joy1_max_x int
+    6272 joy1_min_x int
+    6276 joy1_max_y int
+    6280 joy1_min_y int
+    6284 joy1_cnt_x uint16
+    6286 joy1_cnt_y uint16
+    6288 joy2_max_x int
+    6292 joy2_min_x int
+    6296 joy2_max_y int
+    6300 joy2_min_y int
+    6304 joy2_cnt_x uint16
+    6306 joy2_cnt_y uint16
+#### MODULE ACTIONS
+save_offs float32[396]
+#### MODULE INTELL
+cross_on char
+#### MODULE BALL
+#### MODULE BALLINT
+#### MODULE RULES
+timeout int
+#### MODULE USER
+#### MODULE 3D_UPD2
+spr_coord_tab float32[301]
+spr_ref_tab int16[100]
+norm_font_col int
+counter int
+wayne_cam float32[2]
+set_camera_dist float32
+set_camera_height float32
+camera_fixed char
+st_hm float32
+poswr plyrdat*
+pos plyrdat[26]
+rep plyrdat*
+filters filter[32]
+null_tab float32[1]
+null2 int16[1]
+coords_tab1 plyrdat[26]
+coords_tab2 plyrdat[26]
+replay_tab plyrdat*
+new_coords plyrdat*
+old_coords plyrdat*
+tx datapt
+ty datapt
+tz datapt
+camera_x datapt
+camera_y datapt
+camera_z datapt
+play_cam int
+old_tx datapt
+old_ty datapt
+old_tz datapt
+old_camx datapt
+old_camy datapt
+old_camz datapt
+cxs datapt
+cys datapt
+czs datapt
+txs datapt
+tys datapt
+tzs datapt
+prev_camx datapt
+prev_camy datapt
+prev_camz datapt
+old_scale float32
+css float32
+scale float32
+prev_camera char
+mode_change int16
+camera_inertia float32
+target_inertia float32
+## STRUCT plyrdat size 40
+    0 x floatpt
+    4 y floatpt
+    8 z floatpt
+    12 crot floatpt
+    16 srot floatpt
+    20 frame floatpt
+    24 fstep floatpt
+    28 type int16
+    30 number int16
+    32 anim int16
+    34 sprite int16
+    36 htype BYTE
+    37 hcol BYTE
+#### MODULE MATHS
+#### MODULE DISPLAY
+old_time int
+prev_count int
+times int
+#### MODULE MY_AUDIO
+#### MODULE GAMEDATA
+restore_cup_data int[44]
+redefine_data redefine_info[6]
+game_data team_info[2]
+spin_y_offsets int[15]
+referee_data referee_info[33]
+detail_defaults detail_info[33]
+screen_defaults int16[33]
+friendly_controls char[8]
+match_info match_data
+cup_games int[34]
+goals goal_table[92]
+results result_table[650]
+batch_info batch_data
+GDVvidmode int[2]
+MENUvidmode int[2]
+RESTOREvidmode int[2]
+demo_data demo_struct[48]
+## STRUCT redefine_info size 4
+    0 string_xposn int16
+    2 string_yposn int16
+## STRUCT team_info size 872
+    0 name char[23]
+    23 coachname char[24]
+    48 division int
+    52 position int
+    56 played int
+    60 won int
+    64 drew int
+    68 lost int
+    72 goals_for int
+    76 goals_against int
+    80 points int
+    84 goal_diff int
+    88 team_no int
+    92 Nickname char[13]
+    108 ranking int
+    112 team_number int
+    116 player_control char
+    117 fixture_no char
+    120 big_flag int
+    124 formation int
+    128 auto_formation int
+    132 cup_key int
+    136 country_code char[3]
+    140 computer_formation int
+    144 players player_info[22]
+## STRUCT referee_info size 24
+    0 name char[20]
+    20 vision char
+    21 discipline char
+    22 country int16
+## STRUCT detail_info size 12
+    0 sky int16
+    2 stadia int16
+    4 pitch int16
+    6 players int16
+    8 lines int16
+    10 shadows int16
+## STRUCT match_data size 192
+    0 sky_toggle int16
+    2 stadium_toggle int16
+    4 line_toggle int16
+    6 vidi_toggle int16
+    8 players_toggle int16
+    10 pitch_toggle int16
+    12 res_toggle int16
+    14 camera_toggle int16
+    16 size_toggle int16
+    18 audio_toggle int16
+    20 menu_res int16
+    22 camera int16
+    24 audio int16
+    28 crowd int
+    32 pitch int
+    36 commentary int
+    40 music int
+    44 master int
+    48 timeit int16
+    50 vidi int16
+    52 match_number char
+    56 team_a_score int
+    60 team_b_score int
+    64 penalties int
+    68 extra int
+    72 team_a_penalties int
+    76 team_b_penalties int
+    80 venue int
+    84 tac_1 char
+    85 tac_2 char
+    86 offside int16
+    88 substitutes int16
+    90 freekicks int16
+    92 time int16
+    94 bookings int16
+    96 wind int16
+    98 offside_toggle int16
+    100 substitutes_toggle int16
+    102 freekicks_toggle int16
+    104 time_toggle int16
+    106 bookings_toggle int16
+    108 wind_toggle int16
+    112 CompetitionType int
+    116 CompetitionType_toggle int
+    120 NoOfPlayers int
+    124 NoOfPlayers_toggle int
+    128 GameType int
+    132 GameType_toggle int
+    136 CROWD int
+    140 COMMENTRY int
+    144 MASTER int
+    148 PITCH int
+    152 MUSIC int
+    156 referee int
+    160 match_referee int
+    164 referee_vision int
+    168 referee_discipline int
+    172 control_methods char[4]
+    176 tga_enable char
+    180 return_mins int
+    184 rand int
+    188 language char
+## STRUCT goal_table size 12
+    0 goal_data goal_info
+## STRUCT result_table size 8
+    0 result_data result_info
+## STRUCT batch_data size 136
+    0 cheat_mode int
+    4 Port_toggle int
+    8 Ranking_Division int
+    12 PointsForWin int
+    16 match_number int
+    20 round_up_page int
+    24 roundup_games char
+    25 league_rndup char
+    28 cup_tie int
+    32 Round_index int
+    36 Round_counter int
+    40 RoundPrint int
+    44 cup_match_number int
+    48 GDVres char
+    49 winners char
+    50 runners_up char
+    52 cup_team_a int16
+    54 cup_team_b int16
+    56 OldCTRL1 int
+    60 OldCTRL2 int
+    64 number_of_cup_teams int
+    68 gdv_gran int
+    72 which_gdv char
+    76 keys_used int[12]
+    124 DEMOflag char
+    128 PlayerCount int
+    132 floppy char
+    133 rolling_demo char
+## STRUCT demo_struct size 20
+    0 team_a int
+    4 team_b int
+    8 random int
+    12 stadium int
+    16 referee int

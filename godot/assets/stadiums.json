@@ -1,0 +1,829 @@
+{
+ "note": "stadlist from the compiled Euro 96 3DENG.OBJ (8 venues). All 8 share the same stand geometry/pages; they differ in pitch texture/palette and sky choices. tmdfile=-1 in 5 entries (the engine then loads entry 0 into the stadium texture slots - a latent bug); use TMD_STADIUM (entry 125) for all.",
+ "stadiums": [
+  {
+   "pitchfile": 912,
+   "pitchpfile": 544,
+   "skytypes": [
+    0,
+    1
+   ],
+   "tmdfile": 1000,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 0,
+   "venue": "London",
+   "pitch_entry": 114,
+   "pitch_name": "BM_PITCH_114",
+   "pitch_palette_entry": 68,
+   "tmd_entry": 125,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 920,
+   "pitchpfile": 552,
+   "skytypes": [
+    2,
+    3
+   ],
+   "tmdfile": -1,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 1,
+   "venue": "Birmingham",
+   "pitch_entry": 115,
+   "pitch_name": "BM_PITCH_115",
+   "pitch_palette_entry": 69,
+   "tmd_entry": null,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 904,
+   "pitchpfile": 520,
+   "skytypes": [
+    0,
+    4
+   ],
+   "tmdfile": 1000,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 2,
+   "venue": "Leeds",
+   "pitch_entry": 113,
+   "pitch_name": "BM_PITCH_113",
+   "pitch_palette_entry": 65,
+   "tmd_entry": 125,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 928,
+   "pitchpfile": 576,
+   "skytypes": [
+    2,
+    3
+   ],
+   "tmdfile": -1,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 3,
+   "venue": "Newcastle",
+   "pitch_entry": 116,
+   "pitch_name": "BM_PITCH_116",
+   "pitch_palette_entry": 72,
+   "tmd_entry": null,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 920,
+   "pitchpfile": 568,
+   "skytypes": [
+    5,
+    2
+   ],
+   "tmdfile": 1000,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 4,
+   "venue": "Manchester",
+   "pitch_entry": 115,
+   "pitch_name": "BM_PITCH_115",
+   "pitch_palette_entry": 71,
+   "tmd_entry": 125,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 904,
+   "pitchpfile": 536,
+   "skytypes": [
+    5,
+    2
+   ],
+   "tmdfile": -1,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 5,
+   "venue": "Liverpool",
+   "pitch_entry": 113,
+   "pitch_name": "BM_PITCH_113",
+   "pitch_palette_entry": 67,
+   "tmd_entry": null,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 904,
+   "pitchpfile": 552,
+   "skytypes": [
+    5,
+    2
+   ],
+   "tmdfile": -1,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 6,
+   "venue": "Sheffield",
+   "pitch_entry": 113,
+   "pitch_name": "BM_PITCH_113",
+   "pitch_palette_entry": 69,
+   "tmd_entry": null,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  },
+  {
+   "pitchfile": 928,
+   "pitchpfile": 560,
+   "skytypes": [
+    0,
+    4
+   ],
+   "tmdfile": -1,
+   "sb1file": 328,
+   "sb2file": 336,
+   "stands": [
+    {
+     "x": 1653.927978515625,
+     "y": 0.0,
+     "z": -462.26800537109375,
+     "pfile": 1016,
+     "ffile": 1008,
+     "model": "models/stadium_stand1.json",
+     "position_godot": [
+      1653.927978515625,
+      0.0,
+      462.26800537109375
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.6950073242188,
+     "y": 0.0,
+     "z": 294.7879943847656,
+     "pfile": 1032,
+     "ffile": 1024,
+     "model": "models/stadium_stand2.json",
+     "position_godot": [
+      640.6950073242188,
+      0.0,
+      -294.7879943847656
+     ],
+     "rotation": 0
+    },
+    {
+     "x": -366.375,
+     "y": 0.0,
+     "z": -394.760009765625,
+     "pfile": 1064,
+     "ffile": 1056,
+     "model": "models/stadium_stand3.json",
+     "position_godot": [
+      -366.375,
+      0.0,
+      394.760009765625
+     ],
+     "rotation": 0
+    },
+    {
+     "x": 640.583984375,
+     "y": 0.0,
+     "z": -1116.4990234375,
+     "pfile": 1048,
+     "ffile": 1040,
+     "model": "models/stadium_stand4.json",
+     "position_godot": [
+      640.583984375,
+      0.0,
+      1116.4990234375
+     ],
+     "rotation": 0
+    }
+   ],
+   "st_w": 190,
+   "st_l": 190,
+   "st_h": 290,
+   "noloop": 1,
+   "loop": [
+    0
+   ],
+   "vid1": [
+    -362,
+    311,
+    -870
+   ],
+   "vid2": [
+    1550,
+    313,
+    77
+   ],
+   "tunl": [
+    595,
+    31,
+    -1425
+   ],
+   "vmap": 1802,
+   "id": 7,
+   "venue": "Nottingham",
+   "pitch_entry": 116,
+   "pitch_name": "BM_PITCH_116",
+   "pitch_palette_entry": 70,
+   "tmd_entry": null,
+   "stand_page_entries": [
+    41,
+    42
+   ],
+   "bounds_note": "st_l/st_w: stadium extends st_l beyond each goal line and st_w beyond each touch line; st_h = stand height used for the sky horizon"
+  }
+ ]
+}

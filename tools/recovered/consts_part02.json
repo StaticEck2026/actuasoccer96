@@ -1,0 +1,787 @@
+{
+ "PM_BLOCK": {
+  "value": 31,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); BALLINT:925 PlayCommentaryMessage -> mov eax,0x1f"
+ },
+ "PM_CATCH": {
+  "value": 30,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); BALLINT:940 PlayCommentaryMessage -> mov eax,0x1e"
+ },
+ "PM_CLOSE": {
+  "value": 33,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1200 mov eax,0x21"
+ },
+ "PM_CROSSBAR": {
+  "value": 35,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); BALL:682 mov eax,0x23"
+ },
+ "PM_POST": {
+  "value": 34,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); BALL:646 mov eax,0x22"
+ },
+ "PM_WIDE": {
+  "value": 32,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1197 mov eax,0x20; call PlayCommentaryMessage"
+ },
+ "PS_FULLTIMEWHISTLE": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); FOOTBALL:3059/3091/3237 play_fx -> mov eax,4"
+ },
+ "PS_HALFTIMEWHISTLE": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); FOOTBALL:3227 play_fx -> mov eax,3"
+ },
+ "PS_HARDBOUNCE": {
+  "value": 14,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); BALL:231 play_fx mov eax,0xe"
+ },
+ "PS_HARDHEAD": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); INTELL:5874/6365 play_fx mov eax,9"
+ },
+ "PS_HARDKICK": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); ACTIONS:2861 fx=7; BALL:1553 play_fx mov eax,7"
+ },
+ "PS_LONGWHISTLE": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); RULES:2398 play_fx -> mov eax,1"
+ },
+ "PS_MEDKICK": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); ACTIONS:2859 fx=6"
+ },
+ "PS_SHORTWHISTLE": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); RULES:281/2353 play_fx -> mov eax,2"
+ },
+ "PS_SLIDING": {
+  "value": 17,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); ACTIONS:2181 play_fx mov eax,0x11"
+ },
+ "PS_SOFTBOUNCE": {
+  "value": 13,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); BALL:233 play_fx mov eax,0xd"
+ },
+ "PS_SOFTKICK": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H pitch-sample enum (PS_NULL=0); ACTIONS:2856 fx=5"
+ },
+ "PUNT": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:204/249 switch(type) case(PUNT): dispatch cmp byte [ebp-0x10],6 / je -> make_punt / must_punt=TRUE (PASS_FEET=1, PASS_HEAD=2 in same switch)"
+ },
+ "REBOUND_FACTOR": {
+  "value": 0.8,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:640/641/673/674 ...*d*REBOUND_FACTOR -> fmul qword 0.8"
+ },
+ "RED": {
+  "value": 127,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2416, USER:125 add_message(..,RED,TRUE) -> mov edx,0x7f"
+ },
+ "REGS": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom <dos.h>/<i86.h> union REGS type name (3D_UPD2:71 'union REGS r;')"
+ },
+ "RETURN_ERR": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "goto label in FOOTBALL.CPP:3800/3804 ('goto RETURN_ERR; RETURN_ERR:;'), not a constant"
+ },
+ "RIDE_ACT": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; BALLINT:838-839 third compare cmp [ebp-8],8"
+ },
+ "RISE_ACT": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; BALLINT:838-839 (act==FALL_ACT)||(act==RISE_ACT)||(act==RIDE_ACT) -> cmp [ebp-8],5 / 6 / 8 in source order; never assigned in surviving code"
+ },
+ "RUN_ACT": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:1933 mov word [eax+0x8e],1; ACTIONS:1437 cmp eax,1"
+ },
+ "SAVE_ABODYB_TIME": {
+  "value": 4.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:468 CONST+152 d=4 = 4"
+ },
+ "SAVE_ABODYC_TIME": {
+  "value": 6.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:490 CONST+184 d=6.5 = 13/2"
+ },
+ "SAVE_ACT": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:2310 mov word [eax+0x8e],0xa; ACTIONS:1593 cmp 0xa"
+ },
+ "SAVE_AFOOTB_TIME": {
+  "value": 4.833333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:414 CONST+80 d=4.8333 = 29/6"
+ },
+ "SAVE_AFOOTC_TIME": {
+  "value": 8.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:436 CONST+112 d=8 = 8"
+ },
+ "SAVE_AHEADB_TIME": {
+  "value": 8.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:521 CONST+224 d=8 = 8"
+ },
+ "SAVE_AHEADC_TIME": {
+  "value": 10.83333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:543 CONST+256 (also INTELL:1428 fadd -10.8333) = 65/6 [stored double is a few ulps off 65/6, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_AJUMPB_TIME": {
+  "value": 7.333333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:574 CONST+296 = 22/3"
+ },
+ "SAVE_AJUMPC_TIME": {
+  "value": 10.33333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:596 CONST+328 = 31/3 [stored double is a few ulps off 31/3, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_BBODYB_TIME": {
+  "value": 4.833333333333333,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:691 CONST+432 (also INTELL:1059/1066/1076) = 29/6"
+ },
+ "SAVE_BBODYC_TIME": {
+  "value": 9.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:713 CONST+464 = 19/2"
+ },
+ "SAVE_BFOOTB_TIME": {
+  "value": 8.666666666666666,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:637 CONST+360 = 26/3"
+ },
+ "SAVE_BFOOTC_TIME": {
+  "value": 14.33333333333334,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:659 CONST+392 = 43/3 [stored double is a few ulps off 43/3, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_BHEADB_TIME": {
+  "value": 6.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:744 CONST+504 = 6"
+ },
+ "SAVE_BHEADC_TIME": {
+  "value": 8.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:765 CONST+536 = 8"
+ },
+ "SAVE_BJUMPB_TIME": {
+  "value": 10.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:795 CONST+576 = 10"
+ },
+ "SAVE_CBODYB_TIME": {
+  "value": 8.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:888 CONST+680 = 17/2"
+ },
+ "SAVE_CBODYC_TIME": {
+  "value": 11.66666666666666,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:910 CONST+712 = 35/3 [stored double is a few ulps off 35/3, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_CFOOTB_TIME": {
+  "value": 14.83333333333334,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:835 CONST+608 = 89/6 [stored double is a few ulps off 89/6, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_CFOOTC_TIME": {
+  "value": 18.16666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:857 CONST+640 = 109/6 [stored double is a few ulps off 109/6, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_CHEADB_TIME": {
+  "value": 14.83333333333334,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:941 CONST+752 = 89/6 [stored double is a few ulps off 89/6, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_CHEST_HGT": {
+  "value": 1.8,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:465/688/885 fld prat; fmul qword 1.8",
+  "expr": "prat*1.8"
+ },
+ "SAVE_CJUMPB_TIME": {
+  "value": 13.66666666666666,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "double literal (fdivr qword CONST); keeper save anim time, used as X/keeper_spd; INTELL:971 CONST+792 = 41/3 [stored double is a few ulps off 41/3, i.e. compile-time-folded expression; exact bits kept]"
+ },
+ "SAVE_CONTACT": {
+  "value": 11.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:331 fsubr qword CONST d=11; BALLINT:333 SAVE_CONTACT*128 folded to qword 1408 (double literal 11., since int consts in float exprs are stored as dword floats elsewhere)"
+ },
+ "SAVE_DECEL": {
+  "value": 0.75,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:3747/3748/4272/4281 go_txdis*SAVE_DECEL -> fmul qword 0.75"
+ },
+ "SAVE_FEET_HGT": {
+  "value": 1.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:411/634/832 z<SAVE_FEET_HGT -> fcomp dword [prat] directly",
+  "expr": "prat"
+ },
+ "SAVE_GAME": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2277 #ifdef SAVE_GAME block (keys[0x11] -> save_game(), keys[0x2c] -> restore_game()) has no code in do_logic; listing goes init_pitch_sprites -> stat_menu_up/accumulate_stats -> debug block"
+ },
+ "SAVE_HEAD_HGT": {
+  "value": 2.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); BALLINT:342, INTELL:518/741/938 fld prat; fmul qword 2.5",
+  "expr": "prat*2.5"
+ },
+ "SAVE_JUMP_HGT": {
+  "value": 3.4,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:571/792/968 fld prat; fmul qword 3.4",
+  "expr": "prat*3.4"
+ },
+ "SAVE_ZONE_A": {
+  "value": 1.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:1380/1394/1442 d<=SAVE_ZONE_A -> fcomp [prat]; SAVE_ZONE_A/2 -> prat*0.5f (INTELL:1363)",
+  "expr": "prat"
+ },
+ "SAVE_ZONE_B": {
+  "value": 2.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:1397/1445 fld prat; fmul qword 2.5",
+  "expr": "prat*2.5"
+ },
+ "SAVE_ZONE_C": {
+  "value": 4.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:1400/1448 (SAVE_ZONE_C+prat*2) -> prat*4.5(qword) + prat*2",
+  "expr": "prat*4.5"
+ },
+ "SAY_ADV": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); RULES:1765/1778 init_speech -> mov edx,9"
+ },
+ "SAY_CROSS": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); INTELL:7534/7540 tm_comm=-SAY_CROSS -> 0xfffa"
+ },
+ "SAY_FOUL": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); RULES:1668/1705 init_speech(players+1,SAY_FOUL) -> mov edx,1"
+ },
+ "SAY_GIVE": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); INTELL:7568 tm_comm=-SAY_GIVE -> 0xfff9"
+ },
+ "SAY_OFFSIDE": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); RULES:1647/1684 init_speech -> mov edx,8"
+ },
+ "SAY_PASS": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); INTELL:7519 tm_comm=-SAY_PASS -> mov word [eax+0xc7],0xfffe"
+ },
+ "SAY_PENALTY": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); RULES:1600 init_speech -> mov edx,0xa"
+ },
+ "SAY_REF": {
+  "value": 11,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "SAY_* family: FOUL1 PASS2 CROSS6 GIVE7 OFFSIDE8 ADV9 PENALTY10 REF11 (SAY_SHIT/SAY_TIMEW only in commented-out code, presumably in 3..5); INTELL:4494 init_speech(i,SAY_REF,REAL_SPEED) -> mov ebx,0x14; mov edx,0xb (INTELL.lst 0a51b, aligned as [4496])"
+ },
+ "SCORE_WAIT": {
+  "value": 220,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:697/716 just_scored=SCORE_WAIT -> mov dword,0xdc; 3D_UPD2:744 SCORE_WAIT-30 -> cmp 0xbe"
+ },
+ "SETP_CENTRE": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2364 mov byte [set_piece_on],3"
+ },
+ "SETP_CORNER": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2351 mov byte [set_piece_on],1"
+ },
+ "SETP_DFKICK": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2412 mov byte [set_piece_on],6"
+ },
+ "SETP_GKICK": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2375 mov byte [set_piece_on],7"
+ },
+ "SETP_IFKICK": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2399 mov byte [set_piece_on],5"
+ },
+ "SETP_PENALTY": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2425 mov byte [set_piece_on],4"
+ },
+ "SETP_THROW": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "set_piece_on family (byte): CORNER1 THROW2 CENTRE3 PENALTY4 IFKICK5 DFKICK6 GKICK7; RULES:2384 mov byte [set_piece_on],2; RULES:550 cmp eax,2"
+ },
+ "SOCKS_PROB": {
+  "value": 15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:3031 if (seed<SOCKS_PROB) -> cmp eax,0xf; jge"
+ },
+ "SPACT_CHIP": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:999 mov byte [spec_kick_type],6"
+ },
+ "SPACT_DPASS": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:1010/1051 mov byte [spec_kick_type],4"
+ },
+ "SPACT_DRIVE": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:980/1036/1179 mov 7; ACTIONS:511 cmp eax,7"
+ },
+ "SPACT_FPASS": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:1073, INTELL:7230 mov byte [spec_kick_type],1"
+ },
+ "SPACT_GRND": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:1056 mov 5; INTELL:4791 cmp eax,5"
+ },
+ "SPACT_HPASS": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:1015 mov byte [spec_kick_type],2"
+ },
+ "SPACT_KICK": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:1066/1172 mov byte [spec_kick_type],8"
+ },
+ "SPACT_NEWK": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:681 mov byte [spec_kick_type],9"
+ },
+ "SPACT_TEE_UP": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "spec_kick_type family (byte), matches case order in ACTIONS:811-845 switch: FPASS1 HPASS2 TEE_UP3 DPASS4 GRND5 CHIP6 DRIVE7 KICK8 NEWK9; ACTIONS:994/1031 mov byte [spec_kick_type],3"
+ },
+ "SPEECH_SECS": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6935 cnt=SPEECH_SECS*game_speed -> lea edx,[edx+edx*2]"
+ },
+ "SP_CORNER": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1091 mov eax,1; call PlayCommentaryMessage"
+ },
+ "SP_GOALKICK": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1203 mov eax,2"
+ },
+ "SP_LONGTHROWIN": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1323/1334 mov eax,4"
+ },
+ "SP_PENALTY": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:2232 mov eax,5"
+ },
+ "SP_THROWIN": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); RULES:1325/1336 mov eax,3"
+ },
+ "STAND_ACT": {
+  "value": 0,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:1599 mov word [eax+0x8e],0; INTELL:7215 test eax,eax"
+ },
+ "STATE_INTERVAL": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2140 logic_cnt%(REAL_SPEED*STATE_INTERVAL) -> mov ebx,0x78 (120); REAL_SPEED=20 (INTELL:4494 init_speech third arg mov ebx,0x14)"
+ },
+ "STEAL_ACT": {
+  "value": 14,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:1693 mov word [eax+0x8e],0xe; ACTIONS:4348 cmp 0xe"
+ },
+ "STEAL_BODY_DIST": {
+  "value": 1.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:8159 fld prat; fmul qword 1.5",
+  "expr": "prat*1.5"
+ },
+ "STEAL_DIST": {
+  "value": 6.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); INTELL:7623 fld prat; fmul qword 6; INTELL:7776 (STEAL_DIST/4) -> *6 *0.25",
+  "expr": "prat*6"
+ },
+ "STEAL_FOOT_DIST": {
+  "value": 0.5,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); ACTIONS:2938 fld prat; fmul qword 0.5 (double literal, so prat*.5 or prat/2.)",
+  "expr": "prat*0.5"
+ },
+ "STEP_RANGE": {
+  "value": 3.8,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "NOT a pure constant: expands to an expression of global float 'prat' (value field = multiplier); ACTIONS:1867, INTELL:3934 fld prat; fmul qword 3.8 (STEP_RANGE*2 -> extra *2)",
+  "expr": "prat*3.8"
+ },
+ "STOP_ACT": {
+  "value": 20,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:3458 mov word [eax+0x8e],0x14"
+ },
+ "STOP_TIME_WASTING": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "RULES:2689 compiles the #else branch: !practice && tm_act!=THROW_ACT (cmp 0xb); ACTIONS:1221 user_set_piece has no ref_wait<0 force-strike code"
+ },
+ "STRIKE_ACT": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:3792 mov word [eax+0x8e],7; BALLINT:861 cmp 7"
+ },
+ "SUB_DELAY": {
+  "value": 320,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1695 subbing_now=SUB_DELAY -> mov word [subbing_now],0x140 (3D_UPD2.lst 03c41, aligned as [1686])"
+ },
+ "SUPPORT_LP": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "3D_UPD2:784 #ifdef SUPPORT_LP camera-adjust block absent (no lp_user refs in 3D_UPD2/USER/ACTIONS/BALL listings); FOOTBALL:2519 compiles as keys[0x3b]&&!keys[0x1d] (no users_dir test). lp_user only appears in unconditional save/restore code"
+ },
+ "SWAP_ENDS": {
+  "value": 19,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "match_mode family (byte): 0 none, CORNER 1-4, CENTRE_A5/B6, GOAL_KICK 7-10, THROW_IN_A11/B12, IF_KICK13/14, DF_KICK15/16, PEN_KICK17/18, SWAP_ENDS19 (RULES:2339 switch); FOOTBALL:3093/3122 mov byte [match_mode],0x13; BALL:1591 cmp eax,0x13; highest match_mode"
+ },
+ "SW_HOLD_FACTOR": {
+  "value": 4.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:100/103/105/148/149, INTELL:6076 SW_HOLD_FACTOR/(SW_HOLD_FACTOR+spin_cnt) -> fild spin_cnt; fadd qword 4; fdivr qword 4 (double literal 4.)"
+ },
+ "TACKLE_ACT": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:2176 mov word [edx+0x8e],3; BALLINT:584 cmp eax,3"
+ },
+ "TACKLE_DECEL": {
+  "value": 0.92,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4247 fmul qword 0.92; BALLINT:1073 pow(TACKLE_DECEL,i) fld qword 0.92"
+ },
+ "TACKLE_TURNS": {
+  "value": 30,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2173 go_cnt=TACKLE_TURNS -> mov dword [edx+0x9c],0x1e; INTELL:3044 i<TACKLE_TURNS/2 -> cmp 0xf"
+ },
+ "TEAM1COL": {
+  "value": 32,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1771 set_normal_color(TEAM1COL) -> mov eax,0x20"
+ },
+ "TEAM2COL": {
+  "value": 56,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1776 set_normal_color(TEAM2COL) -> mov eax,0x38"
+ },
+ "TEAM_A": {
+  "value": -1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3346 add_team_user(TEAM_A,ctrl) -> mov eax,0xffffffff (also FOOTBALL:909 literal -1; USER.CPP add_team_user treats t==-1 as team A)"
+ },
+ "TEAM_B": {
+  "value": -2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3351 add_team_user(TEAM_B,ctrl) -> mov eax,0xfffffffe (t==-2 -> team B)"
+ },
+ "THROW_ACT": {
+  "value": 11,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:1285 mov word [eax+0x8e],0xb; BALLINT:476 cmp 0xb"
+ },
+ "THROW_IN_A": {
+  "value": 11,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "match_mode family (byte): 0 none, CORNER 1-4, CENTRE_A5/B6, GOAL_KICK 7-10, THROW_IN_A11/B12, IF_KICK13/14, DF_KICK15/16, PEN_KICK17/18, SWAP_ENDS19 (RULES:2339 switch); RULES:877 return 0xb; RULES:1317 cmp eax,0xb; INTELL:3448"
+ },
+ "THROW_IN_B": {
+  "value": 12,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "match_mode family (byte): 0 none, CORNER 1-4, CENTRE_A5/B6, GOAL_KICK 7-10, THROW_IN_A11/B12, IF_KICK13/14, DF_KICK15/16, PEN_KICK17/18, SWAP_ENDS19 (RULES:2339 switch); RULES:879 return 0xc; RULES:1328 cmp 0xc; INTELL:3518 match_mode>THROW_IN_B -> cmp 0xc/jle (range use)"
+ },
+ "TI_FULLTIME": {
+  "value": 43,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); FOOTBALL:3098/3129/3264 mov eax,0x2b; call PlayCommentaryMessage"
+ },
+ "TI_HALFTIME": {
+  "value": 42,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "Actually defined in SOURCE/AUDIO.H commentary enum (CM_NULL=0 ...); FOOTBALL:~3175 mov eax,0x2a; call PlayCommentaryMessage (FOOTBALL.lst 0752a)"
+ },
+ "TOUCHB_BOX": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:359/360 ballxdis*(TOUCHB_BOX+1) -> fmul dword float 9.0 (int folded to 9)"
+ },
+ "TURN_ACT": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:3993 cmp eax,2; used as range: tm_act<=TURN_ACT means 'not busy' (ACTIONS:403, BALLINT:1251 cmp 2/jg)"
+ },
+ "UNIT": {
+  "value": 1.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4178/4189/4198/4209 x=-UNIT/UNIT -> mov dword [eax],0xbf800000/0x3f800000 (could be int 1 assigned to float; value 1 either way)"
+ },
+ "VERT_BALL_DAMP": {
+  "value": 0.6,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:344/347/361 ballzdis*VERT_BALL_DAMP -> fmul qword 0.6"
+ },
+ "VISION_MULT": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6488 vm=VISION_MULT -> mov [ebp-0x10],5"
+ },
+ "WAIT_ACT": {
+  "value": 18,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "tm_act family (short @+0x8e): STAND0 RUN1 TURN2 TACKLE3 JUMP4 FALL5 RISE6 STRIKE7 RIDE8 (9 unused) SAVE10 THROW11 KPHOLD12 (13 unused) STEAL14 KICK15 CELEB16 CONTROL17 WAIT18 PICKUP19 STOP20; ACTIONS:3472 mov word [eax+0x8e],0x12"
+ },
+ "WAYNE": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "3D_UPD2:748 #ifdef WAYNE (camera=20 + keys/fopen) absent; #else camera=15 compiled (mov byte [camera],0xf)"
+ },
+ "WHITE": {
+  "value": 31,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:106/2436 add_message(..,WHITE,TRUE) -> mov edx,0x1f; 3D_UPD2:417 set_normal_color -> mov eax,0x1f"
+ },
+ "WIND_BLUSTERINESS": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2211/2213 wind_d_trend=+-WIND_BLUSTERINESS -> mov word 8 / 0xfff8"
+ },
+ "WIND_GUSTINESS": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2260/2262 wind_s_trend=+-WIND_GUSTINESS -> mov word 4 / 0xfffc"
+ },
+ "YELLOW": {
+  "value": 157,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:719, USER:132 add_message(..,YELLOW..) -> mov edx,0x9d"
+ },
+ "_GBORDER": {
+  "value": 2,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom graph.h macro (_GBORDER=2): DISPLAY:270 _ellipse -> mov eax,2"
+ },
+ "_GPSET": {
+  "value": 3,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom graph.h macro (_GPSET=3): FOOTBALL:2627 _setplotaction -> mov eax,3"
+ },
+ "_GXOR": {
+  "value": 4,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom graph.h macro (_GXOR=4): DISPLAY:56, FOOTBALL:2629/3486 _setplotaction -> mov eax,4"
+ }
+}

@@ -1,0 +1,86 @@
+{
+ "MCC_SHOOT": {
+  "value": 0.3486238532110092,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_SHOOT (38./109); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_CHIP": {
+  "value": 0.43956043956043955,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_CHIP (40./91); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_PASS": {
+  "value": 0.48484848484848486,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_PASS (48./99); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_CROSS": {
+  "value": 0.38181818181818183,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_CROSS (42./110); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_DIAGPASS": {
+  "value": 0.4752475247524752,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_DIAGPASS (48./101); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_DIAGBACK": {
+  "value": 0.57,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_DIAGBACK (57./100); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_SIDEPASS": {
+  "value": 0.4791666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_SIDEPASS (46./96); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_BACKHEEL": {
+  "value": 0.6701030927835051,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_BACKHEEL (65./97); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_THROWL": {
+  "value": -0.6666666666666666,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_THROWL (-86./129); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_THROWS": {
+  "value": -0.40186915887850466,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_THROWS (-43./107); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_KICKOUT": {
+  "value": -0.5049019607843137,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_KICKOUT (-103./204); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_HALFVOLL": {
+  "value": -0.4975369458128079,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_HALFVOLL (-101./203); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_THROW": {
+  "value": -0.5139664804469274,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_THROW (-92./179); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ },
+ "MCC_ROLL": {
+  "value": -0.35918367346938773,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H #define MCC_ROLL (-88./245); INTELL.lst MCC_PASS pushed as 0x3ef83e10 = 48/99 (float)"
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "MCC_AFOOTB": {
+  "value": 0.42028985507246375,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:156 #define MCC_AFOOTB (29./69) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AFOOTB"
+ },
+ "MCC_AFOOTC": {
+  "value": 0.18532818532818532,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:157 #define MCC_AFOOTC (48./259) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AFOOTC"
+ },
+ "MCC_ABODYB": {
+  "value": 0.3375,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:158 #define MCC_ABODYB (54./160) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_ABODYB"
+ },
+ "MCC_ABODYC": {
+  "value": 0.29770992366412213,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:159 #define MCC_ABODYC (39./131) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_ABODYC"
+ },
+ "MCC_AHEADB": {
+  "value": 0.47101449275362317,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:160 #define MCC_AHEADB (65./138) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AHEADB"
+ },
+ "MCC_AHEADC": {
+  "value": 0.47101449275362317,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:161 #define MCC_AHEADC (65./138) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AHEADC"
+ },
+ "MCC_AJUMPB": {
+  "value": 0.5116279069767442,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:162 #define MCC_AJUMPB (44./86) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AJUMPB"
+ },
+ "MCC_AJUMPC": {
+  "value": 0.5344827586206896,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:163 #define MCC_AJUMPC (62./116) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_AJUMPC"
+ },
+ "MCC_BFOOTB": {
+  "value": 0.8253968253968254,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:165 #define MCC_BFOOTB (52./63) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BFOOTB"
+ },
+ "MCC_BFOOTC": {
+  "value": 0.671875,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:166 #define MCC_BFOOTC (86./128) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BFOOTC"
+ },
+ "MCC_BBODYB": {
+  "value": 0.35802469135802467,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:167 #define MCC_BBODYB (29./81) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BBODYB"
+ },
+ "MCC_BBODYC": {
+  "value": 0.43846153846153846,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:168 #define MCC_BBODYC (57./130) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BBODYC"
+ },
+ "MCC_BHEADB": {
+  "value": 0.43636363636363634,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:169 #define MCC_BHEADB (48./110) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BHEADB"
+ },
+ "MCC_BHEADC": {
+  "value": 0.43636363636363634,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:170 #define MCC_BHEADC (48./110) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BHEADC"
+ },
+ "MCC_BJUMPB": {
+  "value": 0.5504587155963303,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:171 #define MCC_BJUMPB (60./109) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_BJUMPB"
+ },
+ "MCC_CFOOTB": {
+  "value": 0.6054421768707483,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:173 #define MCC_CFOOTB (89./147) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CFOOTB"
+ },
+ "MCC_CFOOTC": {
+  "value": 0.7266666666666667,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:174 #define MCC_CFOOTC (109./150) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CFOOTC"
+ },
+ "MCC_CBODYB": {
+  "value": 0.5619834710743802,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:175 #define MCC_CBODYB (68./121) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CBODYB"
+ },
+ "MCC_CBODYC": {
+  "value": 0.4827586206896552,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:176 #define MCC_CBODYC (70./145) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CBODYC"
+ },
+ "MCC_CHEADB": {
+  "value": 0.6742424242424242,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:177 #define MCC_CHEADB (89./132) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CHEADB"
+ },
+ "MCC_CJUMPB": {
+  "value": 0.5774647887323944,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "DATA.H:178 #define MCC_CJUMPB (82./142) (expression macro skipped by the header parser); INTELL save_in_zone_* keeper_contact=MCC_CJUMPB"
+ }
+}

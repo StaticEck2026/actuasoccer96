@@ -1,0 +1,2433 @@
+
+========== full_spd  (obj line 32, delta 0)
+  ; [32] float full_spd(match_player *p)
+    00000: push     ebx                                      
+    00001: push     ecx                                      
+    00002: push     edx                                      
+    00003: push     esi                                      
+    00004: push     edi                                      
+    00005: push     ebp                                      
+    00006: mov      ebp, esp                                 
+    00008: sub      esp, 0x10                                
+    0000e: mov      dword ptr [ebp - 4], eax                 
+  ; [36] if (p->int_move==I_CELEB)
+    00011: mov      eax, dword ptr [ebp - 4]                 
+    00014: mov      eax, dword ptr [eax + 0xbc]              
+    0001a: sar      eax, 0x10                                
+    0001d: cmp      eax, 0x10                                
+    00020: jne      0x2b                                     
+  ; [37] a=MC_CELEB_SPD;
+    00022: mov      dword ptr [ebp - 8], 0x3fd851ec          
+    00029: jmp      0x75                                     
+  ; [39] a=((float)pitch_len)/((18.-(((float)(p->tm_rate)/64)*4))*20);
+    0002b: xor      eax, eax                                 
+    0002d: mov      edx, dword ptr [ebp - 4]                 
+    00030: mov      al, byte ptr [edx + 0x46]                
+    00033: mov      dword ptr [ebp - 0x10], eax              
+    00036: fild     word ptr [ebp - 0x10]                    
+    00039: fmul     dword ptr [0]                            ; CONST+0 f=0.015625 d=512
+    0003f: fmul     dword ptr [4]                            ; CONST+4 f=4 d=5.34643e-315
+    00045: fsubr    qword ptr [8]                            ; CONST+8 f=0 d=18
+    0004b: fmul     qword ptr [0x10]                         ; CONST+16 f=0 d=20
+    00051: fild     dword ptr [0]                            ; pitch_len
+    00057: pushfd                                            
+    00058: test     byte ptr [0], 1                          ; chipbug
+    0005f: je       0x6f                                     
+    00061: push     eax                                      
+    00062: mov      eax, 0xf                                 
+    00067: call     0x6c                                     ; fdiv_fpr
+    0006c: pop      eax                                      
+    0006d: jmp      0x71                                     
+    0006f: fdivrp   st(1)                                    
+    00071: popfd                                             
+    00072: fstp     dword ptr [ebp - 8]                      
+  ; [41] return(a);
+    00075: mov      eax, dword ptr [ebp - 8]                 
+    00078: mov      dword ptr [ebp - 0xc], eax               
+  ; [42] }
+    0007b: fld      dword ptr [ebp - 0xc]                    
+    0007e: mov      esp, ebp                                 
+    00080: pop      ebp                                      
+    00081: pop      edi                                      
+    00082: pop      esi                                      
+    00083: pop      edx                                      
+    00084: pop      ecx                                      
+    00085: pop      ebx                                      
+    00086: ret                                               
+
+========== actual_spd  (obj line 49, delta 0)
+  ; [49] float actual_spd(match_player *p)
+    00087: push     ebx                                      
+    00088: push     ecx                                      
+    00089: push     edx                                      
+    0008a: push     esi                                      
+    0008b: push     edi                                      
+    0008c: push     ebp                                      
+    0008d: mov      ebp, esp                                 
+    0008f: sub      esp, 0x10                                
+    00095: mov      dword ptr [ebp - 4], eax                 
+  ; [53] if (p->int_move==I_CELEB)
+    00098: mov      eax, dword ptr [ebp - 4]                 
+    0009b: mov      eax, dword ptr [eax + 0xbc]              
+    000a1: sar      eax, 0x10                                
+    000a4: cmp      eax, 0x10                                
+    000a7: jne      0xb5                                     
+  ; [54] a=MC_CELEB_SPD;
+    000a9: mov      dword ptr [ebp - 8], 0x3fd851ec          
+    000b0: jmp      0x339                                    
+  ; [56] if (p->int_move==I_INTERCEPT && p->int_cnt)
+    000b5: mov      eax, dword ptr [ebp - 4]                 
+    000b8: mov      eax, dword ptr [eax + 0xbc]              
+    000be: sar      eax, 0x10                                
+    000c1: cmp      eax, 1                                   
+    000c4: jne      0xd3                                     
+    000c6: mov      eax, dword ptr [ebp - 4]                 
+    000c9: cmp      word ptr [eax + 0xc0], 0                 
+    000d1: jne      0xd5                                     
+    000d3: jmp      0x124                                    
+  ; [58] a=((float)pitch_len)/((18.-(((float)(p->tm_rate)/64)*4))*20);
+    000d5: xor      eax, eax                                 
+    000d7: mov      edx, dword ptr [ebp - 4]                 
+    000da: mov      al, byte ptr [edx + 0x46]                
+    000dd: mov      dword ptr [ebp - 0x10], eax              
+    000e0: fild     word ptr [ebp - 0x10]                    
+    000e3: fmul     dword ptr [0x18]                         ; CONST+24 f=0.015625 d=512
+    000e9: fmul     dword ptr [0x1c]                         ; CONST+28 f=4 d=5.34643e-315
+    000ef: fsubr    qword ptr [0x20]                         ; CONST+32 f=0 d=18
+    000f5: fmul     qword ptr [0x28]                         ; CONST+40 f=0 d=20
+    000fb: fild     dword ptr [0]                            ; pitch_len
+    00101: pushfd                                            
+    00102: test     byte ptr [0], 1                          ; chipbug
+    00109: je       0x119                                    
+    0010b: push     eax                                      
+    0010c: mov      eax, 0xf                                 
+    00111: call     0x116                                    ; fdiv_fpr
+    00116: pop      eax                                      
+    00117: jmp      0x11b                                    
+    00119: fdivrp   st(1)                                    
+    0011b: popfd                                             
+    0011c: fstp     dword ptr [ebp - 8]                      
+    0011f: jmp      0x339                                    
+  ; [60] if (p->go_step)
+    00124: mov      eax, dword ptr [ebp - 4]                 
+    00127: cmp      byte ptr [eax + 0xbc], 0                 
+    0012e: je       0x17f                                    
+  ; [62] a=((float)pitch_len)/((24.-(((float)(p->tm_rate)/64)*4))*20);
+    00130: xor      eax, eax                                 
+    00132: mov      edx, dword ptr [ebp - 4]                 
+    00135: mov      al, byte ptr [edx + 0x46]                
+    00138: mov      dword ptr [ebp - 0x10], eax              
+    0013b: fild     word ptr [ebp - 0x10]                    
+    0013e: fmul     dword ptr [0x30]                         ; CONST+48 f=0.015625 d=512
+    00144: fmul     dword ptr [0x34]                         ; CONST+52 f=4 d=5.34643e-315
+    0014a: fsubr    qword ptr [0x38]                         ; CONST+56 f=0 d=24
+    00150: fmul     qword ptr [0x40]                         ; CONST+64 f=0 d=20
+    00156: fild     dword ptr [0]                            ; pitch_len
+    0015c: pushfd                                            
+    0015d: test     byte ptr [0], 1                          ; chipbug
+    00164: je       0x174                                    
+    00166: push     eax                                      
+    00167: mov      eax, 0xf                                 
+    0016c: call     0x171                                    ; fdiv_fpr
+    00171: pop      eax                                      
+    00172: jmp      0x176                                    
+    00174: fdivrp   st(1)                                    
+    00176: popfd                                             
+    00177: fstp     dword ptr [ebp - 8]                      
+    0017a: jmp      0x339                                    
+  ; [64] if (ball_poss==p->tm_player)
+    0017f: mov      eax, dword ptr [ebp - 4]                 
+    00182: movsx    eax, word ptr [eax]                      
+    00185: cmp      eax, dword ptr [0]                       ; ball_poss
+    0018b: jne      0x24f                                    
+  ; [68] if (ball_in_hands && (p->tm_player==KP_A || p->tm_player==KP_B))
+    00191: cmp      byte ptr [0], 0                          ; ball_in_hands
+    00198: je       0x1b2                                    
+    0019a: mov      eax, dword ptr [ebp - 4]                 
+    0019d: movsx    eax, word ptr [eax]                      
+    001a0: cmp      eax, 1                                   
+    001a3: je       0x1b0                                    
+    001a5: mov      eax, dword ptr [ebp - 4]                 
+    001a8: movsx    eax, word ptr [eax]                      
+    001ab: cmp      eax, 0xc                                 
+    001ae: jne      0x1b2                                    
+    001b0: jmp      0x1b4                                    
+    001b2: jmp      0x200                                    
+  ; [70] a=((float)pitch_len)/((28.-(((float)(p->tm_rate)/64)*4))*20);
+    001b4: xor      eax, eax                                 
+    001b6: mov      edx, dword ptr [ebp - 4]                 
+    001b9: mov      al, byte ptr [edx + 0x46]                
+    001bc: mov      dword ptr [ebp - 0x10], eax              
+    001bf: fild     word ptr [ebp - 0x10]                    
+    001c2: fmul     dword ptr [0x48]                         ; CONST+72 f=0.015625 d=512
+    001c8: fmul     dword ptr [0x4c]                         ; CONST+76 f=4 d=5.34643e-315
+    001ce: fsubr    qword ptr [0x50]                         ; CONST+80 f=0 d=28
+    001d4: fmul     qword ptr [0x58]                         ; CONST+88 f=0 d=20
+    001da: fild     dword ptr [0]                            ; pitch_len
+    001e0: pushfd                                            
+    001e1: test     byte ptr [0], 1                          ; chipbug
+    001e8: je       0x1f8                                    
+    001ea: push     eax                                      
+    001eb: mov      eax, 0xf                                 
+    001f0: call     0x1f5                                    ; fdiv_fpr
+    001f5: pop      eax                                      
+    001f6: jmp      0x1fa                                    
+    001f8: fdivrp   st(1)                                    
+    001fa: popfd                                             
+    001fb: fstp     dword ptr [ebp - 8]                      
+    001fe: jmp      0x24a                                    
+  ; [72] a=((float)pitch_len)/((20.-(((float)(p->tm_rate)/64)*4))*20);
+    00200: xor      eax, eax                                 
+    00202: mov      edx, dword ptr [ebp - 4]                 
+    00205: mov      al, byte ptr [edx + 0x46]                
+    00208: mov      dword ptr [ebp - 0x10], eax              
+    0020b: fild     word ptr [ebp - 0x10]                    
+    0020e: fmul     dword ptr [0x60]                         ; CONST+96 f=0.015625 d=512
+    00214: fmul     dword ptr [0x64]                         ; CONST+100 f=4 d=5.34643e-315
+    0021a: fsubr    qword ptr [0x68]                         ; CONST+104 f=0 d=20
+    00220: fmul     qword ptr [0x68]                         ; CONST+104 f=0 d=20
+    00226: fild     dword ptr [0]                            ; pitch_len
+    0022c: pushfd                                            
+    0022d: test     byte ptr [0], 1                          ; chipbug
+    00234: je       0x244                                    
+    00236: push     eax                                      
+    00237: mov      eax, 0xf                                 
+    0023c: call     0x241                                    ; fdiv_fpr
+    00241: pop      eax                                      
+    00242: jmp      0x246                                    
+    00244: fdivrp   st(1)                                    
+    00246: popfd                                             
+    00247: fstp     dword ptr [ebp - 8]                      
+  ; [73] }
+    0024a: jmp      0x339                                    
+  ; [77] if (user_controlled && burst_timer[user_controlled-1]>0)
+    0024f: cmp      byte ptr [0], 0                          ; user_controlled
+    00256: je       0x26e                                    
+    00258: xor      eax, eax                                 
+    0025a: mov      al, byte ptr [0]                         ; user_controlled
+    0025f: add      eax, eax                                 
+    00261: mov      eax, dword ptr [eax - 4]                 ; burst_timer
+    00267: sar      eax, 0x10                                
+    0026a: test     eax, eax                                 
+    0026c: jg       0x273                                    
+    0026e: jmp      0x2ef                                    
+  ; [78] a=((float)pitch_len)/(((18.-(float)burst_timer[user_controlled-1]/5)-(((float)(p->tm_rate)/64)*4))*20);
+    00273: xor      edx, edx                                 
+    00275: mov      dl, byte ptr [0]                         ; user_controlled
+    0027b: add      edx, edx                                 
+    0027d: fild     word ptr [edx - 2]                       ; burst_timer
+    00283: pushfd                                            
+    00284: test     byte ptr [0], 1                          ; chipbug
+    0028b: je       0x29a                                    
+    0028d: push     dword ptr [0x70]                         ; CONST+112 f=5 d=5.3568e-315
+    00293: call     0x298                                    ; fdiv_m32
+    00298: jmp      0x2a0                                    
+    0029a: fdiv     dword ptr [0x70]                         ; CONST+112 f=5 d=5.3568e-315
+    002a0: popfd                                             
+    002a1: fsubr    qword ptr [0x74]                         ; CONST+116 f=0 d=18
+    002a7: xor      eax, eax                                 
+    002a9: mov      edx, dword ptr [ebp - 4]                 
+    002ac: mov      al, byte ptr [edx + 0x46]                
+    002af: mov      dword ptr [ebp - 0x10], eax              
+    002b2: fild     word ptr [ebp - 0x10]                    
+    002b5: fmul     dword ptr [0x7c]                         ; CONST+124 f=0.015625 d=512
+    002bb: fmul     dword ptr [0x80]                         ; CONST+128 f=4 d=5.34643e-315
+    002c1: fsubp    st(1)                                    
+    002c3: fmul     qword ptr [0x84]                         ; CONST+132 f=0 d=20
+    002c9: fild     dword ptr [0]                            ; pitch_len
+    002cf: pushfd                                            
+    002d0: test     byte ptr [0], 1                          ; chipbug
+    002d7: je       0x2e7                                    
+    002d9: push     eax                                      
+    002da: mov      eax, 0xf                                 
+    002df: call     0x2e4                                    ; fdiv_fpr
+    002e4: pop      eax                                      
+    002e5: jmp      0x2e9                                    
+    002e7: fdivrp   st(1)                                    
+    002e9: popfd                                             
+    002ea: fstp     dword ptr [ebp - 8]                      
+    002ed: jmp      0x339                                    
+  ; [80] a=((float)pitch_len)/((18.-(((float)(p->tm_rate)/64)*4))*20);
+    002ef: xor      eax, eax                                 
+    002f1: mov      edx, dword ptr [ebp - 4]                 
+    002f4: mov      al, byte ptr [edx + 0x46]                
+    002f7: mov      dword ptr [ebp - 0x10], eax              
+    002fa: fild     word ptr [ebp - 0x10]                    
+    002fd: fmul     dword ptr [0x8c]                         ; CONST+140 f=0.015625 d=512
+    00303: fmul     dword ptr [0x90]                         ; CONST+144 f=4 d=5.34643e-315
+    00309: fsubr    qword ptr [0x94]                         ; CONST+148 f=0 d=18
+    0030f: fmul     qword ptr [0x9c]                         ; CONST+156 f=0 d=20
+    00315: fild     dword ptr [0]                            ; pitch_len
+    0031b: pushfd                                            
+    0031c: test     byte ptr [0], 1                          ; chipbug
+    00323: je       0x333                                    
+    00325: push     eax                                      
+    00326: mov      eax, 0xf                                 
+    0032b: call     0x330                                    ; fdiv_fpr
+    00330: pop      eax                                      
+    00331: jmp      0x335                                    
+    00333: fdivrp   st(1)                                    
+    00335: popfd                                             
+    00336: fstp     dword ptr [ebp - 8]                      
+  ; [82] return(a);
+    00339: mov      eax, dword ptr [ebp - 8]                 
+    0033c: mov      dword ptr [ebp - 0xc], eax               
+  ; [83] }
+    0033f: fld      dword ptr [ebp - 0xc]                    
+    00342: mov      esp, ebp                                 
+    00344: pop      ebp                                      
+    00345: pop      edi                                      
+    00346: pop      esi                                      
+    00347: pop      edx                                      
+    00348: pop      ecx                                      
+    00349: pop      ebx                                      
+    0034a: ret                                               
+
+========== init_officials  (obj line 88, delta 0)
+  ; [88] void init_officials()
+    0034b: push     ebx                                      
+    0034c: push     ecx                                      
+    0034d: push     edx                                      
+    0034e: push     esi                                      
+    0034f: push     edi                                      
+    00350: push     ebp                                      
+    00351: mov      ebp, esp                                 
+    00353: sub      esp, 0                                   
+  ; [90] refs[0].x=cntspot_x;
+    00359: fild     dword ptr [0]                            ; cntspot_x
+    0035f: fstp     dword ptr [0]                            ; refs
+  ; [91] refs[1].x=cntspot_x;
+    00365: fild     dword ptr [0]                            ; cntspot_x
+    0036b: fstp     dword ptr [0x34]                         ; refs
+  ; [92] refs[2].x=cntspot_x;
+    00371: fild     dword ptr [0]                            ; cntspot_x
+    00377: fstp     dword ptr [0x68]                         ; refs
+  ; [93] refs[0].goto_x=cntspot_x;
+    0037d: fild     dword ptr [0]                            ; cntspot_x
+    00383: fstp     dword ptr [0x20]                         ; refs
+  ; [94] refs[1].goto_x=cntspot_x;
+    00389: fild     dword ptr [0]                            ; cntspot_x
+    0038f: fstp     dword ptr [0x54]                         ; refs
+  ; [95] refs[2].goto_x=cntspot_x;
+    00395: fild     dword ptr [0]                            ; cntspot_x
+    0039b: fstp     dword ptr [0x88]                         ; refs
+  ; [97] refs[0].y=cntspot_y;
+    003a1: fild     dword ptr [0]                            ; cntspot_y
+    003a7: fstp     dword ptr [4]                            ; refs
+  ; [98] refs[0].goto_y=cntspot_y;
+    003ad: fild     dword ptr [0]                            ; cntspot_y
+    003b3: fstp     dword ptr [0x24]                         ; refs
+  ; [99] refs[1].y=-(prat*2);
+    003b9: fld      dword ptr [0]                            ; prat
+    003bf: fmul     dword ptr [0xa4]                         ; CONST+164 f=2 d=2
+    003c5: fchs                                              
+    003c7: fstp     dword ptr [0x38]                         ; refs
+  ; [100] refs[1].goto_y=-(prat*2);
+    003cd: fld      dword ptr [0]                            ; prat
+    003d3: fmul     dword ptr [0xa4]                         ; CONST+164 f=2 d=2
+    003d9: fchs                                              
+    003db: fstp     dword ptr [0x58]                         ; refs
+  ; [101] refs[2].y=pitch_wid+(prat*2);
+    003e1: fld      dword ptr [0]                            ; prat
+    003e7: fmul     dword ptr [0xa4]                         ; CONST+164 f=2 d=2
+    003ed: fild     dword ptr [0]                            ; pitch_wid
+    003f3: faddp    st(1)                                    
+    003f5: fstp     dword ptr [0x6c]                         ; refs
+  ; [102] refs[2].goto_y=pitch_wid+(prat*2);
+    003fb: fld      dword ptr [0]                            ; prat
+    00401: fmul     dword ptr [0xa4]                         ; CONST+164 f=2 d=2
+    00407: fild     dword ptr [0]                            ; pitch_wid
+    0040d: faddp    st(1)                                    
+    0040f: fstp     dword ptr [0x8c]                         ; refs
+  ; [103] refs[0].z=0;
+    00415: mov      dword ptr [8], 0                         ; refs
+  ; [104] refs[1].z=0;
+    0041f: mov      dword ptr [0x3c], 0                      ; refs
+  ; [105] refs[2].z=0;
+    00429: mov      dword ptr [0x70], 0                      ; refs
+  ; [106] refs[0].dir_x=0;
+    00433: mov      dword ptr [0xc], 0                       ; refs
+  ; [107] refs[1].dir_x=0;
+    0043d: mov      dword ptr [0x40], 0                      ; refs
+  ; [108] refs[2].dir_x=0;
+    00447: mov      dword ptr [0x74], 0                      ; refs
+  ; [109] refs[0].dir_y=1;
+    00451: mov      dword ptr [0x10], 0x3f800000             ; refs
+  ; [110] refs[1].dir_y=1;
+    0045b: mov      dword ptr [0x44], 0x3f800000             ; refs
+  ; [111] refs[2].dir_y=-1;
+    00465: mov      dword ptr [0x78], 0xbf800000             ; refs
+  ; [112] refs[0].anim=MC_PLEAD;
+    0046f: mov      dword ptr [0x14], 0x429c0000             ; refs
+  ; [113] refs[1].anim=MC_STAND;
+    00479: mov      dword ptr [0x48], 0x429c0000             ; refs
+  ; [114] refs[2].anim=MC_STAND;
+    00483: mov      dword ptr [0x7c], 0x429c0000             ; refs
+  ; [115] refs[0].fstep=MC_PLEAD_FS;
+    0048d: mov      dword ptr [0x1c], 0x3c800000             ; refs
+  ; [116] refs[1].fstep=MC_STAND_FS;
+    00497: mov      dword ptr [0x50], 0x3d520d21             ; refs
+  ; [117] refs[2].fstep=MC_STAND_FS;
+    004a1: mov      dword ptr [0x84], 0x3d520d21             ; refs
+  ; [118] refs[0].frm=0.6;
+    004ab: mov      dword ptr [0x18], 0x3f19999a             ; refs
+  ; [119] refs[1].frm=0;
+    004b5: mov      dword ptr [0x4c], 0                      ; refs
+  ; [120] refs[2].frm=0;
+    004bf: mov      dword ptr [0x80], 0                      ; refs
+  ; [121] refs[0].act=0;
+    004c9: mov      dword ptr [0x28], 0                      ; refs
+  ; [122] refs[1].act=0;
+    004d3: mov      dword ptr [0x5c], 0                      ; refs
+  ; [123] refs[2].act=0;
+    004dd: mov      dword ptr [0x90], 0                      ; refs
+  ; [125] refs[0].target=0;
+    004e7: mov      word ptr [0x30], 0                       ; refs
+  ; [126] refs[1].target=0;
+    004f0: mov      word ptr [0x64], 0                       ; refs
+  ; [127] refs[2].target=0;
+    004f9: mov      word ptr [0x98], 0                       ; refs
+  ; [129] refs[0].go=0;
+    00502: mov      dword ptr [0x2c], 0                      ; refs
+  ; [130] refs[1].go=0;
+    0050c: mov      dword ptr [0x60], 0                      ; refs
+  ; [131] refs[2].go=0;
+    00516: mov      dword ptr [0x94], 0                      ; refs
+  ; [133] refs[0].newanim=TRUE;
+    00520: mov      byte ptr [0x32], 1                       ; refs
+  ; [134] refs[1].newanim=TRUE;
+    00527: mov      byte ptr [0x66], 1                       ; refs
+  ; [135] refs[2].newanim=TRUE;
+    0052e: mov      byte ptr [0x9a], 1                       ; refs
+  ; [137] }
+    00535: pop      ebp                                      
+    00536: pop      edi                                      
+    00537: pop      esi                                      
+    00538: pop      edx                                      
+    00539: pop      ecx                                      
+    0053a: pop      ebx                                      
+    0053b: ret                                               
+
+========== check_practice  (obj line 142, delta 0)
+  ; [142] void check_practice()
+    0053c: push     ebx                                      
+    0053d: push     ecx                                      
+    0053e: push     edx                                      
+    0053f: push     esi                                      
+    00540: push     edi                                      
+    00541: push     ebp                                      
+    00542: mov      ebp, esp                                 
+    00544: sub      esp, 8                                   
+  ; [144] if (match_info.CompetitionType==PRACTICE)
+    0054a: cmp      dword ptr [0x70], 3                      ; match_info
+    00551: jne      0x55c                                    
+  ; [145] practice=1;
+    00553: mov      byte ptr [0], 1                          ; practice
+    0055a: jmp      0x563                                    
+  ; [147] practice=0;
+    0055c: mov      byte ptr [0], 0                          ; practice
+  ; [149] switch(practice)
+    00563: mov      al, byte ptr [0]                         ; practice
+    00568: mov      byte ptr [ebp - 4], al                   
+    0056b: jmp      0x59f                                    
+  ; [152] team_a_on=TRUE;
+    0056d: mov      byte ptr [0], 1                          ; team_a_on
+  ; [153] team_b_on=TRUE;
+    00574: mov      byte ptr [0], 1                          ; team_b_on
+  ; [154] break;
+    0057b: jmp      0x5c1                                    
+  ; [157] team_a_on=TRUE;
+    0057d: mov      byte ptr [0], 1                          ; team_a_on
+  ; [158] team_b_on=FALSE;
+    00584: mov      byte ptr [0], 0                          ; team_b_on
+  ; [159] break;
+    0058b: jmp      0x5c1                                    
+  ; [162] team_a_on=FALSE;
+    0058d: mov      byte ptr [0], 0                          ; team_a_on
+  ; [163] team_b_on=TRUE;
+    00594: mov      byte ptr [0], 1                          ; team_b_on
+  ; [164] break;
+    0059b: jmp      0x5c1                                    
+  ; [165] }
+    0059d: jmp      0x5c1                                    
+  ; [149] switch(practice)
+    0059f: mov      al, byte ptr [ebp - 4]                   
+    005a2: mov      byte ptr [ebp - 8], al                   
+    005a5: cmp      byte ptr [ebp - 8], 1                    
+    005a9: jb       0x5b9                                    
+    005ab: cmp      byte ptr [ebp - 8], 1                    
+    005af: jbe      0x57d                                    
+    005b1: cmp      byte ptr [ebp - 8], 0xff                 
+    005b5: je       0x58d                                    
+    005b7: jmp      0x59d                                    
+    005b9: cmp      byte ptr [ebp - 8], 0                    
+    005bd: je       0x56d                                    
+    005bf: jmp      0x59d                                    
+  ; [166] }
+    005c1: mov      esp, ebp                                 
+    005c3: pop      ebp                                      
+    005c4: pop      edi                                      
+    005c5: pop      esi                                      
+    005c6: pop      edx                                      
+    005c7: pop      ecx                                      
+    005c8: pop      ebx                                      
+    005c9: ret                                               
+
+========== init_team  (obj line 171, delta 0)
+  ; [171] void init_team()
+    005ca: push     ebx                                      
+    005cb: push     ecx                                      
+    005cc: push     edx                                      
+    005cd: push     esi                                      
+    005ce: push     edi                                      
+    005cf: push     ebp                                      
+    005d0: mov      ebp, esp                                 
+    005d2: sub      esp, 8                                   
+  ; [175] check_practice();
+    005d8: call     0x5dd                                    ; check_practice
+  ; [177] for (i=1; i<=22; i++)
+    005dd: mov      dword ptr [ebp - 4], 1                   
+    005e4: jmp      0x5ec                                    
+    005e6: mov      eax, dword ptr [ebp - 4]                 
+    005e9: inc      dword ptr [ebp - 4]                      
+    005ec: cmp      dword ptr [ebp - 4], 0x16                
+    005f0: jg       0x696                                    
+  ; [179] init_player_stats(i);
+    005f6: movsx    eax, word ptr [ebp - 4]                  
+    005fa: call     0x5ff                                    ; init_player_stats
+  ; [180] if (i==2)
+    005ff: cmp      dword ptr [ebp - 4], 2                   
+    00603: jne      0x691                                    
+  ; [182] teams[i-1].tm_rate=120;
+    00609: mov      eax, dword ptr [ebp - 4]                 
+    0060c: dec      eax                                      
+    0060d: imul     eax, eax, 0xca                           
+    00613: mov      byte ptr [eax + 0x46], 0x78              ; teams
+  ; [183] teams[i-1].tm_pow=120;
+    0061a: mov      eax, dword ptr [ebp - 4]                 
+    0061d: dec      eax                                      
+    0061e: imul     eax, eax, 0xca                           
+    00624: mov      byte ptr [eax + 0x47], 0x78              ; teams
+  ; [184] teams[i-1].tm_cont=120;
+    0062b: mov      eax, dword ptr [ebp - 4]                 
+    0062e: dec      eax                                      
+    0062f: imul     eax, eax, 0xca                           
+    00635: mov      byte ptr [eax + 0x48], 0x78              ; teams
+  ; [185] teams[i-1].tm_flair=120;
+    0063c: mov      eax, dword ptr [ebp - 4]                 
+    0063f: dec      eax                                      
+    00640: imul     eax, eax, 0xca                           
+    00646: mov      byte ptr [eax + 0x49], 0x78              ; teams
+  ; [186] teams[i-1].tm_vis=120;
+    0064d: mov      eax, dword ptr [ebp - 4]                 
+    00650: dec      eax                                      
+    00651: imul     eax, eax, 0xca                           
+    00657: mov      byte ptr [eax + 0x4a], 0x78              ; teams
+  ; [187] teams[i-1].tm_ac=120;
+    0065e: mov      eax, dword ptr [ebp - 4]                 
+    00661: dec      eax                                      
+    00662: imul     eax, eax, 0xca                           
+    00668: mov      byte ptr [eax + 0x4b], 0x78              ; teams
+  ; [188] teams[i-1].tm_stam=120;
+    0066f: mov      eax, dword ptr [ebp - 4]                 
+    00672: dec      eax                                      
+    00673: imul     eax, eax, 0xca                           
+    00679: mov      byte ptr [eax + 0x4c], 0x78              ; teams
+  ; [189] teams[i-1].tm_disc=120;
+    00680: mov      eax, dword ptr [ebp - 4]                 
+    00683: dec      eax                                      
+    00684: imul     eax, eax, 0xca                           
+    0068a: mov      byte ptr [eax + 0x4d], 0x78              ; teams
+  ; [191] }
+    00691: jmp      0x5e6                                    
+  ; [193] for (i=0; i<(players/2); i++)
+    00696: mov      dword ptr [ebp - 4], 0                   
+    0069d: jmp      0x6a5                                    
+    0069f: mov      eax, dword ptr [ebp - 4]                 
+    006a2: inc      dword ptr [ebp - 4]                      
+    006a5: mov      eax, dword ptr [0]                       ; players
+    006aa: mov      edx, dword ptr [0]                       ; players
+    006b0: sar      edx, 0x1f                                
+    006b3: sub      eax, edx                                 
+    006b5: sar      eax, 1                                   
+    006b7: cmp      eax, dword ptr [ebp - 4]                 
+    006ba: jle      0xc38                                    
+  ; [195] if (team_a_on)
+    006c0: cmp      byte ptr [0], 0                          ; team_a_on
+    006c7: je       0xc23                                    
+  ; [197] teams[i].tm_player=i+1;
+    006cd: mov      edx, dword ptr [ebp - 4]                 
+    006d0: inc      edx                                      
+    006d1: imul     eax, dword ptr [ebp - 4], 0xca           
+    006d8: mov      word ptr [eax], dx                       ; teams
+  ; [198] teams[i].tm_x=cntspot_x-prat*2;
+    006df: fld      dword ptr [0]                            ; prat
+    006e5: fmul     dword ptr [0xa8]                         ; CONST+168 f=2 d=1.0842e-19
+    006eb: fild     dword ptr [0]                            ; cntspot_x
+    006f1: fsubrp   st(1)                                    
+    006f3: imul     eax, dword ptr [ebp - 4], 0xca           
+    006fa: fstp     dword ptr [eax + 2]                      ; teams
+  ; [199] teams[i].tm_y=(cntspot_y+10*24)-(i*24);
+    00700: mov      eax, dword ptr [0]                       ; cntspot_y
+    00705: add      eax, 0xf0                                
+    0070a: imul     edx, dword ptr [ebp - 4], 0x18           
+    0070e: sub      eax, edx                                 
+    00710: mov      dword ptr [ebp - 8], eax                 
+    00713: fild     dword ptr [ebp - 8]                      
+    00716: imul     eax, dword ptr [ebp - 4], 0xca           
+    0071d: fstp     dword ptr [eax + 0xa]                    ; teams
+  ; [200] teams[i].tm_z=0;
+    00723: imul     eax, dword ptr [ebp - 4], 0xca           
+    0072a: mov      dword ptr [eax + 0x12], 0                ; teams
+  ; [202] teams[i].tm_xdis=1;
+    00734: imul     eax, dword ptr [ebp - 4], 0xca           
+    0073b: mov      dword ptr [eax + 6], 0x3f800000          ; teams
+  ; [203] teams[i].tm_ydis=0;
+    00745: imul     eax, dword ptr [ebp - 4], 0xca           
+    0074c: mov      dword ptr [eax + 0xe], 0                 ; teams
+  ; [204] teams[i].tm_zdis=0;
+    00756: imul     eax, dword ptr [ebp - 4], 0xca           
+    0075d: mov      dword ptr [eax + 0x16], 0                ; teams
+  ; [206] teams[i].mface=0;
+    00767: imul     eax, dword ptr [ebp - 4], 0xca           
+    0076e: mov      byte ptr [eax + 0x24], 0                 ; teams
+  ; [207] teams[i].tm_dist=50;
+    00775: imul     eax, dword ptr [ebp - 4], 0xca           
+    0077c: mov      dword ptr [eax + 0x25], 0x42480000       ; teams
+  ; [208] teams[i].tm_pos=1;
+    00786: imul     eax, dword ptr [ebp - 4], 0xca           
+    0078d: mov      byte ptr [eax + 0x29], 1                 ; teams
+  ; [209] teams[i].tm_limbo=0;
+    00794: imul     eax, dword ptr [ebp - 4], 0xca           
+    0079b: mov      word ptr [eax + 0x2a], 0                 ; teams
+  ; [211] teams[i].guy_on=TRUE;
+    007a4: imul     eax, dword ptr [ebp - 4], 0xca           
+    007ab: mov      word ptr [eax + 0x2c], 1                 ; teams
+  ; [213] teams[i].control=0;
+    007b4: imul     eax, dword ptr [ebp - 4], 0xca           
+    007bb: mov      byte ptr [eax + 0x2e], 0                 ; teams
+  ; [214] teams[i].tm_srng=0;
+    007c2: imul     eax, dword ptr [ebp - 4], 0xca           
+    007c9: mov      byte ptr [eax + 0x2f], 0                 ; teams
+  ; [215] teams[i].tm_off=0;
+    007d0: imul     eax, dword ptr [ebp - 4], 0xca           
+    007d7: mov      byte ptr [eax + 0x30], 0                 ; teams
+  ; [216] teams[i].tm_stopped=0;
+    007de: imul     eax, dword ptr [ebp - 4], 0xca           
+    007e5: mov      byte ptr [eax + 0x31], 0                 ; teams
+  ; [217] teams[i].tm_trap=0;
+    007ec: imul     eax, dword ptr [ebp - 4], 0xca           
+    007f3: mov      byte ptr [eax + 0x32], 0                 ; teams
+  ; [218] teams[i].special=0;
+    007fa: imul     eax, dword ptr [ebp - 4], 0xca           
+    00801: mov      word ptr [eax + 0x33], 0                 ; teams
+  ; [219] teams[i].tm_strike=0;
+    0080a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00811: mov      word ptr [eax + 0x35], 0                 ; teams
+  ; [220] teams[i].tm_stime=0;
+    0081a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00821: mov      dword ptr [eax + 0x37], 0                ; teams
+  ; [221] teams[i].tm_ftime=0;
+    0082b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00832: mov      word ptr [eax + 0x3b], 0                 ; teams
+  ; [222] teams[i].ball_state=0;
+    0083b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00842: mov      word ptr [eax + 0x3d], 0                 ; teams
+  ; [223] teams[i].tm_fpass_type=0;
+    0084b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00852: mov      word ptr [eax + 0x3f], 0                 ; teams
+  ; [224] teams[i].tm_fpass_to=0;
+    0085b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00862: mov      word ptr [eax + 0x41], 0                 ; teams
+  ; [225] teams[i].draw_me=TRUE;
+    0086b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00872: mov      byte ptr [eax + 0x43], 1                 ; teams
+  ; [227] teams[i].shirt=i+1;
+    00879: mov      edx, dword ptr [ebp - 4]                 
+    0087c: inc      edx                                      
+    0087d: imul     eax, dword ptr [ebp - 4], 0xca           
+    00884: mov      word ptr [eax + 0x44], dx                ; teams
+  ; [229] teams[i].tm_book=0;
+    0088b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00892: mov      byte ptr [eax + 0x4e], 0                 ; teams
+  ; [230] teams[i].tm_fouls=0;
+    00899: imul     eax, dword ptr [ebp - 4], 0xca           
+    008a0: mov      byte ptr [eax + 0x4f], 0                 ; teams
+  ; [231] teams[i].tm_tacks=0;
+    008a7: imul     eax, dword ptr [ebp - 4], 0xca           
+    008ae: mov      word ptr [eax + 0x50], 0                 ; teams
+  ; [232] teams[i].tm_twon=0;
+    008b7: imul     eax, dword ptr [ebp - 4], 0xca           
+    008be: mov      word ptr [eax + 0x52], 0                 ; teams
+  ; [233] teams[i].tm_shots=0;
+    008c7: imul     eax, dword ptr [ebp - 4], 0xca           
+    008ce: mov      word ptr [eax + 0x54], 0                 ; teams
+  ; [234] teams[i].tm_saved=0;
+    008d7: imul     eax, dword ptr [ebp - 4], 0xca           
+    008de: mov      word ptr [eax + 0x56], 0                 ; teams
+  ; [235] teams[i].tm_goals=0;
+    008e7: imul     eax, dword ptr [ebp - 4], 0xca           
+    008ee: mov      byte ptr [eax + 0x58], 0                 ; teams
+  ; [236] teams[i].tm_pass=0;
+    008f5: imul     eax, dword ptr [ebp - 4], 0xca           
+    008fc: mov      word ptr [eax + 0x59], 0                 ; teams
+  ; [237] teams[i].tm_pwon=0;
+    00905: imul     eax, dword ptr [ebp - 4], 0xca           
+    0090c: mov      word ptr [eax + 0x5b], 0                 ; teams
+  ; [238] teams[i].tm_inj=0;
+    00915: imul     eax, dword ptr [ebp - 4], 0xca           
+    0091c: mov      word ptr [eax + 0x5d], 0                 ; teams
+  ; [239] teams[i].tm_posst=0;
+    00925: imul     eax, dword ptr [ebp - 4], 0xca           
+    0092c: mov      word ptr [eax + 0x5f], 0                 ; teams
+  ; [240] teams[i].tm_work=0;
+    00935: imul     eax, dword ptr [ebp - 4], 0xca           
+    0093c: mov      dword ptr [eax + 0x61], 0                ; teams
+  ; [241] teams[i].tm_kpsaves=0;
+    00946: imul     eax, dword ptr [ebp - 4], 0xca           
+    0094d: mov      word ptr [eax + 0x65], 0                 ; teams
+  ; [242] teams[i].tm_ogs=0;
+    00956: imul     eax, dword ptr [ebp - 4], 0xca           
+    0095d: mov      byte ptr [eax + 0x67], 0                 ; teams
+  ; [243] teams[i].tm_time=0;
+    00964: imul     eax, dword ptr [ebp - 4], 0xca           
+    0096b: mov      byte ptr [eax + 0x68], 0                 ; teams
+  ; [245] teams[i].turn_dir=0;
+    00972: imul     eax, dword ptr [ebp - 4], 0xca           
+    00979: mov      word ptr [eax + 0x69], 0                 ; teams
+  ; [246] teams[i].face_dir=0;
+    00982: imul     eax, dword ptr [ebp - 4], 0xca           
+    00989: mov      word ptr [eax + 0x6b], 0                 ; teams
+  ; [247] teams[i].dir_mode=0;
+    00992: imul     eax, dword ptr [ebp - 4], 0xca           
+    00999: mov      word ptr [eax + 0x6d], 0                 ; teams
+  ; [248] teams[i].tm_frm=0;
+    009a2: imul     eax, dword ptr [ebp - 4], 0xca           
+    009a9: mov      dword ptr [eax + 0x6f], 0                ; teams
+  ; [249] teams[i].tm_fstep=MC_STAND_FS;			// For intitialisation purposes.
+    009b3: imul     eax, dword ptr [ebp - 4], 0xca           
+    009ba: mov      dword ptr [eax + 0x73], 0x3d520d21       ; teams
+  ; [250] teams[i].tm_anim=MC_STAND;
+    009c4: imul     eax, dword ptr [ebp - 4], 0xca           
+    009cb: mov      word ptr [eax + 0x77], 0x4e              ; teams
+  ; [251] teams[i].tm_hcol=0;
+    009d4: imul     eax, dword ptr [ebp - 4], 0xca           
+    009db: mov      byte ptr [eax + 0x79], 0                 ; teams
+  ; [252] teams[i].tm_htype=0;
+    009e2: imul     eax, dword ptr [ebp - 4], 0xca           
+    009e9: mov      byte ptr [eax + 0x7a], 0                 ; teams
+  ; [253] teams[i].tm_mcspd=(float)(teams[i].tm_flair+teams[i].tm_rate)/128;
+    009f0: imul     edx, dword ptr [ebp - 4], 0xca           
+    009f7: xor      eax, eax                                 
+    009f9: mov      al, byte ptr [edx + 0x49]                ; teams
+    009ff: imul     ebx, dword ptr [ebp - 4], 0xca           
+    00a06: xor      edx, edx                                 
+    00a08: mov      dl, byte ptr [ebx + 0x46]                ; teams
+    00a0e: add      eax, edx                                 
+    00a10: mov      dword ptr [ebp - 8], eax                 
+    00a13: fild     dword ptr [ebp - 8]                      
+    00a16: fmul     dword ptr [0xac]                         ; CONST+172 f=0.0078125 d=2
+    00a1c: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a23: fstp     dword ptr [edx + 0x7b]                   ; teams
+  ; [254] teams[i].ls_anim=0;
+    00a29: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a30: mov      dword ptr [edx + 0x7f], 0                ; teams
+  ; [255] teams[i].ls_frm=0;
+    00a3a: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a41: mov      dword ptr [edx + 0x83], 0                ; teams
+  ; [256] teams[i].contact=-1;
+    00a4b: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a52: mov      dword ptr [edx + 0x87], 0xbf800000       ; teams
+  ; [257] teams[i].tm_newanim=1;
+    00a5c: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a63: mov      byte ptr [edx + 0x8b], 1                 ; teams
+  ; [258] teams[i].tm_barge=0;
+    00a6a: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a71: mov      byte ptr [edx + 0x8c], 0                 ; teams
+  ; [260] teams[i].tm_act=0;
+    00a78: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a7f: mov      word ptr [edx + 0x8d], 0                 ; teams
+  ; [261] teams[i].tm_poss=0;
+    00a88: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a8f: mov      word ptr [edx + 0x8f], 0                 ; teams
+  ; [262] teams[i].tm_wall=0;
+    00a98: imul     edx, dword ptr [ebp - 4], 0xca           
+    00a9f: mov      word ptr [edx + 0x91], 0                 ; teams
+  ; [263] teams[i].tm_leave=0;
+    00aa8: imul     edx, dword ptr [ebp - 4], 0xca           
+    00aaf: mov      word ptr [edx + 0x93], 0                 ; teams
+  ; [264] teams[i].tm_mark=0;
+    00ab8: imul     edx, dword ptr [ebp - 4], 0xca           
+    00abf: mov      word ptr [edx + 0x95], 0                 ; teams
+  ; [265] teams[i].go_dist=0;
+    00ac8: imul     edx, dword ptr [ebp - 4], 0xca           
+    00acf: mov      dword ptr [edx + 0x97], 0                ; teams
+  ; [266] teams[i].go_cnt=0;
+    00ad9: imul     edx, dword ptr [ebp - 4], 0xca           
+    00ae0: mov      dword ptr [edx + 0x9b], 0                ; teams
+  ; [267] teams[i].go_txdis=0;
+    00aea: imul     edx, dword ptr [ebp - 4], 0xca           
+    00af1: mov      dword ptr [edx + 0x9f], 0                ; teams
+  ; [268] teams[i].go_tydis=0;
+    00afb: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b02: mov      dword ptr [edx + 0xa3], 0                ; teams
+  ; [269] teams[i].go_tx=teams[i].tm_x;
+    00b0c: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b13: imul     eax, dword ptr [ebp - 4], 0xca           
+    00b1a: fld      dword ptr [edx + 2]                      ; teams
+    00b20: fstp     dword ptr [eax + 0xa7]                   ; teams
+  ; [270] teams[i].go_ty=teams[i].tm_y;
+    00b26: imul     eax, dword ptr [ebp - 4], 0xca           
+    00b2d: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b34: fld      dword ptr [eax + 0xa]                    ; teams
+    00b3a: fstp     dword ptr [edx + 0xab]                   ; teams
+  ; [271] teams[i].go_xoff=0;
+    00b40: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b47: mov      dword ptr [edx + 0xaf], 0                ; teams
+  ; [272] teams[i].go_yoff=0;
+    00b51: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b58: mov      dword ptr [edx + 0xb3], 0                ; teams
+  ; [273] teams[i].tm_jump=PLAYER_HEIGHT+6+(teams[i].tm_pow/10);
+    00b62: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b69: mov      dl, byte ptr [edx + 0x47]                ; teams
+    00b6f: and      edx, 0xff                                
+    00b75: mov      ebx, 0xa                                 
+    00b7a: mov      eax, edx                                 
+    00b7c: sar      edx, 0x1f                                
+    00b7f: idiv     ebx                                      
+    00b81: add      eax, 0x1f                                
+    00b84: mov      dword ptr [ebp - 8], eax                 
+    00b87: fild     dword ptr [ebp - 8]                      
+    00b8a: imul     edx, dword ptr [ebp - 4], 0xca           
+    00b91: fstp     dword ptr [edx + 0xb7]                   ; teams
+  ; [274] teams[i].go_stop=0;
+    00b97: imul     eax, dword ptr [ebp - 4], 0xca           
+    00b9e: mov      byte ptr [eax + 0xbb], 0                 ; teams
+  ; [275] teams[i].go_step=0;
+    00ba5: imul     eax, dword ptr [ebp - 4], 0xca           
+    00bac: mov      byte ptr [eax + 0xbc], 0                 ; teams
+  ; [276] teams[i].tm_notme=0;
+    00bb3: imul     eax, dword ptr [ebp - 4], 0xca           
+    00bba: mov      byte ptr [eax + 0xbd], 0                 ; teams
+  ; [278] teams[i].int_move=0;
+    00bc1: imul     eax, dword ptr [ebp - 4], 0xca           
+    00bc8: mov      word ptr [eax + 0xbe], 0                 ; teams
+  ; [279] teams[i].int_cnt=0;
+    00bd1: imul     eax, dword ptr [ebp - 4], 0xca           
+    00bd8: mov      word ptr [eax + 0xc0], 0                 ; teams
+  ; [280] teams[i].mess_num=0;
+    00be1: imul     eax, dword ptr [ebp - 4], 0xca           
+    00be8: mov      word ptr [eax + 0xc2], 0                 ; teams
+  ; [281] teams[i].mess_cnt=0;
+    00bf1: imul     eax, dword ptr [ebp - 4], 0xca           
+    00bf8: mov      word ptr [eax + 0xc4], 0                 ; teams
+  ; [282] teams[i].tm_comm=0;
+    00c01: imul     eax, dword ptr [ebp - 4], 0xca           
+    00c08: mov      word ptr [eax + 0xc6], 0                 ; teams
+  ; [283] teams[i].tm_ccnt=0;
+    00c11: imul     eax, dword ptr [ebp - 4], 0xca           
+    00c18: mov      word ptr [eax + 0xc8], 0                 ; teams
+  ; [284] }
+    00c21: jmp      0xc33                                    
+  ; [286] teams[i].guy_on=FALSE;
+    00c23: imul     eax, dword ptr [ebp - 4], 0xca           
+    00c2a: mov      word ptr [eax + 0x2c], 0                 ; teams
+  ; [287] }
+    00c33: jmp      0x69f                                    
+  ; [288] for (i=11; i<players; i++)
+    00c38: mov      dword ptr [ebp - 4], 0xb                 
+    00c3f: jmp      0xc47                                    
+    00c41: mov      eax, dword ptr [ebp - 4]                 
+    00c44: inc      dword ptr [ebp - 4]                      
+    00c47: mov      eax, dword ptr [ebp - 4]                 
+    00c4a: cmp      eax, dword ptr [0]                       ; players
+    00c50: jge      0x11a3                                   
+  ; [290] if (team_b_on || i==11)
+    00c56: cmp      byte ptr [0], 0                          ; team_b_on
+    00c5d: jne      0xc69                                    
+    00c5f: cmp      dword ptr [ebp - 4], 0xb                 
+    00c63: jne      0x118e                                   
+  ; [294] teams[i].tm_player=i+1;
+    00c69: mov      edx, dword ptr [ebp - 4]                 
+    00c6c: inc      edx                                      
+    00c6d: imul     eax, dword ptr [ebp - 4], 0xca           
+    00c74: mov      word ptr [eax], dx                       ; teams
+  ; [295] teams[i].tm_x=cntspot_x+prat*2;
+    00c7b: fld      dword ptr [0]                            ; prat
+    00c81: fmul     dword ptr [0xb0]                         ; CONST+176 f=2 d=1.0842e-19
+    00c87: fild     dword ptr [0]                            ; cntspot_x
+    00c8d: faddp    st(1)                                    
+    00c8f: imul     eax, dword ptr [ebp - 4], 0xca           
+    00c96: fstp     dword ptr [eax + 2]                      ; teams
+  ; [296] teams[i].tm_y=(cntspot_y+10*24)-((i-11)*24);
+    00c9c: mov      eax, dword ptr [ebp - 4]                 
+    00c9f: sub      eax, 0xb                                 
+    00ca2: imul     eax, eax, 0x18                           
+    00ca5: mov      edx, dword ptr [0]                       ; cntspot_y
+    00cab: add      edx, 0xf0                                
+    00cb1: sub      edx, eax                                 
+    00cb3: mov      dword ptr [ebp - 8], edx                 
+    00cb6: fild     dword ptr [ebp - 8]                      
+    00cb9: imul     eax, dword ptr [ebp - 4], 0xca           
+    00cc0: fstp     dword ptr [eax + 0xa]                    ; teams
+  ; [297] teams[i].tm_z=0;
+    00cc6: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ccd: mov      dword ptr [eax + 0x12], 0                ; teams
+  ; [299] teams[i].tm_xdis=-1;
+    00cd7: imul     eax, dword ptr [ebp - 4], 0xca           
+    00cde: mov      dword ptr [eax + 6], 0xbf800000          ; teams
+  ; [300] teams[i].tm_ydis=0;
+    00ce8: imul     eax, dword ptr [ebp - 4], 0xca           
+    00cef: mov      dword ptr [eax + 0xe], 0                 ; teams
+  ; [301] teams[i].tm_zdis=0;
+    00cf9: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d00: mov      dword ptr [eax + 0x16], 0                ; teams
+  ; [303] teams[i].mface=0;
+    00d0a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d11: mov      byte ptr [eax + 0x24], 0                 ; teams
+  ; [304] teams[i].tm_dist=50;
+    00d18: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d1f: mov      dword ptr [eax + 0x25], 0x42480000       ; teams
+  ; [305] teams[i].tm_pos=1;
+    00d29: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d30: mov      byte ptr [eax + 0x29], 1                 ; teams
+  ; [306] teams[i].tm_limbo=0;
+    00d37: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d3e: mov      word ptr [eax + 0x2a], 0                 ; teams
+  ; [308] teams[i].guy_on=TRUE;
+    00d47: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d4e: mov      word ptr [eax + 0x2c], 1                 ; teams
+  ; [310] teams[i].control=0;
+    00d57: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d5e: mov      byte ptr [eax + 0x2e], 0                 ; teams
+  ; [311] teams[i].tm_srng=0;
+    00d65: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d6c: mov      byte ptr [eax + 0x2f], 0                 ; teams
+  ; [312] teams[i].tm_off=0;
+    00d73: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d7a: mov      byte ptr [eax + 0x30], 0                 ; teams
+  ; [313] teams[i].tm_stopped=0;
+    00d81: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d88: mov      byte ptr [eax + 0x31], 0                 ; teams
+  ; [314] teams[i].tm_trap=0;
+    00d8f: imul     eax, dword ptr [ebp - 4], 0xca           
+    00d96: mov      byte ptr [eax + 0x32], 0                 ; teams
+  ; [315] teams[i].special=0;
+    00d9d: imul     eax, dword ptr [ebp - 4], 0xca           
+    00da4: mov      word ptr [eax + 0x33], 0                 ; teams
+  ; [316] teams[i].tm_strike=0;
+    00dad: imul     eax, dword ptr [ebp - 4], 0xca           
+    00db4: mov      word ptr [eax + 0x35], 0                 ; teams
+  ; [317] teams[i].tm_stime=0;
+    00dbd: imul     eax, dword ptr [ebp - 4], 0xca           
+    00dc4: mov      dword ptr [eax + 0x37], 0                ; teams
+  ; [318] teams[i].tm_ftime=0;
+    00dce: imul     eax, dword ptr [ebp - 4], 0xca           
+    00dd5: mov      word ptr [eax + 0x3b], 0                 ; teams
+  ; [319] teams[i].ball_state=0;
+    00dde: imul     eax, dword ptr [ebp - 4], 0xca           
+    00de5: mov      word ptr [eax + 0x3d], 0                 ; teams
+  ; [320] teams[i].tm_fpass_type=0;
+    00dee: imul     eax, dword ptr [ebp - 4], 0xca           
+    00df5: mov      word ptr [eax + 0x3f], 0                 ; teams
+  ; [321] teams[i].tm_fpass_to=0;
+    00dfe: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e05: mov      word ptr [eax + 0x41], 0                 ; teams
+  ; [322] teams[i].draw_me=TRUE;
+    00e0e: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e15: mov      byte ptr [eax + 0x43], 1                 ; teams
+  ; [324] teams[i].shirt=i-10;
+    00e1c: mov      edx, dword ptr [ebp - 4]                 
+    00e1f: sub      edx, 0xa                                 
+    00e22: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e29: mov      word ptr [eax + 0x44], dx                ; teams
+  ; [326] teams[i].tm_book=0;
+    00e30: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e37: mov      byte ptr [eax + 0x4e], 0                 ; teams
+  ; [327] teams[i].tm_fouls=0;
+    00e3e: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e45: mov      byte ptr [eax + 0x4f], 0                 ; teams
+  ; [328] teams[i].tm_tacks=0;
+    00e4c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e53: mov      word ptr [eax + 0x50], 0                 ; teams
+  ; [329] teams[i].tm_twon=0;
+    00e5c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e63: mov      word ptr [eax + 0x52], 0                 ; teams
+  ; [330] teams[i].tm_shots=0;
+    00e6c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e73: mov      word ptr [eax + 0x54], 0                 ; teams
+  ; [331] teams[i].tm_saved=0;
+    00e7c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e83: mov      word ptr [eax + 0x56], 0                 ; teams
+  ; [332] teams[i].tm_goals=0;
+    00e8c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00e93: mov      byte ptr [eax + 0x58], 0                 ; teams
+  ; [333] teams[i].tm_pass=0;
+    00e9a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ea1: mov      word ptr [eax + 0x59], 0                 ; teams
+  ; [334] teams[i].tm_pwon=0;
+    00eaa: imul     eax, dword ptr [ebp - 4], 0xca           
+    00eb1: mov      word ptr [eax + 0x5b], 0                 ; teams
+  ; [335] teams[i].tm_inj=0;
+    00eba: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ec1: mov      word ptr [eax + 0x5d], 0                 ; teams
+  ; [336] teams[i].tm_posst=0;
+    00eca: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ed1: mov      word ptr [eax + 0x5f], 0                 ; teams
+  ; [338] teams[i].turn_dir=0;
+    00eda: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ee1: mov      word ptr [eax + 0x69], 0                 ; teams
+  ; [339] teams[i].face_dir=0;
+    00eea: imul     eax, dword ptr [ebp - 4], 0xca           
+    00ef1: mov      word ptr [eax + 0x6b], 0                 ; teams
+  ; [340] teams[i].dir_mode=0;
+    00efa: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f01: mov      word ptr [eax + 0x6d], 0                 ; teams
+  ; [341] teams[i].tm_frm=0;
+    00f0a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f11: mov      dword ptr [eax + 0x6f], 0                ; teams
+  ; [342] teams[i].tm_fstep=MC_STAND_FS;			// For intitialisation purposes.
+    00f1b: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f22: mov      dword ptr [eax + 0x73], 0x3d520d21       ; teams
+  ; [343] teams[i].tm_anim=MC_STAND;
+    00f2c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f33: mov      word ptr [eax + 0x77], 0x4e              ; teams
+  ; [344] teams[i].tm_hcol=0;
+    00f3c: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f43: mov      byte ptr [eax + 0x79], 0                 ; teams
+  ; [345] teams[i].tm_htype=0;
+    00f4a: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f51: mov      byte ptr [eax + 0x7a], 0                 ; teams
+  ; [346] teams[i].tm_mcspd=(float)(teams[i].tm_flair+teams[i].tm_rate)/128;
+    00f58: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f5f: xor      edx, edx                                 
+    00f61: mov      dl, byte ptr [eax + 0x49]                ; teams
+    00f67: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f6e: mov      al, byte ptr [eax + 0x46]                ; teams
+    00f74: and      eax, 0xff                                
+    00f79: add      edx, eax                                 
+    00f7b: mov      dword ptr [ebp - 8], edx                 
+    00f7e: fild     dword ptr [ebp - 8]                      
+    00f81: fmul     dword ptr [0xb4]                         ; CONST+180 f=0.0078125 d=1.9036e+185
+    00f87: imul     eax, dword ptr [ebp - 4], 0xca           
+    00f8e: fstp     dword ptr [eax + 0x7b]                   ; teams
+  ; [347] teams[i].ls_anim=0;
+    00f94: imul     edx, dword ptr [ebp - 4], 0xca           
+    00f9b: mov      dword ptr [edx + 0x7f], 0                ; teams
+  ; [348] teams[i].ls_frm=0;
+    00fa5: imul     edx, dword ptr [ebp - 4], 0xca           
+    00fac: mov      dword ptr [edx + 0x83], 0                ; teams
+  ; [349] teams[i].contact=-1;
+    00fb6: imul     edx, dword ptr [ebp - 4], 0xca           
+    00fbd: mov      dword ptr [edx + 0x87], 0xbf800000       ; teams
+  ; [350] teams[i].tm_newanim=1;
+    00fc7: imul     edx, dword ptr [ebp - 4], 0xca           
+    00fce: mov      byte ptr [edx + 0x8b], 1                 ; teams
+  ; [351] teams[i].tm_barge=0;
+    00fd5: imul     edx, dword ptr [ebp - 4], 0xca           
+    00fdc: mov      byte ptr [edx + 0x8c], 0                 ; teams
+  ; [353] teams[i].tm_act=0;
+    00fe3: imul     edx, dword ptr [ebp - 4], 0xca           
+    00fea: mov      word ptr [edx + 0x8d], 0                 ; teams
+  ; [354] teams[i].tm_poss=0;
+    00ff3: imul     edx, dword ptr [ebp - 4], 0xca           
+    00ffa: mov      word ptr [edx + 0x8f], 0                 ; teams
+  ; [355] teams[i].tm_wall=0;
+    01003: imul     eax, dword ptr [ebp - 4], 0xca           
+    0100a: mov      word ptr [eax + 0x91], 0                 ; teams
+  ; [356] teams[i].tm_leave=0;
+    01013: imul     edx, dword ptr [ebp - 4], 0xca           
+    0101a: mov      word ptr [edx + 0x93], 0                 ; teams
+  ; [357] teams[i].tm_mark=0;
+    01023: imul     edx, dword ptr [ebp - 4], 0xca           
+    0102a: mov      word ptr [edx + 0x95], 0                 ; teams
+  ; [358] teams[i].go_dist=0;
+    01033: imul     edx, dword ptr [ebp - 4], 0xca           
+    0103a: mov      dword ptr [edx + 0x97], 0                ; teams
+  ; [359] teams[i].go_cnt=0;
+    01044: imul     edx, dword ptr [ebp - 4], 0xca           
+    0104b: mov      dword ptr [edx + 0x9b], 0                ; teams
+  ; [360] teams[i].go_txdis=0;
+    01055: imul     edx, dword ptr [ebp - 4], 0xca           
+    0105c: mov      dword ptr [edx + 0x9f], 0                ; teams
+  ; [361] teams[i].go_tydis=0;
+    01066: imul     edx, dword ptr [ebp - 4], 0xca           
+    0106d: mov      dword ptr [edx + 0xa3], 0                ; teams
+  ; [362] teams[i].go_tx=teams[i].tm_x;
+    01077: imul     edx, dword ptr [ebp - 4], 0xca           
+    0107e: imul     eax, dword ptr [ebp - 4], 0xca           
+    01085: fld      dword ptr [edx + 2]                      ; teams
+    0108b: fstp     dword ptr [eax + 0xa7]                   ; teams
+  ; [363] teams[i].go_ty=teams[i].tm_y;
+    01091: imul     eax, dword ptr [ebp - 4], 0xca           
+    01098: imul     edx, dword ptr [ebp - 4], 0xca           
+    0109f: fld      dword ptr [eax + 0xa]                    ; teams
+    010a5: fstp     dword ptr [edx + 0xab]                   ; teams
+  ; [364] teams[i].go_xoff=0;
+    010ab: imul     eax, dword ptr [ebp - 4], 0xca           
+    010b2: mov      dword ptr [eax + 0xaf], 0                ; teams
+  ; [365] teams[i].go_yoff=0;
+    010bc: imul     eax, dword ptr [ebp - 4], 0xca           
+    010c3: mov      dword ptr [eax + 0xb3], 0                ; teams
+  ; [366] teams[i].tm_jump=PLAYER_HEIGHT+6+(teams[i].tm_pow/10);
+    010cd: imul     edx, dword ptr [ebp - 4], 0xca           
+    010d4: mov      dl, byte ptr [edx + 0x47]                ; teams
+    010da: and      edx, 0xff                                
+    010e0: mov      ebx, 0xa                                 
+    010e5: mov      eax, edx                                 
+    010e7: sar      edx, 0x1f                                
+    010ea: idiv     ebx                                      
+    010ec: add      eax, 0x1f                                
+    010ef: mov      dword ptr [ebp - 8], eax                 
+    010f2: fild     dword ptr [ebp - 8]                      
+    010f5: imul     eax, dword ptr [ebp - 4], 0xca           
+    010fc: fstp     dword ptr [eax + 0xb7]                   ; teams
+  ; [367] teams[i].go_stop=0;
+    01102: imul     eax, dword ptr [ebp - 4], 0xca           
+    01109: mov      byte ptr [eax + 0xbb], 0                 ; teams
+  ; [368] teams[i].go_step=0;
+    01110: imul     eax, dword ptr [ebp - 4], 0xca           
+    01117: mov      byte ptr [eax + 0xbc], 0                 ; teams
+  ; [369] teams[i].tm_notme=0;
+    0111e: imul     eax, dword ptr [ebp - 4], 0xca           
+    01125: mov      byte ptr [eax + 0xbd], 0                 ; teams
+  ; [371] teams[i].int_move=0;
+    0112c: imul     edx, dword ptr [ebp - 4], 0xca           
+    01133: mov      word ptr [edx + 0xbe], 0                 ; teams
+  ; [372] teams[i].int_cnt=0;
+    0113c: imul     eax, dword ptr [ebp - 4], 0xca           
+    01143: mov      word ptr [eax + 0xc0], 0                 ; teams
+  ; [373] teams[i].mess_num=0;
+    0114c: imul     eax, dword ptr [ebp - 4], 0xca           
+    01153: mov      word ptr [eax + 0xc2], 0                 ; teams
+  ; [374] teams[i].mess_cnt=0;
+    0115c: imul     eax, dword ptr [ebp - 4], 0xca           
+    01163: mov      word ptr [eax + 0xc4], 0                 ; teams
+  ; [375] teams[i].tm_comm=0;
+    0116c: imul     eax, dword ptr [ebp - 4], 0xca           
+    01173: mov      word ptr [eax + 0xc6], 0                 ; teams
+  ; [376] teams[i].tm_ccnt=0;
+    0117c: imul     eax, dword ptr [ebp - 4], 0xca           
+    01183: mov      word ptr [eax + 0xc8], 0                 ; teams
+  ; [378] }
+    0118c: jmp      0x119e                                   
+  ; [380] teams[i].guy_on=FALSE;
+    0118e: imul     eax, dword ptr [ebp - 4], 0xca           
+    01195: mov      word ptr [eax + 0x2c], 0                 ; teams
+  ; [381] }
+    0119e: jmp      0xc41                                    
+  ; [382] reset_all_ideas();
+    011a3: call     0x11a8                                   ; reset_all_ideas
+  ; [383] interceptor_a=0;
+    011a8: mov      dword ptr [0], 0                         ; interceptor_a
+  ; [384] interceptor_b=0;
+    011b2: mov      dword ptr [0], 0                         ; interceptor_b
+  ; [385] }
+    011bc: mov      esp, ebp                                 
+    011be: pop      ebp                                      
+    011bf: pop      edi                                      
+    011c0: pop      esi                                      
+    011c1: pop      edx                                      
+    011c2: pop      ecx                                      
+    011c3: pop      ebx                                      
+    011c4: ret                                               
+
+========== taker_pass_f  (obj line 390, delta 0)
+  ; [390] void taker_pass_f(float xp,float yp)
+    011c5: push     ebx                                      
+    011c6: push     ecx                                      
+    011c7: push     edx                                      
+    011c8: push     esi                                      
+    011c9: push     edi                                      
+    011ca: push     ebp                                      
+    011cb: mov      ebp, esp                                 
+    011cd: sub      esp, 0x24                                
+  ; [395] t=(setp_taker<12 ? 10:21);	// team-mates!
+    011d3: cmp      dword ptr [0], 0xc                       ; setp_taker
+    011da: jge      0x11e5                                   
+    011dc: mov      dword ptr [ebp - 0x10], 0xa              
+    011e3: jmp      0x11ec                                   
+    011e5: mov      dword ptr [ebp - 0x10], 0x15             
+    011ec: mov      eax, dword ptr [ebp - 0x10]              
+    011ef: mov      dword ptr [ebp - 4], eax                 
+  ; [396] pass_type=0;
+    011f2: mov      dword ptr [0], 0                         ; pass_type
+  ; [398] for (short i=t; i>t-11; i--)
+    011fc: mov      eax, dword ptr [ebp - 4]                 
+    011ff: mov      dword ptr [ebp - 8], eax                 
+    01202: jmp      0x120a                                   
+    01204: mov      eax, dword ptr [ebp - 8]                 
+    01207: dec      dword ptr [ebp - 8]                      
+    0120a: movsx    eax, word ptr [ebp - 4]                  
+    0120e: movsx    edx, word ptr [ebp - 8]                  
+    01212: sub      eax, 0xb                                 
+    01215: cmp      edx, eax                                 
+    01217: jle      0x134a                                   
+  ; [400] if (setp_taker!=i+1)
+    0121d: movsx    eax, word ptr [ebp - 8]                  
+    01221: inc      eax                                      
+    01222: cmp      eax, dword ptr [0]                       ; setp_taker
+    01228: je       0x1345                                   
+  ; [403] if ((teams[i].tm_act<=TURN_ACT) && (teams[i].guy_on>0))
+    0122e: movsx    eax, word ptr [ebp - 8]                  
+    01232: imul     eax, eax, 0xca                           
+    01238: mov      eax, dword ptr [eax + 0x8b]              ; teams
+    0123e: sar      eax, 0x10                                
+    01241: cmp      eax, 2                                   
+    01244: jg       0x125d                                   
+    01246: movsx    eax, word ptr [ebp - 8]                  
+    0124a: imul     eax, eax, 0xca                           
+    01250: mov      eax, dword ptr [eax + 0x2a]              ; teams
+    01256: sar      eax, 0x10                                
+    01259: test     eax, eax                                 
+    0125b: jg       0x1262                                   
+    0125d: jmp      0x1345                                   
+  ; [406] x=teams[i].tm_x-ballx;
+    01262: movsx    eax, word ptr [ebp - 8]                  
+    01266: imul     eax, eax, 0xca                           
+    0126c: fld      dword ptr [eax + 2]                      ; teams
+    01272: fsub     dword ptr [0]                            ; ballx
+    01278: fstp     dword ptr [ebp - 0x1c]                   
+  ; [407] y=teams[i].tm_y-bally;
+    0127b: movsx    eax, word ptr [ebp - 8]                  
+    0127f: imul     eax, eax, 0xca                           
+    01285: fld      dword ptr [eax + 0xa]                    ; teams
+    0128b: fsub     dword ptr [0]                            ; bally
+    01291: fstp     dword ptr [ebp - 0x18]                   
+  ; [408] d=calc_dist(x,y);
+    01294: fld      dword ptr [ebp - 0x18]                   
+    01297: sub      esp, 4                                   
+    0129a: fstp     dword ptr [esp]                          
+    0129d: fld      dword ptr [ebp - 0x1c]                   
+    012a0: sub      esp, 4                                   
+    012a3: fstp     dword ptr [esp]                          
+    012a6: call     0x12ab                                   ; calc_dist
+    012ab: fstp     dword ptr [ebp - 0x14]                   
+  ; [410] dif=((x*xp)+(y*yp))/d;
+    012ae: fld      dword ptr [ebp - 0x1c]                   
+    012b1: fmul     dword ptr [ebp + 0x1c]                   
+    012b4: fld      dword ptr [ebp - 0x18]                   
+    012b7: fmul     dword ptr [ebp + 0x20]                   
+    012ba: faddp    st(1)                                    
+    012bc: pushfd                                            
+    012bd: test     byte ptr [0], 1                          ; chipbug
+    012c4: je       0x12d0                                   
+    012c6: push     dword ptr [ebp - 0x14]                   
+    012c9: call     0x12ce                                   ; fdiv_m32
+    012ce: jmp      0x12d3                                   
+    012d0: fdiv     dword ptr [ebp - 0x14]                   
+    012d3: popfd                                             
+    012d4: fstp     dword ptr [ebp - 0x20]                   
+  ; [411] if (dif>FACING_ANGLE)
+    012d7: fld      dword ptr [ebp - 0x20]                   
+    012da: fcomp    qword ptr [0xb8]                         ; CONST+184 f=2.72008e+23 d=0.95
+    012e0: fnstsw   ax                                       
+    012e2: sahf                                              
+    012e3: jbe      0x1314                                   
+  ; [413] pass_type=in_kicking_range(&teams[setp_taker-1],x,y);
+    012e5: fld      dword ptr [ebp - 0x18]                   
+    012e8: sub      esp, 4                                   
+    012eb: fstp     dword ptr [esp]                          
+    012ee: fld      dword ptr [ebp - 0x1c]                   
+    012f1: sub      esp, 4                                   
+    012f4: fstp     dword ptr [esp]                          
+    012f7: mov      eax, dword ptr [0]                       ; setp_taker
+    012fc: dec      eax                                      
+    012fd: imul     eax, eax, 0xca                           
+    01303: mov      edx, 0                                   ; teams
+    01308: add      eax, edx                                 
+    0130a: call     0x130f                                   ; in_kicking_range
+    0130f: mov      dword ptr [0], eax                       ; pass_type
+  ; [416] if (pass_type)
+    01314: cmp      dword ptr [0], 0                         ; pass_type
+    0131b: je       0x1345                                   
+  ; [418] make_pass(&teams[setp_taker-1],i+1,FALSE);
+    0131d: xor      ebx, ebx                                 
+    0131f: movsx    eax, word ptr [ebp - 8]                  
+    01323: lea      edx, [eax + 1]                           
+    01326: mov      eax, dword ptr [0]                       ; setp_taker
+    0132b: dec      eax                                      
+    0132c: imul     ecx, eax, 0xca                           
+    01332: mov      eax, 0                                   ; teams
+    01337: add      eax, ecx                                 
+    01339: call     0x133e                                   ; make_pass
+  ; [419] ready_set_kick();
+    0133e: call     0x1343                                   ; ready_set_kick
+  ; [420] break;
+    01343: jmp      0x134a                                   
+  ; [424] }
+    01345: jmp      0x1204                                   
+  ; [426] if (!pass_type)
+    0134a: cmp      dword ptr [0], 0                         ; pass_type
+    01351: jne      0x140a                                   
+  ; [428] setp_kick_x=xp;
+    01357: mov      eax, dword ptr [ebp + 0x1c]              
+    0135a: mov      dword ptr [0], eax                       ; setp_kick_x
+  ; [429] setp_kick_y=yp;
+    0135f: mov      eax, dword ptr [ebp + 0x20]              
+    01362: mov      dword ptr [0], eax                       ; setp_kick_y
+  ; [430] must_pass=10;
+    01367: mov      byte ptr [0], 0xa                        ; must_pass
+  ; [431] nx=(xp*teams[setp_taker-1].tm_xdis)+(yp*teams[setp_taker-1].tm_ydis);
+    0136e: mov      eax, dword ptr [0]                       ; setp_taker
+    01373: dec      eax                                      
+    01374: imul     eax, eax, 0xca                           
+    0137a: fld      dword ptr [ebp + 0x1c]                   
+    0137d: fmul     dword ptr [eax + 6]                      ; teams
+    01383: mov      eax, dword ptr [0]                       ; setp_taker
+    01388: dec      eax                                      
+    01389: imul     eax, eax, 0xca                           
+    0138f: fld      dword ptr [ebp + 0x20]                   
+    01392: fmul     dword ptr [eax + 0xe]                    ; teams
+    01398: faddp    st(1)                                    
+    0139a: fstp     dword ptr [ebp - 0x24]                   
+  ; [432] ny=(yp*teams[setp_taker-1].tm_xdis)-(xp*teams[setp_taker-1].tm_ydis);
+    0139d: mov      eax, dword ptr [0]                       ; setp_taker
+    013a2: dec      eax                                      
+    013a3: imul     eax, eax, 0xca                           
+    013a9: fld      dword ptr [ebp + 0x20]                   
+    013ac: fmul     dword ptr [eax + 6]                      ; teams
+    013b2: mov      eax, dword ptr [0]                       ; setp_taker
+    013b7: dec      eax                                      
+    013b8: imul     eax, eax, 0xca                           
+    013be: fld      dword ptr [ebp + 0x1c]                   
+    013c1: fmul     dword ptr [eax + 0xe]                    ; teams
+    013c7: fsubp    st(1)                                    
+    013c9: fstp     dword ptr [ebp - 0xc]                    
+  ; [433] pass_type=(1+get_dir(nx,ny));
+    013cc: fld      dword ptr [ebp - 0xc]                    
+    013cf: sub      esp, 4                                   
+    013d2: fstp     dword ptr [esp]                          
+    013d5: fld      dword ptr [ebp - 0x24]                   
+    013d8: sub      esp, 4                                   
+    013db: fstp     dword ptr [esp]                          
+    013de: call     0x13e3                                   ; get_dir
+    013e3: inc      eax                                      
+    013e4: mov      dword ptr [0], eax                       ; pass_type
+  ; [434] make_pass(&teams[setp_taker-1],0,FALSE);
+    013e9: xor      ebx, ebx                                 
+    013eb: xor      edx, edx                                 
+    013ed: mov      eax, dword ptr [0]                       ; setp_taker
+    013f2: dec      eax                                      
+    013f3: imul     eax, eax, 0xca                           
+    013f9: mov      ecx, 0                                   ; teams
+    013fe: add      eax, ecx                                 
+    01400: call     0x1405                                   ; make_pass
+  ; [435] ready_set_kick();
+    01405: call     0x140a                                   ; ready_set_kick
+  ; [437] }
+    0140a: mov      esp, ebp                                 
+    0140c: pop      ebp                                      
+    0140d: pop      edi                                      
+    0140e: pop      esi                                      
+    0140f: pop      edx                                      
+    01410: pop      ecx                                      
+    01411: pop      ebx                                      
+    01412: ret      8                                        
+
+========== taker_pass_h  (obj line 442, delta 0)
+  ; [442] void taker_pass_h(float xp,float yp)
+    01415: push     ebx                                      
+    01416: push     ecx                                      
+    01417: push     edx                                      
+    01418: push     esi                                      
+    01419: push     edi                                      
+    0141a: push     ebp                                      
+    0141b: mov      ebp, esp                                 
+    0141d: sub      esp, 0x24                                
+  ; [444] chip_pass=TRUE;
+    01423: mov      byte ptr [0], 1                          ; chip_pass
+  ; [448] t=(setp_taker<12 ? 10:21);	// team-mates!
+    0142a: cmp      dword ptr [0], 0xc                       ; setp_taker
+    01431: jge      0x143c                                   
+    01433: mov      dword ptr [ebp - 0x10], 0xa              
+    0143a: jmp      0x1443                                   
+    0143c: mov      dword ptr [ebp - 0x10], 0x15             
+    01443: mov      eax, dword ptr [ebp - 0x10]              
+    01446: mov      dword ptr [ebp - 4], eax                 
+  ; [449] pass_type=0;
+    01449: mov      dword ptr [0], 0                         ; pass_type
+  ; [451] for (short i=t; i>t-11; i--)
+    01453: mov      eax, dword ptr [ebp - 4]                 
+    01456: mov      dword ptr [ebp - 8], eax                 
+    01459: jmp      0x1461                                   
+    0145b: mov      eax, dword ptr [ebp - 8]                 
+    0145e: dec      dword ptr [ebp - 8]                      
+    01461: movsx    eax, word ptr [ebp - 4]                  
+    01465: movsx    edx, word ptr [ebp - 8]                  
+    01469: sub      eax, 0xb                                 
+    0146c: cmp      edx, eax                                 
+    0146e: jle      0x15cb                                   
+  ; [453] if (setp_taker!=i+1)
+    01474: movsx    eax, word ptr [ebp - 8]                  
+    01478: inc      eax                                      
+    01479: cmp      eax, dword ptr [0]                       ; setp_taker
+    0147f: je       0x15c6                                   
+  ; [456] if ((teams[i].tm_act<=TURN_ACT) && (teams[i].guy_on>0))
+    01485: movsx    eax, word ptr [ebp - 8]                  
+    01489: imul     eax, eax, 0xca                           
+    0148f: mov      eax, dword ptr [eax + 0x8b]              ; teams
+    01495: sar      eax, 0x10                                
+    01498: cmp      eax, 2                                   
+    0149b: jg       0x14b4                                   
+    0149d: movsx    eax, word ptr [ebp - 8]                  
+    014a1: imul     eax, eax, 0xca                           
+    014a7: mov      eax, dword ptr [eax + 0x2a]              ; teams
+    014ad: sar      eax, 0x10                                
+    014b0: test     eax, eax                                 
+    014b2: jg       0x14b9                                   
+    014b4: jmp      0x15c6                                   
+  ; [459] x=teams[i].tm_x-ballx;
+    014b9: movsx    eax, word ptr [ebp - 8]                  
+    014bd: imul     eax, eax, 0xca                           
+    014c3: fld      dword ptr [eax + 2]                      ; teams
+    014c9: fsub     dword ptr [0]                            ; ballx
+    014cf: fstp     dword ptr [ebp - 0x1c]                   
+  ; [460] y=teams[i].tm_y-bally;
+    014d2: movsx    eax, word ptr [ebp - 8]                  
+    014d6: imul     eax, eax, 0xca                           
+    014dc: fld      dword ptr [eax + 0xa]                    ; teams
+    014e2: fsub     dword ptr [0]                            ; bally
+    014e8: fstp     dword ptr [ebp - 0x18]                   
+  ; [461] d=calc_dist(x,y);
+    014eb: fld      dword ptr [ebp - 0x18]                   
+    014ee: sub      esp, 4                                   
+    014f1: fstp     dword ptr [esp]                          
+    014f4: fld      dword ptr [ebp - 0x1c]                   
+    014f7: sub      esp, 4                                   
+    014fa: fstp     dword ptr [esp]                          
+    014fd: call     0x1502                                   ; calc_dist
+    01502: fstp     dword ptr [ebp - 0x14]                   
+  ; [463] dif=((x*xp)+(y*yp))/d;
+    01505: fld      dword ptr [ebp - 0x1c]                   
+    01508: fmul     dword ptr [ebp + 0x1c]                   
+    0150b: fld      dword ptr [ebp - 0x18]                   
+    0150e: fmul     dword ptr [ebp + 0x20]                   
+    01511: faddp    st(1)                                    
+    01513: pushfd                                            
+    01514: test     byte ptr [0], 1                          ; chipbug
+    0151b: je       0x1527                                   
+    0151d: push     dword ptr [ebp - 0x14]                   
+    01520: call     0x1525                                   ; fdiv_m32
+    01525: jmp      0x152a                                   
+    01527: fdiv     dword ptr [ebp - 0x14]                   
+    0152a: popfd                                             
+    0152b: fstp     dword ptr [ebp - 0x20]                   
+  ; [464] if (dif>FACING_ANGLE)
+    0152e: fld      dword ptr [ebp - 0x20]                   
+    01531: fcomp    qword ptr [0xc0]                         ; CONST+192 f=2.72008e+23 d=0.95
+    01537: fnstsw   ax                                       
+    01539: sahf                                              
+    0153a: jbe      0x1595                                   
+  ; [466] pass_type=in_kicking_range(&teams[setp_taker-1],x,y);
+    0153c: fld      dword ptr [ebp - 0x18]                   
+    0153f: sub      esp, 4                                   
+    01542: fstp     dword ptr [esp]                          
+    01545: fld      dword ptr [ebp - 0x1c]                   
+    01548: sub      esp, 4                                   
+    0154b: fstp     dword ptr [esp]                          
+    0154e: mov      eax, dword ptr [0]                       ; setp_taker
+    01553: dec      eax                                      
+    01554: imul     eax, eax, 0xca                           
+    0155a: mov      edx, 0                                   ; teams
+    0155f: add      eax, edx                                 
+    01561: call     0x1566                                   ; in_kicking_range
+    01566: mov      dword ptr [0], eax                       ; pass_type
+  ; [467] if (pass_type!=5 && pass_type!=-1)
+    0156b: cmp      dword ptr [0], 5                         ; pass_type
+    01572: je       0x157d                                   
+    01574: cmp      dword ptr [0], -1                        ; pass_type
+    0157b: jne      0x157f                                   
+    0157d: jmp      0x158b                                   
+  ; [468] pass_type=0;
+    0157f: mov      dword ptr [0], 0                         ; pass_type
+    01589: jmp      0x1595                                   
+  ; [470] pass_type=-1;
+    0158b: mov      dword ptr [0], 0xffffffff                ; pass_type
+  ; [473] if (pass_type)
+    01595: cmp      dword ptr [0], 0                         ; pass_type
+    0159c: je       0x15c6                                   
+  ; [475] make_pass(&teams[setp_taker-1],i+1,FALSE);
+    0159e: xor      ebx, ebx                                 
+    015a0: movsx    eax, word ptr [ebp - 8]                  
+    015a4: lea      edx, [eax + 1]                           
+    015a7: mov      eax, dword ptr [0]                       ; setp_taker
+    015ac: dec      eax                                      
+    015ad: imul     ecx, eax, 0xca                           
+    015b3: mov      eax, 0                                   ; teams
+    015b8: add      eax, ecx                                 
+    015ba: call     0x15bf                                   ; make_pass
+  ; [476] ready_set_kick();
+    015bf: call     0x15c4                                   ; ready_set_kick
+  ; [477] break;
+    015c4: jmp      0x15cb                                   
+  ; [481] }
+    015c6: jmp      0x145b                                   
+  ; [482] if (!pass_type)
+    015cb: cmp      dword ptr [0], 0                         ; pass_type
+    015d2: jne      0x1636                                   
+  ; [484] setp_kick_x=teams[setp_taker-1].tm_xdis;
+    015d4: mov      eax, dword ptr [0]                       ; setp_taker
+    015d9: dec      eax                                      
+    015da: imul     edx, eax, 0xca                           
+    015e0: fld      dword ptr [edx + 6]                      ; teams
+    015e6: fstp     dword ptr [0]                            ; setp_kick_x
+  ; [485] setp_kick_y=teams[setp_taker-1].tm_ydis;
+    015ec: mov      eax, dword ptr [0]                       ; setp_taker
+    015f1: dec      eax                                      
+    015f2: imul     edx, eax, 0xca                           
+    015f8: fld      dword ptr [edx + 0xe]                    ; teams
+    015fe: fstp     dword ptr [0]                            ; setp_kick_y
+  ; [486] must_pass=TRUE;
+    01604: mov      byte ptr [0], 1                          ; must_pass
+  ; [487] pass_type=-1;
+    0160b: mov      dword ptr [0], 0xffffffff                ; pass_type
+  ; [488] make_pass(&teams[setp_taker-1],0,FALSE);
+    01615: xor      ebx, ebx                                 
+    01617: xor      edx, edx                                 
+    01619: mov      eax, dword ptr [0]                       ; setp_taker
+    0161e: dec      eax                                      
+    0161f: imul     ecx, eax, 0xca                           
+    01625: mov      eax, 0                                   ; teams
+    0162a: add      eax, ecx                                 
+    0162c: call     0x1631                                   ; make_pass
+  ; [489] ready_set_kick();
+    01631: call     0x1636                                   ; ready_set_kick
+  ; [491] }
+    01636: mov      esp, ebp                                 
+    01638: pop      ebp                                      
+    01639: pop      edi                                      
+    0163a: pop      esi                                      
+    0163b: pop      edx                                      
+    0163c: pop      ecx                                      
+    0163d: pop      ebx                                      
+    0163e: ret      8                                        
+
+========== taker_tee_up  (obj line 496, delta 0)
+  ; [496] void taker_tee_up(float x,float y)
+    01641: push     ebx                                      
+    01642: push     ecx                                      
+    01643: push     edx                                      
+    01644: push     esi                                      
+    01645: push     edi                                      
+    01646: push     ebp                                      
+    01647: mov      ebp, esp                                 
+    01649: sub      esp, 0                                   
+  ; [498] taker_pass_f(x,y);
+    0164f: fld      dword ptr [ebp + 0x20]                   
+    01652: sub      esp, 4                                   
+    01655: fstp     dword ptr [esp]                          
+    01658: fld      dword ptr [ebp + 0x1c]                   
+    0165b: sub      esp, 4                                   
+    0165e: fstp     dword ptr [esp]                          
+    01661: call     0x1666                                   ; taker_pass_f
+  ; [499] must_shoot=TRUE;
+    01666: mov      byte ptr [0], 1                          ; must_shoot
+  ; [500] must_punt=TRUE;
+    0166d: mov      byte ptr [0], 1                          ; must_punt
+  ; [501] }
+    01674: pop      ebp                                      
+    01675: pop      edi                                      
+    01676: pop      esi                                      
+    01677: pop      edx                                      
+    01678: pop      ecx                                      
+    01679: pop      ebx                                      
+    0167a: ret      8                                        
+
+========== taker_kick  (obj line 506, delta 0)
+  ; [506] void taker_kick(float x,float y)
+    0167d: push     ebx                                      
+    0167e: push     ecx                                      
+    0167f: push     edx                                      
+    01680: push     esi                                      
+    01681: push     edi                                      
+    01682: push     ebp                                      
+    01683: mov      ebp, esp                                 
+    01685: sub      esp, 0                                   
+  ; [508] if (teams[setp_taker-1].tm_srng)
+    0168b: mov      eax, dword ptr [0]                       ; setp_taker
+    01690: dec      eax                                      
+    01691: imul     eax, eax, 0xca                           
+    01697: cmp      byte ptr [eax + 0x2f], 0                 ; teams
+    0169e: je       0x16dc                                   
+  ; [511] if (spec_kick_type==SPACT_DRIVE)
+    016a0: xor      eax, eax                                 
+    016a2: mov      al, byte ptr [0]                         ; spec_kick_type
+    016a7: cmp      eax, 7                                   
+    016aa: jne      0x16b3                                   
+  ; [512] drive_shot=TRUE;
+    016ac: mov      byte ptr [0], 1                          ; drive_shot
+  ; [514] pass_type=-1;
+    016b3: mov      dword ptr [0], 0xffffffff                ; pass_type
+  ; [515] make_shoot(&teams[setp_taker-1]);
+    016bd: mov      eax, dword ptr [0]                       ; setp_taker
+    016c2: dec      eax                                      
+    016c3: imul     edx, eax, 0xca                           
+    016c9: mov      eax, 0                                   ; teams
+    016ce: add      eax, edx                                 
+    016d0: call     0x16d5                                   ; make_shoot
+  ; [516] ready_set_kick();
+    016d5: call     0x16da                                   ; ready_set_kick
+  ; [517] }
+    016da: jmp      0x16f9                                   
+  ; [520] make_punt(&teams[setp_taker-1]);
+    016dc: mov      eax, dword ptr [0]                       ; setp_taker
+    016e1: dec      eax                                      
+    016e2: imul     edx, eax, 0xca                           
+    016e8: mov      eax, 0                                   ; teams
+    016ed: add      eax, edx                                 
+    016ef: call     0x16f4                                   ; make_punt
+  ; [521] ready_set_kick();
+    016f4: call     0x16f9                                   ; ready_set_kick
+  ; [523] }
+    016f9: pop      ebp                                      
+    016fa: pop      edi                                      
+    016fb: pop      esi                                      
+    016fc: pop      edx                                      
+    016fd: pop      ecx                                      
+    016fe: pop      ebx                                      
+    016ff: ret      8                                        
+
+========== taker_chip  (obj line 528, delta 0)
+  ; [528] void taker_chip(float x,float y)
+    01702: push     ebx                                      
+    01703: push     ecx                                      
+    01704: push     edx                                      
+    01705: push     esi                                      
+    01706: push     edi                                      
+    01707: push     ebp                                      
+    01708: mov      ebp, esp                                 
+    0170a: sub      esp, 0                                   
+  ; [530] setp_kick_x=teams[setp_taker-1].tm_xdis;
+    01710: mov      eax, dword ptr [0]                       ; setp_taker
+    01715: dec      eax                                      
+    01716: imul     edx, eax, 0xca                           
+    0171c: fld      dword ptr [edx + 6]                      ; teams
+    01722: fstp     dword ptr [0]                            ; setp_kick_x
+  ; [531] setp_kick_y=teams[setp_taker-1].tm_ydis;
+    01728: mov      eax, dword ptr [0]                       ; setp_taker
+    0172d: dec      eax                                      
+    0172e: imul     edx, eax, 0xca                           
+    01734: fld      dword ptr [edx + 0xe]                    ; teams
+    0173a: fstp     dword ptr [0]                            ; setp_kick_y
+  ; [532] chip_pass=TRUE;
+    01740: mov      byte ptr [0], 1                          ; chip_pass
+  ; [533] must_pass=TRUE;
+    01747: mov      byte ptr [0], 1                          ; must_pass
+  ; [534] pass_type=-1;
+    0174e: mov      dword ptr [0], 0xffffffff                ; pass_type
+  ; [535] make_pass(&teams[setp_taker-1],0,FALSE);
+    01758: xor      ebx, ebx                                 
+    0175a: xor      edx, edx                                 
+    0175c: mov      eax, dword ptr [0]                       ; setp_taker
+    01761: dec      eax                                      
+    01762: imul     ecx, eax, 0xca                           
+    01768: mov      eax, 0                                   ; teams
+    0176d: add      eax, ecx                                 
+    0176f: call     0x1774                                   ; make_pass
+  ; [536] ready_set_kick();
+    01774: call     0x1779                                   ; ready_set_kick
+  ; [537] }
+    01779: pop      ebp                                      
+    0177a: pop      edi                                      
+    0177b: pop      esi                                      
+    0177c: pop      edx                                      
+    0177d: pop      ecx                                      
+    0177e: pop      ebx                                      
+    0177f: ret      8                                        
+
+========== taker_grnd  (obj line 542, delta 0)
+  ; [542] void taker_grnd(float x,float y)
+    01782: push     ebx                                      
+    01783: push     ecx                                      
+    01784: push     edx                                      
+    01785: push     esi                                      
+    01786: push     edi                                      
+    01787: push     ebp                                      
+    01788: mov      ebp, esp                                 
+    0178a: sub      esp, 0                                   
+  ; [544] setp_kick_x=teams[setp_taker-1].tm_xdis;
+    01790: mov      eax, dword ptr [0]                       ; setp_taker
+    01795: dec      eax                                      
+    01796: imul     edx, eax, 0xca                           
+    0179c: fld      dword ptr [edx + 6]                      ; teams
+    017a2: fstp     dword ptr [0]                            ; setp_kick_x
+  ; [545] setp_kick_y=teams[setp_taker-1].tm_ydis;
+    017a8: mov      eax, dword ptr [0]                       ; setp_taker
+    017ad: dec      eax                                      
+    017ae: imul     edx, eax, 0xca                           
+    017b4: fld      dword ptr [edx + 0xe]                    ; teams
+    017ba: fstp     dword ptr [0]                            ; setp_kick_y
+  ; [546] chip_pass=FALSE;
+    017c0: mov      byte ptr [0], 0                          ; chip_pass
+  ; [547] must_pass=TRUE;
+    017c7: mov      byte ptr [0], 1                          ; must_pass
+  ; [548] pass_type=5;
+    017ce: mov      dword ptr [0], 5                         ; pass_type
+  ; [549] make_pass(&teams[setp_taker-1],0,FALSE);
+    017d8: xor      ebx, ebx                                 
+    017da: xor      edx, edx                                 
+    017dc: mov      eax, dword ptr [0]                       ; setp_taker
+    017e1: dec      eax                                      
+    017e2: imul     ecx, eax, 0xca                           
+    017e8: mov      eax, 0                                   ; teams
+    017ed: add      eax, ecx                                 
+    017ef: call     0x17f4                                   ; make_pass
+  ; [550] ready_set_kick();
+    017f4: call     0x17f9                                   ; ready_set_kick
+  ; [551] }
+    017f9: pop      ebp                                      
+    017fa: pop      edi                                      
+    017fb: pop      esi                                      
+    017fc: pop      edx                                      
+    017fd: pop      ecx                                      
+    017fe: pop      ebx                                      
+    017ff: ret      8                                        
+
+========== rotate_around_ball  (obj line 589, delta 0)
+  ; [589] void rotate_around_ball(match_player *player)
+    01802: push     ebx                                      
+    01803: push     ecx                                      
+    01804: push     edx                                      
+    01805: push     esi                                      
+    01806: push     edi                                      
+    01807: push     ebp                                      
+    01808: mov      ebp, esp                                 
+    0180a: sub      esp, 0xc                                 
+    01810: mov      dword ptr [ebp - 4], eax                 
+  ; [591] if (um)
+    01813: cmp      byte ptr [0], 0                          ; um
+    0181a: je       0x1870                                   
+  ; [593] float x=ballx-(ux*8);
+    0181c: fld      dword ptr [0]                            ; ux
+    01822: fmul     dword ptr [0xc8]                         ; CONST+200 f=8 d=1.3411e-08
+    01828: fsubr    dword ptr [0]                            ; ballx
+    0182e: fstp     dword ptr [ebp - 0xc]                    
+  ; [594] float y=bally-(uy*8);
+    01831: fld      dword ptr [0]                            ; uy
+    01837: fmul     dword ptr [0xc8]                         ; CONST+200 f=8 d=1.3411e-08
+    0183d: fsubr    dword ptr [0]                            ; bally
+    01843: fstp     dword ptr [ebp - 8]                      
+  ; [595] player->tm_x=x;
+    01846: mov      eax, dword ptr [ebp - 0xc]               
+    01849: mov      edx, dword ptr [ebp - 4]                 
+    0184c: mov      dword ptr [edx + 2], eax                 
+  ; [596] player->tm_y=y;
+    0184f: mov      eax, dword ptr [ebp - 8]                 
+    01852: mov      edx, dword ptr [ebp - 4]                 
+    01855: mov      dword ptr [edx + 0xa], eax               
+  ; [597] player->tm_xdis=ux;
+    01858: fld      dword ptr [0]                            ; ux
+    0185e: mov      eax, dword ptr [ebp - 4]                 
+    01861: fstp     dword ptr [eax + 6]                      
+  ; [598] player->tm_ydis=uy;
+    01864: fld      dword ptr [0]                            ; uy
+    0186a: mov      eax, dword ptr [ebp - 4]                 
+    0186d: fstp     dword ptr [eax + 0xe]                    
+  ; [600] }
+    01870: mov      esp, ebp                                 
+    01872: pop      ebp                                      
+    01873: pop      edi                                      
+    01874: pop      esi                                      
+    01875: pop      edx                                      
+    01876: pop      ecx                                      
+    01877: pop      ebx                                      
+    01878: ret                                               
+
+========== taker_nkick  (obj line 605, delta 0)
+  ; [605] void taker_nkick()
+    01879: push     ebx                                      
+    0187a: push     ecx                                      
+    0187b: push     edx                                      
+    0187c: push     esi                                      
+    0187d: push     edi                                      
+    0187e: push     ebp                                      
+    0187f: mov      ebp, esp                                 
+    01881: sub      esp, 0                                   
+  ; [607] newk_shot=TRUE;
+    01887: mov      byte ptr [0], 1                          ; newk_shot
+  ; [608] teams[setp_taker-1].tm_xdis=setp_kick_x;
+    0188e: mov      eax, dword ptr [0]                       ; setp_taker
+    01893: dec      eax                                      
+    01894: imul     eax, eax, 0xca                           
+    0189a: fld      dword ptr [0]                            ; setp_kick_x
+    018a0: fstp     dword ptr [eax + 6]                      ; teams
+  ; [609] teams[setp_taker-1].tm_ydis=setp_kick_y;
+    018a6: mov      eax, dword ptr [0]                       ; setp_taker
+    018ab: dec      eax                                      
+    018ac: imul     eax, eax, 0xca                           
+    018b2: fld      dword ptr [0]                            ; setp_kick_y
+    018b8: fstp     dword ptr [eax + 0xe]                    ; teams
+  ; [610] pass_type=-1;
+    018be: mov      dword ptr [0], 0xffffffff                ; pass_type
+  ; [611] make_shoot(&teams[setp_taker-1]);
+    018c8: mov      eax, dword ptr [0]                       ; setp_taker
+    018cd: dec      eax                                      
+    018ce: imul     eax, eax, 0xca                           
+    018d4: mov      edx, 0                                   ; teams
+    018d9: add      eax, edx                                 
+    018db: call     0x18e0                                   ; make_shoot
+  ; [612] ready_set_kick();
+    018e0: call     0x18e5                                   ; ready_set_kick
+  ; [613] }
+    018e5: pop      ebp                                      
+    018e6: pop      edi                                      
+    018e7: pop      esi                                      
+    018e8: pop      edx                                      
+    018e9: pop      ecx                                      
+    018ea: pop      ebx                                      
+    018eb: ret                                               
+
+========== draw_tracker  (obj line 618, delta 0)
+  ; [618] void draw_tracker(short mp,float x,float y)
+    018ec: push     ebx                                      
+    018ed: push     ecx                                      
+    018ee: push     edx                                      
+    018ef: push     esi                                      
+    018f0: push     edi                                      
+    018f1: push     ebp                                      
+    018f2: mov      ebp, esp                                 
+    018f4: sub      esp, 0x1c                                
+    018fa: mov      dword ptr [ebp - 4], eax                 
+  ; [621] float bspeed=get_power();
+    018fd: call     0x1902                                   ; get_power
+    01902: fstp     dword ptr [ebp - 8]                      
+  ; [622] ballxdis=x*bspeed;
+    01905: fld      dword ptr [ebp + 0x1c]                   
+    01908: fmul     dword ptr [ebp - 8]                      
+    0190b: fstp     dword ptr [0]                            ; ballxdis
+  ; [623] ballydis=y*bspeed;
+    01911: fld      dword ptr [ebp + 0x20]                   
+    01914: fmul     dword ptr [ebp - 8]                      
+    01917: fstp     dword ptr [0]                            ; ballydis
+  ; [624] ballzdis=get_traj();
+    0191d: call     0x1922                                   ; get_traj
+    01922: fstp     dword ptr [0]                            ; ballzdis
+  ; [625] ball_inair=TRUE;
+    01928: mov      dword ptr [0], 1                         ; ball_inair
+  ; [626] ball_poss=FALSE;
+    01932: mov      dword ptr [0], 0                         ; ball_poss
+  ; [628] predict_ball();
+    0193c: call     0x1941                                   ; predict_ball
+  ; [629] ballxdis=0;
+    01941: mov      dword ptr [0], 0                         ; ballxdis
+  ; [630] ballydis=0;
+    0194b: mov      dword ptr [0], 0                         ; ballydis
+  ; [631] ballzdis=0;
+    01955: mov      dword ptr [0], 0                         ; ballzdis
+  ; [632] ball_inair=FALSE;
+    0195f: mov      dword ptr [0], 0                         ; ball_inair
+  ; [633] ball_poss=setp_taker;
+    01969: mov      eax, dword ptr [0]                       ; setp_taker
+    0196e: mov      dword ptr [0], eax                       ; ball_poss
+  ; [638] for (short i=0; (i<first_bounce || i<mp); i++)
+    01973: mov      dword ptr [ebp - 0xc], 0                 
+    0197a: jmp      0x1982                                   
+    0197c: mov      eax, dword ptr [ebp - 0xc]               
+    0197f: inc      dword ptr [ebp - 0xc]                    
+    01982: movsx    eax, word ptr [ebp - 0xc]                
+    01986: cmp      eax, dword ptr [0]                       ; first_bounce
+    0198c: jl       0x199b                                   
+    0198e: mov      eax, dword ptr [ebp - 0xc]               
+    01991: cmp      ax, word ptr [ebp - 4]                   
+    01995: jge      0x1ab2                                   
+  ; [641] xp=ball_pred_tab[i][0];
+    0199b: movsx    eax, word ptr [ebp - 0xc]                
+    0199f: imul     eax, eax, 0xc                            
+    019a2: mov      eax, dword ptr [eax]                     ; ball_pred_tab
+    019a8: mov      dword ptr [ebp - 0x10], eax              
+  ; [642] yp=ball_pred_tab[i][1];
+    019ab: movsx    eax, word ptr [ebp - 0xc]                
+    019af: imul     eax, eax, 0xc                            
+    019b2: mov      eax, dword ptr [eax + 4]                 ; ball_pred_tab
+    019b8: mov      dword ptr [ebp - 0x14], eax              
+  ; [643] zp=ball_pred_tab[i][2];
+    019bb: movsx    eax, word ptr [ebp - 0xc]                
+    019bf: imul     eax, eax, 0xc                            
+    019c2: mov      eax, dword ptr [eax + 8]                 ; ball_pred_tab
+    019c8: mov      dword ptr [ebp - 0x18], eax              
+  ; [644] xp=xp+(fract*(ball_pred_tab[i+1][0]-xp));
+    019cb: movsx    eax, word ptr [ebp - 0xc]                
+    019cf: inc      eax                                      
+    019d0: imul     eax, eax, 0xc                            
+    019d3: fld      dword ptr [eax]                          ; ball_pred_tab
+    019d9: fsub     dword ptr [ebp - 0x10]                   
+    019dc: fmul     dword ptr [0]                            ; fract
+    019e2: fadd     dword ptr [ebp - 0x10]                   
+    019e5: fstp     dword ptr [ebp - 0x10]                   
+  ; [645] yp=yp+(fract*(ball_pred_tab[i+1][1]-yp));
+    019e8: movsx    eax, word ptr [ebp - 0xc]                
+    019ec: inc      eax                                      
+    019ed: imul     eax, eax, 0xc                            
+    019f0: fld      dword ptr [eax + 4]                      ; ball_pred_tab
+    019f6: fsub     dword ptr [ebp - 0x14]                   
+    019f9: fmul     dword ptr [0]                            ; fract
+    019ff: fadd     dword ptr [ebp - 0x14]                   
+    01a02: fstp     dword ptr [ebp - 0x14]                   
+  ; [646] zp=zp+(fract*(ball_pred_tab[i+1][2]-zp));
+    01a05: movsx    eax, word ptr [ebp - 0xc]                
+    01a09: inc      eax                                      
+    01a0a: imul     eax, eax, 0xc                            
+    01a0d: fld      dword ptr [eax + 8]                      ; ball_pred_tab
+    01a13: fsub     dword ptr [ebp - 0x18]                   
+    01a16: fmul     dword ptr [0]                            ; fract
+    01a1c: fadd     dword ptr [ebp - 0x18]                   
+    01a1f: fstp     dword ptr [ebp - 0x18]                   
+  ; [649] add_pitch_sprite(xp,yp,zp,0);
+    01a22: xor      ecx, ecx                                 
+    01a24: fld      dword ptr [ebp - 0x18]                   
+    01a27: call     0x1a2c                                   ; CHP
+    01a2c: fistp    dword ptr [ebp - 0x1c]                   
+    01a2f: mov      eax, dword ptr [ebp - 0x1c]              
+    01a32: mov      word ptr [ebp - 0x1c], ax                
+    01a36: mov      ebx, dword ptr [ebp - 0x1e]              
+    01a39: sar      ebx, 0x10                                
+    01a3c: fld      dword ptr [ebp - 0x14]                   
+    01a3f: call     0x1a44                                   ; CHP
+    01a44: fistp    dword ptr [ebp - 0x1c]                   
+    01a47: mov      eax, dword ptr [ebp - 0x1c]              
+    01a4a: mov      word ptr [ebp - 0x1c], ax                
+    01a4e: mov      edx, dword ptr [ebp - 0x1e]              
+    01a51: sar      edx, 0x10                                
+    01a54: fld      dword ptr [ebp - 0x10]                   
+    01a57: call     0x1a5c                                   ; CHP
+    01a5c: fistp    dword ptr [ebp - 0x1c]                   
+    01a5f: mov      eax, dword ptr [ebp - 0x1c]              
+    01a62: mov      word ptr [ebp - 0x1c], ax                
+    01a66: mov      eax, dword ptr [ebp - 0x1e]              
+    01a69: sar      eax, 0x10                                
+    01a6c: call     0x1a71                                   ; add_pitch_sprite
+  ; [652] add_pitch_sprite(xp,yp,0,1);
+    01a71: mov      ecx, 1                                   
+    01a76: xor      ebx, ebx                                 
+    01a78: fld      dword ptr [ebp - 0x14]                   
+    01a7b: call     0x1a80                                   ; CHP
+    01a80: fistp    dword ptr [ebp - 0x1c]                   
+    01a83: mov      eax, dword ptr [ebp - 0x1c]              
+    01a86: mov      word ptr [ebp - 0x1c], ax                
+    01a8a: mov      edx, dword ptr [ebp - 0x1e]              
+    01a8d: sar      edx, 0x10                                
+    01a90: fld      dword ptr [ebp - 0x10]                   
+    01a93: call     0x1a98                                   ; CHP
+    01a98: fistp    dword ptr [ebp - 0x1c]                   
+    01a9b: mov      eax, dword ptr [ebp - 0x1c]              
+    01a9e: mov      word ptr [ebp - 0x1c], ax                
+    01aa2: mov      eax, dword ptr [ebp - 0x1e]              
+    01aa5: sar      eax, 0x10                                
+    01aa8: call     0x1aad                                   ; add_pitch_sprite
+  ; [653] }
+    01aad: jmp      0x197c                                   
+  ; [655] fract+=0.2;
+    01ab2: fld      dword ptr [0]                            ; fract
+    01ab8: fadd     dword ptr [0xcc]                         ; CONST+204 f=0.2 d=8192
+    01abe: fstp     dword ptr [0]                            ; fract
+  ; [656] if (fract>=1)
+    01ac4: cmp      dword ptr [0], 0x3f800000                ; fract
+    01ace: jl       0x1ada                                   
+  ; [657] fract=0;
+    01ad0: mov      dword ptr [0], 0                         ; fract
+  ; [658] }
+    01ada: mov      esp, ebp                                 
+    01adc: pop      ebp                                      
+    01add: pop      edi                                      
+    01ade: pop      esi                                      
+    01adf: pop      edx                                      
+    01ae0: pop      ecx                                      
+    01ae1: pop      ebx                                      
+    01ae2: ret      8                                        
+
+========== init_runup_act  (obj line 663, delta 0)
+  ; [663] void init_runup_act(match_player *player)
+    01ae5: push     ebx                                      
+    01ae6: push     ecx                                      
+    01ae7: push     edx                                      
+    01ae8: push     esi                                      
+    01ae9: push     edi                                      
+    01aea: push     ebp                                      
+    01aeb: mov      ebp, esp                                 
+    01aed: sub      esp, 4                                   
+    01af3: mov      dword ptr [ebp - 4], eax                 
+  ; [665] init_run_act(player,ballx,bally,TRUE);
+    01af6: mov      eax, 1                                   
+    01afb: push     eax                                      
+    01afc: push     dword ptr [0]                            ; bally
+    01b02: push     dword ptr [0]                            ; ballx
+    01b08: mov      eax, dword ptr [ebp - 4]                 
+    01b0b: call     0x1b10                                   ; init_run_act
+  ; [666] player->int_move=I_RUNUP;
+    01b10: mov      eax, dword ptr [ebp - 4]                 
+    01b13: mov      word ptr [eax + 0xbe], 0xf               
+  ; [667] player->int_cnt=player->go_cnt;
+    01b1c: mov      eax, dword ptr [ebp - 4]                 
+    01b1f: mov      dx, word ptr [eax + 0x9b]                
+    01b26: mov      eax, dword ptr [ebp - 4]                 
+    01b29: mov      word ptr [eax + 0xc0], dx                
+  ; [668] if (player->int_cnt>0)
+    01b30: mov      eax, dword ptr [ebp - 4]                 
+    01b33: mov      eax, dword ptr [eax + 0xbe]              
+    01b39: sar      eax, 0x10                                
+    01b3c: test     eax, eax                                 
+    01b3e: jle      0x1b4a                                   
+  ; [669] player->int_cnt--;
+    01b40: mov      eax, dword ptr [ebp - 4]                 
+    01b43: dec      word ptr [eax + 0xc0]                    
+  ; [671] }
+    01b4a: mov      esp, ebp                                 
+    01b4c: pop      ebp                                      
+    01b4d: pop      edi                                      
+    01b4e: pop      esi                                      
+    01b4f: pop      edx                                      
+    01b50: pop      ecx                                      
+    01b51: pop      ebx                                      
+    01b52: ret                                               
+
+========== user_runup  (obj line 676, delta 0)
+  ; [676] void user_runup(match_player *player)
+    01b53: push     ebx                                      
+    01b54: push     ecx                                      
+    01b55: push     edx                                      
+    01b56: push     esi                                      
+    01b57: push     edi                                      
+    01b58: push     ebp                                      
+    01b59: mov      ebp, esp                                 
+    01b5b: sub      esp, 4                                   
+    01b61: mov      dword ptr [ebp - 4], eax                 
+  ; [678] if (!player->int_cnt--)
+    01b64: mov      eax, dword ptr [ebp - 4]                 
+    01b67: mov      dx, word ptr [eax + 0xc0]                
+    01b6e: mov      eax, dword ptr [ebp - 4]                 
+    01b71: dec      word ptr [eax + 0xc0]                    
+    01b78: test     dx, dx                                   
+    01b7b: jne      0x1b8b                                   
+  ; [681] spec_kick_type=SPACT_NEWK;
+    01b7d: mov      byte ptr [0], 9                          ; spec_kick_type
+  ; [682] taker_nkick();
+    01b84: call     0x1b89                                   ; taker_nkick
+  ; [683] }
+    01b89: jmp      0x1b93                                   
+  ; [686] go_forward(player);
+    01b8b: mov      eax, dword ptr [ebp - 4]                 
+    01b8e: call     0x1b93                                   ; go_forward
+  ; [688] }
+    01b93: mov      esp, ebp                                 
+    01b95: pop      ebp                                      
+    01b96: pop      edi                                      
+    01b97: pop      esi                                      
+    01b98: pop      edx                                      
+    01b99: pop      ecx                                      
+    01b9a: pop      ebx                                      
+    01b9b: ret                                               
+
+========== new_user_spec_kick  (obj line 695, delta 0)
+  ; [695] void new_user_spec_kick(match_player *player)
+    01b9c: push     ebx                                      
+    01b9d: push     ecx                                      
+    01b9e: push     edx                                      
+    01b9f: push     esi                                      
+    01ba0: push     edi                                      
+    01ba1: push     ebp                                      
+    01ba2: mov      ebp, esp                                 
+    01ba4: sub      esp, 0x24                                
+    01baa: mov      dword ptr [ebp - 4], eax                 
+  ; [697] if (player->int_move==I_RUNUP)
+    01bad: mov      eax, dword ptr [ebp - 4]                 
+    01bb0: mov      eax, dword ptr [eax + 0xbc]              
+    01bb6: sar      eax, 0x10                                
+    01bb9: cmp      eax, 0xf                                 
+    01bbc: jne      0x1bcb                                   
+  ; [699] user_runup(player);
+    01bbe: mov      eax, dword ptr [ebp - 4]                 
+    01bc1: call     0x1bc6                                   ; user_runup
+  ; [700] }
+    01bc6: jmp      0x20bd                                   
+  ; [703] float x=setp_kick_x;
+    01bcb: mov      eax, dword ptr [0]                       ; setp_kick_x
+    01bd0: mov      dword ptr [ebp - 0x18], eax              
+  ; [704] float y=setp_kick_y;
+    01bd3: mov      eax, dword ptr [0]                       ; setp_kick_y
+    01bd8: mov      dword ptr [ebp - 0x14], eax              
+  ; [707] short max_pow=(player->tm_pow/6)+8;
+    01bdb: mov      edx, dword ptr [ebp - 4]                 
+    01bde: mov      dl, byte ptr [edx + 0x47]                
+    01be1: and      edx, 0xff                                
+    01be7: mov      ebx, 6                                   
+    01bec: mov      eax, edx                                 
+    01bee: sar      edx, 0x1f                                
+    01bf1: idiv     ebx                                      
+    01bf3: add      eax, 8                                   
+    01bf6: mov      dword ptr [ebp - 0xc], eax               
+  ; [713] if (users_dir[user_controlled-1].f&8)
+    01bf9: xor      eax, eax                                 
+    01bfb: mov      al, byte ptr [0]                         ; user_controlled
+    01c00: dec      eax                                      
+    01c01: imul     eax, eax, 0xc                            
+    01c04: test     byte ptr [eax + 9], 8                    ; users_dir
+    01c0b: je       0x1c42                                   
+  ; [714] xd=-ROT_SPEED*((max_pow)/(setp_power+6));
+    01c0d: fld      dword ptr [0]                            ; setp_power
+    01c13: fadd     dword ptr [0xd0]                         ; CONST+208 f=6 d=-2.35344e-185
+    01c19: fild     word ptr [ebp - 0xc]                     
+    01c1c: pushfd                                            
+    01c1d: test     byte ptr [0], 1                          ; chipbug
+    01c24: je       0x1c34                                   
+    01c26: push     eax                                      
+    01c27: mov      eax, 0xf                                 
+    01c2c: call     0x1c31                                   ; fdiv_fpr
+    01c31: pop      eax                                      
+    01c32: jmp      0x1c36                                   
+    01c34: fdivrp   st(1)                                    
+    01c36: popfd                                             
+    01c37: fmul     qword ptr [0xd4]                         ; CONST+212 f=-1.58819e-23 d=-0.05
+    01c3d: fstp     dword ptr [ebp - 0x10]                   
+    01c40: jmp      0x1c92                                   
+  ; [716] if (users_dir[user_controlled-1].f&4)
+    01c42: xor      eax, eax                                 
+    01c44: mov      al, byte ptr [0]                         ; user_controlled
+    01c49: dec      eax                                      
+    01c4a: imul     eax, eax, 0xc                            
+    01c4d: test     byte ptr [eax + 9], 4                    ; users_dir
+    01c54: je       0x1c8b                                   
+  ; [717] xd=ROT_SPEED*((max_pow)/(setp_power+6));
+    01c56: fld      dword ptr [0]                            ; setp_power
+    01c5c: fadd     dword ptr [0xdc]                         ; CONST+220 f=6 d=-2.35344e-185
+    01c62: fild     word ptr [ebp - 0xc]                     
+    01c65: pushfd                                            
+    01c66: test     byte ptr [0], 1                          ; chipbug
+    01c6d: je       0x1c7d                                   
+    01c6f: push     eax                                      
+    01c70: mov      eax, 0xf                                 
+    01c75: call     0x1c7a                                   ; fdiv_fpr
+    01c7a: pop      eax                                      
+    01c7b: jmp      0x1c7f                                   
+    01c7d: fdivrp   st(1)                                    
+    01c7f: popfd                                             
+    01c80: fmul     qword ptr [0xe0]                         ; CONST+224 f=-1.58819e-23 d=0.05
+    01c86: fstp     dword ptr [ebp - 0x10]                   
+    01c89: jmp      0x1c92                                   
+  ; [719] xd=0;
+    01c8b: mov      dword ptr [ebp - 0x10], 0                
+  ; [721] if (users_dir[user_controlled-1].f&32)
+    01c92: xor      eax, eax                                 
+    01c94: mov      al, byte ptr [0]                         ; user_controlled
+    01c99: dec      eax                                      
+    01c9a: imul     eax, eax, 0xc                            
+    01c9d: test     byte ptr [eax + 9], 0x20                 ; users_dir
+    01ca4: je       0x1caf                                   
+  ; [722] yd=1;
+    01ca6: mov      dword ptr [ebp - 8], 1                   
+    01cad: jmp      0x1cd3                                   
+  ; [724] if (users_dir[user_controlled-1].f&16)
+    01caf: xor      eax, eax                                 
+    01cb1: mov      al, byte ptr [0]                         ; user_controlled
+    01cb6: dec      eax                                      
+    01cb7: imul     eax, eax, 0xc                            
+    01cba: test     byte ptr [eax + 9], 0x10                 ; users_dir
+    01cc1: je       0x1ccc                                   
+  ; [725] yd=-1;
+    01cc3: mov      dword ptr [ebp - 8], 0xffffffff          
+    01cca: jmp      0x1cd3                                   
+  ; [727] yd=0;
+    01ccc: mov      dword ptr [ebp - 8], 0                   
+  ; [729] if (!uf2)
+    01cd3: cmp      byte ptr [0], 0                          ; uf2
+    01cda: jne      0x1dbf                                   
+  ; [734] setp_kick_x=(x*cos(xd))-(y*sin(xd));
+    01ce0: fld      dword ptr [ebp - 0x10]                   
+    01ce3: call     0x1ce8                                   ; IF@DCOS
+    01ce8: fld      dword ptr [ebp - 0x18]                   
+    01ceb: fmulp    st(1)                                    
+    01ced: fld      dword ptr [ebp - 0x10]                   
+    01cf0: call     0x1cf5                                   ; IF@DSIN
+    01cf5: fld      dword ptr [ebp - 0x14]                   
+    01cf8: fmulp    st(1)                                    
+    01cfa: fsubp    st(1)                                    
+    01cfc: fstp     dword ptr [0]                            ; setp_kick_x
+  ; [735] setp_kick_y=(y*cos(xd))+(x*sin(xd));
+    01d02: fld      dword ptr [ebp - 0x10]                   
+    01d05: call     0x1d0a                                   ; IF@DCOS
+    01d0a: fld      dword ptr [ebp - 0x14]                   
+    01d0d: fmulp    st(1)                                    
+    01d0f: fld      dword ptr [ebp - 0x10]                   
+    01d12: call     0x1d17                                   ; IF@DSIN
+    01d17: fld      dword ptr [ebp - 0x18]                   
+    01d1a: fmulp    st(1)                                    
+    01d1c: faddp    st(1)                                    
+    01d1e: fstp     dword ptr [0]                            ; setp_kick_y
+  ; [736] float d=calc_dist(setp_kick_x,setp_kick_y);
+    01d24: push     dword ptr [0]                            ; setp_kick_y
+    01d2a: push     dword ptr [0]                            ; setp_kick_x
+    01d30: call     0x1d35                                   ; calc_dist
+    01d35: fstp     dword ptr [ebp - 0x1c]                   
+  ; [737] setp_kick_x=setp_kick_x/d;
+    01d38: fld      dword ptr [0]                            ; setp_kick_x
+    01d3e: pushfd                                            
+    01d3f: test     byte ptr [0], 1                          ; chipbug
+    01d46: je       0x1d52                                   
+    01d48: push     dword ptr [ebp - 0x1c]                   
+    01d4b: call     0x1d50                                   ; fdiv_m32
+    01d50: jmp      0x1d55                                   
+    01d52: fdiv     dword ptr [ebp - 0x1c]                   
+    01d55: popfd                                             
+    01d56: fstp     dword ptr [0]                            ; setp_kick_x
+  ; [738] setp_kick_y=setp_kick_y/d;
+    01d5c: fld      dword ptr [0]                            ; setp_kick_y
+    01d62: pushfd                                            
+    01d63: test     byte ptr [0], 1                          ; chipbug
+    01d6a: je       0x1d76                                   
+    01d6c: push     dword ptr [ebp - 0x1c]                   
+    01d6f: call     0x1d74                                   ; fdiv_m32
+    01d74: jmp      0x1d79                                   
+    01d76: fdiv     dword ptr [ebp - 0x1c]                   
+    01d79: popfd                                             
+    01d7a: fstp     dword ptr [0]                            ; setp_kick_y
+  ; [741] setp_power+=yd;
+    01d80: fild     word ptr [ebp - 8]                       
+    01d83: fadd     dword ptr [0]                            ; setp_power
+    01d89: fstp     dword ptr [0]                            ; setp_power
+  ; [742] if (setp_power<0)
+    01d8f: fldz                                              
+    01d91: fcomp    dword ptr [0]                            ; setp_power
+    01d97: fnstsw   ax                                       
+    01d99: sahf                                              
+    01d9a: jbe      0x1da8                                   
+  ; [743] setp_power=0;
+    01d9c: mov      dword ptr [0], 0                         ; setp_power
+    01da6: jmp      0x1dbf                                   
+  ; [745] if (setp_power>max_pow)
+    01da8: fild     word ptr [ebp - 0xc]                     
+    01dab: fcomp    dword ptr [0]                            ; setp_power
+    01db1: fnstsw   ax                                       
+    01db3: sahf                                              
+    01db4: jae      0x1dbf                                   
+  ; [746] setp_power=max_pow;
+    01db6: fild     word ptr [ebp - 0xc]                     
+    01db9: fstp     dword ptr [0]                            ; setp_power
+  ; [750] setp_x=ballx-(setp_kick_x*(setp_power+2)*2);
+    01dbf: fld      dword ptr [0]                            ; setp_power
+    01dc5: fadd     dword ptr [0xe8]                         ; CONST+232 f=2 d=5.30499e-315
+    01dcb: fmul     dword ptr [0]                            ; setp_kick_x
+    01dd1: fmul     dword ptr [0xe8]                         ; CONST+232 f=2 d=5.30499e-315
+    01dd7: fld      dword ptr [0]                            ; ballx
+    01ddd: fsubrp   st(1)                                    
+    01ddf: fstp     dword ptr [0]                            ; setp_x
+  ; [751] setp_y=bally-(setp_kick_y*(setp_power+2)*2);
+    01de5: fld      dword ptr [0]                            ; setp_power
+    01deb: fadd     dword ptr [0xe8]                         ; CONST+232 f=2 d=5.30499e-315
+    01df1: fmul     dword ptr [0]                            ; setp_kick_y
+    01df7: fmul     dword ptr [0xe8]                         ; CONST+232 f=2 d=5.30499e-315
+    01dfd: fld      dword ptr [0]                            ; bally
+    01e03: fsubrp   st(1)                                    
+    01e05: fstp     dword ptr [0]                            ; setp_y
+  ; [753] init_run_act(player,setp_x,setp_y,TRUE);
+    01e0b: mov      eax, 1                                   
+    01e10: push     eax                                      
+    01e11: push     dword ptr [0]                            ; setp_y
+    01e17: push     dword ptr [0]                            ; setp_x
+    01e1d: mov      eax, dword ptr [ebp - 4]                 
+    01e20: call     0x1e25                                   ; init_run_act
+  ; [754] if (player->tm_act==RUN_ACT)
+    01e25: mov      eax, dword ptr [ebp - 4]                 
+    01e28: mov      eax, dword ptr [eax + 0x8b]              
+    01e2e: sar      eax, 0x10                                
+    01e31: cmp      eax, 1                                   
+    01e34: jne      0x1e40                                   
+  ; [755] go_forward(player);
+    01e36: mov      eax, dword ptr [ebp - 4]                 
+    01e39: call     0x1e3e                                   ; go_forward
+    01e3e: jmp      0x1e70                                   
+  ; [758] player->tm_x=setp_x;
+    01e40: fld      dword ptr [0]                            ; setp_x
+    01e46: mov      eax, dword ptr [ebp - 4]                 
+    01e49: fstp     dword ptr [eax + 2]                      
+  ; [759] player->tm_y=setp_y;
+    01e4c: fld      dword ptr [0]                            ; setp_y
+    01e52: mov      eax, dword ptr [ebp - 4]                 
+    01e55: fstp     dword ptr [eax + 0xa]                    
+  ; [760] player->tm_xdis=setp_kick_x;
+    01e58: fld      dword ptr [0]                            ; setp_kick_x
+    01e5e: mov      eax, dword ptr [ebp - 4]                 
+    01e61: fstp     dword ptr [eax + 6]                      
+  ; [761] player->tm_ydis=setp_kick_y;
+    01e64: fld      dword ptr [0]                            ; setp_kick_y
+    01e6a: mov      eax, dword ptr [ebp - 4]                 
+    01e6d: fstp     dword ptr [eax + 0xe]                    
+  ; [764] if (uf1)
+    01e70: cmp      byte ptr [0], 0                          ; uf1
+    01e77: je       0x1ea6                                   
+  ; [767] if (++setp_hgt>30)
+    01e79: fld1                                              
+    01e7b: fadd     dword ptr [0]                            ; setp_hgt
+    01e81: fstp     dword ptr [0]                            ; setp_hgt
+    01e87: cmp      dword ptr [0], 0x41f00000                ; setp_hgt
+    01e91: jle      0x1ea1                                   
+  ; [768] setp_hgt--;
+    01e93: fld1                                              
+    01e95: fsubr    dword ptr [0]                            ; setp_hgt
+    01e9b: fstp     dword ptr [0]                            ; setp_hgt
+  ; [769] }
+    01ea1: jmp      0x1f57                                   
+  ; [772] if (setp_hgt)
+    01ea6: test     dword ptr [0], 0x7fffffff                ; setp_hgt
+    01eb0: je       0x1eba                                   
+  ; [774] init_runup_act(player);
+    01eb2: mov      eax, dword ptr [ebp - 4]                 
+    01eb5: call     0x1eba                                   ; init_runup_act
+  ; [776] if (uf2)
+    01eba: cmp      byte ptr [0], 0                          ; uf2
+    01ec1: je       0x1f22                                   
+  ; [778] if (setp_power || calc_dist(player->tm_x-setp_x,player->tm_y-setp_y)>1)
+    01ec3: test     dword ptr [0], 0x7fffffff                ; setp_power
+    01ecd: jne      0x1f01                                   
+    01ecf: mov      eax, dword ptr [ebp - 4]                 
+    01ed2: fld      dword ptr [eax + 0xa]                    
+    01ed5: fsub     dword ptr [0]                            ; setp_y
+    01edb: sub      esp, 4                                   
+    01ede: fstp     dword ptr [esp]                          
+    01ee1: mov      eax, dword ptr [ebp - 4]                 
+    01ee4: fld      dword ptr [eax + 2]                      
+    01ee7: fsub     dword ptr [0]                            ; setp_x
+    01eed: sub      esp, 4                                   
+    01ef0: fstp     dword ptr [esp]                          
+    01ef3: call     0x1ef8                                   ; calc_dist
+    01ef8: fld1                                              
+    01efa: fcompp                                            
+    01efc: fnstsw   ax                                       
+    01efe: sahf                                              
+    01eff: jae      0x1f0d                                   
+  ; [779] setp_power=0;
+    01f01: mov      dword ptr [0], 0                         ; setp_power
+    01f0b: jmp      0x1f20                                   
+  ; [783] if (!f2_down)
+    01f0d: cmp      word ptr [0], 0                          ; f2_down
+    01f15: jne      0x1f20                                   
+  ; [785] f2_down=1;
+    01f17: mov      word ptr [0], 1                          ; f2_down
+  ; [788] }
+    01f20: jmp      0x1f57                                   
+  ; [791] if (f2_down)
+    01f22: cmp      word ptr [0], 0                          ; f2_down
+    01f2a: je       0x1f57                                   
+  ; [794] if (um)
+    01f2c: cmp      byte ptr [0], 0                          ; um
+    01f33: je       0x1f50                                   
+  ; [797] if (uf1)
+    01f35: cmp      byte ptr [0], 0                          ; uf1
+    01f3c: je       0x1f47                                   
+  ; [798] spec_kick_type=SPACT_TEE_UP;	// Tee up for shot or punt!
+    01f3e: mov      byte ptr [0], 3                          ; spec_kick_type
+    01f45: jmp      0x1f4e                                   
+  ; [800] spec_kick_type=SPACT_DPASS;	// Disguised Pass!
+    01f47: mov      byte ptr [0], 4                          ; spec_kick_type
+  ; [801] }
+    01f4e: jmp      0x1f57                                   
+  ; [803] spec_kick_type=SPACT_FPASS;	// Pass to feet!
+    01f50: mov      byte ptr [0], 1                          ; spec_kick_type
+  ; [808] if (!f2_down && setp_power)
+    01f57: cmp      word ptr [0], 0                          ; f2_down
+    01f5f: jne      0x1f6d                                   
+    01f61: test     dword ptr [0], 0x7fffffff                ; setp_power
+    01f6b: jne      0x1f6f                                   
+    01f6d: jmp      0x1f8e                                   
+  ; [809] draw_tracker(max_pow/2,setp_kick_x,setp_kick_y);
+    01f6f: push     dword ptr [0]                            ; setp_kick_y
+    01f75: push     dword ptr [0]                            ; setp_kick_x
+    01f7b: movsx    edx, word ptr [ebp - 0xc]                
+    01f7f: mov      eax, edx                                 
+    01f81: sar      edx, 0x1f                                
+    01f84: sub      eax, edx                                 
+    01f86: sar      eax, 1                                   
+    01f88: cwde                                              
+    01f89: call     0x1f8e                                   ; draw_tracker
+  ; [811] switch(spec_kick_type)
+    01f8e: mov      al, byte ptr [0]                         ; spec_kick_type
+    01f93: mov      byte ptr [ebp - 0x20], al                
+    01f96: jmp      0x20a0                                   
+  ; [814] taker_pass_f(player->tm_xdis,player->tm_ydis);
+    01f9b: mov      eax, dword ptr [ebp - 4]                 
+    01f9e: push     dword ptr [eax + 0xe]                    
+    01fa1: mov      eax, dword ptr [ebp - 4]                 
+    01fa4: push     dword ptr [eax + 6]                      
+    01fa7: call     0x1fac                                   ; taker_pass_f
+  ; [815] break;
+    01fac: jmp      0x20bd                                   
+  ; [818] taker_pass_h(player->tm_xdis,player->tm_ydis);
+    01fb1: mov      eax, dword ptr [ebp - 4]                 
+    01fb4: push     dword ptr [eax + 0xe]                    
+    01fb7: mov      eax, dword ptr [ebp - 4]                 
+    01fba: push     dword ptr [eax + 6]                      
+    01fbd: call     0x1fc2                                   ; taker_pass_h
+  ; [819] break;
+    01fc2: jmp      0x20bd                                   
+  ; [822] taker_tee_up(users_dir[user_controlled-1].x,users_dir[user_controlled-1].y);
+    01fc7: xor      eax, eax                                 
+    01fc9: mov      al, byte ptr [0]                         ; user_controlled
+    01fce: dec      eax                                      
+    01fcf: imul     eax, eax, 0xc                            
+    01fd2: push     dword ptr [eax + 4]                      ; users_dir
+    01fd8: xor      eax, eax                                 
+    01fda: mov      al, byte ptr [0]                         ; user_controlled
+    01fdf: dec      eax                                      
+    01fe0: imul     eax, eax, 0xc                            
+    01fe3: push     dword ptr [eax]                          ; users_dir
+    01fe9: call     0x1fee                                   ; taker_tee_up
+  ; [823] break;
+    01fee: jmp      0x20bd                                   
+  ; [826] taker_pass_f(users_dir[user_controlled-1].x,users_dir[user_controlled-1].y);
+    01ff3: xor      eax, eax                                 
+    01ff5: mov      al, byte ptr [0]                         ; user_controlled
+    01ffa: dec      eax                                      
+    01ffb: imul     eax, eax, 0xc                            
+    01ffe: push     dword ptr [eax + 4]                      ; users_dir
+    02004: xor      eax, eax                                 
+    02006: mov      al, byte ptr [0]                         ; user_controlled
+    0200b: dec      eax                                      
+    0200c: imul     eax, eax, 0xc                            
+    0200f: push     dword ptr [eax]                          ; users_dir
+    02015: call     0x201a                                   ; taker_pass_f
+  ; [827] break;
+    0201a: jmp      0x20bd                                   
+  ; [830] taker_grnd(player->tm_xdis,player->tm_ydis);
+    0201f: mov      eax, dword ptr [ebp - 4]                 
+    02022: push     dword ptr [eax + 0xe]                    
+    02025: mov      eax, dword ptr [ebp - 4]                 
+    02028: push     dword ptr [eax + 6]                      
+    0202b: call     0x2030                                   ; taker_grnd
+  ; [831] break;
+    02030: jmp      0x20bd                                   
+  ; [834] taker_chip(player->tm_xdis,player->tm_ydis);
+    02035: mov      eax, dword ptr [ebp - 4]                 
+    02038: push     dword ptr [eax + 0xe]                    
+    0203b: mov      eax, dword ptr [ebp - 4]                 
+    0203e: push     dword ptr [eax + 6]                      
+    02041: call     0x2046                                   ; taker_chip
+  ; [835] break;
+    02046: jmp      0x20bd                                   
+  ; [838] taker_kick(player->tm_xdis,player->tm_ydis);
+    0204b: mov      eax, dword ptr [ebp - 4]                 
+    0204e: push     dword ptr [eax + 0xe]                    
+    02051: mov      eax, dword ptr [ebp - 4]                 
+    02054: push     dword ptr [eax + 6]                      
+    02057: call     0x205c                                   ; taker_kick
+  ; [839] break;
+    0205c: jmp      0x20bd                                   
+  ; [842] taker_kick(player->tm_xdis,player->tm_ydis);
+    0205e: mov      eax, dword ptr [ebp - 4]                 
+    02061: push     dword ptr [eax + 0xe]                    
+    02064: mov      eax, dword ptr [ebp - 4]                 
+    02067: push     dword ptr [eax + 6]                      
+    0206a: call     0x206f                                   ; taker_kick
+  ; [843] break;
+    0206f: jmp      0x20bd                                   
+  ; [846] taker_nkick();
+    02071: call     0x2076                                   ; taker_nkick
+  ; [847] break;
+    02076: jmp      0x20bd                                   
+  ; [848] }
+    02078: jmp      0x20bd                                   
+    0207a: mov      eax, eax                                 
+  ; [811] switch(spec_kick_type)
+    0207c: wait                                              ; full_spd
+    0207d: pop      ds                                       
+    0207e: add      byte ptr [eax], al                       
+    02080: mov      cl, 0x1f                                 ; full_spd
+    02082: add      byte ptr [eax], al                       

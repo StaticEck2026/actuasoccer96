@@ -1,0 +1,900 @@
+{
+ "AFEQS": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "function-like macro: approx float equality on |a|: ((ABS(a)<(b)+.001)&&(ABS(a)>(b)-.001)); ACTIONS:4954 compares |tm_anim| with b+0.001 (72.001) and b-0.001 (71.999)"
+ },
+ "AIR_FRICTION": {
+  "value": 0.986,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:280 friction_factor=AIR_FRICTION: mov 0x3f7c6a7f (0.986f); INTELL:4601 (1-AIR_FRICTION) folded double 0.014; INTELL:4602 log(0.986) double"
+ },
+ "AT_FEET_DIST": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:527 x*AT_FEET_DIST: fmul float 10 (float ctx => int literal); BALLINT:519 AT_FEET_DIST+(4.*..) folded as double 10"
+ },
+ "AWAY_TEAM": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3505 LoadTeamSamples(setup.team_b,AWAY_TEAM): mov edx,1; FOOTBALL:3511 StartCrowd: mov eax,1"
+ },
+ "BESIDE_BALL": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1825 x*BESIDE_BALL/d: fmul float 5; INTELL:3106 tm_dist<BESIDE_BALL*3: cmp [eax+0x25],0x41700000 (15.0f)"
+ },
+ "BETWEEN_DIST": {
+  "value": 3.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:7740/7741 fld prat; fmul qword 3.0 (double literal)",
+  "expr": "(prat*3.)"
+ },
+ "CALL_DIST": {
+  "value": 60.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:7513 tm_dist<CALL_DIST: fld prat; fmul qword 60",
+  "expr": "(prat*60.)"
+ },
+ "CAM_MODE_BUFFER": {
+  "value": 30,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1546 mode_change=CAM_MODE_BUFFER: mov word [mode_change],0x1e after prev_camera!=camera compare"
+ },
+ "CELEB_ACT": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1351/1469 mov word [eax+0x8e],0x10"
+ },
+ "CENTRE_A": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:512/RULES:461 match_mode=CENTRE_A: mov byte,5 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "CENTRE_B": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:506/RULES:454 match_mode=CENTRE_B: mov byte,6 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "CHECKSUM_CHUNK": {
+  "value": 27,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2114 short lim=CHECKSUM_CHUNK: mov dword [ebp-4],0x1b (could be a folded expression, value 27)"
+ },
+ "CLOCKS_PER_SEC": {
+  "value": 100,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "Watcom <time.h> macro (=100); DISPLAY:513 idiv by 0x64"
+ },
+ "CLOSE_ANG_DIST": {
+  "value": 16,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:1010/3734/3791 fld prat; fmul dword 16.0f (float ctx => int literal)",
+  "expr": "(prat*16)"
+ },
+ "CN_BOO": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2701 crowd_mood_x=CN_BOO: mov word [crowd_mood_*],6 (consistent over all uses)"
+ },
+ "CN_CELEBRATE": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2869 crowd_mood_x=CN_CELEBRATE: mov word [crowd_mood_*],5 (consistent over all uses)"
+ },
+ "CN_ENCOURAGING": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2827 crowd_mood_x=CN_ENCOURAGING: mov word [crowd_mood_*],3 (consistent over all uses)"
+ },
+ "CN_EXCITED": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2761 crowd_mood_x=CN_EXCITED: mov word [crowd_mood_*],4 (consistent over all uses)"
+ },
+ "CN_FOWL": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2753 crowd_mood_x=CN_FOWL: mov word [crowd_mood_*],10 (consistent over all uses)"
+ },
+ "CN_LAUGH": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2702 crowd_mood_x=CN_LAUGH: mov word [crowd_mood_*],9 (consistent over all uses)"
+ },
+ "CN_MISS": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2718 crowd_mood_x=CN_MISS: mov word [crowd_mood_*],8 (consistent over all uses)"
+ },
+ "CN_NORMAL": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2793 crowd_mood_x=CN_NORMAL: mov word [crowd_mood_*],1 (consistent over all uses)"
+ },
+ "CN_PENSIVE": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2719 crowd_mood_x=CN_PENSIVE: mov word [crowd_mood_*],2 (consistent over all uses)"
+ },
+ "CN_SAVE": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2738 crowd_mood_x=CN_SAVE: mov word [crowd_mood_*],7 (consistent over all uses)"
+ },
+ "CONTROL_ACT": {
+  "value": 17,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:3669 mov word [eax+0x8e],0x11; BALLINT:620/749 cmp eax,0x11"
+ },
+ "CORNER_BL": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:788/799 return(CORNER_BL): mov byte,3 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "CORNER_BR": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:833 return(CORNER_BR): 4; FOOTBALL:3070 match_mode<=CORNER_BR: cmp 4; jle (range semantics) | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "CORNER_TL": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:790/801 return(CORNER_TL): mov byte,1 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "CORNER_TR": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:835/846 return(CORNER_TR): mov byte,2 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "COVERDISK": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2289 #ifndef COVERDISK body compiled (ballx=Mouse.x*5-160: lea eax,[eax+eax*4]; sub eax,0xa0); FOOTBALL:3752 #ifdef body (display_endscr call) absent"
+ },
+ "CP_HEAD": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:5123 PlayCommentaryMessage(CP_HEAD): mov eax,0x10 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CP_LONG": {
+  "value": 13,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:405 PlayCommentaryMessage(CP_LONG): mov eax,0xd (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CP_NICEMOVE": {
+  "value": 17,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:385 PlayCommentaryMessage(CP_NICEMOVE): mov eax,0x11 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CP_SETPIECE": {
+  "value": 18,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:381,391 PlayCommentaryMessage(CP_SETPIECE): mov eax,0x12 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CP_SHORT": {
+  "value": 14,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:407 PlayCommentaryMessage(CP_SHORT): mov eax,0xe (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CP_TARGET": {
+  "value": 15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:395 PlayCommentaryMessage(CP_TARGET): mov eax,0xf (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "CROWD": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "3D_UPD2 info_line(): code jumps from src line 460 to 543; #ifdef CROWD switch(crowd_mood_a) block (463-540) not compiled; no crowd_mood_a refs in 3D_UPD2.lst"
+ },
+ "D2RAD": {
+  "value": 0.01745329252,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4833 x*D2RAD: fmul qword PI(3.1415926536) then fdiv qword 180 => unparenthesised macro 'PI/180' (PI=3.1415926536)",
+  "expr": "PI/180"
+ },
+ "DANGER_AREA": {
+  "value": 8.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4400/4405/4432 fld prat; fmul qword 8 (then *1.6, *2)",
+  "expr": "(prat*8.)"
+ },
+ "DEMO": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1681 #ifndef DEMO body compiled (opt_user cmp 0x64); FOOTBALL:3158 #else branch compiled (do_half_time_anim call at FOOTBALL:3172)"
+ },
+ "DF_KICK_A": {
+  "value": 15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:3454/3771 cmp 0xf | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "DF_KICK_B": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:3716 cmp 0x10; FOOTBALL:3073 cmp 0x10 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "DIAG": {
+  "value": 0.7071068,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4183-4193 x=-DIAG / y=DIAG: mov 0xbf3504f4 / 0x3f3504f4 (=0.70710683f; literal 0.7071068 rounds to this, sqrt(.5) would be 0x3f3504f3)"
+ },
+ "DRIB_DANGER_AREA": {
+  "value": 13.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:1122, INTELL:4350/5161 fld prat; fmul qword 13",
+  "expr": "(prat*13.)"
+ },
+ "ECTS": {
+  "value": false,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3446 '#ifdef ECTS time_factor=4' absent (debug=FALSE at 07b8d followed directly by init_wind); read_config_file never referenced/called"
+ },
+ "EFFECTIVE_TACK": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:4457/7865 tm_act==TACKLE_ACT && go_cnt>EFFECTIVE_TACK: cmp dword [eax+0x9c],0x10; jg (listing shows it under line 4459/7866)"
+ },
+ "ERR_3D": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "goto label in FOOTBALL.CPP:3794, not a constant"
+ },
+ "EURO96": {
+  "value": true,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "ACTIONS #ifdef EURO96 bodies compiled: new_user_spec_kick, user_pen_kick, init_penalty_anim calls present (user_spec_kick/user_limited_kick not called); FOOTBALL checksum_state() present; ACTIONS:4760 uf2&&uf1 variant compiled"
+ },
+ "FACING_ANGLE": {
+  "value": 0.95,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:411/464, INTELL:243 dif>FACING_ANGLE: fcomp qword 0.95 (cosine threshold)"
+ },
+ "FALL_ACT": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2040-2042 mov word [eax+0x8e],5; USER:577 cmp eax,5; BALLINT:838 cmp act,5"
+ },
+ "FALL_RATE": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2034 go_txdis=tm_xdis*FALL_RATE: fld [eax+6]; fmul float 4; fstp [eax+0xa0] (listing aligned 2 lines early)"
+ },
+ "FILE": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "stdio FILE struct type, not a constant"
+ },
+ "FORCE_SELECT": {
+  "value": true,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "USER.lst has force_users() function and call (USER:877); ACTIONS:4760 FSELECT block compiled"
+ },
+ "FRONT_END": {
+  "value": true,
+  "type": "flag",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3433 #ifndef FRONT_END branch absent; #else body compiled (say_names=1, time_factor=time_table[...], debug=0 at 07b4d..07b8d)"
+ },
+ "FSELECT_DIST": {
+  "value": 2,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:4760 tm_dist>FSELECT_DIST: fld prat; fmul dword 2.0f",
+  "expr": "(prat*2)"
+ },
+ "FU_BADFOUL": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1662,1699 PlayCommentaryMessage(FU_BADFOUL): mov eax,0x8 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "FU_DIVE": {
+  "value": 12,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1598,1790 PlayCommentaryMessage(FU_DIVE): mov eax,0xc (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "FU_FREEKICK": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1664,1701 PlayCommentaryMessage(FU_FREEKICK): mov eax,0x6 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "FU_REDCARD": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1489 PlayCommentaryMessage(FU_REDCARD): mov eax,0xa (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "FU_WALL": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:2130,2190 PlayCommentaryMessage(FU_WALL): mov eax,0x7 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "FU_YELLOWCARD": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1465 PlayCommentaryMessage(FU_YELLOWCARD): mov eax,0x9 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_CURVE": {
+  "value": 28,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:971,1059 PlayCommentaryMessage(GL_CURVE): mov eax,0x1c (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_CURVEWALL": {
+  "value": 29,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:969 PlayCommentaryMessage(GL_CURVEWALL): mov eax,0x1d (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_DEFLECT": {
+  "value": 23,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:952,1043 PlayCommentaryMessage(GL_DEFLECT): mov eax,0x17 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_GENERIC": {
+  "value": 22,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:976,1064 PlayCommentaryMessage(GL_GENERIC): mov eax,0x16 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_HARDKICK": {
+  "value": 24,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:974,1062 PlayCommentaryMessage(GL_HARDKICK): mov eax,0x18 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_HEADER": {
+  "value": 25,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:962,1053 PlayCommentaryMessage(GL_HEADER): mov eax,0x19 (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_KEEPER": {
+  "value": 26,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:931,1022 PlayCommentaryMessage(GL_KEEPER): mov eax,0x1a (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GL_POST": {
+  "value": 27,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:965,1056 PlayCommentaryMessage(GL_POST): mov eax,0x1b (commentary message id space shared by CP_/FU_/GL_/PM_)"
+ },
+ "GOAL_KICK_BL": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1400 cmp 8; RULES:781/806 return 8 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "GOAL_KICK_BR": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1416 cmp 0xa; BALL:359 match_mode>GOAL_KICK_BR: cmp 0xa; jle; BALL:495 <=GOAL_KICK_BR | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "GOAL_KICK_TL": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1400 cmp 7; BALL:495 match_mode>=GOAL_KICK_TL: cmp 7; jge | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "GOAL_KICK_TR": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1416 cmp 9; RULES:828 return 9 | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "GOAL_SCORED": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "function GOAL_SCORED(int team,int scorer,int time) (FOOT.CPP:402 / RESULTS.H), called in BALL:938"
+ },
+ "GOOD_SWERVE": {
+  "value": 0.038,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:967/1058 max_sw_factor>GOOD_SWERVE: fcomp qword 0.038"
+ },
+ "GO_TO_POS_DIST": {
+  "value": 0.8,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:3339 float d=GO_TO_POS_DIST: fld prat; fmul qword 0.8",
+  "expr": "(prat*0.8)"
+ },
+ "GREED_FACTOR": {
+  "value": 100,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6693 opps+=GREED_FACTOR: add dword [ebp-0xc0],0x64"
+ },
+ "GRND_FRICTION": {
+  "value": 0.965,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:282 mov 0x3f770a3d (0.965f); INTELL:4607 (1-GRND_FRICTION)=0.035 double; INTELL:4608 log(0.965)"
+ },
+ "HAS_BALL_DELAY": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:510 tm_poss==HAS_BALL_DELAY: cmp eax,4"
+ },
+ "HLITE_BALL": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],3; branch structure verified"
+ },
+ "HLITE_CROSS": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],2; branch structure verified"
+ },
+ "HLITE_NORM": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],1; branch structure verified"
+ },
+ "HLITE_OFF": {
+  "value": 0,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],0; branch structure verified"
+ },
+ "HLITE_SHOOT": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],4; branch structure verified"
+ },
+ "HLITE_SPECIAL": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],6; branch structure verified"
+ },
+ "HLITE_STAR": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS select_hlite()/ACTIONS:6005: mov byte [player+0x7a (tm_htype)],5; branch structure verified"
+ },
+ "HOME_TEAM": {
+  "value": 0,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:3504 LoadTeamSamples(...,HOME_TEAM): xor edx,edx; FOOTBALL:3510 StartCrowd: xor eax,eax"
+ },
+ "IF_KICK_A": {
+  "value": 13,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1648 mov byte,0xd; INTELL:3460 cmp 0xd; 3D_UPD2:1292 match_mode>=IF_KICK_A && <=PEN_KICK_B: cmp 0xd jl / cmp 0x12 jle | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "IF_KICK_B": {
+  "value": 14,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:1685/2393 mov byte,0xe; INTELL:3460 cmp 0xe | match_mode family: CORNER_TL1 TR2 BL3 BR4, CENTRE_A5 B6, GOAL_KICK_TL7 BL8 TR9 BR10, (THROW_IN 11/12), IF_KICK_A13 B14, DF_KICK_A15 B16, PEN_KICK_A17 B18. "
+ },
+ "IM_THERE_DIST": {
+  "value": 2,
+  "type": "int",
+  "confidence": "medium",
+  "evidence": "ACTIONS:1844 / INTELL:97 float d<IM_THERE_DIST: cmp dword [ebp-..],0x40000000 (2.0f bit-pattern compare); int vs 2.0 literal indistinguishable"
+ },
+ "INCIDENT_DIST": {
+  "value": 10,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:3632/3633/3637 fld prat; fmul dword 10.0f",
+  "expr": "(prat*10)"
+ },
+ "INIT_SCALE": {
+  "value": 440,
+  "type": "int",
+  "confidence": "medium",
+  "evidence": "3D_UPD2:729 scale=INIT_SCALE: mov [scale],0x43dc0000 (440.0f); int vs float literal indistinguishable"
+ },
+ "IN_AIR_SPIN": {
+  "value": -0.2,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:255 ball_vert_ang+=IN_AIR_SPIN*launch_type: fmul qword -0.2"
+ },
+ "IN_HANDS_DIST": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALLINT:498/499 x*IN_HANDS_DIST: fmul float 10"
+ },
+ "I_CELEB": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:36/53 cmp 0x10; ACTIONS:1435 mov 0x10 (int_move short at +0xbf)"
+ },
+ "I_CLOSE_DOWN": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:7606 mov word [edx+0xbf],3 (int_move short at +0xbf)"
+ },
+ "I_DRIBBLE": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:5673 mov word [edx+0xbf],2 (int_move short at +0xbf)"
+ },
+ "I_GET_UP": {
+  "value": 10,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1307/1319 mov 0xa; BALLINT:486 cmp 0xa (int_move short at +0xbf)"
+ },
+ "I_HEADER": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:3001 int_move==I_HEADER: cmp eax,5 (int_move short at +0xbf)"
+ },
+ "I_INTERCEPT": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:56,2956,3437 cmp 1 (int_move short at +0xbf)"
+ },
+ "I_KICKED": {
+  "value": 12,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2882 mov 0xc; BALLINT:841 cmp 0xc (int_move short at +0xbf)"
+ },
+ "I_KP_BUSY": {
+  "value": 11,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:3365/3374/3382 mov 0xb (int_move short at +0xbf)"
+ },
+ "I_OFF": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:4149/INTELL:352 cmp 7; INTELL:8064 mov 7 (int_move short at +0xbf)"
+ },
+ "I_RECEIVE": {
+  "value": 13,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:3670/3793/3863 mov 0xd (int_move short at +0xbf)"
+ },
+ "I_RUNUP": {
+  "value": 15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:666 mov 0xf; ACTIONS:859 cmp 0xf (int_move short at +0xbf)"
+ },
+ "I_RUN_ON": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:357/8137 cmp 8; INTELL:7521 mov 8 (int_move short at +0xbf)"
+ },
+ "I_SAVE_WAIT": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2321/INTELL:1110 mov 4; INTELL:7055 cmp 4 (int_move short at +0xbf)"
+ },
+ "I_STEAL": {
+  "value": 9,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:8157 cmp eax,9 (int_move short at +0xbf)"
+ },
+ "I_THROW": {
+  "value": 6,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:3908/3954 cmp 6; RULES:1339 mov 6 (int_move short at +0xbf)"
+ },
+ "JOY1_CTRL": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:371 convert_control return(JOY1_CTRL): mov [ebp-0xc],1"
+ },
+ "JOY2_CTRL": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:375 return(JOY2_CTRL): 2"
+ },
+ "JUMP_ACT": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2061/2071/2083 tm_act=JUMP_ACT: mov word [eax+0x8e],4; ACTIONS:4384 RUN_ACT(1)||JUMP_ACT(4)"
+ },
+ "KEY1_CTRL": {
+  "value": 4,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:363 return(KEY1_CTRL): 4"
+ },
+ "KEY2_CTRL": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:367 return(KEY2_CTRL): 5"
+ },
+ "KICK_ACT": {
+  "value": 15,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2889 tm_act=KICK_ACT: mov word [eax+0x8e],0xf"
+ },
+ "KICK_AHEAD_ANG": {
+  "value": 0.966,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6431 dif>KICK_AHEAD_ANG: fcomp qword 0.966"
+ },
+ "KPHOLD_ACT": {
+  "value": 12,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:1708 mov word [eax+0x8e],0xc; BALLINT:500 cmp eax,0xc"
+ },
+ "KP_A": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:68/1335/1606 tm_player==KP_A: cmp eax,1 (player number of team A keeper); INTELL:6597 i==KP_A-1: cmp 0"
+ },
+ "KP_B": {
+  "value": 12,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:68/1335/1606 tm_player==KP_B: cmp eax,0xc; INTELL:6597 i==KP_B-1: cmp 0xb"
+ },
+ "KP_MIN_PASS_DIST": {
+  "value": 10.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6597 tm_dist<KP_MIN_PASS_DIST: fld prat; fmul qword 10",
+  "expr": "(prat*10.)"
+ },
+ "KP_OFFLINE": {
+  "value": 16,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:3796 tx=pitch_len-KP_OFFLINE: sub eax,0x10 (integer); INTELL:3739 tx=KP_OFFLINE: mov 0x41800000 (16.0f)"
+ },
+ "KT_PASS": {
+  "value": 1,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:4985 kick_type=KT_PASS: mov [kick_type],1"
+ },
+ "KT_PUNT": {
+  "value": 2,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2828 cmp [kick_type],2; INTELL:5712 mov 2"
+ },
+ "KT_SHOOT": {
+  "value": 3,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:2835 cmp [kick_type],3; INTELL:6148 mov 3"
+ },
+ "LIMIT": {
+  "value": null,
+  "type": "skip",
+  "confidence": "high",
+  "evidence": "function-like macro LIMIT(v,lo,hi) = (v<lo ? lo : (v>hi ? hi : v)); INTELL:3514"
+ },
+ "LINE_UP_DELAY": {
+  "value": 140,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:352 line_up=LINE_UP_DELAY+40: mov word,0xb4 (180); 3D_UPD2:1521 fdiv float 140"
+ },
+ "LOGPAD_CTRL": {
+  "value": 7,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "FOOTBALL:383 return(LOGPAD_CTRL): 7 (MOUSE_CTRL=3 at FOOTBALL:379)"
+ },
+ "LONG_PASS_DIST": {
+  "value": 34,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALLINT:404, INTELL:4808 fld prat; fmul dword 34.0f",
+  "expr": "(prat*34)"
+ },
+ "LONG_RANGE": {
+  "value": 25,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "BALL:451/452/464 fld prat; fmul dword 25.0f",
+  "expr": "(prat*25)"
+ },
+ "LOW_PASS_DIST": {
+  "value": 18.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:4598/4633 dd>LOW_PASS_DIST: fld prat; fmul qword 18",
+  "expr": "(prat*18.)"
+ },
+ "LP_L": {
+  "value": 4,
+  "type": "unknown",
+  "confidence": "low",
+  "evidence": "Never compiled: only used in ACTIONS:569-575 rotate_lp() inside #ifdef SUPPORT_LP (not built). Logpad shoulder-button bit in users_dir[].f; USER.CPP builds logpad bits as (x&6)<<1 -> 4/8 and (y&6)<<3 -> 16/32; BALL.CPP logpad aftertouch uses f&4 / f&8 with the same 'not both' pattern => proposed 4"
+ },
+ "LP_R": {
+  "value": 8,
+  "type": "unknown",
+  "confidence": "low",
+  "evidence": "Never compiled (SUPPORT_LP off). Proposed 8 (partner of LP_L=4, see LP_L); must differ from LP_L"
+ },
+ "MAX_3D_SPRS": {
+  "value": 100,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2.OBJ _BSS: spr_coord_tab[MAX_3D_SPRS*3+1] spans 1204 bytes (=301 floats), spr_ref_tab[MAX_3D_SPRS] spans 200 bytes (=100 shorts)"
+ },
+ "MAX_CAM_DIF": {
+  "value": 140,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:1627-1640 cmp dword dif_cam*,0x430c0000 (140.0f) and fcomp/mov -140.0f (0xc30c0000) for -MAX_CAM_DIF; int vs 140. indistinguishable"
+ },
+ "MAX_GOOD_POSS": {
+  "value": 9000,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "BALL:1526 ABS(good_poss)>MAX_GOOD_POSS: cmp [ebp-0xc],0x2328"
+ },
+ "MAX_MESSAGES": {
+  "value": 8,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "3D_UPD2:642/646/647 cmp eax,8; add [m],-8"
+ },
+ "MAX_NET_USERS": {
+  "value": 20,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "ACTIONS:6098 loop cmp eax,0x14; USER:212 memset size 0x1e0 = 20*24"
+ },
+ "MAX_PASS_PROB": {
+  "value": 5,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "INTELL:6833-6834 cmp [chance],5 / mov [chance],5"
+ },
+ "MAX_SETP_WAIT": {
+  "value": 240,
+  "type": "int",
+  "confidence": "high",
+  "evidence": "RULES:2320 setp_wait_cnt=MAX_SETP_WAIT: mov word,0xf0"
+ },
+ "MAX_TURN": {
+  "value": null,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "ACTIONS:1858/1907/2169 cos(MAX_TURN): fild tm_rate(+0x46); fmul float .125; fadd float 14; fmul PI; fdiv 180 -> radians 14..~45.9 deg depending on player speed",
+  "expr": "((14+(float)player->tm_rate/8)*PI/180)"
+ },
+ "MAX_TURN2": {
+  "value": null,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:60 float max=MAX_TURN2: teams[p_num-1].tm_rate(+0x46) *.125f +14f, *PI/180 (same as MAX_TURN but indexed via p_num)",
+  "expr": "((14+(float)teams[p_num-1].tm_rate/8)*PI/180)"
+ },
+ "MAX_WIND": {
+  "value": 1,
+  "type": "int",
+  "confidence": "medium",
+  "evidence": "BALL:288-289 wf>MAX_WIND: cmp [ebp-8],0x3f800000 / mov 0x3f800000 (1.0f); int vs 1.0 indistinguishable"
+ },
+ "MAX_WIND_CHANGE": {
+  "value": 0.4,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2186/2188/2200 MAX_WIND_CHANGE*seed/128: fmul qword 0.4; fmul 1/128"
+ },
+ "MAX_WIND_S_CHANGE": {
+  "value": 4.0,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "FOOTBALL:2226/2232/2245 fmul qword 4.0 (double literal 4., since seed*4/128 is FP not int)",
+  "expr": "4."
+ },
+ "MAX_XY_CSW": {
+  "value": 0.12,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6019 (float)seed/128*MAX_XY_CSW*...: fmul qword 0.12"
+ },
+ "MAX_XY_USW": {
+  "value": 0.14,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6134 MAX_XY_USW*tm_flair/128: fmul qword 0.14"
+ },
+ "MAX_Z_CSW": {
+  "value": 0.12,
+  "type": "float",
+  "confidence": "high",
+  "evidence": "INTELL:6020 full_zspin=(float)seed/128*MAX_Z_CSW*...: fmul qword CONST+2135 = 0.12 (same pooled constant as MAX_XY_CSW)"
+ }
+}

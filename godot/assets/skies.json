@@ -1,0 +1,115 @@
+{
+ "note": "skylist from 3DENG.OBJ; skyno = stadlist[stadium].skytypes[frame_count & 1] chosen at init3d. Sky images are 640x480, drawn with palette slots 208..223.",
+ "skies": [
+  {
+   "id": 0,
+   "file": "sky/sky0.png",
+   "image_entry": 96,
+   "palette_entry": 90,
+   "palette_slot": 208,
+   "image_name": "BM_SKY0",
+   "blaster_image_entry": 99,
+   "blaster_palette_entry": 85
+  },
+  {
+   "id": 1,
+   "file": "sky/sky1.png",
+   "image_entry": 92,
+   "palette_entry": 86,
+   "palette_slot": 208,
+   "image_name": "BM_SKY1",
+   "blaster_image_entry": 97,
+   "blaster_palette_entry": 85
+  },
+  {
+   "id": 2,
+   "file": "sky/sky2.png",
+   "image_entry": 93,
+   "palette_entry": 87,
+   "palette_slot": 208,
+   "image_name": "BM_SKY2",
+   "blaster_image_entry": 98,
+   "blaster_palette_entry": 87
+  },
+  {
+   "id": 3,
+   "file": "sky/sky3.png",
+   "image_entry": 95,
+   "palette_entry": 89,
+   "palette_slot": 208,
+   "image_name": "BM_SKY3",
+   "blaster_image_entry": 99,
+   "blaster_palette_entry": 85
+  },
+  {
+   "id": 4,
+   "file": "sky/sky4.png",
+   "image_entry": 94,
+   "palette_entry": 88,
+   "palette_slot": 208,
+   "image_name": "BM_SKY4",
+   "blaster_image_entry": 98,
+   "blaster_palette_entry": 87
+  },
+  {
+   "id": 5,
+   "file": "sky/sky5.png",
+   "image_entry": 91,
+   "palette_entry": 85,
+   "palette_slot": 208,
+   "image_name": "BM_SKY5",
+   "blaster_image_entry": 97,
+   "blaster_palette_entry": 85
+  }
+ ],
+ "pitches": [
+  {
+   "pitch_entry": 114,
+   "palette_entry": 68,
+   "tile64": "pitch/pitch_e114_p68_tile64.png",
+   "tile32": "pitch/pitch_e114_p68_tile32.png"
+  },
+  {
+   "pitch_entry": 115,
+   "palette_entry": 69,
+   "tile64": "pitch/pitch_e115_p69_tile64.png",
+   "tile32": "pitch/pitch_e115_p69_tile32.png"
+  },
+  {
+   "pitch_entry": 113,
+   "palette_entry": 65,
+   "tile64": "pitch/pitch_e113_p65_tile64.png",
+   "tile32": "pitch/pitch_e113_p65_tile32.png"
+  },
+  {
+   "pitch_entry": 116,
+   "palette_entry": 72,
+   "tile64": "pitch/pitch_e116_p72_tile64.png",
+   "tile32": "pitch/pitch_e116_p72_tile32.png"
+  },
+  {
+   "pitch_entry": 115,
+   "palette_entry": 71,
+   "tile64": "pitch/pitch_e115_p71_tile64.png",
+   "tile32": "pitch/pitch_e115_p71_tile32.png"
+  },
+  {
+   "pitch_entry": 113,
+   "palette_entry": 67,
+   "tile64": "pitch/pitch_e113_p67_tile64.png",
+   "tile32": "pitch/pitch_e113_p67_tile32.png"
+  },
+  {
+   "pitch_entry": 113,
+   "palette_entry": 69,
+   "tile64": "pitch/pitch_e113_p69_tile64.png",
+   "tile32": "pitch/pitch_e113_p69_tile32.png"
+  },
+  {
+   "pitch_entry": 116,
+   "palette_entry": 70,
+   "tile64": "pitch/pitch_e116_p70_tile64.png",
+   "tile32": "pitch/pitch_e116_p70_tile32.png"
+  }
+ ]
+}

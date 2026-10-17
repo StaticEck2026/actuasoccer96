@@ -1,0 +1,3589 @@
+{
+ "points": 28,
+ "point_names": [
+  "head_top",
+  "head_back_marker",
+  "chest_back_marker",
+  "neck",
+  "pelvis",
+  "l_shoulder",
+  "l_elbow",
+  "l_hand",
+  "r_shoulder",
+  "r_elbow",
+  "r_hand",
+  "l_toe",
+  "r_toe",
+  "l_hip",
+  "l_knee",
+  "l_ankle",
+  "l_instep",
+  "r_hip",
+  "r_knee",
+  "r_ankle",
+  "r_instep",
+  "l_foot_side_marker",
+  "r_foot_side_marker",
+  "ball",
+  "number_r_top",
+  "number_l_top",
+  "number_r_bottom",
+  "number_l_bottom"
+ ],
+ "mirror_swap": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  8,
+  9,
+  10,
+  5,
+  6,
+  7,
+  12,
+  11,
+  17,
+  18,
+  19,
+  20,
+  13,
+  14,
+  15,
+  16,
+  22,
+  21,
+  23,
+  25,
+  24,
+  27,
+  26
+ ],
+ "facelists": {
+  "player_f1": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 13,
+    "tex_range": [
+     1,
+     60
+    ],
+    "col_raw": -2013
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 133,
+    "tex_range": [
+     121,
+     180
+    ],
+    "col_raw": -2133
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 251,
+    "tex_range": [
+     248,
+     254
+    ],
+    "col_raw": -2251
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 265,
+    "tex_range": [
+     262,
+     268
+    ],
+    "col_raw": -2265
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 251,
+    "tex_range": [
+     248,
+     254
+    ],
+    "col_raw": -2251
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 265,
+    "tex_range": [
+     262,
+     268
+    ],
+    "col_raw": -2265
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 258,
+    "tex_range": [
+     255,
+     261
+    ],
+    "col_raw": -2258
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 244,
+    "tex_range": [
+     241,
+     247
+    ],
+    "col_raw": -2244
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 258,
+    "tex_range": [
+     255,
+     261
+    ],
+    "col_raw": -2258
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 244,
+    "tex_range": [
+     241,
+     247
+    ],
+    "col_raw": -2244
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f2": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 73,
+    "tex_range": [
+     61,
+     120
+    ],
+    "col_raw": -2073
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 193,
+    "tex_range": [
+     181,
+     240
+    ],
+    "col_raw": -2193
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 279,
+    "tex_range": [
+     276,
+     282
+    ],
+    "col_raw": -2279
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 293,
+    "tex_range": [
+     290,
+     296
+    ],
+    "col_raw": -2293
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 279,
+    "tex_range": [
+     276,
+     282
+    ],
+    "col_raw": -2279
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 293,
+    "tex_range": [
+     290,
+     296
+    ],
+    "col_raw": -2293
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 286,
+    "tex_range": [
+     283,
+     289
+    ],
+    "col_raw": -2286
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 272,
+    "tex_range": [
+     269,
+     275
+    ],
+    "col_raw": -2272
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 286,
+    "tex_range": [
+     283,
+     289
+    ],
+    "col_raw": -2286
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 272,
+    "tex_range": [
+     269,
+     275
+    ],
+    "col_raw": -2272
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f1b": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 773,
+    "tex_range": [
+     761,
+     820
+    ],
+    "col_raw": -2773
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 597,
+    "tex_range": [
+     585,
+     644
+    ],
+    "col_raw": -2597
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 715,
+    "tex_range": [
+     712,
+     718
+    ],
+    "col_raw": -2715
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 729,
+    "tex_range": [
+     726,
+     732
+    ],
+    "col_raw": -2729
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 715,
+    "tex_range": [
+     712,
+     718
+    ],
+    "col_raw": -2715
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 729,
+    "tex_range": [
+     726,
+     732
+    ],
+    "col_raw": -2729
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 722,
+    "tex_range": [
+     719,
+     725
+    ],
+    "col_raw": -2722
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 708,
+    "tex_range": [
+     705,
+     711
+    ],
+    "col_raw": -2708
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 722,
+    "tex_range": [
+     719,
+     725
+    ],
+    "col_raw": -2722
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 708,
+    "tex_range": [
+     705,
+     711
+    ],
+    "col_raw": -2708
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f2b": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 773,
+    "tex_range": [
+     761,
+     820
+    ],
+    "col_raw": -2773
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 657,
+    "tex_range": [
+     645,
+     704
+    ],
+    "col_raw": -2657
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 743,
+    "tex_range": [
+     740,
+     746
+    ],
+    "col_raw": -2743
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 757,
+    "tex_range": [
+     754,
+     760
+    ],
+    "col_raw": -2757
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 743,
+    "tex_range": [
+     740,
+     746
+    ],
+    "col_raw": -2743
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 757,
+    "tex_range": [
+     754,
+     760
+    ],
+    "col_raw": -2757
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 750,
+    "tex_range": [
+     747,
+     753
+    ],
+    "col_raw": -2750
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 736,
+    "tex_range": [
+     733,
+     739
+    ],
+    "col_raw": -2736
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 750,
+    "tex_range": [
+     747,
+     753
+    ],
+    "col_raw": -2750
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 736,
+    "tex_range": [
+     733,
+     739
+    ],
+    "col_raw": -2736
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_fg1": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 162,
+    "b": 150,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 13,
+    "tex_range": [
+     1,
+     60
+    ],
+    "col_raw": -2013
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 180,
+    "b": 360,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 429,
+    "tex_range": [
+     417,
+     476
+    ],
+    "col_raw": -2429
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 515,
+    "tex_range": [
+     512,
+     518
+    ],
+    "col_raw": -2515
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 529,
+    "tex_range": [
+     526,
+     532
+    ],
+    "col_raw": -2529
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 515,
+    "tex_range": [
+     512,
+     518
+    ],
+    "col_raw": -2515
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 529,
+    "tex_range": [
+     526,
+     532
+    ],
+    "col_raw": -2529
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 522,
+    "tex_range": [
+     519,
+     525
+    ],
+    "col_raw": -2522
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 508,
+    "tex_range": [
+     505,
+     511
+    ],
+    "col_raw": -2508
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 522,
+    "tex_range": [
+     519,
+     525
+    ],
+    "col_raw": -2522
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 508,
+    "tex_range": [
+     505,
+     511
+    ],
+    "col_raw": -2508
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 62,
+    "page": 0,
+    "uv": [
+     [
+      101.0,
+      128.0
+     ],
+     [
+      127.99609375,
+      128.0
+     ],
+     [
+      127.99609375,
+      156.99609375
+     ],
+     [
+      101.0,
+      156.99609375
+     ]
+    ],
+    "col_raw": -2062
+   }
+  ],
+  "player_fg2": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 162,
+    "b": 150,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 73,
+    "tex_range": [
+     61,
+     120
+    ],
+    "col_raw": -2073
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 180,
+    "b": 360,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 949,
+    "tex_range": [
+     937,
+     996
+    ],
+    "col_raw": -2949
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 859,
+    "tex_range": [
+     856,
+     862
+    ],
+    "col_raw": -2859
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 873,
+    "tex_range": [
+     870,
+     876
+    ],
+    "col_raw": -2873
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 859,
+    "tex_range": [
+     856,
+     862
+    ],
+    "col_raw": -2859
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 873,
+    "tex_range": [
+     870,
+     876
+    ],
+    "col_raw": -2873
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 866,
+    "tex_range": [
+     863,
+     869
+    ],
+    "col_raw": -2866
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 852,
+    "tex_range": [
+     849,
+     855
+    ],
+    "col_raw": -2852
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 866,
+    "tex_range": [
+     863,
+     869
+    ],
+    "col_raw": -2866
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 852,
+    "tex_range": [
+     849,
+     855
+    ],
+    "col_raw": -2852
+   },
+   {
+    "v": [
+     25,
+     24,
+     26,
+     27
+    ],
+    "kind": "transparent",
+    "tex": 62,
+    "page": 0,
+    "uv": [
+     [
+      101.0,
+      128.0
+     ],
+     [
+      127.99609375,
+      128.0
+     ],
+     [
+      127.99609375,
+      156.99609375
+     ],
+     [
+      101.0,
+      156.99609375
+     ]
+    ],
+    "col_raw": -2062
+   }
+  ],
+  "player_f1x": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 13,
+    "tex_range": [
+     1,
+     60
+    ],
+    "col_raw": -2013
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 133,
+    "tex_range": [
+     121,
+     180
+    ],
+    "col_raw": -2133
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 251,
+    "tex_range": [
+     248,
+     254
+    ],
+    "col_raw": -2251
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 265,
+    "tex_range": [
+     262,
+     268
+    ],
+    "col_raw": -2265
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 251,
+    "tex_range": [
+     248,
+     254
+    ],
+    "col_raw": -2251
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 265,
+    "tex_range": [
+     262,
+     268
+    ],
+    "col_raw": -2265
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 258,
+    "tex_range": [
+     255,
+     261
+    ],
+    "col_raw": -2258
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 244,
+    "tex_range": [
+     241,
+     247
+    ],
+    "col_raw": -2244
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 258,
+    "tex_range": [
+     255,
+     261
+    ],
+    "col_raw": -2258
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 244,
+    "tex_range": [
+     241,
+     247
+    ],
+    "col_raw": -2244
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f2x": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 73,
+    "tex_range": [
+     61,
+     120
+    ],
+    "col_raw": -2073
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 193,
+    "tex_range": [
+     181,
+     240
+    ],
+    "col_raw": -2193
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 279,
+    "tex_range": [
+     276,
+     282
+    ],
+    "col_raw": -2279
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 293,
+    "tex_range": [
+     290,
+     296
+    ],
+    "col_raw": -2293
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 279,
+    "tex_range": [
+     276,
+     282
+    ],
+    "col_raw": -2279
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 293,
+    "tex_range": [
+     290,
+     296
+    ],
+    "col_raw": -2293
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 286,
+    "tex_range": [
+     283,
+     289
+    ],
+    "col_raw": -2286
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 272,
+    "tex_range": [
+     269,
+     275
+    ],
+    "col_raw": -2272
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 286,
+    "tex_range": [
+     283,
+     289
+    ],
+    "col_raw": -2286
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 272,
+    "tex_range": [
+     269,
+     275
+    ],
+    "col_raw": -2272
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f1xb": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 773,
+    "tex_range": [
+     761,
+     820
+    ],
+    "col_raw": -2773
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 597,
+    "tex_range": [
+     585,
+     644
+    ],
+    "col_raw": -2597
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 715,
+    "tex_range": [
+     712,
+     718
+    ],
+    "col_raw": -2715
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 729,
+    "tex_range": [
+     726,
+     732
+    ],
+    "col_raw": -2729
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 715,
+    "tex_range": [
+     712,
+     718
+    ],
+    "col_raw": -2715
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 729,
+    "tex_range": [
+     726,
+     732
+    ],
+    "col_raw": -2729
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 722,
+    "tex_range": [
+     719,
+     725
+    ],
+    "col_raw": -2722
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 708,
+    "tex_range": [
+     705,
+     711
+    ],
+    "col_raw": -2708
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 722,
+    "tex_range": [
+     719,
+     725
+    ],
+    "col_raw": -2722
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 708,
+    "tex_range": [
+     705,
+     711
+    ],
+    "col_raw": -2708
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_f2xb": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 148,
+    "b": 137,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 773,
+    "tex_range": [
+     761,
+     820
+    ],
+    "col_raw": -2773
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 165,
+    "b": 341,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 657,
+    "tex_range": [
+     645,
+     704
+    ],
+    "col_raw": -2657
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 198,
+    "b": 71,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 743,
+    "tex_range": [
+     740,
+     746
+    ],
+    "col_raw": -2743
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 757,
+    "tex_range": [
+     754,
+     760
+    ],
+    "col_raw": -2757
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 104,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 743,
+    "tex_range": [
+     740,
+     746
+    ],
+    "col_raw": -2743
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 71,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 757,
+    "tex_range": [
+     754,
+     760
+    ],
+    "col_raw": -2757
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 750,
+    "tex_range": [
+     747,
+     753
+    ],
+    "col_raw": -2750
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 736,
+    "tex_range": [
+     733,
+     739
+    ],
+    "col_raw": -2736
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 145,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 750,
+    "tex_range": [
+     747,
+     753
+    ],
+    "col_raw": -2750
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 96,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 736,
+    "tex_range": [
+     733,
+     739
+    ],
+    "col_raw": -2736
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 101,
+    "page": 0,
+    "uv": [
+     [
+      172.99609375,
+      193.0
+     ],
+     [
+      148.0,
+      193.0
+     ],
+     [
+      148.0,
+      223.99609375
+     ],
+     [
+      172.99609375,
+      223.99609375
+     ]
+    ],
+    "col_raw": -2101
+   }
+  ],
+  "player_fg1x": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 162,
+    "b": 150,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 13,
+    "tex_range": [
+     1,
+     60
+    ],
+    "col_raw": -2013
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 180,
+    "b": 360,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 429,
+    "tex_range": [
+     417,
+     476
+    ],
+    "col_raw": -2429
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 515,
+    "tex_range": [
+     512,
+     518
+    ],
+    "col_raw": -2515
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 529,
+    "tex_range": [
+     526,
+     532
+    ],
+    "col_raw": -2529
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 515,
+    "tex_range": [
+     512,
+     518
+    ],
+    "col_raw": -2515
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 529,
+    "tex_range": [
+     526,
+     532
+    ],
+    "col_raw": -2529
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 522,
+    "tex_range": [
+     519,
+     525
+    ],
+    "col_raw": -2522
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 508,
+    "tex_range": [
+     505,
+     511
+    ],
+    "col_raw": -2508
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 522,
+    "tex_range": [
+     519,
+     525
+    ],
+    "col_raw": -2522
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 508,
+    "tex_range": [
+     505,
+     511
+    ],
+    "col_raw": -2508
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 62,
+    "page": 0,
+    "uv": [
+     [
+      101.0,
+      128.0
+     ],
+     [
+      127.99609375,
+      128.0
+     ],
+     [
+      127.99609375,
+      156.99609375
+     ],
+     [
+      101.0,
+      156.99609375
+     ]
+    ],
+    "col_raw": -2062
+   }
+  ],
+  "player_fg2x": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 162,
+    "b": 150,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 73,
+    "tex_range": [
+     61,
+     120
+    ],
+    "col_raw": -2073
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 180,
+    "b": 360,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 949,
+    "tex_range": [
+     937,
+     996
+    ],
+    "col_raw": -2949
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 216,
+    "b": 78,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 859,
+    "tex_range": [
+     856,
+     862
+    ],
+    "col_raw": -2859
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 873,
+    "tex_range": [
+     870,
+     876
+    ],
+    "col_raw": -2873
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 114,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 859,
+    "tex_range": [
+     856,
+     862
+    ],
+    "col_raw": -2859
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 78,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 873,
+    "tex_range": [
+     870,
+     876
+    ],
+    "col_raw": -2873
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 866,
+    "tex_range": [
+     863,
+     869
+    ],
+    "col_raw": -2866
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 852,
+    "tex_range": [
+     849,
+     855
+    ],
+    "col_raw": -2852
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 158,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 866,
+    "tex_range": [
+     863,
+     869
+    ],
+    "col_raw": -2866
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 105,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 852,
+    "tex_range": [
+     849,
+     855
+    ],
+    "col_raw": -2852
+   },
+   {
+    "v": [
+     24,
+     25,
+     27,
+     26
+    ],
+    "kind": "transparent",
+    "tex": 62,
+    "page": 0,
+    "uv": [
+     [
+      101.0,
+      128.0
+     ],
+     [
+      127.99609375,
+      128.0
+     ],
+     [
+      127.99609375,
+      156.99609375
+     ],
+     [
+      101.0,
+      156.99609375
+     ]
+    ],
+    "col_raw": -2062
+   }
+  ],
+  "player_fw": [
+   {
+    "v": [
+     0,
+     1
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     0,
+     3
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     1,
+     3
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     3,
+     5
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     3,
+     8
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     5,
+     6
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     6,
+     7
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     8,
+     9
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     9,
+     10
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     3,
+     4
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     4,
+     13
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     4,
+     17
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     13,
+     14
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     14,
+     15
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     15,
+     16
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     17,
+     18
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     18,
+     19
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     19,
+     20
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     24,
+     25
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     25,
+     27
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     27,
+     26
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   },
+   {
+    "v": [
+     26,
+     24
+    ],
+    "kind": "line",
+    "color_index": 31,
+    "color": [
+     255,
+     255,
+     255
+    ],
+    "col_raw": 31
+   }
+  ],
+  "player_fl": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 130,
+    "b": 121,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 73,
+    "tex_range": [
+     61,
+     120
+    ],
+    "col_raw": -2073
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 153,
+    "b": 297,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 889,
+    "tex_range": [
+     877,
+     936
+    ],
+    "col_raw": -2889
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 162,
+    "b": 58,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 162,
+    "b": 58,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 85,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 831,
+    "tex_range": [
+     828,
+     834
+    ],
+    "col_raw": -2831
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 58,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 845,
+    "tex_range": [
+     842,
+     848
+    ],
+    "col_raw": -2845
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 85,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 831,
+    "tex_range": [
+     828,
+     834
+    ],
+    "col_raw": -2831
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 58,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 845,
+    "tex_range": [
+     842,
+     848
+    ],
+    "col_raw": -2845
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 118,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 838,
+    "tex_range": [
+     835,
+     841
+    ],
+    "col_raw": -2838
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 79,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 824,
+    "tex_range": [
+     821,
+     827
+    ],
+    "col_raw": -2824
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 118,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 838,
+    "tex_range": [
+     835,
+     841
+    ],
+    "col_raw": -2838
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 79,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 824,
+    "tex_range": [
+     821,
+     827
+    ],
+    "col_raw": -2824
+   }
+  ],
+  "player_fr": [
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     3,
+     0,
+     1
+    ],
+    "a": 130,
+    "b": 121,
+    "length": 336,
+    "tex_mode": "transparent",
+    "tex": 13,
+    "tex_range": [
+     1,
+     60
+    ],
+    "col_raw": -2013
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     4,
+     3,
+     2
+    ],
+    "a": 153,
+    "b": 297,
+    "length": 1075,
+    "tex_mode": "transparent",
+    "tex": 369,
+    "tex_range": [
+     357,
+     416
+    ],
+    "col_raw": -2369
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     11,
+     16,
+     21
+    ],
+    "a": 162,
+    "b": 58,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "ellipse_billboard",
+    "v": [
+     12,
+     20,
+     22
+    ],
+    "a": 162,
+    "b": 58,
+    "length": 132,
+    "tex_mode": "transparent",
+    "tex": 309,
+    "tex_range": [
+     297,
+     356
+    ],
+    "col_raw": -2309
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     5,
+     6
+    ],
+    "width": 85,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 487,
+    "tex_range": [
+     484,
+     490
+    ],
+    "col_raw": -2487
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     6,
+     7
+    ],
+    "width": 58,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 501,
+    "tex_range": [
+     498,
+     504
+    ],
+    "col_raw": -2501
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     8,
+     9
+    ],
+    "width": 85,
+    "length": 390,
+    "tex_mode": "transparent",
+    "tex": 487,
+    "tex_range": [
+     484,
+     490
+    ],
+    "col_raw": -2487
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     9,
+     10
+    ],
+    "width": 58,
+    "length": 456,
+    "tex_mode": "transparent",
+    "tex": 501,
+    "tex_range": [
+     498,
+     504
+    ],
+    "col_raw": -2501
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     13,
+     14
+    ],
+    "width": 118,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 494,
+    "tex_range": [
+     491,
+     497
+    ],
+    "col_raw": -2494
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     14,
+     15
+    ],
+    "width": 79,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 480,
+    "tex_range": [
+     477,
+     483
+    ],
+    "col_raw": -2480
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     17,
+     18
+    ],
+    "width": 118,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 494,
+    "tex_range": [
+     491,
+     497
+    ],
+    "col_raw": -2494
+   },
+   {
+    "kind": "cyl_billboard",
+    "v": [
+     18,
+     19
+    ],
+    "width": 79,
+    "length": 648,
+    "tex_mode": "transparent",
+    "tex": 480,
+    "tex_range": [
+     477,
+     483
+    ],
+    "col_raw": -2480
+   }
+  ]
+ },
+ "playertypes": [
+  null,
+  "player_f1",
+  "player_f2",
+  "player_fr",
+  "player_fl",
+  "player_fg1",
+  "player_f1x",
+  "player_f2x",
+  "player_fr",
+  "player_fl",
+  "player_fg1x",
+  "player_f1b",
+  "player_f2b",
+  "player_fr",
+  "player_fl",
+  "player_fg2",
+  "player_f1xb",
+  "player_f2xb",
+  "player_fr",
+  "player_fl",
+  "player_fg2x",
+  "player_fw"
+ ],
+ "selection": "faces = playertypes[k]: k = type (1 team A, 2 team B, 3 referee, 4 linesman); +5 if the anim is mirrored; +10 for players with game_data skin_tone!=0 (dark skin, M8 only); goalkeepers (player index 0 and 11): 5/10 (team A or !M8) or 15/20 (team B); +5 when mirrored. playertypes[21] = wireframe.",
+ "number_patch": "face 12 (the quad on points 25,24,26,27): its col is overwritten per player: team A tex X_TM+16+(n-1), team B X_TM+31+(n-1) (transparent); with detail.players==0 the list is truncated to 12 faces (no number)."
+}
